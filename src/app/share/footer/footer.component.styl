@@ -1,0 +1,39 @@
+@import "../../../assets/css/variable.styl"
+
+footer
+  width 100%
+  background #343a4a
+  height 210px
+  padding 20px 0 0
+  section
+    width 1200px
+    margin 0 auto
+    ul
+      display flex
+      justify-content space-between
+      li
+        border-right 1px solid rgba(151,187,211,0.2)
+        width 398px
+        &:nth-child(3)
+          border-right 0
+        img
+          height 22px
+          padding 11px 19px auto 11px
+        .title
+          color #5d616e
+          font-size $font-big-size
+          line-height 1.56
+        .detail
+          color rgba(255,255,255,0.6)
+          font-size $font-nomal-size
+
+  .copyright
+    background #21242b
+    width 100%
+    height 50px
+    line-height 50px
+    text-align center
+    font-size $font-small-size
+    color rgba(255,255,255,0.6)
+    position fixed
+    bottom 0
