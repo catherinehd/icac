@@ -1,22 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AppRoutingModule } from './app-routing.module';
+import { HomeModule } from './home/home.module';
+import { ShareModule } from './share/share.module';
+
 import { AppComponent } from './app.component';
-import { IndexComponent } from './home/index/index.component';
-import { HeaderComponent } from './share/header/header.component';
-import { FooterComponent } from './share/footer/footer.component';
-import { NavbarComponent } from './share/navbar/navbar.component';
+
+import { AboutIndexComponent } from './about/about-index/about-index.component';
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    IndexComponent,
-    HeaderComponent,
-    FooterComponent,
-    NavbarComponent
-  ],
   imports: [
-    BrowserModule
+    BrowserModule, HomeModule, AppRoutingModule, ShareModule,
+  ],
+  declarations: [
+    AppComponent, AboutIndexComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

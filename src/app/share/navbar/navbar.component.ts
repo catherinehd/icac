@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigateService } from '../../service/navigate.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,10 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  gopage($event) {
+    console.log($event);
   }
 
 }

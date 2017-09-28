@@ -5,6 +5,9 @@ main
   .top-img
     width 100%
     height 400px
+    overflow hidden
+    background-image: url('../../../assets/img/bg-top.png')
+    background-size cover
   .overview
     margin 90px auto
     width 1200px
@@ -47,8 +50,9 @@ main
           display flex
           justify-content space-between
           li
-            width 328px
+            width 344px
             .small-title
+              width 282px
               font-size $font-big-size
               line-height 1.56
             .date
@@ -63,6 +67,15 @@ main
 .title
   font-size $font-biggest-size
   color $font-deep-gray-color
+
+button
+  border 1px solid $theme-main-deep-blue-color
+  background transparent
+  padding 6px 8px
+  font-size $font-nomal-size
+  color $theme-main-deep-blue-color
+  border-radius 3px
+  margin-top 23px
 
 
 
