@@ -7,6 +7,7 @@ import { ProDevIndexComponent } from './professional-dev/pro-dev-index/pro-dev-i
 import { SchoolComponent } from './knowledgecenter/school/school.component';
 import { NewsIndexComponent } from './news/news-index/news-index.component';
 import { MembershipComponent } from './membership/membership/membership.component';
+import { RegisterComponent } from './register/register/register.component';
 
 const appRouters: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -16,6 +17,7 @@ const appRouters: Routes = [
   { path: 'knowledgecenter', component: SchoolComponent },
   { path: 'news', component: NewsIndexComponent },
   { path: 'membership', component: MembershipComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({

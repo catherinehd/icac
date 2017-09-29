@@ -13,6 +13,7 @@ import { ProDevIndexComponent } from './professional-dev/pro-dev-index/pro-dev-i
 import { SchoolComponent } from './knowledgecenter/school/school.component';
 import { NewsIndexComponent } from './news/news-index/news-index.component';
 import { MembershipComponent } from './membership/membership/membership.component';
+import { RegisterComponent } from './register/register/register.component';
 
 
 
@@ -21,7 +22,7 @@ import { MembershipComponent } from './membership/membership/membership.componen
     BrowserModule, HomeModule, AppRoutingModule, ShareModule,
   ],
   declarations: [
-    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent,
+    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
