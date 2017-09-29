@@ -8,6 +8,12 @@ import { ShareModule } from './share/share.module';
 import { AppComponent } from './app.component';
 
 import { AboutIndexComponent } from './about/about-index/about-index.component';
+import { EventsIndexComponent } from './events/events-index/events-index.component';
+import { ProDevIndexComponent } from './professional-dev/pro-dev-index/pro-dev-index.component';
+import { SchoolComponent } from './knowledgecenter/school/school.component';
+import { NewsIndexComponent } from './news/news-index/news-index.component';
+import { MembershipComponent } from './membership/membership/membership.component';
+
 
 
 @NgModule({
@@ -15,7 +21,7 @@ import { AboutIndexComponent } from './about/about-index/about-index.component';
     BrowserModule, HomeModule, AppRoutingModule, ShareModule,
   ],
   declarations: [
-    AppComponent, AboutIndexComponent,
+    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
