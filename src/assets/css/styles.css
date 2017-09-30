@@ -46,6 +46,10 @@ img {
   border: none;
 }
 
+input {
+  outline: 0;
+}
+
 ::-webkit-input-placeholder {
   color: #dbdbdb;
   font-size: 14px;

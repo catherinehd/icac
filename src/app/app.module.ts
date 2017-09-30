@@ -14,7 +14,9 @@ import { SchoolComponent } from './knowledgecenter/school/school.component';
 import { NewsIndexComponent } from './news/news-index/news-index.component';
 import { MembershipComponent } from './membership/membership/membership.component';
 import { RegisterComponent } from './register/register/register.component';
-
+import { PersonComponent } from './person/person.component';
+import { PersonalDataComponent } from './person/personal-data/personal-data.component';
+import { ModifyPasswordComponent } from './person/modify-password/modify-password.component';
 
 
 @NgModule({
@@ -22,7 +24,7 @@ import { RegisterComponent } from './register/register/register.component';
     BrowserModule, HomeModule, AppRoutingModule, ShareModule,
   ],
   declarations: [
-    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent,
+    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

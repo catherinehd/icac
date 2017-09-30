@@ -3,13 +3,13 @@
 .register-sec
   width 100%
   background $theme-main-gray-color
-  padding 59px 0 78px
+  padding 59px 0 48px
   .register-box
-    width 560px
+    width 444px
     margin 0 auto
     text-align center
     .title
-      text-align right
+      text-align center
       padding-bottom 30px
       font-size $font-big-size
     .main
@@ -17,17 +17,106 @@
         margin-bottom 30px
         display flex
         span
-          width 50%
           &:nth-child(1)
+            width 144px
             text-align right
-            padding-right 20px
+            margin-right 20px
             font-size $font-nomal-size
             line-height 36px
+            span
+              color red
+              margin-right 12px
           &:nth-child(2)
+            width 280px
             text-align left
+            position relative
+            .wrong
+              position absolute
+              left 290px
+              width 100%
+              top 0
+              height 36px
+              img
+                width 14px
+              span
+                line-height 36px
+                display inline
+                margin-left 5px
+                color $font-red-color
             input
+            select
               width 280px
               height 36px
+              border-radius 0
+              background #fff
+              font-size $font-nomal-size
+              line-height 14px
+              outline none
+              padding 12px 0 12px 11px
+              border-style none
+              border $default-light-border
+            select
+              color  $font-deep-gray-color
+
+.obtain
+  position absolute
+  right 0
+  height 36px
+  width 98px
+  bottom 0
+  background $theme-main-deep-blue-color
+  color  $font-white-color
+  font-size $font-nomal-size
+.optional
+  position absolute
+  left 290px
+  top 0
+  height 36px
+  line-height 36px
+  color $font-light-gray-color
+.point
+  display block
+  width 18px
+  height 18px
+  left 290px
+  top 9px
+  color $font-light-gray-color
+  position absolute
+  cursor pointer
+.no-ceeb
+.agreement
+.submit
+.tel
+  margin-left 164px
+.no-ceeb
+.agreement
+  cursor pointer
+  color  $font-main-deep-blue-color
+.no-ceeb
+.submit
+  margin-bottom 20px !important
+.submit
+  background-color $theme-light-gray-color
+  width 100px
+  height 40px
+  padding 13px 23px
+  button
+    background transparent
+    color $font-gray-color
+    font-size $font-little-big-size
+.tel
+  width 310px
+  font-size $font-small-size
+  color $font-light-gray-color
+
+.btn-group
+  position absolute
+  top 10px
+  right 12px
+  width 13px
+  button
+    width 13px
+    background transparent
 
 
 

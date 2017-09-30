@@ -8,6 +8,7 @@ import { SchoolComponent } from './knowledgecenter/school/school.component';
 import { NewsIndexComponent } from './news/news-index/news-index.component';
 import { MembershipComponent } from './membership/membership/membership.component';
 import { RegisterComponent } from './register/register/register.component';
+import { PersonComponent } from './person/person.component';
 
 const appRouters: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -18,6 +19,7 @@ const appRouters: Routes = [
   { path: 'news', component: NewsIndexComponent },
   { path: 'membership', component: MembershipComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'person', component: PersonComponent },
 ];
 
 @NgModule({
