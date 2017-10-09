@@ -12,10 +12,24 @@ header
       width 219px
       height 78px
   .login-box
+  .out-box
     padding 19px 0
-    .user
+    img
+      width 40px
+      height @width
+    .btn-group
       display inline-block
-      img
-        width 40px
-        height @width
+      height 14px
+      line-height 14px
+    button
+      background transparent
+      height 14px
+      font-size $font-nomal-size
+      &:nth-child(1)
+        border-right 1px solid $font-gray-color
+        padding-right 16px
+        margin-right 18px
+  .login-box
+    .btn-group
+      margin-top 16px
 

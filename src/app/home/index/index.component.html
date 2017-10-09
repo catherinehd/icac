@@ -29,8 +29,9 @@
           <div class="title">
             NEWSROOM
           </div>
-          <div class="more">
-            more >>
+          <div class="more" (click)="go('./news')">
+            more
+            <img src="../../../assets/icon/more.svg" />
           </div>
         </div>
         <div class="detail">
@@ -83,4 +84,6 @@
     </div>
   </section>
 </main>
+
+<app-modal></app-modal>
 

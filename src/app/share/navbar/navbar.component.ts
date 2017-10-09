@@ -7,14 +7,21 @@ import { NavigateService } from '../../service/navigate.service';
   styleUrls: ['./navbar.component.styl']
 })
 export class NavbarComponent implements OnInit {
+  num: number;
+  currentId: number;
 
-  constructor() { }
+  constructor(private navigateService: NavigateService) {
+    this.currentId = 1;
+  }
 
   ngOnInit() {
   }
 
-  gopage($event) {
-    console.log($event);
+  gopage(url,num) {
+    this.navigateService.push();
+    this.navigateService.pushToRoute(url);
+    this.currentId = num;
+    console.log(this.currentId);
   }
 
 }

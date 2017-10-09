@@ -1,13 +1,53 @@
 <nav>
   <div class="nav-box">
-    <ul (click)="gopage($event);">
-      <li>Home</li>
-      <li>About ChinaICAC</li>
-      <li>Events</li>
-      <li>Professional Development</li>
-      <li>Knowledge Center</li>
-      <li>News & Publication</li>
-      <li>Membership</li>
+    <ul>
+      <li (click)="gopage('./home',1)" [ngClass]="{'active': currentId === 1 }">Home</li>
+      <li (click)="gopage('./about',2)" [ngClass]="{'active': currentId === 2 }">About ChinaICAC
+        <div class="toggle" style="display: none;">
+          <ul>
+            <li>Overview</li>
+            <li>Committee</li>
+            <li>Advisor</li>
+            <li>Contact us</li>
+          </ul>
+        </div>
+      </li>
+      <li (click)="gopage('./events',3)" [ngClass]="{'active': currentId === 3 }">Events
+        <div class="toggle" style="display: none;">
+          <ul>
+            <li>ICAC全国论坛消息</li>
+            <li>ICAC工作坊消息</li>
+          </ul>
+        </div>
+      </li>
+      <li (click)="gopage('./professional',4)" [ngClass]="{'active': currentId === 4 }">Professional Development
+        <div class="toggle" style="display: none;">
+          <ul>
+            <li>webinar在线研讨会</li>
+            <li>发布职位信息</li>
+          </ul>
+        </div>
+      </li>
+      <li (click)="gopage('./knowledgecenter',5)" [ngClass]="{'active': currentId === 5 }">Knowledge Center
+        <div class="toggle" style="display: none;">
+          <ul>
+            <li>院校排行</li>
+            <li>大学院校库</li>
+            <li>中学学校库</li>
+            <li>转学信息 (敬请期待)</li>
+          </ul>
+        </div>
+      </li>
+      <li (click)="gopage('./news',6)" [ngClass]="{'active': currentId === 6 }">News & Publication
+        <div class="toggle" style="display: none;">
+          <ul>
+            <li>Newsroom</li>
+            <li>Publication</li>
+            <li>Research & Reports</li>
+          </ul>
+        </div>
+      </li>
+      <li (click)="gopage('./membership',7)" [ngClass]="{'active': currentId === 7 }">Membership</li>
     </ul>
   </div>
 </nav>
