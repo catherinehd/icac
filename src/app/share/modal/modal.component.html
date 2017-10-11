@@ -1,11 +1,114 @@
-<section>
-  <div class="box">
-    <div class="title">
-      ChinaICAC Member Sign in
-      <span>X</span>
+
+
+<section class="modal-sec" *ngIf="modal.isSigninShow || modal.isVerifyMailboxShow || modal.isResetPwShow">
+  <div class="container">
+    <div class="modal-container" *ngIf="modal.isSigninShow">
+    <span><button (click)="modal.isSigninShow = false">
+      <img src="../../../assets/icon/close.svg"/></button></span>
+      <div class="title">
+        {{modal.title}}
+      </div>
+      <div class="main">
+        <div class="wrongMsg">wrong msg</div>
+        <div class="form" >
+          <div class="form-field">
+            <input placeholder="Email">
+          </div>
+          <div class="form-field password">
+            <input placeholder="Password">
+            <div class="btn-group">
+              <button class="close-btn">
+                <img class="icon-close" src="../../../assets/icon/close.svg" />
+              </button>
+              <button class="eye-btn" >
+                <img class="icon-open-eyes" src="../../../assets/icon/open.svg" />
+              </button>
+              <button class="eye-btn">
+                <img class="icon-close-eyes" src="../../../assets/icon/hidden.svg" />
+              </button>
+            </div>
+          </div>
+          <div class="button-group">
+            <button>No account fast</button>
+            <button (click)="go('./register')">registratio</button>
+            <button>Forgot password?</button>
+          </div>
+          <button>
+            Sign in
+          </button>
+        </div>
+        <p class="tel">Customer service telephone numbers 400-123-1234</p>
+      </div>
     </div>
-    <div class="main">
-      test
+
+    <div class="modal-container" *ngIf="modal.isVerifyMailboxShow">
+    <span><button (click)="modal.isVerifyMailboxShow = false">
+      <img src="../../../assets/icon/close.svg"/></button></span>
+      <div class="title">
+        {{modal.title}}
+      </div>
+      <div class="main">
+        <div class="wrongMsg">wrong</div>
+        <div class="form" >
+          <div class="form-field">
+            <input placeholder="Email">
+          </div>
+          <div class="form-field">
+            <input placeholder="Verification Code">
+            <button class="obtain">Obtain</button>
+          </div>
+          <button>
+            Next step
+          </button>
+        </div>
+        <p class="tel">Customer service telephone numbers 400-123-1234</p>
+      </div>
+    </div>
+
+    <div class="modal-container" *ngIf="modal.isResetPwShow">
+    <span><button (click)="modal.isResetPwShow = false">
+      <img src="../../../assets/icon/close.svg"/></button></span>
+      <div class="title">
+        {{modal.title}}
+      </div>
+      <div class="main">
+        <div class="wrongMsg">wrong</div>
+        <div class="form" >
+          <div class="form-field password">
+            <input placeholder="New password">
+            <div class="btn-group">
+              <button class="close-btn">
+                <img class="icon-close" src="../../../assets/icon/close.svg" />
+              </button>
+              <button class="eye-btn" >
+                <img class="icon-open-eyes" src="../../../assets/icon/open.svg" />
+              </button>
+              <button class="eye-btn">
+                <img class="icon-close-eyes" src="../../../assets/icon/hidden.svg" />
+              </button>
+            </div>
+          </div>
+          <div class="form-field password">
+            <input placeholder="Verify password">
+            <div class="btn-group">
+              <button class="close-btn">
+                <img class="icon-close" src="../../../assets/icon/close.svg" />
+              </button>
+              <button class="eye-btn" >
+                <img class="icon-open-eyes" src="../../../assets/icon/open.svg" />
+              </button>
+              <button class="eye-btn">
+                <img class="icon-close-eyes" src="../../../assets/icon/hidden.svg" />
+              </button>
+            </div>
+          </div>
+          <button>
+            OK
+          </button>
+        </div>
+      </div>
     </div>
   </div>
+
+
 </section>

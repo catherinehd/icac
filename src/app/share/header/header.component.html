@@ -11,8 +11,10 @@
   </div>
   <div class="login-box" *ngIf="!isLogin">
     <div class="btn-group">
-      <button>Sign in</button>
+      <button (click)="modal.isSigninShow = true">Sign in</button>
       <button (click)="go('./register')">Registration</button>
     </div>
   </div>
 </header>
+
+<app-modal [modal]="modal"></app-modal>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigateService } from '../../service/navigate.service';
 
 @Component({
   selector: 'app-events-index',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsIndexComponent implements OnInit {
 
-  constructor() { }
+  constructor(private navigateService: NavigateService) { }
 
   ngOnInit() {
+  }
+
+  go(url) {
+    this.navigateService.push();
+    this.navigateService.pushToRoute(url);
   }
 
 }

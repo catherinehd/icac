@@ -7,7 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutIndexComponent implements OnInit {
 
-  constructor() { }
+  isshow1: boolean;
+  isshow2: boolean;
+  isshow3: boolean;
+  isshow4: boolean;
+
+
+  constructor() {
+    this.isshow1 = true;
+    this.isshow2 = false;
+    this.isshow3 = false;
+    this.isshow4 = false;
+  }
 
   ngOnInit() {
   }

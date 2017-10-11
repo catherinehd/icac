@@ -18,6 +18,7 @@ import { RegisterComponent } from './register/register/register.component';
 import { PersonComponent } from './person/person.component';
 import { PersonalDataComponent } from './person/personal-data/personal-data.component';
 import { ModifyPasswordComponent } from './person/modify-password/modify-password.component';
+import { DetailComponent } from './events/detail/detail.component';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { ModifyPasswordComponent } from './person/modify-password/modify-passwor
     BrowserModule, HomeModule, AppRoutingModule, ShareModule,
   ],
   declarations: [
-    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent,
+    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

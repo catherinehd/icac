@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MembershipComponent implements OnInit {
 
-  constructor() { }
+  isshow1: boolean;
+  isshow2: boolean;
+
+  constructor() {
+    this.isshow1 = true;
+    this.isshow2 = false;
+  }
 
   ngOnInit() {
   }

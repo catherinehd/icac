@@ -2,10 +2,10 @@
   <app-breadcrumb></app-breadcrumb>
   <div class="main">
     <div class="left-box">
-      <div class="title">
+      <div class="title" *ngIf="isshow1">
         Membership system
       </div>
-      <div class="detail system">
+      <div class="detail system" *ngIf="isshow1">
         <p>
           China Institute of College Admission Counseling (ChinaICAC) is an organization of professionals from all over the world dedicated to serving Chinese students as they make choices about pursuing postsecondary education overseas.
         </p>
@@ -16,10 +16,13 @@
           ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.
         </p>
       </div>
-      <div class="title">
+      <div class="title" *ngIf="isshow2">
         Introduction of membership benefits
       </div>
-      <div class="detail benefits">
+      <div class="detail benefits" *ngIf="isshow2">
+        <p>
+          ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.
+        </p>
         <p>
           ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.
         </p>
@@ -42,10 +45,10 @@
     </div>
     <div class="right-box">
       <ul class="right-nav">
-        <li class="active">
+        <li [class.active]="isshow1" (click)="isshow1 = true;isshow2 = false;">
           Membership system
         </li>
-        <li>
+        <li [class.active]="isshow2" (click)="isshow2 = true;isshow1 = false;">
           Introduction of membership benefits
         </li>
       </ul>
