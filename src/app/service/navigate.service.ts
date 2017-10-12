@@ -36,6 +36,10 @@ export class NavigateService {
     param ? this.router.navigate([route, param]) : this.router.navigate([route]);
   }
 
+  pushToFragRoute(route: string, param?: any) {
+    this.router.navigate([route],{ fragment: param});
+  }
+
   pushToNextRoute() {
     const navParam = this.nextRoute.param ? [this.nextRoute.route, this.nextRoute.param] : [this.nextRoute.route];
     this.router.navigate(navParam);

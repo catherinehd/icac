@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigateService } from '../../service/navigate.service';
 
 @Component({
   selector: 'app-school',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SchoolComponent implements OnInit {
 
-  constructor() { }
+  isempty: boolean;
+
+  constructor(private navigateService: NavigateService) {
+    this.isempty = false;
+  }
 
   ngOnInit() {
+  }
+
+  gopage(url) {
+    this.navigateService.push();
+    this.navigateService.pushToRoute(url);
+  }
+
+  search() {
+    console.log('search school')
   }
 
 }

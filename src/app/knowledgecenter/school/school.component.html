@@ -7,12 +7,12 @@
       </div>
       <div class="search-box">
         <input placeholder="School name" />
-        <button>Search</button>
+        <button (click)="search()">Search</button>
       </div>
     </div>
     <div class="detail">
       <ul class="school-list">
-        <li class="school-info">
+        <li class="school-info" (click)="gopage('./knowledgecenter/detail')">
           <img src="../../../assets/img/1.png" />
           <div class="name">
             Massachusetts Institute of..
@@ -21,7 +21,7 @@
             所在地区：中国-城市
           </div>
         </li>
-        <li class="school-info">
+        <li class="school-info" (click)="gopage('./knowledgecenter/detail')">
           <img src="../../../assets/img/2.png" />
           <div class="name">
             Massachusetts Institute of..
@@ -30,7 +30,7 @@
             所在地区：中国-城市
           </div>
         </li>
-        <li class="school-info">
+        <li class="school-info" (click)="gopage('./knowledgecenter/detail')">
           <img src="../../../assets/img/3.png" />
           <div class="name">
             Massachusetts Institute of..
@@ -39,7 +39,7 @@
             所在地区：中国-城市
           </div>
         </li>
-        <li class="school-info">
+        <li class="school-info" (click)="gopage('./knowledgecenter/detail')">
           <img src="../../../assets/img/4.png" />
           <div class="name">
             Massachusetts Institute of..
@@ -48,34 +48,7 @@
             所在地区：中国-城市
           </div>
         </li>
-        <li class="school-info">
-          <img src="../../../assets/img/1.png" />
-          <div class="name">
-            Massachusetts Institute of..
-          </div>
-          <div class="addr">
-            所在地区：中国-城市
-          </div>
-        </li>
-        <li class="school-info">
-          <img src="../../../assets/img/2.png" />
-          <div class="name">
-            Massachusetts Institute of..
-          </div>
-          <div class="addr">
-            所在地区：中国-城市
-          </div>
-        </li>
-        <li class="school-info">
-          <img src="../../../assets/img/3.png" />
-          <div class="name">
-            Massachusetts Institute of..
-          </div>
-          <div class="addr">
-            所在地区：中国-城市
-          </div>
-        </li>
-        <li class="school-info">
+        <li class="school-info" (click)="gopage('./knowledgecenter/detail')">
           <img src="../../../assets/img/1.png" />
           <div class="name">
             Massachusetts Institute of..
@@ -85,6 +58,15 @@
           </div>
         </li>
       </ul>
+    </div>
+
+    <div class="detail empty" *ngIf="isempty">
+      <img src="../../../assets/icon/nonews.svg" />
+      <p>No search results</p>
+      <a routerLink="/home">
+        <img src="../../../assets/icon/left.svg" alt="left" />
+        Returns empty search entries
+      </a>
     </div>
   </div>
 </section>

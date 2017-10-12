@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProDevIndexComponent implements OnInit {
 
-  constructor() { }
+  hasWebinar: boolean;
+
+  constructor() {
+    this.hasWebinar = true;
+  }
 
   ngOnInit() {
   }

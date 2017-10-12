@@ -5,7 +5,7 @@
     <div class="title">
       National Conference
     </div>
-    <div class="conference-list">
+    <div class="conference-list" *ngIf="hasConference">
       <div class="conference-info">
         <div class="conference-img">
           <img src="../../../assets/img/events.png" />
@@ -46,6 +46,14 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="conference-list noConference" *ngIf="!hasConference">
+      <img src="../../../assets/icon/nonews.svg" />
+      <p>No National Conference</p>
+      <a routerLink="/home">
+        <img src="../../../assets/icon/left.svg" alt="left" />
+        Return home page
+      </a>
     </div>
   </div>
 </section>

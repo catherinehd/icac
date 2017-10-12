@@ -11,6 +11,7 @@ import { EventsIndexComponent } from './events/events-index/events-index.compone
 import { DetailComponent } from './events/detail/detail.component';
 import { ProDevIndexComponent } from './professional-dev/pro-dev-index/pro-dev-index.component';
 import { SchoolComponent } from './knowledgecenter/school/school.component';
+import { SchooldetailComponent } from './knowledgecenter/schooldetail/schooldetail.component'
 import { NewsIndexComponent } from './news/news-index/news-index.component';
 import { MembershipComponent } from './membership/membership/membership.component';
 import { RegisterComponent } from './register/register/register.component';
@@ -25,6 +26,7 @@ const appRouters: Routes = [
   { path: 'events/detail', component: DetailComponent },
   { path: 'professional', component: ProDevIndexComponent },
   { path: 'knowledgecenter', component: SchoolComponent },
+  { path: 'knowledgecenter/detail', component: SchooldetailComponent },
   { path: 'news', component: NewsIndexComponent },
   { path: 'membership', component: MembershipComponent },
   { path: 'register', component: RegisterComponent },

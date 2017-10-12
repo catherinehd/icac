@@ -8,7 +8,11 @@ import { NavigateService } from '../../service/navigate.service';
 })
 export class EventsIndexComponent implements OnInit {
 
-  constructor(private navigateService: NavigateService) { }
+  hasConference: boolean;
+
+  constructor(private navigateService: NavigateService) {
+    this.hasConference = true;
+  }
 
   ngOnInit() {
   }
@@ -17,5 +21,6 @@ export class EventsIndexComponent implements OnInit {
     this.navigateService.push();
     this.navigateService.pushToRoute(url);
   }
+
 
 }

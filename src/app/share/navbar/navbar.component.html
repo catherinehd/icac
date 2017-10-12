@@ -2,34 +2,34 @@
   <div class="nav-box">
     <ul>
       <li (click)="gopage('./home',1)" [ngClass]="{'active': currentId === 1 }">Home</li>
-      <li (click)="gopage('./about',2)" [ngClass]="{'active': currentId === 2 }">About ChinaICAC
-        <div class="toggle" style="display: none;">
+      <li  [ngClass]="{'active': currentId === 2 }" (mouseover)="showToggle(2)" (mouseleave)="notShowToggle()">About ChinaICAC
+        <div class="toggle" *ngIf="showToggleId === 2 && !hideToggle">
           <ul>
-            <li>Overview</li>
-            <li>Committee</li>
-            <li>Advisor</li>
+            <li (click)="gopage('./about',2,'overview')">Overview</li>
+            <li (click)="gopage('./about',2,'committee')">Committee</li>
+            <li (click)="gopage('./about',2,'advisor')">Advisor</li>
             <li>Contact us</li>
           </ul>
         </div>
       </li>
-      <li (click)="gopage('./events',3)" [ngClass]="{'active': currentId === 3 }">Events
-        <div class="toggle" style="display: none;">
+      <li (click)="gopage('./events',3)" [ngClass]="{'active': currentId === 3 }" (mouseover)="showToggle(3)" (mouseleave)="notShowToggle()">Events
+        <div class="toggle" *ngIf="showToggleId === 3 && !hideToggle">
           <ul>
             <li>ICAC全国论坛消息</li>
             <li>ICAC工作坊消息</li>
           </ul>
         </div>
       </li>
-      <li (click)="gopage('./professional',4)" [ngClass]="{'active': currentId === 4 }">Professional Development
-        <div class="toggle" style="display: none;">
+      <li (click)="gopage('./professional',4)" [ngClass]="{'active': currentId === 4 }" (mouseover)="showToggle(4)" (mouseleave)="notShowToggle()">Professional Development
+        <div class="toggle" *ngIf="showToggleId === 4 && !hideToggle">
           <ul>
             <li>webinar在线研讨会</li>
             <li>发布职位信息</li>
           </ul>
         </div>
       </li>
-      <li (click)="gopage('./knowledgecenter',5)" [ngClass]="{'active': currentId === 5 }">Knowledge Center
-        <div class="toggle" style="display: none;">
+      <li (click)="gopage('./knowledgecenter',5)" [ngClass]="{'active': currentId === 5 }" (mouseover)="showToggle(5)" (mouseleave)="notShowToggle()">Knowledge Center
+        <div class="toggle" *ngIf="showToggleId === 5 && !hideToggle">
           <ul>
             <li>院校排行</li>
             <li>大学院校库</li>
@@ -38,8 +38,8 @@
           </ul>
         </div>
       </li>
-      <li (click)="gopage('./news',6)" [ngClass]="{'active': currentId === 6 }">News & Publication
-        <div class="toggle" style="display: none;">
+      <li (click)="gopage('./news',6)" [ngClass]="{'active': currentId === 6 }" (mouseover)="showToggle(6)" (mouseleave)="notShowToggle()">News & Publication
+        <div class="toggle" *ngIf="showToggleId === 6 && !hideToggle">
           <ul>
             <li>Newsroom</li>
             <li>Publication</li>

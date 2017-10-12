@@ -5,7 +5,7 @@
     <div class="title">
       Webinar
     </div>
-    <div class="webinar-list">
+    <div class="webinar-list" *ngIf="hasWebinar">
       <div class="webinar-info">
         <div class="small-title">
           <p>HTC is considering including a spin-off of VR and overall salesHTC ...</p>
@@ -48,6 +48,14 @@
           <span class="view-details">View details >></span>
         </div>
       </div>
+    </div>
+    <div class="webinar-list noWebinar" *ngIf="!hasWebinar">
+      <img src="../../../assets/icon/nonews.svg" />
+      <p>No Webinar</p>
+      <a routerLink="/home">
+        <img src="../../../assets/icon/left.svg" alt="left" />
+        Return home page
+      </a>
     </div>
   </div>
 </section>

@@ -19,6 +19,7 @@ import { PersonComponent } from './person/person.component';
 import { PersonalDataComponent } from './person/personal-data/personal-data.component';
 import { ModifyPasswordComponent } from './person/modify-password/modify-password.component';
 import { DetailComponent } from './events/detail/detail.component';
+import { SchooldetailComponent } from './knowledgecenter/schooldetail/schooldetail.component';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { DetailComponent } from './events/detail/detail.component';
     BrowserModule, HomeModule, AppRoutingModule, ShareModule,
   ],
   declarations: [
-    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent,
+    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

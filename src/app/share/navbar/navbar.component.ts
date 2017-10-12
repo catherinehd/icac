@@ -8,7 +8,10 @@ import { NavigateService } from '../../service/navigate.service';
 })
 export class NavbarComponent implements OnInit {
   num: number;
+
   currentId: number;
+  showToggleId: number;
+  hideToggle: boolean;
 
   constructor(private navigateService: NavigateService) {
     this.currentId = 1;
@@ -17,11 +20,20 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  gopage(url,num) {
+  gopage(url,num,title) {
     this.navigateService.push();
-    this.navigateService.pushToRoute(url);
+    this.navigateService.pushToFragRoute(url,title);
     this.currentId = num;
-    console.log(this.currentId);
   }
+
+  showToggle(num) {
+    this.showToggleId = num;
+    this.hideToggle = false;
+  }
+
+  notShowToggle() {
+    this.hideToggle = true;
+  }
+
 
 }
