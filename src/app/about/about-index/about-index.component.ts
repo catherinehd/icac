@@ -12,7 +12,6 @@ export class AboutIndexComponent implements OnInit {
   isshow3: boolean;
   isshow4: boolean;
 
-
   constructor() {
     this.isshow1 = true;
     this.isshow2 = false;
@@ -21,7 +20,7 @@ export class AboutIndexComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log(location.hash);
   }
 
 }

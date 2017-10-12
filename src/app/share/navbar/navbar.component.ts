@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
     this.navigateService.push();
     this.navigateService.pushToFragRoute(url,title);
     this.currentId = num;
+    this.hideToggle = true;
   }
 
   showToggle(num) {

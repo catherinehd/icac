@@ -2,13 +2,14 @@
   <div class="nav-box">
     <ul>
       <li (click)="gopage('./home',1)" [ngClass]="{'active': currentId === 1 }">Home</li>
-      <li  [ngClass]="{'active': currentId === 2 }" (mouseover)="showToggle(2)" (mouseleave)="notShowToggle()">About ChinaICAC
+      <li [ngClass]="{'active': currentId === 2 }" (mouseover)="showToggle(2)" (mouseleave)="notShowToggle()">
+        <span (click)="gopage('./about',2)">About ChinaICAC</span>
         <div class="toggle" *ngIf="showToggleId === 2 && !hideToggle">
           <ul>
             <li (click)="gopage('./about',2,'overview')">Overview</li>
             <li (click)="gopage('./about',2,'committee')">Committee</li>
             <li (click)="gopage('./about',2,'advisor')">Advisor</li>
-            <li>Contact us</li>
+            <li (click)="gopage('./about',2,'contact-us')">Contact us</li>
           </ul>
         </div>
       </li>

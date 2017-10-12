@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
 import { ShareModule } from './share/share.module';
+import { AboutModule } from './about/about.module';
 
 import { AppComponent } from './app.component';
 
@@ -24,7 +25,7 @@ import { SchooldetailComponent } from './knowledgecenter/schooldetail/schooldeta
 
 @NgModule({
   imports: [
-    BrowserModule, HomeModule, AppRoutingModule, ShareModule,
+    BrowserModule, HomeModule, AppRoutingModule, ShareModule, AboutModule,
   ],
   declarations: [
     AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent,
