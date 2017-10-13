@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigateService } from '../../service/navigate.service';
 
 @Component({
   selector: 'app-pro-dev-index',
@@ -9,11 +10,17 @@ export class ProDevIndexComponent implements OnInit {
 
   hasWebinar: boolean;
 
-  constructor() {
+  constructor(private navigateService: NavigateService) {
     this.hasWebinar = true;
   }
 
   ngOnInit() {
   }
+
+  go(url) {
+    this.navigateService.push();
+    this.navigateService.pushToRoute(url);
+  }
+
 
 }

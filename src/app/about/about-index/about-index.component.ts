@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigateService } from '../../service/navigate.service';
 
 @Component({
   selector: 'app-about-index',
@@ -12,7 +13,7 @@ export class AboutIndexComponent implements OnInit {
   isshow3: boolean;
   isshow4: boolean;
 
-  constructor() {
+  constructor(private navigateService: NavigateService) {
     this.isshow1 = true;
     this.isshow2 = false;
     this.isshow3 = false;
@@ -20,7 +21,10 @@ export class AboutIndexComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(location.hash);
   }
 
+  go(url,title) {
+    this.navigateService.push();
+    this.navigateService.pushToRoute(url)
+  }
 }

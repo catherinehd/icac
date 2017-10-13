@@ -12,10 +12,10 @@
         <div class="wrongMsg">wrong msg</div>
         <div class="form" >
           <div class="form-field">
-            <input placeholder="Email">
+            <input placeholder="Email" type="email">
           </div>
           <div class="form-field password">
-            <input placeholder="Password">
+            <input placeholder="Password" type="password" maxlength="15" minlength="6">
             <div class="btn-group">
               <button class="close-btn">
                 <img class="icon-close" src="../../../assets/icon/close.svg" />
@@ -30,8 +30,8 @@
           </div>
           <div class="button-group">
             <button>No account fast</button>
-            <button (click)="go('./register')">registratio</button>
-            <button>Forgot password?</button>
+            <button (click)="go('./register');modal.isSigninShow = false">registratio</button>
+            <button (click)="go('./person');modal.isSigninShow = false">Forgot password?</button>
           </div>
           <button>
             Sign in

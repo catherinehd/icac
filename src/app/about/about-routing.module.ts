@@ -7,10 +7,10 @@ import { CommitteeComponent } from './committee/committee.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const aboutRoutes: Routes = [
-  { path: 'about/overview', component: AboutIndexComponent },
-  { path: 'about/committee', component: CommitteeComponent },
-  { path: 'about/advisor', component: AdvisorComponent },
-  { path: 'about/contactus', component: ContactUsComponent },
+  //{ path: 'about/overview', component: AboutIndexComponent },
+  //{ path: 'about/committee', component: CommitteeComponent },
+  //{ path: 'about/advisor', component: AdvisorComponent },
+  //{ path: 'about/contactus', component: ContactUsComponent },
   ];
 
 @NgModule({

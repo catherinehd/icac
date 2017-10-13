@@ -1,6 +1,5 @@
 import  { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
 
 import { ShareModule } from '../share/share.module';
 import { AboutRoutingModule } from './about-routing.module';
@@ -9,7 +8,9 @@ import { CommitteeComponent } from './committee/committee.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
-  imports: [ CommonModule, ShareModule, AboutRoutingModule, BrowserModule ],
+  imports: [
+    ShareModule, AboutRoutingModule, BrowserModule
+  ],
   declarations: [
      AdvisorComponent, CommitteeComponent, ContactUsComponent
   ],

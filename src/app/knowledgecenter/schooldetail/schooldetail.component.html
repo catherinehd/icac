@@ -10,22 +10,26 @@
       </div>
       <div>
         <p class="schoolName">University of Cambridge</p>
-        <p class="website">Website@www.mit.edu</p>
-        <p class="tel">Tel： <span>12230940</span></p>
-        <p class="ceebCode">CEEB code： <span>81273987</span></p>
+        <p class="website">Website<span>www.mit.edu</span></p>
+        <p class="nature">Nature： <span>私立</span></p>
+        <p class="region">Region： <span>马萨诸塞</span></p>
       </div>
       <div>
         <p class="country">Country： <span>中国</span></p>
         <p class="city">city： <span>温州</span></p>
+        <p class="students-num">Online students： <span>20000人</span></p>
       </div>
     </div>
     <div class="container">
       <div class="nav">
         <ul>
-          <li [class.active]="showOverview" (click)="showOverview = true; showGuideance = false;">
+          <li [class.active]="showOverview" (click)="showOverview = true; showRequirements = false; showOfficer = false;">
             Overview
           </li>
-          <li [class.active]="showGuideance" (click)="showOverview = false; showGuideance = true">
+          <li [class.active]="showRequirements" (click)="showOverview = false; showRequirements = true; showOfficer = false;">
+            Admission requirements
+          </li>
+          <li [class.active]="showOfficer" (click)="showOverview = false; showRequirements = false; showOfficer = true;">
             Entrance guidance
           </li>
         </ul>
@@ -48,9 +52,60 @@
         </p>
       </div>
 
-      <div class="article guidance" *ngIf="showGuideance">
-        <div class="guidance-title">
-          Entrance guidance information
+      <div class="article requirements" *ngIf="showRequirements">
+        <div class="info-container">
+          <ul>
+            <li>
+              <div class="requirements-title">
+                Undergraduate admission conditions
+              </div>
+              <div>
+                <span>Time of school</span>
+                <span>每年1月1日、5月1日、8月1日</span>
+              </div>
+              <div>
+                <span>Application deadline:</span>
+                <span>每年1月1日</span>
+              </div>
+              <div>
+                <span>Tuition reference:</span>
+                <span>41770.00美元</span>
+              </div>
+              <div>
+                <span>Examination results:</span>
+                <span>托福总分：100.00<br>
+高中平均分:3.89Sat:1426.00</span>
+              </div>
+            </li>
+            <li>
+              <div class="requirements-title">
+                Undergraduate admission conditions
+              </div>
+              <div>
+                <span>Time of school</span>
+                <span>每年1月1日、5月1日、8月1日</span>
+              </div>
+              <div>
+                <span>Application deadline:</span>
+                <span>每年1月1日</span>
+              </div>
+              <div>
+                <span>Tuition reference:</span>
+                <span>41770.00美元</span>
+              </div>
+              <div>
+                <span>Examination results:</span>
+                <span>托福总分：100.00<br>
+高中平均分:3.89Sat:1426.00</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="article officer" *ngIf="showOfficer">
+        <div class="officer-title">
+          Admissions officer information
         </div>
         <div class="info-container">
           <ul>
@@ -63,55 +118,12 @@
                     <span>XXX</span>
                   </p>
                   <div>
-                    <div>
-                      Job Title:
-                      <span>XXXXXXXXX</span>
-                    </div>
-                    <div>
-                      Tel:
-                      <span>XXXXXXXX</span>
-                    </div>
+                    Job Title:
+                    <span>XXXXXXXXX</span>
                   </div>
                   <div>
-                    <div>
-                      Mobile:
-                      <span>XXXXXXXXX</span>
-                    </div>
-                    <div>
-                      Email:
-                      <span>XXXXXXXX@XXX.com</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="info">
-                <img src="../../../assets/img/user.png">
-                <div>
-                  <p>
-                    Name:
-                    <span>XXX</span>
-                  </p>
-                  <div>
-                    <div>
-                      Job Title:
-                      <span>XXXXXXXXX</span>
-                    </div>
-                    <div>
-                      Tel:
-                      <span>XXXXXXXX</span>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      Mobile:
-                      <span>XXXXXXXXX</span>
-                    </div>
-                    <div>
-                      Email:
-                      <span>XXXXXXXX@XXX.com</span>
-                    </div>
+                    Email:
+                    <span>XXXXXXXX@XXX.com</span>
                   </div>
                 </div>
               </div>

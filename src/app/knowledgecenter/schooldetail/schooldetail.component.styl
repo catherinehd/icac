@@ -49,7 +49,7 @@
       padding 30px 40px 65px
       .nav
         ul
-          width 440px
+          width 660px
           display flex
           border $default-light-border
           li
@@ -73,12 +73,34 @@
           line-height 1.57
           color $font-gray-color
 
-      .guidance
+      .requirements
         padding 30px 36px 9px
-        .guidance-title
+        .info-container
+          ul
+            li
+              margin-bottom 99px
+              .requirements-title
+                font-size $font-little-big-size
+                padding-bottom 30px
+                margin-bottom 30px
+                color $font-deep-gray-color
+                border-bottom $default-input-border
+              div
+                margin-bottom 27px
+                span
+                  font-size $font-nomal-size
+                  line-height 1.57
+                  color $font-gray-color
+                  display inline-block
+                  vertical-align top
+                  &:nth-child(1)
+                    width 309px
+
+      .officer
+        padding 30px 36px 9px
+        .officer-title
           font-size $font-little-big-size
-          margin-top 16px
-          margin-bottom 20px
+          margin-bottom 30px
           color $font-deep-gray-color
         .info-container
           border-top $default-input-border

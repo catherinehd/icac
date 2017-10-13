@@ -1,0 +1,124 @@
+<section class="schoolDetail-sec">
+  <app-breadcrumb></app-breadcrumb>
+  <div class="main">
+    <div class="top-bg-img">
+    </div>
+    <div class="shade"></div>
+    <div class="school-brief">
+      <div class="school-img">
+        <img src="../../../assets/img/2.png" />
+      </div>
+      <div>
+        <p class="schoolName">University of Cambridge</p>
+        <p class="website">Website@www.mit.edu</p>
+        <p class="tel">Tel： <span>12230940</span></p>
+        <p class="ceebCode">CEEB code： <span>81273987</span></p>
+      </div>
+      <div>
+        <p class="country">Country： <span>中国</span></p>
+        <p class="city">city： <span>温州</span></p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="nav">
+        <ul>
+          <li [class.active]="showOverview" (click)="showOverview = true; showGuideance = false;">
+            Overview
+          </li>
+          <li [class.active]="showGuideance" (click)="showOverview = false; showGuideance = true">
+            Entrance guidance
+          </li>
+        </ul>
+      </div>
+      <div class="article" *ngIf="showOverview">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
+        </p>
+      </div>
+
+      <div class="article guidance" *ngIf="showGuideance">
+        <div class="guidance-title">
+          Entrance guidance information
+        </div>
+        <div class="info-container">
+          <ul>
+            <li>
+              <div class="info">
+                <img src="../../../assets/img/user.png">
+                <div>
+                  <p>
+                    Name:
+                    <span>XXX</span>
+                  </p>
+                  <div>
+                    <div>
+                      Job Title:
+                      <span>XXXXXXXXX</span>
+                    </div>
+                    <div>
+                      Tel:
+                      <span>XXXXXXXX</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      Mobile:
+                      <span>XXXXXXXXX</span>
+                    </div>
+                    <div>
+                      Email:
+                      <span>XXXXXXXX@XXX.com</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="info">
+                <img src="../../../assets/img/user.png">
+                <div>
+                  <p>
+                    Name:
+                    <span>XXX</span>
+                  </p>
+                  <div>
+                    <div>
+                      Job Title:
+                      <span>XXXXXXXXX</span>
+                    </div>
+                    <div>
+                      Tel:
+                      <span>XXXXXXXX</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      Mobile:
+                      <span>XXXXXXXXX</span>
+                    </div>
+                    <div>
+                      Email:
+                      <span>XXXXXXXX@XXX.com</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

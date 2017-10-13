@@ -7,9 +7,14 @@ import { HttpClientService } from './service/http-client.service';
 import { AppConfigService } from './service/app-config.service';
 
 import { AboutIndexComponent } from './about/about-index/about-index.component';
+import { AdvisorComponent } from './about/advisor/advisor.component';
+import { CommitteeComponent } from './about/committee/committee.component';
+import { ContactUsComponent } from './about/contact-us/contact-us.component';
 import { EventsIndexComponent } from './events/events-index/events-index.component';
 import { DetailComponent } from './events/detail/detail.component';
+import { DetailWorkshopComponent } from './events/detail-workshop/detail-workshop.component';
 import { ProDevIndexComponent } from './professional-dev/pro-dev-index/pro-dev-index.component';
+import { ProDetailComponent } from './professional-dev/pro-detail/pro-detail.component';
 import { SchoolComponent } from './knowledgecenter/school/school.component';
 import { SchooldetailComponent } from './knowledgecenter/schooldetail/schooldetail.component'
 import { NewsIndexComponent } from './news/news-index/news-index.component';
@@ -17,20 +22,60 @@ import { MembershipComponent } from './membership/membership/membership.componen
 import { RegisterComponent } from './register/register/register.component';
 import { PersonComponent } from './person/person.component';
 import { PagenotfoundComponent } from './share/pagenotfound/pagenotfound.component';
+import { EventsWorkshopComponent } from './events/events-workshop/events-workshop.component';
+import { JobComponent } from './professional-dev/job/job.component';
+import { SeniorSchoolComponent } from './knowledgecenter/senior-school/senior-school.component';
+import { TransferComponent } from './knowledgecenter/transfer/transfer.component';
+import { RankingComponent } from './knowledgecenter/ranking/ranking.component';
+import { PublicationComponent } from './news/publication/publication.component';
+import { ResearchComponent } from './news/research/research.component';
+import { SeniorSchooldetailComponent } from './knowledgecenter/senior-schooldetail/senior-schooldetail.component';
+import { ResetPwdComponent } from './person/reset-pwd/reset-pwd.component';
 
 
 const appRouters: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'about', component: AboutIndexComponent },
+
+      { path: 'about/overview', component: AboutIndexComponent },
+      { path: 'about/committee', component: CommitteeComponent },
+      { path: 'about/advisor', component: AdvisorComponent },
+      { path: 'about/contact-us', component: ContactUsComponent },
+
   { path: 'events', component: EventsIndexComponent },
-  { path: 'events/detail', component: DetailComponent },
+
+      { path: 'events/national', component: EventsIndexComponent },
+      { path: 'events/workshop', component: EventsWorkshopComponent },
+      { path: 'events/detail', component: DetailComponent },
+      { path: 'events/detail-workshop', component: DetailWorkshopComponent },
+
   { path: 'professional', component: ProDevIndexComponent },
+
+      { path: 'professional/webinar', component: ProDevIndexComponent },
+      { path: 'professional/pro-job', component: JobComponent },
+      { path: 'professional/pro-detail', component: ProDetailComponent },
+
   { path: 'knowledgecenter', component: SchoolComponent },
-  { path: 'knowledgecenter/detail', component: SchooldetailComponent },
+
+      { path: 'knowledgecenter/hign-school', component: SchoolComponent },
+      { path: 'knowledgecenter/senior-school', component: SeniorSchoolComponent },
+      { path: 'knowledgecenter/ranking', component: RankingComponent },
+      { path: 'knowledgecenter/transfer', component: TransferComponent },
+      { path: 'knowledgecenter/detail', component: SchooldetailComponent },
+      { path: 'knowledgecenter/seniorschool-detail', component: SeniorSchooldetailComponent },
+
   { path: 'news', component: NewsIndexComponent },
+
+      { path: 'news/newsroom', component: NewsIndexComponent },
+      { path: 'news/publication', component: PublicationComponent },
+      { path: 'news/research', component: ResearchComponent },
+
   { path: 'membership', component: MembershipComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'person', component: PersonComponent },
+
+      { path: 'person/reset-pwd', component: ResetPwdComponent },
+
   { path: '**', component: PagenotfoundComponent },
 ];
 

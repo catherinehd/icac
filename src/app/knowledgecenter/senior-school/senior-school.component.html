@@ -1,0 +1,72 @@
+<section class="knowledge-center-school">
+  <app-breadcrumb></app-breadcrumb>
+  <div class="main">
+    <div class="title-search">
+      <div class="title">
+        Senior School
+      </div>
+      <div class="search-box">
+        <input placeholder="School name" />
+        <button (click)="search()">Search</button>
+      </div>
+    </div>
+    <div class="detail">
+      <ul class="school-list">
+        <li class="school-info" (click)="gopage('./knowledgecenter/seniorschool-detail')">
+          <img src="../../../assets/img/1.png" />
+          <div class="name">
+            Massachusetts Institute of..
+          </div>
+          <div class="addr">
+            所在地区：中国-城市
+          </div>
+        </li>
+        <li class="school-info" (click)="gopage('./knowledgecenter/seniorschool-detail')">
+          <img src="../../../assets/img/2.png" />
+          <div class="name">
+            Massachusetts Institute of..
+          </div>
+          <div class="addr">
+            所在地区：中国-城市
+          </div>
+        </li>
+        <li class="school-info" (click)="gopage('./knowledgecenter/seniorschool-detail')">
+          <img src="../../../assets/img/3.png" />
+          <div class="name">
+            Massachusetts Institute of..
+          </div>
+          <div class="addr">
+            所在地区：中国-城市
+          </div>
+        </li>
+        <li class="school-info" (click)="gopage('./knowledgecenter/seniorschool-detail')">
+          <img src="../../../assets/img/4.png" />
+          <div class="name">
+            Massachusetts Institute of..
+          </div>
+          <div class="addr">
+            所在地区：中国-城市
+          </div>
+        </li>
+        <li class="school-info" (click)="gopage('./knowledgecenter/seniorschool-detail')">
+          <img src="../../../assets/img/1.png" />
+          <div class="name">
+            Massachusetts Institute of..
+          </div>
+          <div class="addr">
+            所在地区：中国-城市
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="detail empty" *ngIf="isempty">
+      <img src="../../../assets/icon/nonews.svg" />
+      <p>No search results</p>
+      <a routerLink="/home">
+        <img src="../../../assets/icon/left.svg" alt="left" />
+        Returns empty search entries
+      </a>
+    </div>
+  </div>
+</section>

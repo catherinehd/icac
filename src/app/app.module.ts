@@ -21,6 +21,17 @@ import { PersonalDataComponent } from './person/personal-data/personal-data.comp
 import { ModifyPasswordComponent } from './person/modify-password/modify-password.component';
 import { DetailComponent } from './events/detail/detail.component';
 import { SchooldetailComponent } from './knowledgecenter/schooldetail/schooldetail.component';
+import { EventsWorkshopComponent } from './events/events-workshop/events-workshop.component';
+import { JobComponent } from './professional-dev/job/job.component';
+import { SeniorSchoolComponent } from './knowledgecenter/senior-school/senior-school.component';
+import { TransferComponent } from './knowledgecenter/transfer/transfer.component';
+import { RankingComponent } from './knowledgecenter/ranking/ranking.component';
+import { PublicationComponent } from './news/publication/publication.component';
+import { ResearchComponent } from './news/research/research.component';
+import { ProDetailComponent } from './professional-dev/pro-detail/pro-detail.component';
+import { DetailWorkshopComponent } from './events/detail-workshop/detail-workshop.component';
+import { SeniorSchooldetailComponent } from './knowledgecenter/senior-schooldetail/senior-schooldetail.component';
+import { ResetPwdComponent } from './person/reset-pwd/reset-pwd.component';
 
 
 @NgModule({
@@ -28,7 +39,7 @@ import { SchooldetailComponent } from './knowledgecenter/schooldetail/schooldeta
     BrowserModule, HomeModule, AppRoutingModule, ShareModule, AboutModule,
   ],
   declarations: [
-    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent,
+    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent, EventsWorkshopComponent, JobComponent, SeniorSchoolComponent, TransferComponent, RankingComponent, PublicationComponent, ResearchComponent, ProDetailComponent, DetailWorkshopComponent, SeniorSchooldetailComponent, ResetPwdComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

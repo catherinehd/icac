@@ -3,63 +3,26 @@
   <app-breadcrumb></app-breadcrumb>
   <div class="main">
     <div class="detail-left">
-      <div class="overview" *ngIf="isshow1">
-        <div class="title">
-          Overview
-        </div>
-        <div class="expression detail">
-          <p>ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.</p>
-          <p>ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officersChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.</p>
-          <p>ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.</p>
-        </div>
-      </div>
-      <div class="committee" *ngIf="isshow2">
-        <div class="title">
-          Committee
-        </div>
-        <div class="detail">
-          <div>
-            <img src="../../../assets/img/committee.png" />
-          </div>
-          <div class="expression">
-            <p>ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.</p>
-            <p>ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officersChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.</p>
-            <p>ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.</p>
-          </div>
-        </div>
-      </div>
       <div class="advisor" *ngIf="isshow3">
         <div class="title">
           Advisor
         </div>
         <div class="advisor-list">
-
-        </div>
-      </div>
-      <div class="contact-us" *ngIf="isshow4">
-        <div class="title">
-          Contact us
-        </div>
-        <div class="contact-method">
-          <div class="add">Add：   中国•杭州求是路8号公元大厦西北裙楼</div>
-          <div class="tel">Tel：      400-860-0550</div>
-          <div class="fax">Fax：     0571-87359367</div>
-          <div class="email">E-mail： customer@jumore.com</div>
         </div>
       </div>
     </div>
     <div class="nav-right">
       <ul>
-        <li [class.active]="isshow1" (click)="isshow1 = true;isshow2 = false;isshow3 = false;isshow4 = false;">
+        <li [class.active]="isshow1" (click)="go('./about/overview')">
           Overview
         </li>
-        <li [class.active]="isshow2" (click)="isshow1 = false;isshow2 = true;isshow3 = false;isshow4 = false;">
+        <li [class.active]="isshow2" (click)="go('./about/committee')">
           Committee
         </li>
-        <li [class.active]="isshow3"  (click)="isshow1 = false;isshow2 = false;isshow3 = true;isshow4 = false;">
+        <li [class.active]="isshow3" (click)="go('./about/advisor')">
           Advisor
         </li>
-        <li [class.active]="isshow4" (click)="isshow1 = false;isshow2 = false;isshow3 = false;isshow4 = true;">
+        <li [class.active]="isshow4" (click)="go('./about/contact-us')">
           Contact us
         </li>
       </ul>

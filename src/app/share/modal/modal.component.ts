@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { NavigateService } from '../../service/navigate.service';
 })
 export class ModalComponent implements OnInit {
   @Input() modal: Modal;
-
+  loginForm: FormGroup;
 
   constructor(private navigateService: NavigateService) {
 

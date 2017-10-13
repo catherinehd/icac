@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonComponent implements OnInit {
 
-  constructor() { }
+  showperson:boolean;
+  showmodifyps:boolean;
+
+  constructor() {
+    this.showperson = true;
+    this.showmodifyps = false;
+  }
 
   ngOnInit() {
   }

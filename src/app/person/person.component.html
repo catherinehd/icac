@@ -3,7 +3,7 @@
   <div class="main">
     <div class="left-box">
       <ul class="nav-left">
-        <li class="active">
+        <li [class.active]="showperson" (click)="showperson = true;showmodifyps = false;">
           <div>
             <img src="../../assets/icon/person-info.svg" />
           </div>
@@ -11,7 +11,7 @@
             Personal data
           </div>
         </li>
-        <li>
+        <li [class.active]="showmodifyps" (click)="showperson = false;showmodifyps = true;">
           <div>
             <img src="../../assets/icon/password.svg" />
           </div>
@@ -21,7 +21,7 @@
         </li>
       </ul>
     </div>
-    <app-personal-data style="display:none"></app-personal-data>
-    <app-modify-password></app-modify-password>
+    <app-personal-data *ngIf="showperson"></app-personal-data>
+    <app-modify-password *ngIf="showmodifyps"></app-modify-password>
   </div>
 </section>

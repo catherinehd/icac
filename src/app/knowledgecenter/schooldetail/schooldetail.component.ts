@@ -8,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class SchooldetailComponent implements OnInit {
 
   showOverview: boolean;
-  showGuideance: boolean;
+  showRequirements: boolean;
+  showOfficer: boolean;
 
   constructor() {
     this.showOverview = true;
-    this.showGuideance = false;
+    this.showRequirements = false;
+    this.showOfficer =false;
   }
 
   ngOnInit() {

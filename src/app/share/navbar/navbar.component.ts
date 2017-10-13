@@ -22,7 +22,11 @@ export class NavbarComponent implements OnInit {
 
   gopage(url,num,title) {
     this.navigateService.push();
-    this.navigateService.pushToFragRoute(url,title);
+    if(title) {
+      this.navigateService.pushToRoute(url+'/'+title)
+    } else {
+      this.navigateService.pushToRoute(url)
+    }
     this.currentId = num;
     this.hideToggle = true;
   }
