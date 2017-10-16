@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { NavigateService } from '../../service/navigate.service';
   styleUrls: ['./navbar.component.styl']
 })
 export class NavbarComponent implements OnInit {
+  @Input() currentTitle: number;
   num: number;
 
   currentId: number;
@@ -14,7 +15,24 @@ export class NavbarComponent implements OnInit {
   hideToggle: boolean;
 
   constructor(private navigateService: NavigateService) {
-    this.currentId = 1;
+    const pathArray = location.pathname.split('/');
+    console.log(pathArray[1]);
+
+    if(pathArray[1] === 'home') {
+      this.currentId = 1;
+    } else if(pathArray[1] === 'about') {
+      this.currentId = 2;
+    } else if(pathArray[1] === 'events') {
+      this.currentId = 3;
+    } else if(pathArray[1] === 'professional') {
+      this.currentId = 4;
+    } else if(pathArray[1] === 'knowledgecenter') {
+      this.currentId = 5;
+    } else if(pathArray[1] === 'news') {
+      this.currentId = 6;
+    } else if(pathArray[1] === 'membership') {
+      this.currentId = 7;
+    }
   }
 
   ngOnInit() {

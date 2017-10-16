@@ -16,16 +16,16 @@
       &>div
         margin-bottom 30px
         display flex
+        label
+          width 144px
+          text-align right
+          margin-right 20px
+          font-size $font-nomal-size
+          line-height 36px
+          span
+            color red
+            margin-right 12px
         span
-          &:nth-child(1)
-            width 144px
-            text-align right
-            margin-right 20px
-            font-size $font-nomal-size
-            line-height 36px
-            span
-              color red
-              margin-right 12px
           &:nth-child(2)
             width 280px
             text-align left
@@ -67,6 +67,9 @@
   background $theme-main-deep-blue-color
   color  $font-white-color
   font-size $font-nomal-size
+  &[disabled]
+    background #9e9e9e
+    color $font-gray-color
 .optional
   position absolute
   left 290px
@@ -92,6 +95,11 @@
 .agreement
   cursor pointer
   color  $font-main-deep-blue-color
+  input
+    margin-top 12px
+  .agreement-title
+    width 200px !important
+    text-align left
 .no-ceeb
 .submit
   margin-bottom 20px !important
@@ -99,11 +107,14 @@
   background-color $theme-light-gray-color
   width 100px
   height 40px
-  padding 13px 23px
   button
-    background transparent
-    color $font-gray-color
+    padding 13px 23px
     font-size $font-little-big-size
+    color #fff
+    background $theme-main-deep-blue-color
+    &[disabled]
+      background transparent
+      color $font-gray-color
 .tel
   width 310px
   font-size $font-small-size

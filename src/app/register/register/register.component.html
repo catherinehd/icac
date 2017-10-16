@@ -1,15 +1,18 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
 <section class="register-sec">
   <div class="register-box">
     <div class="title">
       ChinaICAC Member registration
     </div>
-    <div class="main">
-      <div>
-        <span class="name">
+    <div class="main form" [formGroup]="registerForm">
+      <div class="form-field">
+        <label class="name form-label">
           You work for
-        </span>
+        </label>
         <span>
-          <select>
+          <select formControlName="work">
             <option selected>
               Secondary／High School
             </option>
@@ -19,135 +22,148 @@
           </select>
         </span>
       </div>
-      <div>
-        <span class="name">
+      <div class="form-field">
+        <label class="name">
           <span>*</span>Email
-        </span>
+        </label>
         <span>
-          <input placeholder="Please enter">
-          <div class="wrong">
-            <img class="wromg-img" src="../../../assets/icon/point.svg" />
-            <span>错误提示</span>
+          <input placeholder="Please enter" formControlName="email" type="email">
+          <div class="wrong" *ngIf="msg">
+            <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+            <span>{{msg}}</span>
           </div>
         </span>
       </div>
-      <div>
-        <span class="name">
+      <div class="form-field">
+        <label class="name">
           <span>*</span>Verification Code
-        </span>
+        </label>
         <span>
-          <input placeholder="Please enter">
-          <button class="obtain">Obtain</button>
+          <input placeholder="Please enter" formControlName="code" type="text">
+          <button class="obtain" [disabled]="!registerForm.value.email" (click)="getCode()"><span *ngIf="!isCounting">Obtain</span><span *ngIf="isCounting">{{count}}</span></button>
         </span>
       </div>
-      <div>
-        <span class="name">
+      <div class="form-field">
+        <label class="name">
           <span>*</span>Password
-        </span>
+        </label>
         <span>
-          <input placeholder="Please enter">
+          <input placeholder="Please enter" formControlName="pwd1" [type]="!isOpenEyesShow1 ? 'text' : 'password'">
           <div class="btn-group">
-            <button class="close-btn">
-              <img class="icon-close" src="../../../assets/icon/close.svg" />
-            </button>
-            <button class="eye-btn" >
+            <button class="eye-btn" *ngIf="!isOpenEyesShow1" (click)="isOpenEyesShow1 = true">
               <img class="icon-open-eyes" src="../../../assets/icon/open.svg" />
             </button>
-            <button class="eye-btn">
+            <button class="eye-btn" *ngIf="isOpenEyesShow1" (click)="isOpenEyesShow1 = false">
               <img class="icon-close-eyes" src="../../../assets/icon/hidden.svg" />
             </button>
           </div>
         </span>
       </div>
-      <div>
-        <span class="name">
+      <div class="form-field">
+        <label class="name">
           <span>*</span>Repeat password
-        </span>
+        </label>
         <span>
-          <input placeholder="Please enter">
+          <input placeholder="Please enter" formControlName="pwd2" [type]="!isOpenEyesShow2 ? 'text' : 'password'">
           <div class="btn-group">
-            <button class="close-btn">
-              <img class="icon-close" src="../../../assets/icon/close.svg" />
-            </button>
-            <button class="eye-btn" >
+            <button class="eye-btn" *ngIf="!isOpenEyesShow2" (click)="isOpenEyesShow2 = true" >
               <img class="icon-open-eyes" src="../../../assets/icon/open.svg" />
             </button>
-            <button class="eye-btn">
+            <button class="eye-btn"*ngIf="isOpenEyesShow2" (click)="isOpenEyesShow2 = false" >
               <img class="icon-close-eyes" src="../../../assets/icon/hidden.svg" />
             </button>
           </div>
         </span>
       </div>
-      <div>
-        <span class="name">
+      <div class="form-field">
+        <label class="name">
           <span>*</span>Prefix
-        </span>
+        </label>
         <span>
-          <select>
+          <select formControlName="prefix">
             <option selected>
               Please select
+            </option>
+            <option>
+              Dr.
+            </option>
+            <option>
+              Mr.
+            </option>
+            <option>
+              Mrs.
+            </option>
+            <option>
+              Ms.
+            </option>
+            <option>
+              Rev.
             </option>
           </select>
         </span>
       </div>
-      <div>
-        <span class="name">
+      <div class="form-field">
+        <label class="name">
           <span>*</span>First Name
-        </span>
+        </label>
         <span>
-          <input placeholder="Please enter">
+          <input placeholder="Please enter" formControlName="firstname">
         </span>
       </div>
-      <div>
-        <span class="name">
+      <div class="form-field">
+        <label class="name">
           <span>*</span>Last Name
-        </span>
+        </label>
         <span>
-          <input placeholder="Please enter">
+          <input placeholder="Please enter" formControlName="lastname">
         </span>
       </div>
-      <div>
-        <span class="name">
+      <div class="form-field">
+        <label class="name">
           Preferred Name
-        </span>
+        </label>
         <span>
-          <input placeholder="Please enter">
+          <input placeholder="Please enter" formControlName="preferredname">
           <div class="optional">(Optional)</div>
         </span>
       </div>
-      <div>
-        <span class="name">
+      <div class="form-field">
+        <label class="name">
           <span>*</span>School
-        </span>
+        </label>
         <span>
-          <input placeholder="Please enter">
+          <input placeholder="Please enter" formControlName="school">
         </span>
       </div>
-      <div>
-        <span class="name">
+      <div class="form-field">
+        <label class="name">
           <span>*</span>Job Title
-        </span>
+        </label>
         <span>
-          <input placeholder="Please enter">
+          <input placeholder="Please enter" formControlName="jobtitle">
         </span>
       </div>
-      <div>
-        <span class="name">
+      <div class="form-field">
+        <label class="name">
           <span>*</span>CEEB Code
-        </span>
+        </label>
         <span>
-          <input placeholder="Please enter">
+          <input placeholder="Please enter" formControlName="ceebcode" type="number" maxlength="6">
           <img class="point" src="../../../assets/icon/point.svg" />
         </span>
       </div>
+
       <div class="no-ceeb">
         没有CEEB Code？
       </div>
       <div class="agreement">
-        《 user service agreement》
+        <input type="checkbox" id="agreement">
+        <label class="agreement-title" for="agreement">
+          《 user service agreement》
+        </label>
       </div>
       <div class="submit">
-        <button>
+        <button type="button" [disabled]="!registerForm.value.work || !registerForm.value.email || !registerForm.value.code || !registerForm.value.pwd1 || !registerForm.value.pwd2 || !registerForm.value.prefix || !registerForm.value.firstname || !registerForm.value.lastname || !registerForm.value.school || !registerForm.value.jobtitle || !registerForm.value.ceebcode" (click)="onSubmit()">
           Submit
         </button>
       </div>

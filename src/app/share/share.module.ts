@@ -1,4 +1,5 @@
 import  { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { FooterComponent } from './footer/footer.component';
@@ -9,7 +10,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
-  imports: [ CommonModule ],
+  imports: [ CommonModule, FormsModule, ReactiveFormsModule  ],
   declarations: [
     FooterComponent, HeaderComponent, NavbarComponent, BreadcrumbComponent, PagenotfoundComponent, ModalComponent,
   ],

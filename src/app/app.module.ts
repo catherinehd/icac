@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+
+import { HttpClientService } from './service/http-client.service';
+import { UserStoreService } from './service/user-store.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
@@ -36,12 +40,12 @@ import { ResetPwdComponent } from './person/reset-pwd/reset-pwd.component';
 
 @NgModule({
   imports: [
-    BrowserModule, HomeModule, AppRoutingModule, ShareModule, AboutModule,
+    BrowserModule,FormsModule, ReactiveFormsModule, HttpClientModule, HomeModule, AppRoutingModule, ShareModule, AboutModule,
   ],
   declarations: [
     AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent, EventsWorkshopComponent, JobComponent, SeniorSchoolComponent, TransferComponent, RankingComponent, PublicationComponent, ResearchComponent, ProDetailComponent, DetailWorkshopComponent, SeniorSchooldetailComponent, ResetPwdComponent,
   ],
-  providers: [],
+  providers: [ HttpClientService, UserStoreService, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

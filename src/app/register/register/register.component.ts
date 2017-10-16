@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigateService } from '../../service/navigate.service';
+import { UserService } from '../../service/user.service';
+import { HttpClientService } from '../../service/http-client.service';
+import { UserStoreService } from '../../service/user-store.service';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -6,10 +11,231 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.styl']
 })
 export class RegisterComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  registerForm: FormGroup;
+  register: Register =new Register('','','','','','','','','','','','');
+  msg: string;
+  timer: any;
+  isCounting: boolean;
+  count: number;
+  isOpenEyesShow1 = true;
+  isOpenEyesShow2 = true;
+  ceebcode: boolean;
+  validatorMsg = {
+    work: {
+      required: "请填写workfor",
+    },
+    email: {
+      required: '请填写email',
+      pattern: '请填写有效的email'
+    },
+    code: {
+      required: "请填写workfor",
+    },
+    pwd1: {
+      required: '请填写密码',
+      pattern: '密码为数字或字母',
+      minlength: '密码格式为6-15位',
+      maxlength: '密码格式为6-15位'
+    },
+    pwd2: {
+      required: '请填写密码',
+      pattern: '密码为数字或字母',
+      minlength: '密码格式为6-15位',
+      maxlength: '密码格式为6-15位'
+    },
+    prefix: {
+      required: "请选择",
+    },
+    firstname: {
+      required: "请填写firstname",
+    },
+    lastname: {
+      required: "请填写lastname",
+    },
+    preferredname: {
+      required: "请填写preferredname",
+    },
+    school: {
+      required: "请填写school",
+    },
+    jobtitle: {
+      required: "请填写jobtitle",
+    },
+    ceebcode: {
+      required: "请填写workfor",
+      pattern: '请填写6位code',
+    }
   }
 
+  constructor(private navigateService: NavigateService,
+              private userService: UserService,
+              private httpClientService: HttpClientService,
+              private userStoreService: UserStoreService,
+              private formBuilder: FormBuilder,) {
+    this.msg = '';
+    this.isCounting = false;
+    this.ceebcode = false;
+  }
+
+  ngOnInit() {
+    this.buildForm();
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.timer);
+  }
+
+  buildForm() {
+    this.registerForm = this.formBuilder.group({
+      'work': [this.register.work, [
+        Validators.required,
+      ]],
+      'email': [this.register.email, [
+        Validators.required,
+        Validators.pattern(/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)
+      ]],
+      'code': [this.register.code, [
+        Validators.required,
+      ]],
+      'pwd1': [this.register.pwd1, [
+        Validators.required,
+        Validators.pattern(/^[0-9a-zA-Z]+$/
+        ),
+        Validators.minLength(6),
+        Validators.maxLength(15)
+      ]],
+      'pwd2': [this.register.pwd2, [
+        Validators.required,
+        Validators.pattern(/^[0-9a-zA-Z]+$/
+        ),
+        Validators.minLength(6),
+        Validators.maxLength(15)
+      ]],
+      'prefix': [this.register.prefix, [
+        Validators.required,
+      ]],
+      'firstname': [this.register.firstname, [
+        Validators.required,
+      ]],
+      'lastname': [this.register.lastname, [
+        Validators.required,
+      ]],
+      'preferredname': [this.register.preferredname, [
+      ]],
+      'school': [this.register.school, [
+        Validators.required,
+      ]],
+      'jobtitle': [this.register.jobtitle, [
+        Validators.required,
+      ]],
+      'ceebcode': [this.register.ceebcode, [
+        Validators.required,
+        Validators.maxLength(6),
+        Validators.pattern(/^\d{6}$/)
+      ]]
+    });
+  }
+
+  testValid() {
+    for (const field in this.register) {
+      const control = this.registerForm.get(field);
+      if (control && control.dirty && !control.valid) {
+        for (const key in control.errors) {
+          this.showTip(this.validatorMsg[field][key]);
+        }
+      }
+    }
+    if(this.registerForm.value.pwd1 !== this.registerForm.value.pwd2 ) {
+      this.showTip('两次输入密码不一致');
+    }
+    return;
+  }
+
+  onSubmit() {
+    if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode) return;
+    this.testValid();
+    if (!this.registerForm.valid) return;
+    this.msg = '';
+    //this.userService.register(this.registerForm.value.work,this.registerForm.value.email,this.registerForm.value.code,this.registerForm.value.pwd1,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,this.registerForm.value.ceebcode).subscribe(res => {
+      //res.success ? this.loginSuccess(res.data) : this.showTip(res.msg);
+    //})
+    this.loginSuccess({
+      access_token: 'test_token',
+      id: '9',
+      name: 'testname',
+      email: '33@33.com'
+    });
+  }
+
+  onSubmit2() {
+
+  }
+
+  loginSuccess(user) {
+    this.userStoreService.storeUser(user);
+    this.httpClientService.refreshHeaders(user.access_token);
+    this.navigateService.clearRouteList();
+    if(location.pathname==='/home') {
+      location.reload();
+    } else {
+      this.navigateService.pushToNextRoute();
+    }
+  }
+
+  showTip(msg) {
+    this.msg = msg;
+  }
+
+  testemail() {
+    const re = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    const email = this.registerForm.value.email;
+    return re.test(email);
+  }
+
+  getCode() {
+    this.testemail();
+    if(this.testemail()){
+      this.showTip('')
+      //获取验证码
+      //this.userService.testMsgCode(this.registerForm.value.email).subscribe(res => {
+        //res.success ? this.goSuccess() : this.showTip(res.msg);
+      //})
+      this.goSuccess();
+    } else {
+      this.showTip('请输入正确邮箱地址')
+    }
+  }
+
+  goSuccess() {
+    this.counting();
+  }
+
+  counting() {
+    this.isCounting = true;
+    this.count = 60;
+    this.timer = setInterval(() => {
+      this.count --;
+      if (this.count <= 0) {
+        clearInterval(this.timer);
+        this.isCounting = false;
+      }
+    }, 1000);
+  }
+
+}
+
+
+class Register {
+  constructor(public work: string,
+              public email: string,
+              public code: string,
+              public pwd1: string,
+              public pwd2: string,
+              public prefix: string,
+              public firstname: string,
+              public lastname: string,
+              public preferredname: string,
+              public school: string,
+              public jobtitle: string,
+              public ceebcode: string) {}
 }

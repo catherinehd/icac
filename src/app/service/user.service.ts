@@ -20,20 +20,39 @@ export class UserService {
   }
 
   // 注册
-  register(email, msgCode, loginPwd, prefix, firstName, lastName, school, jobTitle, ceedCode ) {
+  register(workfor,email, msgCode, loginPwd, prefix, firstName, lastName, preferredName, school, jobTitle, ceedCode ) {
     return this.httpclientService.getMethod({
-      url: 'PZB/User/RegisterStepSecond',
+      url: 'web/user/doRegister',
       data: {
+        workfor: workfor,
         email: email,
         nick_name: email,
-        msgCode: msgCode,
+        msg_code: msgCode,
         login_pwd: loginPwd,
         prefix: prefix,
-        firstName: firstName,
-        lastName: lastName,
+        first_name: firstName,
+        last_name: lastName,
+        preferred_name: preferredName,
         school: school,
-        jobTitle: jobTitle,
-        ceedCode: ceedCode
+        job_title: jobTitle,
+        ceed_code: ceedCode,
+
+        userName: email,
+        password: loginPwd,
+        userRole: workfor,
+        userInfo: {
+          prefix: prefix,
+          userFn: firstName,
+          userLn: lastName,
+          userPn: preferredName,
+          userSchool: school,
+          userJob: jobTitle,
+          userAg: '',
+          userRn: '',
+          userRi: '',
+          userRe: '',
+          userCode: ceedCode
+        }
       }
     });
   }
@@ -49,14 +68,12 @@ export class UserService {
     });
   }
 
-  // 验证短信验证码
-  testMsgCode(mobile, msgCode, type) {  // 1 注册 2 修改密码
-    const url = type === 1 ? 'PZB/User/RegisterStepFirst' : 'PZB/User/UpdatePwdMobileFirst';
+  // 验证邮箱验证码
+  testMsgCode(email) {  // 1 注册 2 修改密码
     return this.httpclientService.getMethod({
-      url: url,
+      url: 'aa/aa',
       data: {
-        mobile: mobile,
-        code: msgCode
+        email: email
       }
     });
   }

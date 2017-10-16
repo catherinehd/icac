@@ -5,8 +5,8 @@
   <div class="out-box" *ngIf="isLogin">
     <img src="../../../assets/img/user.png" />
     <div class="btn-group">
-      <button>yong rao</button>
-      <button>Sign out</button>
+      <button (click)="go('./person')" >yong rao</button>
+      <button (click)="signout()">Sign out</button>
     </div>
   </div>
   <div class="login-box" *ngIf="!isLogin">

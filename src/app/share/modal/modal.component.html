@@ -2,6 +2,7 @@
 
 <section class="modal-sec" *ngIf="modal.isSigninShow || modal.isVerifyMailboxShow || modal.isResetPwShow">
   <div class="container">
+
     <div class="modal-container" *ngIf="modal.isSigninShow">
     <span><button (click)="modal.isSigninShow = false">
       <img src="../../../assets/icon/close.svg"/></button></span>
@@ -9,31 +10,31 @@
         {{modal.title}}
       </div>
       <div class="main">
-        <div class="wrongMsg">wrong msg</div>
-        <div class="form" >
+        <div class="wrongMsg" *ngIf="msg">{{msg}}</div>
+        <div class="form" [formGroup]="loginForm">
           <div class="form-field">
-            <input placeholder="Email" type="email">
+            <input placeholder="Email" type="email" formControlName="email">
           </div>
           <div class="form-field password">
-            <input placeholder="Password" type="password" maxlength="15" minlength="6">
+            <input placeholder="Password" [type]="!isOpenEyesShow ? 'test' : 'password'" formControlName="pwd" maxlength="15" minlength="6">
             <div class="btn-group">
-              <button class="close-btn">
+              <!--<button class="close-btn" (click)="clear('pwd')" *ngIf="loginForm.value.pwd">
                 <img class="icon-close" src="../../../assets/icon/close.svg" />
-              </button>
-              <button class="eye-btn" >
+              </button>-->
+              <button class="eye-btn"  *ngIf="!isOpenEyesShow" (click)="isOpenEyesShow = true">
                 <img class="icon-open-eyes" src="../../../assets/icon/open.svg" />
               </button>
-              <button class="eye-btn">
+              <button class="eye-btn" *ngIf="isOpenEyesShow" (click)="isOpenEyesShow = false">
                 <img class="icon-close-eyes" src="../../../assets/icon/hidden.svg" />
               </button>
             </div>
           </div>
           <div class="button-group">
             <button>No account fast</button>
-            <button (click)="go('./register');modal.isSigninShow = false">registratio</button>
+            <button (click)="go('./register');modal.isSigninShow = false">registration</button>
             <button (click)="go('./person');modal.isSigninShow = false">Forgot password?</button>
           </div>
-          <button>
+          <button class="form-bth submit-btn" [disabled]="!loginForm.value.email || !loginForm.value.pwd" type="button" (click)="onSubmit()">
             Sign in
           </button>
         </div>
