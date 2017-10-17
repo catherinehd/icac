@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { UserService } from '../../service/user.service';
+import { PersonService } from '../../service/person.service';
 import { HttpClientService } from '../../service/http-client.service';
 import { UserStoreService } from '../../service/user-store.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
@@ -25,7 +26,7 @@ export class ModalComponent implements OnInit {
     },
     pwd: {
       required: '请填写密码',
-      pattern: '密码为数字或字母',
+      pattern: '密码由6-15英文或数字组成',
       minlength: '密码格式为6-15位',
       maxlength: '密码格式为6-15位'
     }
@@ -33,6 +34,7 @@ export class ModalComponent implements OnInit {
 
   constructor(private navigateService: NavigateService,
               private userService: UserService,
+              private personService: PersonService,
               private httpClientService: HttpClientService,
               private userStoreService: UserStoreService,
               private formBuilder: FormBuilder,) {
@@ -65,14 +67,19 @@ export class ModalComponent implements OnInit {
     if(!this.loginForm.valid) return;
     this.msg = '';
     //this.userService.login(this.loginForm.value.email,this.loginForm.value.pwd).subscribe(res => {
-      //res.success ? this.loginSuccess(res.data) : this.showTip(res.msg);
+      //res.success ? this.setUser(res.data) : this.showTip(res.msg);
     //})
     this.loginSuccess({
       access_token: 'test_token',
-      id: '9',
-      name: 'testname',
-      email: '33@33.com'
+      user_id: '9',
+      user_name: '33@33.com'
     });
+  }
+
+  setUser(data) {
+    this.personService.getUserInfo().subscribe(res => {
+    res.success ? this.loginSuccess(res.data) : this.showTip(res.msg);
+    })
   }
 
   loginSuccess(user) {

@@ -63,5 +63,8 @@ export class UserStoreService {
     localStorage.removeItem('user');
     this.user = null;
     this.token = '';
+    return this.httpClientService.getMethod({
+      url: '/web/user/logout',
+    })
   }
 }

@@ -5,6 +5,9 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientService } from './service/http-client.service';
 import { UserStoreService } from './service/user-store.service';
+import { PersonService } from './service/person.service'
+import { EventsService } from './service/events.service';
+import { ProDevService } from './service/pro-dev.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
@@ -36,6 +39,7 @@ import { ProDetailComponent } from './professional-dev/pro-detail/pro-detail.com
 import { DetailWorkshopComponent } from './events/detail-workshop/detail-workshop.component';
 import { SeniorSchooldetailComponent } from './knowledgecenter/senior-schooldetail/senior-schooldetail.component';
 import { ResetPwdComponent } from './person/reset-pwd/reset-pwd.component';
+import { VerifyEmailComponent } from './person/verify-email/verify-email.component';
 
 
 @NgModule({
@@ -43,9 +47,9 @@ import { ResetPwdComponent } from './person/reset-pwd/reset-pwd.component';
     BrowserModule,FormsModule, ReactiveFormsModule, HttpClientModule, HomeModule, AppRoutingModule, ShareModule, AboutModule,
   ],
   declarations: [
-    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent, EventsWorkshopComponent, JobComponent, SeniorSchoolComponent, TransferComponent, RankingComponent, PublicationComponent, ResearchComponent, ProDetailComponent, DetailWorkshopComponent, SeniorSchooldetailComponent, ResetPwdComponent,
+    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent, EventsWorkshopComponent, JobComponent, SeniorSchoolComponent, TransferComponent, RankingComponent, PublicationComponent, ResearchComponent, ProDetailComponent, DetailWorkshopComponent, SeniorSchooldetailComponent, ResetPwdComponent, VerifyEmailComponent,
   ],
-  providers: [ HttpClientService, UserStoreService, ],
+  providers: [ HttpClientService, UserStoreService, PersonService, EventsService,ProDevService, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

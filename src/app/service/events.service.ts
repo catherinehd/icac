@@ -6,22 +6,40 @@ export class EventsService {
 
   constructor(private httpclientService: HttpClientService) { }
 
-  getNationalEventes(){
+  getNationalEventes(type,page){
     return this.httpclientService.getMethod({
-      url: 'events/national',
+      url: '/web/news/queryNewsList',
       data: {
-        page_index: 1,
-        page_size: 1
+        role: 0,
+        page: page
       }
     })
   }
 
-  getWorkshopEventes(){
+  getNationalDetailEventes(id) {
     return this.httpclientService.getMethod({
-      url: 'events/workshop',
+      url: '/web/news/queryNewsById',
       data: {
-        page_index: 1,
-        page_size: 1
+        Id: id,
+      }
+    })
+  }
+
+  getWorkshopEventes(type,page){
+    return this.httpclientService.getMethod({
+      url: '/web/news/queryNewsList',
+      data: {
+        role: 1,
+        page: page
+      }
+    })
+  }
+
+  getWorkshopDetailEventes(id) {
+    return this.httpclientService.getMethod({
+      url: '/web/news/queryNewsById',
+      data: {
+        Id: id,
       }
     })
   }

@@ -31,6 +31,7 @@ import { PublicationComponent } from './news/publication/publication.component';
 import { ResearchComponent } from './news/research/research.component';
 import { SeniorSchooldetailComponent } from './knowledgecenter/senior-schooldetail/senior-schooldetail.component';
 import { ResetPwdComponent } from './person/reset-pwd/reset-pwd.component';
+import { VerifyEmailComponent } from './person/verify-email/verify-email.component';
 
 
 const appRouters: Routes = [
@@ -46,14 +47,14 @@ const appRouters: Routes = [
 
       { path: 'events/national', component: EventsIndexComponent },
       { path: 'events/workshop', component: EventsWorkshopComponent },
-      { path: 'events/detail', component: DetailComponent },
-      { path: 'events/detail-workshop', component: DetailWorkshopComponent },
+      { path: 'events/national/detail/:id', component: DetailComponent },
+      { path: 'events/workshop/detail-workshop', component: DetailWorkshopComponent },
 
   { path: 'professional', component: ProDevIndexComponent },
 
       { path: 'professional/webinar', component: ProDevIndexComponent },
       { path: 'professional/pro-job', component: JobComponent },
-      { path: 'professional/pro-detail', component: ProDetailComponent },
+      { path: 'professional/pro-detail/:id', component: ProDetailComponent },
 
   { path: 'knowledgecenter', component: SchoolComponent },
 
@@ -74,6 +75,7 @@ const appRouters: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'person', component: PersonComponent },
 
+      { path: 'person/verify-email', component: VerifyEmailComponent },
       { path: 'person/reset-pwd', component: ResetPwdComponent },
 
   { path: '**', component: PagenotfoundComponent },

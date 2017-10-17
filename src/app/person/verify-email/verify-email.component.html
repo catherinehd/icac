@@ -1,0 +1,29 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+<div class="container">
+<div class="modal-container">
+    <span><button>
+      <img src="../../../assets/icon/close.svg"/>
+    </button></span>
+  <div class="title">
+    Verify mailbox
+  </div>
+  <div class="main">
+    <div class="wrongMsg" *ngIf="msg">{{msg}}</div>
+    <div class="form" [formGroup]="emailForm">
+      <div class="form-field">
+        <input placeholder="Email" formControlName="email">
+      </div>
+      <div class="form-field">
+        <input placeholder="Verification Code" formControlName="code">
+        <button class="obtain" (click)="getcode()" [disabled]="!emailForm.value.email"><span *ngIf="!isCounting">Obtain</span><span *ngIf="isCounting">{{count}}</span></button>
+      </div>
+      <button [disabled]="!emailForm.value.email || !emailForm.value.code" type="button" (click)="onSubmit()">
+        Next step
+      </button>
+    </div>
+    <p class="tel">Customer service telephone numbers 400-123-1234</p>
+  </div>
+</div>
+</div>

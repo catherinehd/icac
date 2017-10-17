@@ -7,7 +7,7 @@
     </div>
     <div class="detail">
       <span>Email</span>
-      <span>lirf@eamaster.com</span>
+      <span>{{user.userName}}</span>
       <span>Bound</span>
     </div>
   </div>
@@ -19,19 +19,19 @@
     <div class="detail">
       <div>
         <span>Name</span>
-        <span> Mr. Li Ruifeng</span>
+        <span> {{user.userInfoPrefix}}. {{user.userInfoUserFn}} {{user.userInfoUserLn}}</span>
       </div>
       <div>
         <span>Preferred Name</span>
-        <span>LiRuifeng</span>
+        <span>{{user.userInfoUserPn}}</span>
       </div>
       <div>
         <span>School</span>
-        <span>Zhejiang University</span>
+        <span>{{user.userInfoUserSchool}}</span>
       </div>
       <div>
         <span>Job Title</span>
-        <span>Hangzhou pan friend network technology Co., Ltd.</span>
+        <span>{{user.userInfoUserJob}}</span>
       </div>
     </div>
   </div>

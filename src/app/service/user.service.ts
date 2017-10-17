@@ -11,10 +11,10 @@ export class UserService {
   //登录
   login(email, loginPwd) {
     return this.httpclientService.getMethod({
-      url: 'User/LoginNum',
+      url: 'web/user/doLogin',
       data: {
-        nick_name: email,
-        login_pwd: loginPwd
+        userName: email,
+        password: loginPwd
       }
     })
   }
@@ -58,22 +58,33 @@ export class UserService {
   }
 
   // 忘记密码
-  updatePwd(email, msgcode) {
+  updatePwd(pwd) {
     return this.httpclientService.putMethod({
       url: 'PZB/User/UpdatePwdMobileSecond',
       data: {
-        email: email,
-        msgcode: msgcode,
+        pwd: pwd,
       }
     });
   }
 
-  // 验证邮箱验证码
-  testMsgCode(email) {  // 1 注册 2 修改密码
+  // 邮箱获取验证码
+  getMsgCode(email,type) {
     return this.httpclientService.getMethod({
-      url: 'aa/aa',
+      url: '/web/user/check/',
       data: {
-        email: email
+        email: email,
+        type: 1,
+      }
+    });
+  }
+
+  //验证验证码是否真确
+  testMsgCode(email,code) {
+    return this.httpclientService.getMethod({
+      url: '/web/user/check/',
+      data: {
+        email: email,
+        code: code,
       }
     });
   }

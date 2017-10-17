@@ -33,13 +33,13 @@ export class RegisterComponent implements OnInit {
     },
     pwd1: {
       required: '请填写密码',
-      pattern: '密码为数字或字母',
+      pattern: '密码由6-15英文或数字组成',
       minlength: '密码格式为6-15位',
       maxlength: '密码格式为6-15位'
     },
     pwd2: {
       required: '请填写密码',
-      pattern: '密码为数字或字母',
+      pattern: '密码由6-15英文或数字组成',
       minlength: '密码格式为6-15位',
       maxlength: '密码格式为6-15位'
     },
@@ -146,7 +146,7 @@ export class RegisterComponent implements OnInit {
       }
     }
     if(this.registerForm.value.pwd1 !== this.registerForm.value.pwd2 ) {
-      this.showTip('两次输入密码不一致');
+      this.showTip('两次密码输入不一致');
     }
     return;
   }
@@ -197,7 +197,7 @@ export class RegisterComponent implements OnInit {
     if(this.testemail()){
       this.showTip('')
       //获取验证码
-      //this.userService.testMsgCode(this.registerForm.value.email).subscribe(res => {
+      //this.userService.getMsgCode(this.registerForm.value.email).subscribe(res => {
         //res.success ? this.goSuccess() : this.showTip(res.msg);
       //})
       this.goSuccess();

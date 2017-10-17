@@ -6,11 +6,11 @@ export class PersonService {
 
   constructor(private httpclientService: HttpClientService) { }
 
-  getUserInfo(email) {
+  getUserInfo() {
     return this.httpclientService.getMethod({
-      url: 'user/info',
+      url: '/web/user/queryUserInfoById',
       data: {
-        email: email
+
       }
     })
   }

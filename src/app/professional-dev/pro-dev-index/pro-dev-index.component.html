@@ -9,48 +9,28 @@
       Webinar
     </div>
     <div class="webinar-list" *ngIf="hasWebinar">
-      <div class="webinar-info">
+      <div class="webinar-info" *ngFor="let list of showLists">
         <div class="small-title">
-          <p>HTC is considering including a spin-off of VR and overall salesHTC ...</p>
+          <p>{{list.wsTitle}}</p>
         </div>
         <div class="webinar-intro">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo...</p>
+          {{list.wsContent}}
         </div>
         <div class="video-ppt">
           <div class="video">
-            <span>Video: </span><span>http://www.findunet.com</span>
+            <span>Video: </span><span>{{list.wsUrl}}</span>
           </div>
           <div class="ppt">
-            <span>ppt: </span><span>http://www.findunet.com</span>
+            <span>ppt: </span><span>{{list.wsDurl}}</span>
           </div>
         </div>
         <div class="date">
           <img src="../../../assets/icon/time.svg">
-          <span class="time">August 24, 2017</span>
-          <span class="view-details" (click)="go('./professional/pro-detail')">View details >></span>
+          <span class="time">{{list.wsTime}}</span>
+          <span class="view-details" (click)="go('./professional/pro-detail/'+list.wsId)">View details >></span>
         </div>
       </div>
-      <div class="webinar-info">
-        <div class="small-title">
-          <p>HTC is considering including a spin-off of VR and overall salesHTC ...</p>
-        </div>
-        <div class="webinar-intro">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo...</p>
-        </div>
-        <div class="video-ppt">
-          <div class="video">
-            <span>Video: </span><span>http://www.findunet.com</span>
-          </div>
-          <div class="ppt">
-            <span>ppt: </span><span>http://www.findunet.com</span>
-          </div>
-        </div>
-        <div class="date">
-          <img src="../../../assets/icon/time.svg">
-          <span class="time">August 24, 2017</span>
-          <span class="view-details" (click)="go('./professional/pro-detail')">View details >></span>
-        </div>
-      </div>
+
     </div>
     <div class="webinar-list noWebinar" *ngIf="!hasWebinar">
       <img src="../../../assets/icon/nonews.svg" />
