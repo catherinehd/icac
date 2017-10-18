@@ -14,22 +14,41 @@ export class HomeService {
     })
   }
 
-  getHignSchoolList(email) {
+  getUniversityList(page) {
     return this.httpClientService.getMethod({
-      url: 'news/getList',
-      data: {
-        name: email
-      }
+      url: '/web/usity/queryUsityList/'+page,
     })
   }
 
-  getSeniorSchoolList(email) {
+  getUniversityDetailList(id) {
     return this.httpClientService.getMethod({
-      url: 'news/getList',
-      data: {
-        name: email
+      url: '/web/usity/queryUsityById/'+id,
+    })
+  }
+
+  getMiddleSchoolList(page) {
+    return this.httpClientService.getMethod({
+      url: '/web/middle/queryMiddleList/'+page,
+    })
+  }
+
+
+  getMiddleSchoolDetailList(id) {
+    return this.httpClientService.getMethod({
+      url: '/web/middle/queryMiddleById/'+id,
+    })
+  }
+
+  search(msg,type) {
+    return this.httpClientService.getMethod({   //同时返回总条数
+      url: '/web/workshop/queryWorkshopList',
+      data:{
+        msg: msg,
+        type: type,
       }
     })
   }
 
 }
+
+

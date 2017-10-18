@@ -6,42 +6,17 @@ export class EventsService {
 
   constructor(private httpclientService: HttpClientService) { }
 
-  getNationalEventes(type,page){
+  getEventes(role,page){
     return this.httpclientService.getMethod({
-      url: '/web/news/queryNewsList',
-      data: {
-        role: 0,
-        page: page
-      }
+      url: '/web/news/queryNewsList/'+role+'/'+page,   //role=0 全国 role=1 工作坊 page为查询第几页
     })
   }
 
-  getNationalDetailEventes(id) {
+  getDetailEventes(id) {
     return this.httpclientService.getMethod({
-      url: '/web/news/queryNewsById',
-      data: {
-        Id: id,
-      }
+      url: '/web/news/queryNewsById/'+id,
     })
   }
 
-  getWorkshopEventes(type,page){
-    return this.httpclientService.getMethod({
-      url: '/web/news/queryNewsList',
-      data: {
-        role: 1,
-        page: page
-      }
-    })
-  }
-
-  getWorkshopDetailEventes(id) {
-    return this.httpclientService.getMethod({
-      url: '/web/news/queryNewsById',
-      data: {
-        Id: id,
-      }
-    })
-  }
 
 }

@@ -11,24 +11,26 @@
 
       <div class="conference-info" *ngFor="let list of showLists">
         <div class="conference-img">
-          <img src={{list.image}} />
+          <img src={{list.newImage}} />
         </div>
         <div class="conference-more-info">
           <div class="conference-title">
-            {{list.title}}
+            {{list.newsTitle}}
           </div>
           <div class="conference-intro">
-            <p>{{list.theme}}</p>
+            <p>{{list.newsTheme}}</p>
           </div>
           <div class="date">
             <img src="../../../assets/icon/time.svg" />
             <span class="time">
-              {{list.up_time}}
+              {{list.updateTime}}
             </span>
-            <span class="view-details" (click)="go('./events/national/detail/' + list.id)">View details >></span>
+            <span class="view-details" (click)="go('./events/national/detail/' + list.newsId)">View details >></span>
           </div>
         </div>
       </div>
+
+      <app-pager [currPage]="page.pageIndex" [pageCount]="page.pageCount" (showPage)="onShowPage($event)"></app-pager>
 
     </div>
     <div class="conference-list noConference" *ngIf="!hasConference">
@@ -41,4 +43,5 @@
     </div>
   </div>
 </section>
+
 

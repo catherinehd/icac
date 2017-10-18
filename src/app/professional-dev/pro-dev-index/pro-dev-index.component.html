@@ -31,6 +31,8 @@
         </div>
       </div>
 
+      <app-pager [currPage]="page.pageIndex" [pageCount]="page.pageCount" (showPage)="onShowPage($event)"></app-pager>
+
     </div>
     <div class="webinar-list noWebinar" *ngIf="!hasWebinar">
       <img src="../../../assets/icon/nonews.svg" />

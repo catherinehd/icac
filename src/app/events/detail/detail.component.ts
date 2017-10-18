@@ -26,35 +26,18 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.getId();
-    this.news = {
-      createTime:'1',
-      updateTime:'August 24, 2017',
-      newsId:1,
-      newsTheme:'WHAT TO EXPECT THIS YEAR AT',
-      newsTime:'1',
-      state:0,
-      createBy:'1',
-      updateBy:'1',
-      newsPlace:'马萨诸塞州',
-      newsPerson:'Joshua, Harry, Charlie, Daniel, liam,Harry, Charlie, Daniel, William,Daniel, liam,Harry, Charlie, Daniel, William.',
-      newsImage:'../../../assets/img/detail.png',
-      newsInfo:'ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.',
-      newsTitle:'Countdown to Cleveland!  WHAT TO EXPECT THIS YEAR AT',
-      newsRole: 0
-    }
   }
 
   getId() {
     //获取id
     const id = Number(location.pathname.split('/')[4]);
     //根据id获取页面内容
-    //this.eventService.getNationalDetailEventes(id).subscribe(res => {
-    //this.news = res, err => {
-    //if (err && err.status === 401) this.navigateService.pushToRoute('/home');
-    //}
-    //});
+    this.eventService.getDetailEventes(id).subscribe(res => {
+      this.news = res.data, err => {
+    if (err && err.status === 401) this.navigateService.pushToRoute('/home');
+    }
+    });
   }
-
 }
 
 class newsModel {

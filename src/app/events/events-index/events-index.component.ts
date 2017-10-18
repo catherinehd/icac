@@ -12,6 +12,7 @@ export class EventsIndexComponent implements OnInit {
 
   hasConference: boolean;
   showLists: any;
+  page: any = {pageIndex: 1, pageCount: 12};  //获取当前页和总页数
 
   constructor(private navigateService: NavigateService,
               private eventService: EventsService ) {
@@ -19,65 +20,19 @@ export class EventsIndexComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.eventService.getWorkshopEventes(0,1).subscribe(res => {
-    // this.showList(res), err => {
-    //  if (err && err.status === 401) this.navigateService.pushToRoute('/home');
-     //}
-    //});
+    //默认查询全国第一页数据
+    this.eventService.getEventes(0,1).subscribe(res => {
+     this.showList(res), err => {
+      if (err && err.status === 401) this.navigateService.pushToRoute('/home');
+     }
+    });
 
-    const array = [
-      {
-        id:1,
-        theme:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismodndum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrajametaccumsan et viverra justo commoerrajametaccumsanerrajametaccumsando...',
-        time:'a',
-        state: 1,
-        cre_by:'a',
-        cre_time:'a',
-        up_by:'a',
-        up_time:'August 24, 2017',
-        place:'a',
-        person:'a',
-        image:'../../../assets/img/events.png',
-        info:'a',
-        title:'HTC is considering including a cluding a spin-off of   is considering a cluding a spin-off ofincluding...'
-      },
-      {
-        id:2,
-        theme:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismodndum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrajametaccumsan et viverra justo commoerrajametaccumsanerrajametaccumsando...',
-        time:'a',
-        state: 1,
-        cre_by:'a',
-        cre_time:'a',
-        up_by:'a',
-        up_time:'August 24, 2017',
-        place:'a',
-        person:'a',
-        image:'../../../assets/img/events.png',
-        info:'a',
-        title:'HTC is considering including a cluding a spin-off of   is considering a cluding a spin-off ofincluding...'
-      },
-      {
-        id:3,
-        theme:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismodndum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrajametaccumsan et viverra justo commoerrajametaccumsanerrajametaccumsando...',
-        time:'a',
-        state: 1,
-        cre_by:'a',
-        cre_time:'a',
-        up_by:'a',
-        up_time:'August 24, 2017',
-        place:'a',
-        person:'a',
-        image:'../../../assets/img/events.png',
-        info:'a',
-        title:'HTC is considering including a cluding a spin-off of   is considering a cluding a spin-off ofincluding...'
-      },
-    ];
-    this.showList(array);
   }
 
   showList(list) {
-    this.showLists = list;
-    if(list.length > 0) {
+    this.showLists = list.rows;
+    this.page.pageCount = list.total;
+    if(list.rows.length > 0) {
       this.hasConference = true;
     } else {
       this.hasConference = false;
@@ -90,5 +45,15 @@ export class EventsIndexComponent implements OnInit {
     this.navigateService.pushToRoute(url);
   }
 
+  onShowPage(page) {
+    this.page.pageIndex = page;
+
+    this.eventService.getEventes(0,page).subscribe(res => {
+      this.showList(res), err => {
+        if (err && err.status === 401) this.navigateService.pushToRoute('/home');
+      }
+    });
+
+  }
 
 }

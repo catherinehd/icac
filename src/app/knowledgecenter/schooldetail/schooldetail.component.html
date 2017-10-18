@@ -9,18 +9,18 @@
     <div class="shade"></div>
     <div class="school-brief">
       <div class="school-img">
-        <img src="../../../assets/img/2.png" />
+        <img src={{school.usityImage}} />
       </div>
       <div>
-        <p class="schoolName">University of Cambridge</p>
-        <p class="website">Website<span>www.mit.edu</span></p>
-        <p class="nature">Nature： <span>私立</span></p>
-        <p class="region">Region： <span>马萨诸塞</span></p>
+        <p class="schoolName">{{school.usityName}}</p>
+        <p class="website">Website<span>{{school.usityUrl}}</span></p>
+        <p class="nature">Nature： <span>{{school.usityNature}}</span></p>
+        <p class="region">Region： <span>{{school.usityRegion}}</span></p>
       </div>
       <div>
-        <p class="country">Country： <span>中国</span></p>
-        <p class="city">city： <span>温州</span></p>
-        <p class="students-num">Online students： <span>20000人</span></p>
+        <p class="country">Country： <span>{{school.usityCountry}}</span></p>
+        <p class="city">city： <span>{{school.usityCity}}</span></p>
+        <p class="students-num">Online students： <span>{{school.usityOs}}人</span></p>
       </div>
     </div>
     <div class="container">
@@ -38,21 +38,7 @@
         </ul>
       </div>
       <div class="article" *ngIf="showOverview">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
-        </p>
+        {{school.usityTxt}}
       </div>
 
       <div class="article requirements" *ngIf="showRequirements">
@@ -64,42 +50,19 @@
               </div>
               <div>
                 <span>Time of school</span>
-                <span>每年1月1日、5月1日、8月1日</span>
+                <span>{{school.usityinfo.usityinfoStart}}</span>
               </div>
               <div>
                 <span>Application deadline:</span>
-                <span>每年1月1日</span>
+                <span>{{school.usityinfo.usityinfoEnd}}</span>
               </div>
               <div>
                 <span>Tuition reference:</span>
-                <span>41770.00美元</span>
+                <span>{{school.usityinfo.usityinfoTuition}}</span>
               </div>
               <div>
                 <span>Examination results:</span>
-                <span>托福总分：100.00<br>
-高中平均分:3.89Sat:1426.00</span>
-              </div>
-            </li>
-            <li>
-              <div class="requirements-title">
-                Undergraduate admission conditions
-              </div>
-              <div>
-                <span>Time of school</span>
-                <span>每年1月1日、5月1日、8月1日</span>
-              </div>
-              <div>
-                <span>Application deadline:</span>
-                <span>每年1月1日</span>
-              </div>
-              <div>
-                <span>Tuition reference:</span>
-                <span>41770.00美元</span>
-              </div>
-              <div>
-                <span>Examination results:</span>
-                <span>托福总分：100.00<br>
-高中平均分:3.89Sat:1426.00</span>
+                <span>{{school.usityinfo.usityinfoScore}}</span>
               </div>
             </li>
           </ul>
@@ -112,21 +75,21 @@
         </div>
         <div class="info-container">
           <ul>
-            <li>
+            <li *ngFor="let list of school.usityofficers">
               <div class="info">
                 <img src="../../../assets/img/user.png">
                 <div>
                   <p>
                     Name:
-                    <span>XXX</span>
+                    <span>{{list.uofficerName}}</span>
                   </p>
                   <div>
                     Job Title:
-                    <span>XXXXXXXXX</span>
+                    <span>{{list.uofficerJob}}</span>
                   </div>
                   <div>
                     Email:
-                    <span>XXXXXXXX@XXX.com</span>
+                    <span>{{list.uofficerMail}}</span>
                   </div>
                 </div>
               </div>

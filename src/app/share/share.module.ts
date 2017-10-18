@@ -8,14 +8,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ModalComponent } from './modal/modal.component';
+import { PagerComponent } from './pager/pager.component';
 
 @NgModule({
   imports: [ CommonModule, FormsModule, ReactiveFormsModule  ],
   declarations: [
-    FooterComponent, HeaderComponent, NavbarComponent, BreadcrumbComponent, PagenotfoundComponent, ModalComponent,
+    FooterComponent, HeaderComponent, NavbarComponent, BreadcrumbComponent, PagenotfoundComponent, ModalComponent, PagerComponent,
   ],
   exports: [
-    FooterComponent, HeaderComponent, NavbarComponent, BreadcrumbComponent, ModalComponent,
+    FooterComponent, HeaderComponent, NavbarComponent, BreadcrumbComponent, PagenotfoundComponent, ModalComponent, PagerComponent,
   ]
 })
 

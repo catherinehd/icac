@@ -48,7 +48,7 @@ const appRouters: Routes = [
       { path: 'events/national', component: EventsIndexComponent },
       { path: 'events/workshop', component: EventsWorkshopComponent },
       { path: 'events/national/detail/:id', component: DetailComponent },
-      { path: 'events/workshop/detail-workshop', component: DetailWorkshopComponent },
+      { path: 'events/workshop/detail-workshop/:id', component: DetailWorkshopComponent },
 
   { path: 'professional', component: ProDevIndexComponent },
 
@@ -58,12 +58,12 @@ const appRouters: Routes = [
 
   { path: 'knowledgecenter', component: SchoolComponent },
 
-      { path: 'knowledgecenter/hign-school', component: SchoolComponent },
+      { path: 'knowledgecenter/university', component: SchoolComponent },
       { path: 'knowledgecenter/senior-school', component: SeniorSchoolComponent },
       { path: 'knowledgecenter/ranking', component: RankingComponent },
       { path: 'knowledgecenter/transfer', component: TransferComponent },
-      { path: 'knowledgecenter/detail', component: SchooldetailComponent },
-      { path: 'knowledgecenter/seniorschool-detail', component: SeniorSchooldetailComponent },
+      { path: 'knowledgecenter/detail/:id', component: SchooldetailComponent },
+      { path: 'knowledgecenter/seniorschool-detail/:id', component: SeniorSchooldetailComponent },
 
   { path: 'news', component: NewsIndexComponent },
 

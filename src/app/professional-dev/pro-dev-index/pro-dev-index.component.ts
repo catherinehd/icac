@@ -11,6 +11,7 @@ export class ProDevIndexComponent implements OnInit {
 
   hasWebinar: boolean;
   showLists: any;
+  page: any = {pageIndex: 1, pageCount: 12};  //获取当前页和总页数
 
   constructor(private navigateService: NavigateService,
               private prodevService: ProDevService) {
@@ -18,61 +19,18 @@ export class ProDevIndexComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    //this.prodevService.getProDev(1).subscribe(res => {
-    // this.showList(res), err => {
-     // if (err && err.status === 401) this.navigateService.pushToRoute('/home');
-   // }
-   // });
-
-    const array = [
-      {
-        wsId:1,
-        wsTime: 'August 24, 2017',
-        state: 0,
-        createBy: '',
-        createTime: '',
-        updateBy: '',
-        updateTime: '',
-        wsUrl: 'http://www.findunet.com',
-        wsContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo...',
-        wsTitle:'HTC is considering including a spin-off of VR and overall salesHTC ...',
-        wsDurl:'http://www.findunet.com',
-      },
-      {
-        wsId:2,
-        wsTime: 'August 24, 2017',
-        state: 0,
-        createBy: '',
-        createTime: '',
-        updateBy: '',
-        updateTime: '',
-        wsUrl: 'http://www.findunet.com',
-        wsContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo...',
-        wsTitle:'HTC is considering including a spin-off of VR and overall salesHTC ...',
-        wsDurl:'http://www.findunet.com',
-      },
-      {
-        wsId:3,
-        wsTime: 'August 24, 2017',
-        state: 0,
-        createBy: '',
-        createTime: '',
-        updateBy: '',
-        updateTime: '',
-        wsUrl: 'http://www.findunet.com',
-        wsContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo...',
-        wsTitle:'HTC is considering including a spin-off of VR and overall salesHTC ...',
-        wsDurl:'http://www.findunet.com',
-      },
-    ];
-
-    this.showList(array);
+    //查询第一页数据列表
+    this.prodevService.getProDev(1).subscribe(res => {
+     this.showList(res), err => {
+      if (err && err.status === 401) this.navigateService.pushToRoute('/home');
+    }
+    });
   }
 
   showList(data) {
-    this.showLists = data;
-    if(data.length > 0) {
+    this.showLists = data.rows;
+    this.page.pageCount = data.total;
+    if(data.rows.length > 0) {
       this.hasWebinar = true;
     } else {
       this.hasWebinar = false;
@@ -84,5 +42,15 @@ export class ProDevIndexComponent implements OnInit {
     this.navigateService.pushToRoute(url);
   }
 
+  onShowPage(page) {
+    this.page.pageIndex = page;
+
+    this.prodevService.getProDev(page).subscribe(res => {
+      this.showList(res), err => {
+        if (err && err.status === 401) this.navigateService.pushToRoute('/home');
+      }
+    });
+
+  }
 
 }

@@ -18,19 +18,6 @@ export class ProDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getId();
-    this.news = {
-      wsId:1,
-      wsTime: 'August 24, 2017',
-      state: 0,
-      createBy: '',
-      createTime: '',
-      updateBy: '',
-      updateTime: '',
-      wsUrl: 'http://www.findunet.com',
-      wsContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo...',
-      wsTitle:'HTC is considering including a spin-off of VR and overall salesHTC ...',
-      wsDurl:'http://www.findunet.com',
-    }
   }
 
   getId() {
@@ -38,7 +25,7 @@ export class ProDetailComponent implements OnInit {
     const id = Number(location.pathname.split('/')[3]);
     //根据id获取页面内容
     this.prodevService.getProDevDetail(id).subscribe(res => {
-    this.news = res, err => {
+    this.news = res.data, err => {
     if (err && err.status === 401) this.navigateService.pushToRoute('/home');
     }
     });

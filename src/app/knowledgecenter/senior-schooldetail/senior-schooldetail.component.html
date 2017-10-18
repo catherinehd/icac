@@ -10,17 +10,17 @@
     <div class="shade"></div>
     <div class="school-brief">
       <div class="school-img">
-        <img src="../../../assets/img/2.png" />
+        <img src={{school.middleImage}} />
       </div>
       <div>
-        <p class="schoolName">University of Cambridge</p>
-        <p class="website">Website@www.mit.edu</p>
-        <p class="tel">Tel： <span>12230940</span></p>
-        <p class="ceebCode">CEEB code： <span>81273987</span></p>
+        <p class="schoolName">{{school.middleName}}</p>
+        <p class="website">{{school.middleUrl}}</p>
+        <p class="tel">Tel： <span>{{school.middleNum}}</span></p>
+        <p class="ceebCode">CEEB code： <span>{{school.middleCode}}</span></p>
       </div>
       <div>
-        <p class="country">Country： <span>中国</span></p>
-        <p class="city">city： <span>温州</span></p>
+        <p class="country">Country： <span>{{school.middleCountry}}</span></p>
+        <p class="city">city： <span>{{school.middleCity}}</span></p>
       </div>
     </div>
     <div class="container">
@@ -35,21 +35,7 @@
         </ul>
       </div>
       <div class="article" *ngIf="showOverview">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra juscommodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverrusto commodo. sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendumaoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. sit amet lacus accumsan et viverra justo commodo.
-        </p>
+        {{school.middleImage}}
       </div>
 
       <div class="article guidance" *ngIf="showGuideance">
