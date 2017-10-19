@@ -41,7 +41,7 @@ export class HomeService {
 
   search(msg,type) {
     return this.httpClientService.getMethod({   //同时返回总条数
-      url: '/web/workshop/queryWorkshopList',
+      url: '/web/usity/queryUsityList',
       data:{
         msg: msg,
         type: type,

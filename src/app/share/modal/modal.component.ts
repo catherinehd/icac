@@ -70,7 +70,7 @@ export class ModalComponent implements OnInit {
       //res.success ? this.setUser(res.data) : this.showTip(res.msg);
     //})
     this.loginSuccess({
-      access_token: 'test_token',
+      //access_token: 'test_token',
       user_id: '9',
       user_name: '33@33.com'
     });
@@ -78,7 +78,7 @@ export class ModalComponent implements OnInit {
 
   setUser(data) {
     this.personService.getUserInfo().subscribe(res => {
-    res.success ? this.loginSuccess(res.data) : this.showTip(res.msg);
+      this.loginSuccess(res.data),err => {this.showTip(err)}
     })
   }
 

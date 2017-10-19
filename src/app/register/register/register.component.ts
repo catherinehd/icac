@@ -13,14 +13,14 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  register: Register =new Register('','','','','','','','','','','','');
+  register: Register =new Register('','','','','','','','','','','','','','','');
   msg: string;
   timer: any;
   isCounting: boolean;
   count: number;
   isOpenEyesShow1 = true;
   isOpenEyesShow2 = true;
-  ceebcode: boolean;
+  hasceebcode: boolean;
   validatorMsg = {
     work: {
       required: "请填写workfor",
@@ -65,7 +65,16 @@ export class RegisterComponent implements OnInit {
     ceebcode: {
       required: "请填写workfor",
       pattern: '请填写6位code',
-    }
+    },
+    rename: {
+      required: "请填写Reference Name",
+    },
+    reins: {
+      required: "请填写Reference Instituition",
+    },
+    remail: {
+      required: "请填写Reference Email",
+    },
   }
 
   constructor(private navigateService: NavigateService,
@@ -76,7 +85,7 @@ export class RegisterComponent implements OnInit {
               private formBuilder: FormBuilder,) {
     this.msg = '';
     this.isCounting = false;
-    this.ceebcode = false;
+    this.hasceebcode = true;
   }
 
   ngOnInit() {
@@ -134,7 +143,17 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.maxLength(6),
         Validators.pattern(/^\d{6}$/)
-      ]]
+      ]],
+      'rename': [this.register.rename, [
+        Validators.required,
+      ]],
+      'reins': [this.register.rename, [
+        Validators.required,
+      ]],
+      'remail': [this.register.rename, [
+        Validators.required,
+        Validators.pattern(/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)
+      ]],
     });
   }
 
@@ -158,7 +177,7 @@ export class RegisterComponent implements OnInit {
     //this.testValid();
     //if (!this.registerForm.valid) return;
     this.msg = '';
-    this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,0,1,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,this.registerForm.value.ceebcode,'1','1','1','1').subscribe(res => {
+    this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,this.registerForm.value.ceebcode,'1','1','1','1').subscribe(res => {
       //res.success ? this.loginSuccess(res.data) : this.showTip(res.msg);
       this.setUser(res), err => {
         this.showTip(res.msg);
@@ -207,7 +226,7 @@ export class RegisterComponent implements OnInit {
   getCode() {
       //获取验证码
       this.userService.getCode(this.registerForm.value.email).subscribe(res => {
-        res.success ? this.goSuccess() : this.showTip(res.msg);
+        this.showTip(res.msg),err => {this.showTip('err')};
       })
       //this.goSuccess();
   }
@@ -230,7 +249,7 @@ export class RegisterComponent implements OnInit {
 
   testcode() {
     this.userService.testCode(this.registerForm.value.email,this.registerForm.value.code).subscribe(res => {
-      res.success ? this.showTip('ok') : this.showTip(res.err);
+      this.showTip(res.msg),err => {this.showTip('err')};
     })
   }
 
@@ -249,5 +268,8 @@ class Register {
               public preferredname: string,
               public school: string,
               public jobtitle: string,
-              public ceebcode: string) {}
+              public ceebcode: string,
+              public rename: string,
+              public reins: string,
+              public reemail: string,) {}
 }

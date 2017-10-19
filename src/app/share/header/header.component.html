@@ -7,7 +7,7 @@
     <div class="out-box" *ngIf="isLogin">
       <img src="../../../assets/img/user.png" />
       <div class="btn-group">
-        <button (click)="go('./person')" >yong rao</button>
+        <button (click)="go('./person')" >{{user.userName}}</button>
         <button (click)="signout()">Sign out</button>
       </div>
     </div>

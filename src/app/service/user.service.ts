@@ -20,14 +20,13 @@ export class UserService {
   }
 
   // 注册
-  register(userName, password, userRole, state, prefix, userFn, userLn, userPn, userSchool, userJob, userAg, userRn, userRi, userRe, userCode) {
+  register(userName, password, userRole, prefix, userFn, userLn, userPn, userSchool, userJob, userAg, userRn, userRi, userRe, userCode) {
     return this.httpclientService.postMethod({
       url: '/web/user/doRegister',
       data: {
-        userName: '1@1.com',
+        userName: 'test@1.com',
         password: '111111',
         userRole: 0,
-        state: 1,
 
         "userInfo.prefix": '11',
         "userInfo.userFn": '11',
@@ -64,6 +63,13 @@ export class UserService {
     return this.httpclientService.getMethod({
       url: '/web/user/checkValid/'+ userName + '/' + code,
     });
+  }
+
+  //修改密码
+  modifyPwd() {
+    return this.httpclientService.postMethod({
+      url: '/web/user/updatePassword',
+    })
   }
 
   // 忘记密码
