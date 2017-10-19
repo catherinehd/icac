@@ -11,7 +11,7 @@ export class UserService {
   //登录
   login(email, loginPwd) {
     return this.httpclientService.getMethod({
-      url: 'web/user/doLogin',
+      url: '/web/user/doLogin',
       data: {
         userName: email,
         password: loginPwd
@@ -20,40 +20,49 @@ export class UserService {
   }
 
   // 注册
-  register(workfor,email, msgCode, loginPwd, prefix, firstName, lastName, preferredName, school, jobTitle, ceedCode ) {
-    return this.httpclientService.getMethod({
-      url: 'web/user/doRegister',
+  register(userName, password, userRole, state, prefix, userFn, userLn, userPn, userSchool, userJob, userAg, userRn, userRi, userRe, userCode) {
+    return this.httpclientService.postMethod({
+      url: '/web/user/doRegister',
       data: {
-        workfor: workfor,
-        email: email,
-        nick_name: email,
-        msg_code: msgCode,
-        login_pwd: loginPwd,
-        prefix: prefix,
-        first_name: firstName,
-        last_name: lastName,
-        preferred_name: preferredName,
-        school: school,
-        job_title: jobTitle,
-        ceed_code: ceedCode,
+        userName: '1@1.com',
+        password: '111111',
+        userRole: 0,
+        state: 1,
 
-        userName: email,
-        password: loginPwd,
-        userRole: workfor,
-        userInfo: {
-          prefix: prefix,
-          userFn: firstName,
-          userLn: lastName,
-          userPn: preferredName,
-          userSchool: school,
-          userJob: jobTitle,
-          userAg: '',
-          userRn: '',
-          userRi: '',
-          userRe: '',
-          userCode: ceedCode
-        }
+        "userInfo.prefix": '11',
+        "userInfo.userFn": '11',
+        "userInfo.userLn": '11',
+        "userInfo.userPn": '11',
+        "userInfo.userSchool": '11',
+        "userInfo.userJob": '11',
+        "userInfo.userAg": '11',
+        "userInfo.userRn": '11',
+        "userInfo.userRi": '11',
+        "userInfo.userRe": '11',
+        "userInfo.userCode": '11',
+
       }
+    });
+  }
+
+  //检查邮箱
+  testEmail(email, type) {
+    return this.httpclientService.getMethod({
+      url: '/web/user/check/'+ email +'/' + type,
+    });
+  }
+
+  //注册 获取验证码
+  getCode(userName) {
+    return this.httpclientService.getMethod({
+      url: '/web/user/valid/'+userName,
+    });
+  }
+
+  //注册 验证验证码
+  testCode(userName,code) {
+    return this.httpclientService.getMethod({
+      url: '/web/user/checkValid/'+ userName + '/' + code,
     });
   }
 
@@ -67,25 +76,17 @@ export class UserService {
     });
   }
 
-  // 邮箱获取验证码
-  getMsgCode(email,type) {
+  // 忘记密码 邮箱获取验证码
+  getMsgCode(userName) {
     return this.httpclientService.getMethod({
-      url: '/web/user/check/',
-      data: {
-        email: email,
-        type: 1,
-      }
+      url: '/web/user/validReset/'+ userName,
     });
   }
 
-  //验证验证码是否真确
-  testMsgCode(email,code) {
+  //忘记密码 验证验证码是否正确
+  testMsgCode(userName,code) {
     return this.httpclientService.getMethod({
-      url: '/web/user/check/',
-      data: {
-        email: email,
-        code: code,
-      }
+      url: '/web/user/checkvalidReset/'+ userName + '/' + code,
     });
   }
 

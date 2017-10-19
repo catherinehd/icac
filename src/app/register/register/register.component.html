@@ -1,7 +1,7 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
 
-<section class="register-sec">
+<section class="register-sec wrap-box">
   <div class="register-box">
     <div class="title">
       ChinaICAC Member registration
@@ -27,7 +27,7 @@
           <span>*</span>Email
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="email" type="email">
+          <input placeholder="Please enter" formControlName="email" type="email" (keyup)="testemail()">
           <div class="wrong" *ngIf="msg">
             <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
             <span>{{msg}}</span>
@@ -39,7 +39,7 @@
           <span>*</span>Verification Code
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="code" type="text">
+          <input placeholder="Please enter" formControlName="code" type="text" (keyup)="testcode()">
           <button class="obtain" [disabled]="!registerForm.value.email" (click)="getCode()"><span *ngIf="!isCounting">Obtain</span><span *ngIf="isCounting">{{count}}</span></button>
         </span>
       </div>
@@ -163,7 +163,7 @@
         </label>
       </div>
       <div class="submit">
-        <button type="button" [disabled]="!registerForm.value.work || !registerForm.value.email || !registerForm.value.code || !registerForm.value.pwd1 || !registerForm.value.pwd2 || !registerForm.value.prefix || !registerForm.value.firstname || !registerForm.value.lastname || !registerForm.value.school || !registerForm.value.jobtitle || !registerForm.value.ceebcode" (click)="onSubmit()">
+        <button type="button"  (click)="onSubmit()">
           Submit
         </button>
       </div>

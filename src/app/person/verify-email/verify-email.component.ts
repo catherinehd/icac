@@ -78,17 +78,19 @@ export class VerifyEmailComponent implements OnInit {
     if(this.testemail()){
       this.showTip('')
       //获取验证码
-      //this.userService.getMsgCode(this.emailForm.value.email).subscribe(res => {
-      //res.success ? this.getCodeSuccess() : this.showTip(res.msg);
-      //})
-      this.getCodeSuccess();
+      this.userService.getMsgCode(this.emailForm.value.email).subscribe(res => {
+        this.getCodeSuccess(res), err => {
+          this.showTip(err);
+        }
+      })
+      //this.getCodeSuccess();
     } else {
       this.showTip('请输入正确邮箱地址')
     }
   }
 
-  getCodeSuccess() {
-    this.msg = '';
+  getCodeSuccess(res) {
+    this.msg = res.msg;
     this.counting();
   }
 

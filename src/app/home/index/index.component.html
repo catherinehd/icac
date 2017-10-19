@@ -2,9 +2,9 @@
 <app-navbar></app-navbar>
 
 <main>
-  <div class="top-img">
-  </div>
-  <section>
+  <section class="wrap-box">
+    <div class="top-img">
+    </div>
     <div class="overview">
       <img class="overview-img" src="../../../assets/img/overview.png" />
       <div class="detail-box">
@@ -19,7 +19,7 @@
           <p>
             ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.
           </p>
-          <button>
+          <button (click)="go('./about/overview')">
             View details
           </button>
         </div>
@@ -48,7 +48,7 @@
               <div class="expression">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
               </div>
-              <button>
+              <button (click)="go('./news/newsroom')">
                 details
               </button>
             </li>
@@ -62,7 +62,7 @@
               <div class="expression">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
               </div>
-              <button>
+              <button (click)="go('./news/newsroom')">
                 details
               </button>
             </li>
@@ -76,7 +76,7 @@
               <div class="expression">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
               </div>
-              <button>
+              <button (click)="go('./news/newsroom')">
                 details
               </button>
             </li>

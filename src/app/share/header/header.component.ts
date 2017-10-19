@@ -23,7 +23,8 @@ export class HeaderComponent implements OnInit {
 
     this.isLogin = this.userstoreService.isLogin();
     if (this.isLogin ) {
-      //this.userstoreService.getUser().subscribe(res => this.user = res);
+      this.userstoreService.getUser().subscribe(res => this.user = res);
+      console.log(this.user);
     }
   }
 

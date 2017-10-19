@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BreadcrumbComponent implements OnInit {
 
+  path:string[] = [];
+
   constructor() { }
 
   ngOnInit() {
-    console.log(location)
+    this.path = location.pathname.split('/').slice(1);
   }
 
 }

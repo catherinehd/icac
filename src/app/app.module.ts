@@ -9,6 +9,7 @@ import { PersonService } from './service/person.service'
 import { EventsService } from './service/events.service';
 import { ProDevService } from './service/pro-dev.service';
 import { HomeService } from './service/center.service';
+import { NewsService } from './service/news.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
@@ -50,7 +51,7 @@ import { VerifyEmailComponent } from './person/verify-email/verify-email.compone
   declarations: [
     AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent, EventsWorkshopComponent, JobComponent, SeniorSchoolComponent, TransferComponent, RankingComponent, PublicationComponent, ResearchComponent, ProDetailComponent, DetailWorkshopComponent, SeniorSchooldetailComponent, ResetPwdComponent, VerifyEmailComponent,
   ],
-  providers: [ HttpClientService, UserStoreService, PersonService, EventsService,ProDevService, HomeService, ],
+  providers: [ HttpClientService, UserStoreService, PersonService, EventsService,ProDevService, HomeService, NewsService, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

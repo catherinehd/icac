@@ -2,7 +2,7 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
 
-<section class="schoolDetail-sec">
+<section class="schoolDetail-sec wrap-box">
   <app-breadcrumb></app-breadcrumb>
   <div class="main">
     <div class="top-bg-img">
@@ -35,7 +35,7 @@
         </ul>
       </div>
       <div class="article" *ngIf="showOverview">
-        {{school.middleImage}}
+        {{school.middleTxt}}
       </div>
 
       <div class="article guidance" *ngIf="showGuideance">
@@ -44,63 +44,32 @@
         </div>
         <div class="info-container">
           <ul>
-            <li>
+            <li *ngFor="let list of school.middleGuides">
               <div class="info">
                 <img src="../../../assets/img/user.png">
                 <div>
                   <p>
                     Name:
-                    <span>XXX</span>
+                    <span>{{list.middleGuideName}}</span>
                   </p>
                   <div>
                     <div>
                       Job Title:
-                      <span>XXXXXXXXX</span>
+                      <span>{{list.middleGuideJob}}</span>
                     </div>
                     <div>
                       Tel:
-                      <span>XXXXXXXX</span>
+                      <span>{{list.middleGuideNum}}</span>
                     </div>
                   </div>
                   <div>
                     <div>
                       Mobile:
-                      <span>XXXXXXXXX</span>
+                      <span>{{list.middleGuidePhone}}</span>
                     </div>
                     <div>
                       Email:
-                      <span>XXXXXXXX@XXX.com</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="info">
-                <img src="../../../assets/img/user.png">
-                <div>
-                  <p>
-                    Name:
-                    <span>XXX</span>
-                  </p>
-                  <div>
-                    <div>
-                      Job Title:
-                      <span>XXXXXXXXX</span>
-                    </div>
-                    <div>
-                      Tel:
-                      <span>XXXXXXXX</span>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      Mobile:
-                      <span>XXXXXXXXX</span>
-                    </div>
-                    <div>
-                      Email:
-                      <span>XXXXXXXX@XXX.com</span>
+                      <span>{{list.middleGuideMail}}</span>
                     </div>
                   </div>
                 </div>

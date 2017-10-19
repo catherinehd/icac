@@ -18,7 +18,7 @@ export class HttpClientService {
   refreshHeaders(token): void {
     this.headers = new HttpHeaders({
       //'Authorization': 'Bearer ' + token,
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded',
     });
   }
 

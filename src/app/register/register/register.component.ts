@@ -3,6 +3,7 @@ import { NavigateService } from '../../service/navigate.service';
 import { UserService } from '../../service/user.service';
 import { HttpClientService } from '../../service/http-client.service';
 import { UserStoreService } from '../../service/user-store.service';
+import { PersonService } from '../../service/person.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
@@ -71,6 +72,7 @@ export class RegisterComponent implements OnInit {
               private userService: UserService,
               private httpClientService: HttpClientService,
               private userStoreService: UserStoreService,
+              private personService: PersonService,
               private formBuilder: FormBuilder,) {
     this.msg = '';
     this.isCounting = false;
@@ -152,19 +154,22 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode) return;
-    this.testValid();
-    if (!this.registerForm.valid) return;
+   // if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode) return;
+    //this.testValid();
+    //if (!this.registerForm.valid) return;
     this.msg = '';
-    //this.userService.register(this.registerForm.value.work,this.registerForm.value.email,this.registerForm.value.code,this.registerForm.value.pwd1,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,this.registerForm.value.ceebcode).subscribe(res => {
+    this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,0,1,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,this.registerForm.value.ceebcode,'1','1','1','1').subscribe(res => {
       //res.success ? this.loginSuccess(res.data) : this.showTip(res.msg);
-    //})
-    this.loginSuccess({
-      access_token: 'test_token',
-      id: '9',
-      name: 'testname',
-      email: '33@33.com'
-    });
+      this.setUser(res), err => {
+        this.showTip(res.msg);
+      }
+    })
+  }
+
+  setUser(data) {
+    this.personService.getUserInfo().subscribe(res => {
+      this.loginSuccess(res),this.showTip(res.msg);
+    })
   }
 
   onSubmit2() {
@@ -188,22 +193,23 @@ export class RegisterComponent implements OnInit {
 
   testemail() {
     const re = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-    const email = this.registerForm.value.email;
-    return re.test(email);
+    const email = re.test(this.registerForm.value.email);
+    if(email) {
+      this.userService.testEmail(this.registerForm.value.email,1).subscribe(res => {
+        this.showTip(res.msg);
+      })
+    } else {
+      this.showTip('请输入正确邮箱地址');
+      return false;
+    }
   }
 
   getCode() {
-    this.testemail();
-    if(this.testemail()){
-      this.showTip('')
       //获取验证码
-      //this.userService.getMsgCode(this.registerForm.value.email).subscribe(res => {
-        //res.success ? this.goSuccess() : this.showTip(res.msg);
-      //})
-      this.goSuccess();
-    } else {
-      this.showTip('请输入正确邮箱地址')
-    }
+      this.userService.getCode(this.registerForm.value.email).subscribe(res => {
+        res.success ? this.goSuccess() : this.showTip(res.msg);
+      })
+      //this.goSuccess();
   }
 
   goSuccess() {
@@ -220,6 +226,12 @@ export class RegisterComponent implements OnInit {
         this.isCounting = false;
       }
     }, 1000);
+  }
+
+  testcode() {
+    this.userService.testCode(this.registerForm.value.email,this.registerForm.value.code).subscribe(res => {
+      res.success ? this.showTip('ok') : this.showTip(res.err);
+    })
   }
 
 }
