@@ -9,30 +9,34 @@
         <div class="title">
           Advisor
         </div>
-        <div class="advisor-list">
-          <div>
-            <div>
-              <img src="../../../assets/img/committee.png" />
+        <div class="detail">
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/advisor.png" />
             </div>
-            <div class="expression">
-              <div class="name">
-                <span class="englist">Brantley Turner</span>
-                <span>龙梅</span>
-              </div>
-              <div class="school">
-                <p>American Principal </p>
-                <p>Shanghai Qibao Dwight High School</p>
-              </div>
-              <div class="exp">
-                <p>
-                  <span>Professional Experience：</span>
-                  In 2009, Brantley joined the Dwight School international group of schools as Director of Programs - China. In 2014, Qibao High School and Dwight School New York opened IB World School Shanghai Qibao Dwight High School.
-                  Prior to joining Dwight School, Brantley ...
-                </p>
-                <button>more</button>
-              </div>
+            <div class="name">
+              <span class="englist">Hamilton Gregg</span>
+            </div>
+            <div class="school">
+              <p class="school-tit">Education consultant</p>
+              <p>College Advisor Harrow Beijing and Independent Educational Consultant – SangLearning, HGIEC</p>
+            </div>
+            <div class="exp">
+              <p *ngIf="!showAll1">
+                <span>Professional Experience：</span>
+                I have been a college counselor in a school setting for over 23 years. In addition, I have been an independent consultant for the last 8 years. I am a member of International ACAC, NACAC, IECA. CIS. I am also a Certifie...
+                <button (click)="showAll1 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
+              </p>
+              <p *ngIf="showAll1">
+                <span>Professional Experience：</span>
+                I have been a college counselor in a school setting for over 23 years. In addition, I have been an independent consultant for the last 8 years. I am a member of International ACAC, NACAC, IECA. CIS. I am also a Certified Educational Planner (CEP). I
+                am a past president of International ACAC and currently sit on the NACAC International Initiatives Committee.
+                <button class="packup" (click)="showAll1 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button>
+              </p>
             </div>
           </div>
+
         </div>
       </div>
     </div>

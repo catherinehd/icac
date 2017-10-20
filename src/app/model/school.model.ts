@@ -16,7 +16,7 @@ export class schoolModel {
     usityinfoId: number;
     usityinfoStart: string;
     usityinfoEnd: string;
-    usityinfoScore: string;  //有多个成绩
+    usityinfoScore: string;
     usityinfoTuition: string;
     usityinfoRole: number;
   }

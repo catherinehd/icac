@@ -11,7 +11,7 @@
         <div class="wrongMsg" *ngIf="msg">{{msg}}</div>
         <div class="form" [formGroup]="loginForm">
           <div class="form-field">
-            <input placeholder="Email" type="email" formControlName="email">
+            <input placeholder="Email" type="email" formControlName="email" >
           </div>
           <div class="form-field password">
             <input placeholder="Password" [type]="!isOpenEyesShow ? 'test' : 'password'" formControlName="pwd" maxlength="15" minlength="6">

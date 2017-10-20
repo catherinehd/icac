@@ -66,31 +66,29 @@ export class ModalComponent implements OnInit {
     this.testValid();
     if(!this.loginForm.valid) return;
     this.msg = '';
-    //this.userService.login(this.loginForm.value.email,this.loginForm.value.pwd).subscribe(res => {
-      //res.success ? this.setUser(res.data) : this.showTip(res.msg);
-    //})
-    this.loginSuccess({
-      //access_token: 'test_token',
-      user_id: '9',
-      user_name: '33@33.com'
-    });
-  }
-
-  setUser(data) {
-    this.personService.getUserInfo().subscribe(res => {
-      this.loginSuccess(res.data),err => {this.showTip(err)}
+    this.userService.login(this.loginForm.value.email,this.loginForm.value.pwd).subscribe(res => {
+      res.ok ? this.loginSuccess() : this.showTip(res.msg);
     })
+   // this.loginSuccess({
+      //access_token: 'test_token',
+    //  user_id: '9',
+     // user_name: '33@33.com'
+    //});
   }
 
-  loginSuccess(user) {
-      this.userStoreService.storeUser(user);
-      this.httpClientService.refreshHeaders(user.access_token);
+  /*setUser(data) {
+    this.personService.getUserInfo().subscribe(res => {
+      res.ok ? this.loginSuccess() : this.showTip()
+      this.loginSuccess(),err => {this.showTip(err)}
+    })
+  }*/
+
+  loginSuccess() {
+      //this.userStoreService.storeUser(user);
+      //this.httpClientService.refreshHeaders(user.access_token);
       this.navigateService.clearRouteList();
-      if(location.pathname==='/home') {
-        location.reload();
-      } else {
-        this.navigateService.pushToNextRoute();
-      }
+      //location.reload();
+      this.navigateService.pushToRoute('./home');
   }
 
   showTip(msg) {
@@ -106,6 +104,13 @@ export class ModalComponent implements OnInit {
         }
       }
     }
+  }
+
+  //检查邮箱
+  checkemail() {
+    this.userService.testEmail(this.loginForm.value.email,1).subscribe(res => {
+      this.showTip(res.msg);
+    })
   }
 
   go(url) {

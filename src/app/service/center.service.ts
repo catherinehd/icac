@@ -9,8 +9,6 @@ export class HomeService {
   getrankingList(email) {
     return this.httpClientService.getMethod({
       url: 'news/getList',
-      data: {
-      }
     })
   }
 
@@ -39,13 +37,15 @@ export class HomeService {
     })
   }
 
-  search(msg,type) {
-    return this.httpClientService.getMethod({   //同时返回总条数
-      url: '/web/usity/queryUsityList',
-      data:{
-        msg: msg,
-        type: type,
-      }
+  searchUsity(page) {
+    return this.httpClientService.postMethod({   //同时返回总条数
+      url: '/web/usity/queryUsityList/'+ '/' +page,
+    })
+  }
+
+  search(page,name) {
+    return this.httpClientService.postMethod({   //同时返回总条数
+      url: '/web/usity/queryUsityList/'+ '/' +page,
     })
   }
 

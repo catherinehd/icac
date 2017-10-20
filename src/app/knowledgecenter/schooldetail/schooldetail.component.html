@@ -48,21 +48,23 @@
               <div class="requirements-title">
                 Undergraduate admission conditions
               </div>
-              <div>
-                <span>Time of school</span>
-                <span>{{school.usityinfo.usityinfoStart}}</span>
-              </div>
-              <div>
-                <span>Application deadline:</span>
-                <span>{{school.usityinfo.usityinfoEnd}}</span>
-              </div>
-              <div>
-                <span>Tuition reference:</span>
-                <span>{{school.usityinfo.usityinfoTuition}}</span>
-              </div>
-              <div>
-                <span>Examination results:</span>
-                <span>{{school.usityinfo.usityinfoScore}}</span>
+              <div *ngFor="let list of school.usityinfos">
+                <div>
+                  <span>Time of school</span>
+                  <span>{{list.usityinfoStart}}</span>
+                </div>
+                <div>
+                  <span>Application deadline:</span>
+                  <span>{{list.usityinfoEnd}}</span>
+                </div>
+                <div>
+                  <span>Tuition reference:</span>
+                  <span>{{list.usityinfoTuition}}</span>
+                </div>
+                <div>
+                  <span>Examination results:</span>
+                  <span>{{list.usityinfoScore}}</span>
+                </div>
               </div>
             </li>
           </ul>

@@ -7,7 +7,6 @@
       ChinaICAC Member registration
     </div>
 
-
     <div class="main form" [formGroup]="registerForm">
       <div class="form-field">
         <label class="name form-label">
@@ -147,34 +146,53 @@
       </div>
       <div class="form-field">
         <label class="name">
-          <span>*</span>CEEB Code
+          <span>*</span>Reference Name
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="ceebcode" type="number" maxlength="6">
-          <img class="point" src="../../../assets/icon/point.svg" />
+          <input placeholder="Please enter" formControlName="rename">
+        </span>
+      </div>
+      <div class="form-field">
+        <label class="name">
+          <span>*</span>Reference Institution
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="reins">
+        </span>
+      </div>
+      <div class="form-field">
+        <label class="name">
+          <span>*</span>Reference Email
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="remail">
         </span>
       </div>
 
 
-      <div class="no-ceeb" (click)="go('./register-nocode')">
-        没有CEEB Code？
+      <div class="no-ceeb" (click)="go('./register')">
+        已有CEEB Code？
       </div>
-
       <div class="agreement">
         <input type="checkbox" id="agreement" checked>
         <label class="agreement-title" for="agreement">
           《 user service agreement》
         </label>
       </div>
+
       <div class="submit">
-        <button type="button" [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode"   (click)="onSubmit()">
+        <button type="button" [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail"   (click)="onSubmit2()">
           Submit
         </button>
       </div>
+
       <div class="tel">
         Customer service telephone numbers 400-123-1234
       </div>
     </div>
+
+
+
 
   </div>
 </section>

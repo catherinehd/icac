@@ -13,11 +13,15 @@ export class AdvisorComponent implements OnInit {
   isshow3: boolean;
   isshow4: boolean;
 
+  showAll1: boolean;
+
   constructor(private navigateService: NavigateService) {
     this.isshow1 = false;
     this.isshow2 = false;
     this.isshow3 = true;
     this.isshow4 = false;
+
+    this.showAll1 = false;
   }
 
   ngOnInit() {

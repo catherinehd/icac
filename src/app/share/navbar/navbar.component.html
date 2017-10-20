@@ -17,8 +17,8 @@
         <span (click)="gopage('./events',3)">Events</span>
         <div class="toggle" *ngIf="showToggleId === 3 && !hideToggle">
           <ul>
-            <li (click)="gopage('./events',3,'national')">ICAC全国论坛消息</li>
-            <li (click)="gopage('./events',3,'workshop')">ICAC工作坊消息</li>
+            <li (click)="gopage('./events',3,'national')">National Conference</li>
+            <li (click)="gopage('./events',3,'workshop')">Regional Workshop</li>
           </ul>
         </div>
       </li>
@@ -26,7 +26,7 @@
         <span (click)="gopage('./professional',4)">Professional Development</span>
         <div class="toggle" *ngIf="showToggleId === 4 && !hideToggle">
           <ul>
-            <li (click)="gopage('./professional/webinar',4)">webinar在线研讨会</li>
+            <li (click)="gopage('./professional/webinar',4)">Webinars</li>
           </ul>
         </div>
       </li>
@@ -34,8 +34,8 @@
         <span (click)="gopage('./knowledgecenter',5)">Knowledge Center</span>
         <div class="toggle" *ngIf="showToggleId === 5 && !hideToggle">
           <ul>
-            <li (click)="gopage('./knowledgecenter/university',5)">大学院校库</li>
-            <li (click)="gopage('./knowledgecenter/senior-school',5)">中学学校库</li>
+            <li (click)="gopage('./knowledgecenter/university',5)">University</li>
+            <li (click)="gopage('./knowledgecenter/senior-school',5)">Hign School</li>
           </ul>
         </div>
       </li>
@@ -44,7 +44,7 @@
         <div class="toggle" *ngIf="showToggleId === 6 && !hideToggle">
           <ul>
             <li (click)="gopage('./news/newsroom',6)">Newsroom</li>
-            <li (click)="gopage('./news/publication',6)">Publication</li>
+            <li (click)="gopage('./news/publication',6)">Publications</li>
           </ul>
         </div>
       </li>

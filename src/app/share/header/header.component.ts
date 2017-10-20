@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service'
 import { UserStoreService } from '../../service/user-store.service'
+import { PersonService } from '../../service/person.service';
 import { UserModel } from '../../model/user.model';
 
 @Component({
@@ -19,13 +20,17 @@ export class HeaderComponent implements OnInit {
   }
 
   constructor(private navigateService: NavigateService,
+              private personService: PersonService,
               private userstoreService: UserStoreService) {
 
-    this.isLogin = this.userstoreService.isLogin();
-    if (this.isLogin ) {
-      this.userstoreService.getUser().subscribe(res => this.user = res);
-      console.log(this.user);
-    }
+    //this.isLogin = this.userstoreService.isLogin();
+    //if (this.isLogin ) {
+      //this.userstoreService.getUser().subscribe(res => this.user = res);
+      //console.log(this.user);
+    //}
+    this.personService.getUserInfo().subscribe(res => {
+      console.log(res);
+    })
   }
 
   ngOnInit() {

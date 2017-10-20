@@ -19,6 +19,7 @@ export class ModifyPasswordComponent implements OnInit {
   msg0: string;
   msg1: string;
   msg2: string;
+  showSuccess: boolean;
   modifyPwdForm: FormGroup;
   pwd:PwdForm = new PwdForm('','','');
   validatorMsg = {
@@ -55,6 +56,7 @@ export class ModifyPasswordComponent implements OnInit {
     this.msg0 = '';
     this.msg1 = '';
     this.msg2 = '';
+    this.showSuccess = false;
   }
 
   ngOnInit() {
@@ -89,32 +91,58 @@ export class ModifyPasswordComponent implements OnInit {
 
   onSubmit() {
     console.log('reset');
-    this.testValid();
-    if(!this.modifyPwdForm.valid) return;
-    this.msg0 = '';
-    this.msg1 = '';
-    this.msg2 = '';
-    //this.userService.modifyPwd().subscribe(res => {
-    //res.success ? this.modifySuccess(res.data) : this.showTip(res.msg);
-    //})
-    this.modifySuccess();
+    this.testvalid();
+    if(this.msg2) {return}
+    else {
+      this.msg0 = '';
+      this.msg1 = '';
+      this.msg2 = '';
+     // this.userService.modifyPwd(this.modifyPwdForm.value.pwd0,this.modifyPwdForm.value.pwd1).subscribe(res => {
+       // this.modifySuccess(), err => {
+        //  this.showTip(err);
+       // }
+      //})
+      //this.modifySuccess();
+    }
   }
 
   modifySuccess() {
-    this.go('./home');
+    this.showSuccess = true;
+    //setTimeout(this.navigateService.pushToRoute('./home'),2000)
   }
 
-  testValid(){
-    for (const field in this.pwd) {
-      const control = this.modifyPwdForm.get(field);
-      if(control && control.dirty && !control.valid) {
-        for (const key in control.errors) {
-          this.showTip(this.validatorMsg[field][key]);
-        }
+  testPw0(data) {
+    const patt = new RegExp(/^[0-9a-zA-Z]{6,15}$/);
+    if(patt.test(data)) {
+      this.msg0 = '';
+    } else {
+      this.msg0 = '密码由6-15英文或数字组成';
+    }
+  }
+
+  testPw1(data) {
+    const patt = new RegExp(/^[0-9a-zA-Z]{6,15}$/);
+    if(patt.test(data)) {
+      this.msg1 = '';
+    } else {
+        this.msg1 = '密码由6-15英文或数字组成';
       }
-    };
+  }
+
+  testPw2(data) {
+    const patt = new RegExp(/^[0-9a-zA-Z]{6,15}$/);
+    if(patt.test(data)) {
+        this.msg2 = '';
+    } else {
+      this.msg2 = '密码由6-15英文或数字组成';
+    }
+  }
+
+  testvalid() {
     if(this.modifyPwdForm.value.pwd1 !== this.modifyPwdForm.value.pwd2) {
-      this.showTip('两次密码输入不一致');
+      this.msg2 = '两次密码输入不一致';
+    } else {
+      this.msg2 = '';
     }
   }
 

@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private navigateService: NavigateService) {
     const pathArray = location.pathname.split('/');
-    console.log(pathArray[1]);
+    //console.log(pathArray[1]);
 
     if(pathArray[1] === 'home') {
       this.currentId = 1;

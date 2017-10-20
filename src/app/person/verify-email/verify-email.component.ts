@@ -113,13 +113,13 @@ export class VerifyEmailComponent implements OnInit {
     this.testValid();
     if(!this.emailForm.valid) return;
     this.msg = '';
-    //this.userService.testMsgCode(this.emailForm.value.email,this.emailForm.value.code).subscribe(res => {
-    //res.success ? this.testCodeSuccess(res.data) : this.showTip(res.msg);
-    //})
-    this.testCodeSuccess('1');
+    this.userService.testMsgCode(this.emailForm.value.email,this.emailForm.value.code).subscribe(res => {
+    res.success ? this.testCodeSuccess() : this.showTip(res.msg);
+    })
+    this.testCodeSuccess();
   }
 
-  testCodeSuccess(msg) {
+  testCodeSuccess() {
     this.go('./person/reset-pwd');
   }
 

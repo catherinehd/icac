@@ -32,6 +32,7 @@ import { ResearchComponent } from './news/research/research.component';
 import { SeniorSchooldetailComponent } from './knowledgecenter/senior-schooldetail/senior-schooldetail.component';
 import { ResetPwdComponent } from './person/reset-pwd/reset-pwd.component';
 import { VerifyEmailComponent } from './person/verify-email/verify-email.component';
+import { RegisterNocodeComponent } from './register/register-nocode/register-nocode.component';
 
 
 const appRouters: Routes = [
@@ -73,6 +74,7 @@ const appRouters: Routes = [
 
   { path: 'membership', component: MembershipComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'register-nocode', component: RegisterNocodeComponent },
   { path: 'person', component: PersonComponent },
 
       { path: 'person/verify-email', component: VerifyEmailComponent },

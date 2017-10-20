@@ -42,6 +42,7 @@ import { DetailWorkshopComponent } from './events/detail-workshop/detail-worksho
 import { SeniorSchooldetailComponent } from './knowledgecenter/senior-schooldetail/senior-schooldetail.component';
 import { ResetPwdComponent } from './person/reset-pwd/reset-pwd.component';
 import { VerifyEmailComponent } from './person/verify-email/verify-email.component';
+import { RegisterNocodeComponent } from './register/register-nocode/register-nocode.component';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { VerifyEmailComponent } from './person/verify-email/verify-email.compone
     BrowserModule,FormsModule, ReactiveFormsModule, HttpClientModule, HomeModule, AppRoutingModule, ShareModule, AboutModule,
   ],
   declarations: [
-    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent, EventsWorkshopComponent, JobComponent, SeniorSchoolComponent, TransferComponent, RankingComponent, PublicationComponent, ResearchComponent, ProDetailComponent, DetailWorkshopComponent, SeniorSchooldetailComponent, ResetPwdComponent, VerifyEmailComponent,
+    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent, EventsWorkshopComponent, JobComponent, SeniorSchoolComponent, TransferComponent, RankingComponent, PublicationComponent, ResearchComponent, ProDetailComponent, DetailWorkshopComponent, SeniorSchooldetailComponent, ResetPwdComponent, VerifyEmailComponent, RegisterNocodeComponent,
   ],
   providers: [ HttpClientService, UserStoreService, PersonService, EventsService,ProDevService, HomeService, NewsService, ],
   bootstrap: [AppComponent]

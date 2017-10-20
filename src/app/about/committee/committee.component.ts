@@ -13,6 +13,11 @@ export class CommitteeComponent implements OnInit {
   isshow3: boolean;
   isshow4: boolean;
 
+  showAll1: boolean;
+  showAll2: boolean;
+  showAll3: boolean;
+  showAll4: boolean;
+
   constructor(private navigateService: NavigateService) {
 
     this.isshow1 = false;
@@ -20,6 +25,10 @@ export class CommitteeComponent implements OnInit {
     this.isshow3 = false;
     this.isshow4 = false;
 
+    this.showAll1 = false;
+    this.showAll2 = false;
+    this.showAll3 = false;
+    this.showAll4 = false;
   }
 
   ngOnInit() {

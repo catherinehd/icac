@@ -40,10 +40,10 @@ export class SchoolComponent implements OnInit {
   }
 
   showList(list) {
-    console.log(typeof(list.total));   //search的时候返回了总条数,设置相应的pagecount.
+    //console.log(typeof(list.total));   //search的时候返回了总条数,设置相应的pagecount.
     this.showLists = list.rows;
     this.page.pageCount = list.total;
-    console.log(this.page.pageCount);
+    //console.log(this.page.pageCount);
     if(list.rows.length > 0) {
       this.isempty = false;
     } else {
@@ -79,7 +79,7 @@ export class SchoolComponent implements OnInit {
   searchUni() {
     console.log('search school')
     //获取搜索学校列表到list,如果为空,isempty=true.若不为空,isempty=false.
-    this.centerService.search('1',1).subscribe( res => {
+    this.centerService.searchUsity('1').subscribe( res => {
       this.showList(res), err => {
         if (err && err.status === 401) this.navigateService.pushToRoute('/home');
       }

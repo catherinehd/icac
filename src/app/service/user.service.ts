@@ -24,21 +24,21 @@ export class UserService {
     return this.httpclientService.postMethod({
       url: '/web/user/doRegister',
       data: {
-        userName: 'test@1.com',
-        password: '111111',
-        userRole: 0,
+        userName: userName,
+        password: password,
+        userRole: userRole,
 
-        "userInfo.prefix": '11',
-        "userInfo.userFn": '11',
-        "userInfo.userLn": '11',
-        "userInfo.userPn": '11',
-        "userInfo.userSchool": '11',
-        "userInfo.userJob": '11',
-        "userInfo.userAg": '11',
-        "userInfo.userRn": '11',
-        "userInfo.userRi": '11',
-        "userInfo.userRe": '11',
-        "userInfo.userCode": '11',
+        "userInfo.prefix": prefix,
+        "userInfo.userFn": userFn,
+        "userInfo.userLn": userLn,
+        "userInfo.userPn": userPn,
+        "userInfo.userSchool": userSchool,
+        "userInfo.userJob": userJob,
+        "userInfo.userAg": userAg,
+        "userInfo.userRn": userRn,
+        "userInfo.userRi": userRi,
+        "userInfo.userRe": userRe,
+        "userInfo.userCode": userCode,
 
       }
     });
@@ -66,9 +66,13 @@ export class UserService {
   }
 
   //修改密码
-  modifyPwd() {
+  modifyPwd(op, np) {
     return this.httpclientService.postMethod({
       url: '/web/user/updatePassword',
+      data: {
+        op:op,
+        np:np,
+      }
     })
   }
 

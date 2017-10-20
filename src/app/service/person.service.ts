@@ -9,9 +9,6 @@ export class PersonService {
   getUserInfo() {
     return this.httpclientService.getMethod({
       url: '/web/user/queryUserInfoById',
-      data: {
-
-      }
     })
   }
 
