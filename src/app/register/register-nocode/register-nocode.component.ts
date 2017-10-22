@@ -12,9 +12,8 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
   styleUrls: ['./register-nocode.component.styl','../register/register.component.styl']
 })
 export class RegisterNocodeComponent implements OnInit {
-
   registerForm: FormGroup;
-  register: Register =new Register('','','','','','','','','','','','','','','');
+  register: Register =new Register('','','','','','','','','','','','','','',);
   msg: string;
   timer: any;
   isCounting: boolean;
@@ -22,61 +21,20 @@ export class RegisterNocodeComponent implements OnInit {
   isOpenEyesShow1 = true;
   isOpenEyesShow2 = true;
   hasceebcode: boolean;
-  validatorMsg = {
-    work: {
-      required: "请填写workfor",
-    },
-    email: {
-      required: '请填写email',
-      pattern: '请填写有效的email'
-    },
-    code: {
-      required: "请填写workfor",
-    },
-    pwd1: {
-      required: '请填写密码',
-      pattern: '密码由6-15英文或数字组成',
-      minlength: '密码格式为6-15位',
-      maxlength: '密码格式为6-15位'
-    },
-    pwd2: {
-      required: '请填写密码',
-      pattern: '密码由6-15英文或数字组成',
-      minlength: '密码格式为6-15位',
-      maxlength: '密码格式为6-15位'
-    },
-    prefix: {
-      required: "请选择",
-    },
-    firstname: {
-      required: "请填写firstname",
-    },
-    lastname: {
-      required: "请填写lastname",
-    },
-    preferredname: {
-      required: "请填写preferredname",
-    },
-    school: {
-      required: "请填写school",
-    },
-    jobtitle: {
-      required: "请填写jobtitle",
-    },
-    ceebcode: {
-      required: "请填写workfor",
-      pattern: '请填写6位code',
-    },
-    rename: {
-      required: "请填写Reference Name",
-    },
-    reins: {
-      required: "请填写Reference Instituition",
-    },
-    remail: {
-      required: "请填写Reference Email",
-    },
-  }
+
+  errWork: string;
+  errEmail: string;
+  errCode: string;
+  errPwd1: string;
+  errPwd2: string;
+  errPrefix: string;
+  fname: string;
+  lname: string;
+  errSchool: string;
+  errJob: string;
+  errname: string;
+  errins: string;
+  errremail: string;
 
   constructor(private navigateService: NavigateService,
               private userService: UserService,
@@ -140,105 +98,53 @@ export class RegisterNocodeComponent implements OnInit {
       'jobtitle': [this.register.jobtitle, [
         Validators.required,
       ]],
-      'ceebcode': [this.register.ceebcode, [
-        Validators.required,
-        Validators.maxLength(6),
-        Validators.pattern(/^\d{6}$/)
-      ]],
       'rename': [this.register.rename, [
         Validators.required,
       ]],
-      'reins': [this.register.rename, [
+      'reins': [this.register.reins, [
         Validators.required,
       ]],
-      'remail': [this.register.rename, [
+      'remail': [this.register.remail, [
         Validators.required,
-        Validators.pattern(/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)
       ]],
     });
   }
 
-  testValid() {
-    for (const field in this.register) {
-      const control = this.registerForm.get(field);
-      if (control && control.dirty && !control.valid) {
-        for (const key in control.errors) {
-          this.showTip(this.validatorMsg[field][key]);
-        }
-      }
-    }
-    if(this.registerForm.value.pwd1 !== this.registerForm.value.pwd2 ) {
-      this.showTip('两次密码输入不一致');
-    }
-    return;
-  }
-
   //有code
   onSubmit() {
-    if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode) return;
-    this.testValid();
+    if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail) return;
+    //this.testValid();
     if (!this.registerForm.valid) return;
-    this.msg = '';
-    console.log('test');
-    this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,'agreement','','','',this.registerForm.value.ceebcode).subscribe(res => {
-      //res.success ? this.loginSuccess(res.data) : this.showTip(res.msg);
-      this.setUser(res), err => {
-        this.showTip(res.msg);
-      }
-    })
-  }
-
-  //没有code
-  onSubmit2() {
-    if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename|| !this.registerForm.value.reins|| !this.registerForm.value.remail) return;
-    this.testValid();
-    if (!this.registerForm.valid) return;
-    this.msg = '';
+    if(this.registerForm.value.pwd1 !== this.registerForm.value.pwd2 ) return;
+    console.log('ok');
     this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,'agreement',this.registerForm.value.rename,this.registerForm.value.reins,this.registerForm.value.remail,'').subscribe(res => {
-      //res.success ? this.loginSuccess(res.data) : this.showTip(res.msg);
-      this.setUser(res), err => {
-        this.showTip(res.msg);
-      }
+      res.ok ? this.setUser(res.data) : location.reload();//注册失败处理?
     })
   }
 
   setUser(data) {
-    this.personService.getUserInfo().subscribe(res => {
-      this.loginSuccess(res),this.showTip(res.msg);
-    })
+    this.navigateService.clearRouteList();
+    this.navigateService.pushToRoute('./home');
+    location.reload();
+
+    // this.personService.getUserInfo().subscribe(res => {
+    //  this.loginSuccess(res),this.showTip(res.msg);
+    // })
   }
 
   loginSuccess(user) {
     this.userStoreService.storeUser(user);
     this.httpClientService.refreshHeaders(user.access_token);
     this.navigateService.clearRouteList();
-    this.navigateService.pushToRoute('./home');
+    // this.navigateService.pushToRoute('./home');
     //location.reload();
-  }
-
-  showTip(msg) {
-    this.msg = msg;
-  }
-
-  testemail() {
-    const re = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-    const email = re.test(this.registerForm.value.email);
-    if(email) {
-      this.userService.testEmail(this.registerForm.value.email,1).subscribe(res => {
-        this.showTip(res.msg);
-      })
-    } else {
-      this.showTip('请输入正确邮箱地址');
-      return false;
-    }
   }
 
   getCode() {
     //获取验证码
     this.userService.getCode(this.registerForm.value.email).subscribe(res => {
-      this.showTip(res.msg),err => {this.showTip('err')};
+      res.ok ? this.goSuccess() : this.errCode = res.msg;
     })
-    //this.goSuccess();
   }
 
   goSuccess() {
@@ -257,10 +163,136 @@ export class RegisterNocodeComponent implements OnInit {
     }, 1000);
   }
 
-  testcode() {
-    this.userService.testCode(this.registerForm.value.email,this.registerForm.value.code).subscribe(res => {
-      this.showTip(res.msg),err => {this.showTip('err')};
-    })
+  showErr(str) {
+    switch(str)
+    {
+      case 'work':
+        if(this.registerForm.value.work === '') {
+          this.errWork = 'please choose you work for';
+        } else {
+          this.errWork = '';
+        }
+        break;
+      case 'email':
+        if(this.registerForm.value.email === ''){
+          this.errEmail = 'please input your email';
+        } else {
+          const re = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+          const email = re.test(this.registerForm.value.email);
+          if(email) {
+            this.userService.testEmail(this.registerForm.value.email,1).subscribe(res => {
+              res.ok ? this.errEmail ='' : this.errEmail = res.msg;
+            })
+          } else {
+            this.errEmail = 'please input correct email'
+          }
+        }
+        break;
+      case 'code':
+        if(this.registerForm.value.code === '') {
+          this.errCode = 'please input your vertification code';
+        } else {
+          this.userService.testCode(this.registerForm.value.email,this.registerForm.value.code).subscribe(res => {
+            res.ok ? this.errCode = '' : this.errCode = res.msg;
+          })
+        }
+        break;
+      case 'pwd1':
+        if(this.registerForm.value.pwd1 === '') {
+          this.errPwd1 = 'please input your password';
+        } else {
+          const re = /^[0-9a-zA-Z]{6,15}$/;
+          const pwd = re.test(this.registerForm.value.pwd1);
+          console.log(pwd);
+          if(pwd) {
+            this.errPwd1 = '';
+          } else {
+            this.errPwd1 = '密码由6-15英文或数字组成';
+          }
+        }
+        break;
+      case 'pwd2':
+        if(this.registerForm.value.pwd2 === '') {
+          this.errPwd2 = 'please repeat your password';
+        } else {
+          const re = /^[0-9a-zA-Z]+$/;
+          const pwd = re.test(this.registerForm.value.pwd2);
+          if(pwd) {
+            if(this.registerForm.value.pwd2 === this.registerForm.value.pwd1){
+              this.errPwd2 = '';
+            } else {
+              this.errPwd2 = '两次密码输入不一致';
+            }
+          } else {
+            this.errPwd2 = '密码由6-15英文或数字组成';
+          }
+        }
+        break;
+      case 'prefix':
+        if(this.registerForm.value.prefix === '') {
+          this.errPrefix = 'please choose'
+        } else {
+          this.errPrefix = '';
+        }
+        break;
+      case 'fname':
+        if(this.registerForm.value.firstname === '') {
+          this.fname = 'please input your firstname'
+        } else {
+          this.fname = '';
+        }
+        break;
+      case 'lname':
+        if(this.registerForm.value.lastname === '') {
+          this.lname = 'please input your lastname'
+        } else {
+          this.fname = '';
+        }
+        break;
+      case 'school':
+        if(this.registerForm.value.school === '') {
+          this.errSchool = 'please input your school'
+        } else {
+          this.errSchool = '';
+        }
+        break;
+      case 'job':
+        if(this.registerForm.value.jobtitle === '') {
+          this.errJob = 'please input your job title'
+        } else {
+          this.errJob = '';
+        }
+        break;
+      case 'rename':
+        if(this.registerForm.value.rename === '') {
+          this.errname = 'please input your name'
+        } else {
+          this.errname = '';
+        }
+        break;
+      case 'reins':
+        if(this.registerForm.value.reins === '') {
+          this.errins = 'please input your ins'
+        } else {
+          this.errins = '';
+        }
+        break;
+      case 'remail':
+        if(this.registerForm.value.remail === ''){
+          this.errremail = 'please input your email';
+        } else {
+          const re = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+          const email = re.test(this.registerForm.value.email);
+          if (email) {
+            this.errremail = '';
+          } else {
+            this.errremail = 'please input correct email'
+          }
+        }
+        break;
+      default:
+        return;
+    }
   }
 
   go(url) {
@@ -283,9 +315,8 @@ class Register {
               public preferredname: string,
               public school: string,
               public jobtitle: string,
-              public ceebcode: string,
               public rename: string,
               public reins: string,
-              public reemail: string,) {}
+              public remail: string,
+  ) {}
 }
-

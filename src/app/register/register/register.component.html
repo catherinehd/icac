@@ -14,7 +14,7 @@
           You work for
         </label>
         <span>
-          <select formControlName="work">
+          <select formControlName="work" (blur)="showErr('work')">
             <option selected value="0">
               Secondary／High School
             </option>
@@ -22,6 +22,10 @@
               Colllege or University
             </option>
           </select>
+          <div class="wrong" *ngIf="errWork">
+            <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+            <span>{{errWork}}</span>
+          </div>
         </span>
       </div>
       <div class="form-field">
@@ -29,10 +33,10 @@
           <span>*</span>Email
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="email" type="email" >
-          <div class="wrong" *ngIf="msg">
+          <input placeholder="Please enter" formControlName="email" type="email" (blur)="showErr('email')">
+          <div class="wrong" *ngIf="errEmail">
             <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
-            <span>{{msg}}</span>
+            <span>{{errEmail}}</span>
           </div>
         </span>
       </div>
@@ -41,8 +45,12 @@
           <span>*</span>Verification Code
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="code" type="text" >
+          <input placeholder="Please enter" formControlName="code" type="text" (blur)="showErr('code')">
           <button class="obtain" [disabled]="!registerForm.value.email" (click)="getCode()"><span *ngIf="!isCounting">Obtain</span><span *ngIf="isCounting">{{count}}</span></button>
+          <div class="wrong" *ngIf="errCode">
+            <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+            <span>{{errCode}}</span>
+          </div>
         </span>
       </div>
       <div class="form-field">
@@ -50,7 +58,7 @@
           <span>*</span>Password
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="pwd1" [type]="!isOpenEyesShow1 ? 'text' : 'password'">
+          <input placeholder="Please enter" formControlName="pwd1" [type]="!isOpenEyesShow1 ? 'text' : 'password'" (blur)="showErr('pwd1')" maxlength="15">
           <div class="btn-group">
             <button class="eye-btn" *ngIf="!isOpenEyesShow1" (click)="isOpenEyesShow1 = true">
               <img class="icon-open-eyes" src="../../../assets/icon/open.svg" />
@@ -59,6 +67,10 @@
               <img class="icon-close-eyes" src="../../../assets/icon/hidden.svg" />
             </button>
           </div>
+          <div class="wrong" *ngIf="errPwd1">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errPwd1}}</span>
+        </div>
         </span>
       </div>
       <div class="form-field">
@@ -66,7 +78,7 @@
           <span>*</span>Repeat password
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="pwd2" [type]="!isOpenEyesShow2 ? 'text' : 'password'">
+          <input placeholder="Please enter" formControlName="pwd2" [type]="!isOpenEyesShow2 ? 'text' : 'password'" (blur)="showErr('pwd2')" maxlength="15">
           <div class="btn-group">
             <button class="eye-btn" *ngIf="!isOpenEyesShow2" (click)="isOpenEyesShow2 = true" >
               <img class="icon-open-eyes" src="../../../assets/icon/open.svg" />
@@ -75,6 +87,10 @@
               <img class="icon-close-eyes" src="../../../assets/icon/hidden.svg" />
             </button>
           </div>
+          <div class="wrong" *ngIf="errPwd2">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errPwd2}}</span>
+        </div>
         </span>
       </div>
       <div class="form-field">
@@ -82,7 +98,7 @@
           <span>*</span>Prefix
         </label>
         <span>
-          <select formControlName="prefix">
+          <select formControlName="prefix" (blur)="showErr('prefix')">
             <option selected>
               Please select
             </option>
@@ -102,6 +118,10 @@
               Rev.
             </option>
           </select>
+          <div class="wrong" *ngIf="errPrefix">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errPrefix}}</span>
+        </div>
         </span>
       </div>
       <div class="form-field">
@@ -109,7 +129,11 @@
           <span>*</span>First Name
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="firstname">
+          <input placeholder="Please enter" formControlName="firstname" (blur)="showErr('fname')">
+          <div class="wrong" *ngIf="fname">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{fname}}</span>
+        </div>
         </span>
       </div>
       <div class="form-field">
@@ -117,7 +141,11 @@
           <span>*</span>Last Name
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="lastname">
+          <input placeholder="Please enter" formControlName="lastname" (blur)="showErr('lname')">
+          <div class="wrong" *ngIf="lname">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{lname}}</span>
+        </div>
         </span>
       </div>
       <div class="form-field">
@@ -134,7 +162,11 @@
           <span>*</span>School
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="school">
+          <input placeholder="Please enter" formControlName="school" (blur)="showErr('school')">
+          <div class="wrong" *ngIf="errSchool">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errSchool}}</span>
+          </div>
         </span>
       </div>
       <div class="form-field">
@@ -142,7 +174,11 @@
           <span>*</span>Job Title
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="jobtitle">
+          <input placeholder="Please enter" formControlName="jobtitle" (blur)="showErr('job')">
+          <div class="wrong" *ngIf="errJob">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errJob}}</span>
+          </div>
         </span>
       </div>
       <div class="form-field">
@@ -150,8 +186,12 @@
           <span>*</span>CEEB Code
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="ceebcode" type="number" maxlength="6">
+          <input placeholder="Please enter" formControlName="ceebcode" type="number" maxlength="6" (blur)="showErr('ceeb')">
           <img class="point" src="../../../assets/icon/point.svg" />
+          <div class="wrong" *ngIf="errCeeb">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errCeeb}}</span>
+          </div>
         </span>
       </div>
 
@@ -160,14 +200,14 @@
         没有CEEB Code？
       </div>
 
-      <div class="agreement">
-        <input type="checkbox" id="agreement" checked>
+      <div class="agreement form-field">
+        <input type="checkbox" id="agreement" formcontrolname="agreement" checked>
         <label class="agreement-title" for="agreement">
           《 user service agreement》
         </label>
       </div>
       <div class="submit">
-        <button type="button" [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode"   (click)="onSubmit()">
+        <button type="button"   (click)="onSubmit()">
           Submit
         </button>
       </div>

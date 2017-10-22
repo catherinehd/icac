@@ -33,6 +33,7 @@ import { SeniorSchooldetailComponent } from './knowledgecenter/senior-schooldeta
 import { ResetPwdComponent } from './person/reset-pwd/reset-pwd.component';
 import { VerifyEmailComponent } from './person/verify-email/verify-email.component';
 import { RegisterNocodeComponent } from './register/register-nocode/register-nocode.component';
+import { LoginComponent } from './login/login.component';
 
 
 const appRouters: Routes = [
@@ -79,6 +80,8 @@ const appRouters: Routes = [
 
       { path: 'person/verify-email', component: VerifyEmailComponent },
       { path: 'person/reset-pwd', component: ResetPwdComponent },
+
+  { path: 'login', component: LoginComponent },
 
   { path: '**', component: PagenotfoundComponent },
 ];

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { HomeService } from '../../service/center.service'
+import { PersonService } from '../../service/person.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 import { schoolModel } from '../../model/school.model';
+import { UserModel } from '../../model/user.model';
 
 @Component({
   selector: 'app-senior-school',
@@ -11,7 +13,7 @@ import { schoolModel } from '../../model/school.model';
   styleUrls: ['./senior-school.component.styl','../school/school.component.styl']
 })
 export class SeniorSchoolComponent implements OnInit {
-
+  user: UserModel = new UserModel();
   searchForm: FormGroup;
   search: SearchModel = new SearchModel('');
   isempty: boolean;
@@ -20,11 +22,17 @@ export class SeniorSchoolComponent implements OnInit {
 
   constructor(private navigateService: NavigateService,
               private formBuilder: FormBuilder,
+              private personService: PersonService,
               private centerService: HomeService) {
     this.isempty = false;
   }
 
   ngOnInit() {
+    this.personService.getUserInfo().subscribe(res =>{
+        res.ok ? this.user = res.data : this.navigateService.pushToRoute('./login');
+      }
+    );
+
     //获取中学学校列表list
     //默认查询第一页数据
     this.centerService.getMiddleSchoolList(1).subscribe(res => {

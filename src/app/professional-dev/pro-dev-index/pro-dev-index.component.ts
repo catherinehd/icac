@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { ProDevService } from '../../service/pro-dev.service';
+import { PersonService } from '../../service/person.service';
+import { UserModel } from '../../model/user.model';
 
 @Component({
   selector: 'app-pro-dev-index',
@@ -8,17 +10,23 @@ import { ProDevService } from '../../service/pro-dev.service';
   styleUrls: ['./pro-dev-index.component.styl']
 })
 export class ProDevIndexComponent implements OnInit {
-
+  user: UserModel = new UserModel();
   hasWebinar: boolean;
   showLists: any;
   page: any = {pageIndex: 1, pageCount: 12};  //获取当前页和总页数
 
   constructor(private navigateService: NavigateService,
+              private personService: PersonService,
               private prodevService: ProDevService) {
     this.hasWebinar = true;
   }
 
   ngOnInit() {
+    this.personService.getUserInfo().subscribe(res =>{
+        res.ok ? this.user = res.data : this.navigateService.pushToRoute('./login');
+      }
+    );
+
     //查询第一页数据列表
     this.prodevService.getProDev(1).subscribe(res => {
      this.showList(res), err => {
