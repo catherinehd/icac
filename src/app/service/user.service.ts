@@ -46,22 +46,31 @@ export class UserService {
 
   //检查邮箱
   testEmail(email, type) {
-    return this.httpclientService.getMethod({
-      url: '/web/user/check/'+ email +'/' + type,
+    return this.httpclientService.postMethod({
+      url: '/web/user/check/' + type,
+      data: {
+        param: email,
+      }
     });
   }
 
   //注册 获取验证码
   getCode(userName) {
-    return this.httpclientService.getMethod({
-      url: '/web/user/valid/'+userName,
+    return this.httpclientService.postMethod({
+      url: '/web/user/valid/',
+      data: {
+        userName: userName,
+      }
     });
   }
 
   //注册 验证验证码
   testCode(userName,code) {
-    return this.httpclientService.getMethod({
-      url: '/web/user/checkValid/'+ userName + '/' + code,
+    return this.httpclientService.postMethod({
+      url: '/web/user/checkValid/' + code,
+      data: {
+        userName: userName,
+      }
     });
   }
 
@@ -76,27 +85,34 @@ export class UserService {
     })
   }
 
-  // 忘记密码
-  updatePwd(pwd) {
-    return this.httpclientService.putMethod({
-      url: 'PZB/User/UpdatePwdMobileSecond',
+  // 忘记密码 提交新密码
+  updatePwd(userName, password) {
+    return this.httpclientService.postMethod({
+      url: '/web/user/resetPassword',
       data: {
-        pwd: pwd,
+        userName: userName,
+        password: password,
       }
     });
   }
 
   // 忘记密码 邮箱获取验证码
   getMsgCode(userName) {
-    return this.httpclientService.getMethod({
-      url: '/web/user/validReset/'+ userName,
+    return this.httpclientService.postMethod({
+      url: '/web/user/validReset/',
+      data: {
+        userName: userName,
+      }
     });
   }
 
   //忘记密码 验证验证码是否正确
   testMsgCode(userName,code) {
-    return this.httpclientService.getMethod({
-      url: '/web/user/checkvalidReset/'+ userName + '/' + code,
+    return this.httpclientService.postMethod({
+      url: '/web/user/checkvalidReset/' + code,
+      data: {
+        userName: userName,
+      }
     });
   }
 

@@ -85,7 +85,7 @@ export class SeniorSchoolComponent implements OnInit {
   searchSchool() {
     console.log('search school')
     //获取搜索学校列表到list,如果为空,isempty=true.若不为空,isempty=false.
-    this.centerService.search('1',1).subscribe( res => {
+    this.centerService.searchMiddle('1',this.searchForm.value.msg).subscribe( res => {
       this.showList(res), err => {
         if (err && err.status === 401) this.navigateService.pushToRoute('/home');
       }

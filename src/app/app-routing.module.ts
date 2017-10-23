@@ -79,7 +79,7 @@ const appRouters: Routes = [
   { path: 'person', component: PersonComponent },
 
       { path: 'person/verify-email', component: VerifyEmailComponent },
-      { path: 'person/reset-pwd', component: ResetPwdComponent },
+      { path: 'person/reset-pwd/:username', component: ResetPwdComponent },
 
   { path: 'login', component: LoginComponent },
 

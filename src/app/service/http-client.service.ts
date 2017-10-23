@@ -52,22 +52,25 @@ export class HttpClientService {
 
   getMethod(options: Options): Observable<any> {
     const headers = this.headers;
+    //options.withCredentials = true;
     const params = new HttpParams({
       fromString: this.setParams(options.data)
     });
-    const httpOptions = !options.type ? {headers, params} : this.setHttpOptions(options.type, {headers, params});
+    const httpOptions = !options.type ? {headers, params,withCredentials : true} : this.setHttpOptions(options.type, {headers, params, withCredentials : true});
     return this.httpClient.get(this.setUrl(options), httpOptions);
   }
 
   postMethod(options: Options): Observable<any> {
     const headers = this.headers;
-    const httpOptions = !options.type ? {headers} : this.setHttpOptions(options.type, {headers});
-    return this.httpClient.post(this.setUrl(options), this.setParams(options.data), httpOptions);
+    //options.withCredentials = true;
+    const httpOptions = !options.type ? {headers,withCredentials : true} : this.setHttpOptions(options.type, {headers,withCredentials : true});
+    return this.httpClient.post(this.setUrl(options), this.setParams(options.data),  httpOptions);
   }
 
   putMethod(options: Options): Observable<any> {
     const headers = this.headers;
-    const httpOptions = !options.type ? {headers} : this.setHttpOptions(options.type, {headers});
+    //options.withCredentials = true;
+    const httpOptions = !options.type ? {headers, withCredentials : true} : this.setHttpOptions(options.type, {headers, withCredentials : true});
     return this.httpClient.put(this.setUrl(options), this.setParams(options.data), httpOptions);
   }
 }
@@ -77,4 +80,5 @@ interface Options {
   url?: string;
   type?: string;
   fullUrl?: string;
+  withCredentials?: boolean;
 }

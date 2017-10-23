@@ -1,11 +1,10 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { UserService } from '../../service/user.service';
 import { PersonService } from '../../service/person.service';
 import { HttpClientService } from '../../service/http-client.service';
 import { UserStoreService } from '../../service/user-store.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-
 
 @Component({
   selector: 'app-modal',
@@ -67,28 +66,15 @@ export class ModalComponent implements OnInit {
     if(!this.loginForm.valid) return;
     this.msg = '';
     this.userService.login(this.loginForm.value.email,this.loginForm.value.pwd).subscribe(res => {
-      res.ok ? this.loginSuccess() : this.showTip(res.msg);
+      res.ok ? this.loginSuccess(res.data) : this.showTip(res.msg);
     })
-   // this.loginSuccess({
-      //access_token: 'test_token',
-    //  user_id: '9',
-     // user_name: '33@33.com'
-    //});
   }
 
-  /*setUser(data) {
-    this.personService.getUserInfo().subscribe(res => {
-      res.ok ? this.loginSuccess() : this.showTip()
-      this.loginSuccess(),err => {this.showTip(err)}
-    })
-  }*/
-
-  loginSuccess() {
-      //this.userStoreService.storeUser(user);
-      //this.httpClientService.refreshHeaders(user.access_token);
+  loginSuccess(data) {
       this.navigateService.clearRouteList();
-      //location.reload();
-      this.navigateService.pushToRoute('./home');
+      const d = new Date();
+      location.reload();
+      //this.navigateService.pushToRoute('./home');
   }
 
   showTip(msg) {

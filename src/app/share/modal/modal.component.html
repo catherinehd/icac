@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="button-group">
-            <button>No account fast</button>
+            <button (click)="go('./home')">No account fast</button>
             <button (click)="go('./register');modal.isSigninShow = false">registration</button>
             <button (click)="go('./person/verify-email');modal.isSigninShow = false">Forgot password?</button>
           </div>

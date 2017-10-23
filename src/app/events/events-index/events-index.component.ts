@@ -12,7 +12,7 @@ export class EventsIndexComponent implements OnInit {
 
   hasConference: boolean;
   showLists: any;
-  page: any = {pageIndex: 1, pageCount: 12};  //获取当前页和总页数
+  page: any = {pageIndex: 1, pageCount: 1};  //获取当前页和总页数
 
   constructor(private navigateService: NavigateService,
               private eventService: EventsService ) {

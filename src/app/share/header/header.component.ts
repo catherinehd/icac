@@ -12,6 +12,7 @@ import { UserModel } from '../../model/user.model';
 export class HeaderComponent implements OnInit {
   isLogin: boolean;
   user: UserModel;
+  withCredentials: boolean;
 
 
   modal = {
@@ -23,27 +24,28 @@ export class HeaderComponent implements OnInit {
               private personService: PersonService,
               private userstoreService: UserStoreService) {
 
-    //this.isLogin = this.userstoreService.isLogin();
-    //if (this.isLogin ) {
-      //this.userstoreService.getUser().subscribe(res => this.user = res);
-      //console.log(this.user);
-    //}
+
     this.personService.getUserInfo().subscribe(res => {
-      console.log(res);
+      res.ok ?  this.getUser(res.data) : this.isLogin = false;
+      //console.log(res);
     })
   }
 
   ngOnInit() {
   }
 
+  getUser(data) {
+    this.isLogin = true;
+    this.user =  data;
+  }
+
   signout() {
-    this.userstoreService.logout();
+    console.log('out');
+    this.userstoreService.logout().subscribe(res => {
+      console.log(res);
+    });
     this.navigateService.clearRouteList();
-    if(location.pathname==='/home') {
-      location.reload();
-    } else {
-      this.navigateService.pushToRoute('/home');
-    }
+    //location.reload();
   }
 
 

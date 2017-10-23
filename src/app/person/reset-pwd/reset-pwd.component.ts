@@ -18,6 +18,9 @@ export class ResetPwdComponent implements OnInit {
   msg: string;
   pwdForm: FormGroup;
   pwd: Pwd =new Pwd('','');
+
+  username: string;
+
   validatorMsg = {
     pwd1: {
       required: '请填写密码',
@@ -45,6 +48,7 @@ export class ResetPwdComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    this.username = location.pathname.split('/')[3];
   }
 
   buildForm() {
@@ -84,15 +88,15 @@ export class ResetPwdComponent implements OnInit {
   onSubmit() {
     this.testValid();
     if(!this.pwdForm.valid) return;
+    if(this.pwdForm.value.pwd1 !== this.pwdForm.value.pwd2) return;
     this.msg = '';
-    //this.userService.updatePwd(this.pwdForm.value.pwd1).subscribe(res => {
-      //res.success ? this.resetPwdSuccess(res.data) : this.showTip(res.msg);
-    //})
-    this.resetPwdSuccess('1');
+    this.userService.updatePwd(this.username,this.pwdForm.value.pwd1).subscribe(res => {
+      res.ok ? this.resetPwdSuccess(res.data) : this.showTip(res.msg);
+    })
   }
 
   resetPwdSuccess(msg){
-    this.go('./person');
+    this.go('./login');
 }
 
 

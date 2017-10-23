@@ -85,12 +85,12 @@ export class SchoolComponent implements OnInit {
   }
 
   searchUni() {
-    console.log('search school')
     //获取搜索学校列表到list,如果为空,isempty=true.若不为空,isempty=false.
-    this.centerService.searchUsity('1').subscribe( res => {
-      this.showList(res), err => {
-        if (err && err.status === 401) this.navigateService.pushToRoute('/home');
-      }
+    this.centerService.searchUsity('1',this.searchForm.value.msg).subscribe( res => {
+    //  this.showList(res),(err) => {
+     //   console.log(err);
+      //}
+      console.log(res);
     });
 
 

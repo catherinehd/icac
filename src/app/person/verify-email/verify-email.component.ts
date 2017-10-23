@@ -62,9 +62,9 @@ export class VerifyEmailComponent implements OnInit {
     });
   }
 
-  go(url) {
+  go(url,param) {
     this.navigateService.push();
-    this.navigateService.pushToRoute(url);
+    this.navigateService.pushToRoute(url,param);
   }
 
   testemail() {
@@ -79,18 +79,16 @@ export class VerifyEmailComponent implements OnInit {
       this.showTip('')
       //获取验证码
       this.userService.getMsgCode(this.emailForm.value.email).subscribe(res => {
-        this.getCodeSuccess(res), err => {
-          this.showTip(err);
-        }
+        //res.ok ? this.getCodeSuccess() : this.showTip(res.msg);
+        console.log(res);
       })
-      //this.getCodeSuccess();
     } else {
-      this.showTip('请输入正确邮箱地址')
+      this.showTip('请填写有效的email')
     }
   }
 
-  getCodeSuccess(res) {
-    this.msg = res.msg;
+  getCodeSuccess() {
+    this.msg = '';
     this.counting();
   }
 
@@ -114,13 +112,12 @@ export class VerifyEmailComponent implements OnInit {
     if(!this.emailForm.valid) return;
     this.msg = '';
     this.userService.testMsgCode(this.emailForm.value.email,this.emailForm.value.code).subscribe(res => {
-    res.success ? this.testCodeSuccess() : this.showTip(res.msg);
+    res.ok ? this.testCodeSuccess() : this.showTip(res.msg);
     })
-    this.testCodeSuccess();
   }
 
   testCodeSuccess() {
-    this.go('./person/reset-pwd');
+    this.go('./person/reset-pwd',this.emailForm.value.email);
   }
 
   counting() {

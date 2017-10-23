@@ -12,6 +12,7 @@ export class UserStoreService {
 
   user: UserModel = null;
   token: string;
+  ticket: string;
 
   constructor(private httpClientService: HttpClientService,
               private router: Router) {
@@ -51,11 +52,11 @@ export class UserStoreService {
     return this.token;
   }
 
-  storeUser(user: any) {
-    this.user = new UserModel(user);
-    this.token = user.access_token;
+  storeUser(data) {
+    //this.user = new UserModel(user);
+    this.token = data;
     localStorage.setItem('token', this.token);
-    localStorage.setItem('user', JSON.stringify(this.user));
+    //localStorage.setItem('user', JSON.stringify(this.user));
   }
 
   logout() {

@@ -37,15 +37,21 @@ export class HomeService {
     })
   }
 
-  searchUsity(page) {
+  searchUsity(page, schoolname) {
     return this.httpClientService.postMethod({   //同时返回总条数
-      url: '/web/usity/queryUsityList/'+ '/' +page,
+      url: '/web/usity/serchUsityByName/' + page,
+      data: {
+        usityName: schoolname,
+      }
     })
   }
 
-  search(page,name) {
+  searchMiddle(page,name) {
     return this.httpClientService.postMethod({   //同时返回总条数
-      url: '/web/usity/queryUsityList/'+ '/' +page,
+      url: '/web/middle/serchMiddleByName/'+ page,
+      data: {
+        middleName: name,
+      }
     })
   }
 

@@ -197,7 +197,6 @@ export class RegisterComponent implements OnInit {
         } else {
           const re = /^[0-9a-zA-Z]{6,15}$/;
           const pwd = re.test(this.registerForm.value.pwd1);
-          console.log(pwd);
           if(pwd) {
             this.errPwd1 = '';
           } else {
