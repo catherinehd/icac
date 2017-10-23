@@ -18,4 +18,8 @@ export class MembershipComponent implements OnInit {
   ngOnInit() {
   }
 
+  download(url){
+    window.open(url,"_blank");
+  }
+
 }
