@@ -2,12 +2,13 @@
 <app-navbar></app-navbar>
 
 <section class="news-index wrap-box">
+  <div>
   <app-breadcrumb></app-breadcrumb>
   <div class="main">
     <div class="title">
       Newsroom
     </div>
-    <div class="detail">
+    <div class="detail" *ngIf="hasConference">
       <div class="news-list">
         <div class="news-info" *ngFor="let list of showLists">
           <div class="small-title">
@@ -24,6 +25,19 @@
 
         <app-pager [currPage]="page.pageIndex" [pageCount]="page.pageCount" (showPage)="onShowPage($event)"></app-pager>
       </div>
+
+      <div *ngIf="!hasConference">
+        <img src="../../../assets/icon/nonews.svg" />
+        <p>No National Conference</p>
+        <a routerLink="/home">
+          <img src="../../../assets/icon/left.svg" alt="left" />
+          Return home page
+        </a>
+      </div>
+
     </div>
   </div>
+  </div>
 </section>
+
+<app-to-top></app-to-top>

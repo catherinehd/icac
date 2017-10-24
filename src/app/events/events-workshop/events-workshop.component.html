@@ -2,6 +2,7 @@
 <app-navbar></app-navbar>
 
 <section class="events-index wrap-box">
+  <div>
   <app-breadcrumb></app-breadcrumb>
   <div class="main">
     <div class="title">
@@ -24,7 +25,7 @@
               <span class="time">
               {{list.updateTime}}
             </span>
-            <span class="view-details" (click)="go('./events/workshop/detail-workshop/'+ list.newsId)">View details >></span>
+            <span class="view-details" (click)="go('./events/regional-workshop/detail/'+ list.newsId)">View details >></span>
             </div>
           </div>
         </div>
@@ -44,5 +45,8 @@
     </div>
   </div>
 
+  </div>
 </section>
+
+<app-to-top></app-to-top>
 

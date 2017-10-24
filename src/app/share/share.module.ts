@@ -10,14 +10,15 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ModalComponent } from './modal/modal.component';
 import { PagerComponent } from './pager/pager.component';
 import { PopComponent } from './pop/pop.component';
+import { ToTopComponent } from './to-top/to-top.component';
 
 @NgModule({
   imports: [ CommonModule, FormsModule, ReactiveFormsModule  ],
   declarations: [
-    FooterComponent, HeaderComponent, NavbarComponent, BreadcrumbComponent, PagenotfoundComponent, ModalComponent, PagerComponent, PopComponent,
+    FooterComponent, HeaderComponent, NavbarComponent, BreadcrumbComponent, PagenotfoundComponent, ModalComponent, PagerComponent, PopComponent, ToTopComponent,
   ],
   exports: [
-    FooterComponent, HeaderComponent, NavbarComponent, BreadcrumbComponent, PagenotfoundComponent, ModalComponent, PagerComponent, PopComponent,
+    FooterComponent, HeaderComponent, NavbarComponent, BreadcrumbComponent, PagenotfoundComponent, ModalComponent, PagerComponent, PopComponent, ToTopComponent,
   ]
 })
 

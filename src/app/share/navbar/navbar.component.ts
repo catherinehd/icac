@@ -20,13 +20,13 @@ export class NavbarComponent implements OnInit {
 
     if(pathArray[1] === 'home') {
       this.currentId = 1;
-    } else if(pathArray[1] === 'about') {
+    } else if(pathArray[1] === 'aboutChinaIcac') {
       this.currentId = 2;
     } else if(pathArray[1] === 'events') {
       this.currentId = 3;
-    } else if(pathArray[1] === 'professional') {
+    } else if(pathArray[1] === 'development') {
       this.currentId = 4;
-    } else if(pathArray[1] === 'knowledgecenter') {
+    } else if(pathArray[1] === 'knowledge-center') {
       this.currentId = 5;
     } else if(pathArray[1] === 'news') {
       this.currentId = 6;

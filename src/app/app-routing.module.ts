@@ -40,32 +40,32 @@ const appRouters: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'about', component: AboutIndexComponent },
 
-      { path: 'about/overview', component: AboutIndexComponent },
-      { path: 'about/committee', component: CommitteeComponent },
-      { path: 'about/advisor', component: AdvisorComponent },
-      { path: 'about/contact-us', component: ContactUsComponent },
+      { path: 'aboutChinaIcac/overview', component: AboutIndexComponent },
+      { path: 'aboutChinaIcac/committee', component: CommitteeComponent },
+      { path: 'aboutChinaIcac/advisor', component: AdvisorComponent },
+      { path: 'aboutChinaIcac/contact-us', component: ContactUsComponent },
 
   { path: 'events', component: EventsIndexComponent },
 
-      { path: 'events/national', component: EventsIndexComponent },
-      { path: 'events/workshop', component: EventsWorkshopComponent },
-      { path: 'events/national/detail/:id', component: DetailComponent },
-      { path: 'events/workshop/detail-workshop/:id', component: DetailWorkshopComponent },
+      { path: 'events/national-Conference', component: EventsIndexComponent },
+      { path: 'events/regional-workshop', component: EventsWorkshopComponent },
+      { path: 'events/national-Conference/detail/:id', component: DetailComponent },
+      { path: 'events/regional-workshop/detail/:id', component: DetailWorkshopComponent },
 
   { path: 'professional', component: ProDevIndexComponent },
 
-      { path: 'professional/webinar', component: ProDevIndexComponent },
-      { path: 'professional/pro-job', component: JobComponent },
-      { path: 'professional/pro-detail/:id', component: ProDetailComponent },
+      { path: 'development/webinar', component: ProDevIndexComponent },
+      { path: 'development/pro-job', component: JobComponent },
+      { path: 'development/detail/:id', component: ProDetailComponent },
 
   { path: 'knowledgecenter', component: SchoolComponent },
 
-      { path: 'knowledgecenter/university', component: SchoolComponent },
-      { path: 'knowledgecenter/senior-school', component: SeniorSchoolComponent },
-      { path: 'knowledgecenter/ranking', component: RankingComponent },
-      { path: 'knowledgecenter/transfer', component: TransferComponent },
-      { path: 'knowledgecenter/detail/:id', component: SchooldetailComponent },
-      { path: 'knowledgecenter/seniorschool-detail/:id', component: SeniorSchooldetailComponent },
+      { path: 'knowledge-center/university', component: SchoolComponent },
+      { path: 'knowledge-center/high-school', component: SeniorSchoolComponent },
+      { path: 'knowledge-center/ranking', component: RankingComponent },
+      { path: 'knowledge-center/transfer', component: TransferComponent },
+      { path: 'knowledge-center/detail/:id', component: SchooldetailComponent },
+      { path: 'knowledge-center/highschool-detail/:id', component: SeniorSchooldetailComponent },
 
   { path: 'news', component: NewsIndexComponent },
 

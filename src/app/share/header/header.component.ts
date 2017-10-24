@@ -40,12 +40,14 @@ export class HeaderComponent implements OnInit {
   }
 
   signout() {
-    console.log('out');
     this.userstoreService.logout().subscribe(res => {
-      console.log(res);
+      this.outSuccess();
     });
+  }
+
+  outSuccess() {
     this.navigateService.clearRouteList();
-    //location.reload();
+    location.reload();
   }
 
 

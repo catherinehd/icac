@@ -2,6 +2,7 @@
 <app-navbar></app-navbar>
 
 <section class="about-index wrap-box" >
+  <div>
   <app-breadcrumb></app-breadcrumb>
   <div class="main">
     <div class="detail-left">
@@ -27,12 +28,12 @@
               <p *ngIf="!showAll1">
                 <span>Professional Experience：</span>
                 Wang, Shi (Shiny) is Academic Principal of Beijing Kaiwen Academy, who also serves as Assistant to Principal at Tsinghua University High School and Director of College Counseling.
-                <br>Member of NACAC & International ACA...
+                Member of NACAC & International ACA...
                 <button (click)="showAll1 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
               </p>
               <p *ngIf="showAll1">
                 <span>Professional Experience：</span>
-                Wang, Shi (Shiny) is Academic Principal of Beijing Kaiwen Academy, who also serves as Assistant to Principal at Tsinghua University High School and Director of College Counseling.
+                Wang, Shi (Shiny) is Academic Principal of Beijing Kaiwen Academy, who also serves as Assistant to Principal at Tsinghua University High School and Director of College Counseling. Member of NACAC & International ACAC, (PD Committee member),
                 <br>Secretary-General of Beijing Academy for College Counseling. He was one of China's first on-campus counselors to pioneer college admission/ counseling for students. With more than 20 years of teaching as teacher of English and over 10 years of counseling, he is widely recognized as China's expert in college counseling and international education globally. Furthermore, he has written articles on China's international education that were published in many public media including New York Times.
                 <button class="packup" (click)="showAll1 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button>
               </p>
@@ -56,7 +57,7 @@
                 <span>Professional Experience：</span>
                 College Counselor, Director of College Counseling, Beijing National Day School 2010 - 2016
                 Government Relations Committee, OACAC 2013 – 2016
-                <br>Director of College Counseling, Keystone Academy 2016 - Present
+                Director of College Counseling, Keystone Academy 2016 - Present
                 Delegate, Executive Board of Internatio...
                 <button (click)="showAll2 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
               </p>
@@ -128,14 +129,13 @@
               <p *ngIf="!showAll4">
                 <span>Professional Experience：</span>
                 East Asia Regional Representative, Bard College. 2013 – 2016. Director, Bard Early College at Houde Academy, 2017 - current
-                <br>Chief East Asia Representative, Bard C...
+                Chief East Asia Representative, Bard C...
                 <button (click)="showAll4 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
               </p>
               <p *ngIf="showAll4">
                 <span>Professional Experience：</span>
-                Experience：East Asia Regional Representative, Bard College. 2013 – 2016. Director, Bard Early College at Houde Academy, 2017 - current
-                Chief East Asia Representative, Bard College, 2017 – current
-                Professional Violinist
+                East Asia Regional Representative, Bard College. 2013 – 2016. Director, Bard Early College at Houde Academy, 2017 - current
+                Chief East Asia Representative, Bard College, 2017 – current Professional Violinist
                 <button class="packup" (click)="showAll4 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button>
               </p>
             </div>
@@ -147,20 +147,22 @@
     </div>
     <div class="nav-right">
       <ul>
-        <li [class.active]="isshow1" (click)="go('./about/overview')">
+        <li [class.active]="isshow1" (click)="go('./aboutChinaIcac/overview')">
           Overview
         </li>
-        <li [class.active]="isshow2" (click)="go('./about/committee')">
+        <li [class.active]="isshow2" (click)="go('./aboutChinaIcac/committee')">
           Committee
         </li>
-        <li [class.active]="isshow3" (click)="go('./about/advisor')">
+        <li [class.active]="isshow3" (click)="go('./aboutChinaIcac/advisor')">
           Advisor
         </li>
-        <li [class.active]="isshow4" (click)="go('./about/contact-us')">
+        <li [class.active]="isshow4" (click)="go('./aboutChinaIcac/contact-us')">
           Contact us
         </li>
       </ul>
     </div>
+  </div>
+
   </div>
 </section>
 

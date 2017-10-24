@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
+import { NewsService } from '../../service/news.service';
 
 @Component({
   selector: 'app-index',
@@ -8,9 +9,18 @@ import { NavigateService } from '../../service/navigate.service';
 })
 export class IndexComponent implements OnInit {
 
-  constructor(private navigateService: NavigateService) { }
+  showLists: any;
+  constructor(private navigateService: NavigateService,
+              private newsService: NewsService) { }
 
   ngOnInit() {
+    this.newsService.getNewsList(0,1).subscribe( res => {
+      this.showList(res)
+    })
+  }
+
+  showList(data) {
+    this.showLists = data.rows.slice(0,3);
   }
 
   go(url) {

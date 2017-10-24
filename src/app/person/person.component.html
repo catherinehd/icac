@@ -2,13 +2,15 @@
 <app-navbar></app-navbar>
 
 <section class="person-sec wrap-box" >
+  <div>
   <app-breadcrumb></app-breadcrumb>
   <div class="main">
     <div class="left-box">
       <ul class="nav-left">
         <li [class.active]="showperson" (click)="showperson = true;showmodifyps = false;">
           <div>
-            <img src="../../assets/icon/person-info.svg" />
+            <img *ngIf="!showperson" src="../../assets/icon/person-info.svg" />
+            <img *ngIf="showperson" src="../../assets/icon/person-info2.svg" />
           </div>
           <div>
             Personal data
@@ -16,7 +18,8 @@
         </li>
         <li [class.active]="showmodifyps" (click)="showperson = false;showmodifyps = true;">
           <div>
-            <img src="../../assets/icon/password.svg" />
+            <img *ngIf="showmodifyps" src="../../assets/icon/password2.svg" />
+            <img *ngIf="!showmodifyps" src="../../assets/icon/password.svg" />
           </div>
           <div>
             Modify password
@@ -26,5 +29,6 @@
     </div>
     <app-personal-data *ngIf="showperson"></app-personal-data>
     <app-modify-password *ngIf="showmodifyps"></app-modify-password>
+  </div>
   </div>
 </section>

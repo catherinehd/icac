@@ -2,6 +2,7 @@
 <app-navbar></app-navbar>
 
 <section class="knowledge-center-school wrap-box">
+  <div>
   <app-breadcrumb></app-breadcrumb>
   <div class="main">
     <div class="title-search">
@@ -17,7 +18,7 @@
     </div>
     <div class="detail" *ngIf="!isempty">
       <ul class="school-list">
-        <li class="school-info" (click)="gopage('./knowledgecenter/detail/'+list.usityId)" *ngFor="let list of showLists">
+        <li class="school-info" (click)="gopage('./knowledge-center/detail/'+list.usityId)" *ngFor="let list of showLists">
           <img src={{list.usityImage}}/>
           <div class="name">
             {{list.usityName}}
@@ -39,4 +40,7 @@
       </a>
     </div>
   </div>
+  </div>
 </section>
+
+<app-to-top></app-to-top>

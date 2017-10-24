@@ -2,6 +2,7 @@
 <app-navbar></app-navbar>
 
 <section class="profession-pro-index wrap-box">
+  <div>
   <app-breadcrumb></app-breadcrumb>
 
   <div class="main">
@@ -27,7 +28,7 @@
         <div class="date">
           <img src="../../../assets/icon/time.svg">
           <span class="time">{{list.wsTime}}</span>
-          <span class="view-details" (click)="go('./professional/pro-detail/'+list.wsId)">View details >></span>
+          <span class="view-details" (click)="go('./development/detail/'+list.wsId)">View details >></span>
         </div>
       </div>
 
@@ -43,5 +44,8 @@
       </a>
     </div>
   </div>
+  </div>
 </section>
+
+<app-to-top></app-to-top>
 

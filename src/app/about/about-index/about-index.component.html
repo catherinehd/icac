@@ -2,6 +2,7 @@
 <app-navbar [currentTitle]="2"></app-navbar>
 
 <section class="about-index wrap-box" >
+  <div>
   <app-breadcrumb></app-breadcrumb>
   <div class="main">
     <div class="detail-left">
@@ -18,20 +19,21 @@
     </div>
     <div class="nav-right">
       <ul>
-        <li [class.active]="isshow1" (click)="go('./about/overview')">
+        <li [class.active]="isshow1" (click)="go('./aboutChinaIcac/overview')">
           Overview
         </li>
-        <li [class.active]="isshow2" (click)="go('./about/committee')">
+        <li [class.active]="isshow2" (click)="go('./aboutChinaIcac/committee')">
           Committee
         </li>
-        <li [class.active]="isshow3" (click)="go('./about/advisor')">
+        <li [class.active]="isshow3" (click)="go('./aboutChinaIcac/advisor')">
           Advisor
         </li>
-        <li [class.active]="isshow4" (click)="go('./about/contact-us')">
+        <li [class.active]="isshow4" (click)="go('./aboutChinaIcac/contact-us')">
           Contact us
         </li>
       </ul>
     </div>
+  </div>
   </div>
 </section>
 

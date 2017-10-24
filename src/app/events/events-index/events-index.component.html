@@ -2,12 +2,13 @@
 <app-navbar></app-navbar>
 
 <section class="events-index wrap-box">
+  <div>
   <app-breadcrumb></app-breadcrumb>
   <div class="main">
     <div class="title">
       National Conference
     </div>
-    <div class="conference-list" *ngIf="hasConference">
+    <div class="conference-list" *ngIf="hasNews">
 
       <div class="conference-info" *ngFor="let list of showLists">
         <div class="conference-img">
@@ -25,7 +26,7 @@
             <span class="time">
               {{list.updateTime}}
             </span>
-            <span class="view-details" (click)="go('./events/national/detail/' + list.newsId)">View details >></span>
+            <span class="view-details" (click)="go('./events/national-Conference/detail/' + list.newsId)">View details >></span>
           </div>
         </div>
       </div>
@@ -33,7 +34,7 @@
       <app-pager [currPage]="page.pageIndex" [pageCount]="page.pageCount" (showPage)="onShowPage($event)"></app-pager>
 
     </div>
-    <div class="conference-list noConference" *ngIf="!hasConference">
+    <div class="conference-list noConference" >
       <img src="../../../assets/icon/nonews.svg" />
       <p>No National Conference</p>
       <a routerLink="/home">
@@ -42,6 +43,9 @@
       </a>
     </div>
   </div>
+  </div>
 </section>
+
+<app-to-top></app-to-top>
 
 

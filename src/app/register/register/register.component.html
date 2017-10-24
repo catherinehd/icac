@@ -207,7 +207,7 @@
         </label>
       </div>
       <div class="submit">
-        <button type="button"   (click)="onSubmit()">
+        <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode" (click)="onSubmit()">
           Submit
         </button>
       </div>

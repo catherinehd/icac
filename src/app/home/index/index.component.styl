@@ -4,10 +4,10 @@ main
   width 100%
   .top-img
     width 100%
-    height 400px
-    overflow hidden
-    background-image: url('../../../assets/img/bg-top.png')
-    background-size cover
+    //height 400px
+    //overflow hidden
+    //background-image: url('../../../assets/img/bg-top.png')
+    //background-size cover
   .overview
     margin 90px auto
     width 1200px
@@ -47,6 +47,7 @@ main
         cursor pointer
         img
           width 10px
+          margin-left 12px
           height @width
       .detail
         border-top 2px solid rgba(189,189,189,0.3)
@@ -59,16 +60,19 @@ main
             width 344px
             .small-title
               width 282px
+              height 56px
               font-size $font-big-size
               line-height 1.56
             .date
               font-size $font-small-size
               color  $font-light-gray-color
               margin 20px 0 7px
+              height 19px
             .expression
               font-size $font-nomal-size
               color $font-gray-color
               line-height 22px
+              height 88px
             button
               &:hover
                 color $font-white-color
