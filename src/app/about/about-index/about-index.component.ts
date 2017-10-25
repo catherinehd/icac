@@ -21,6 +21,7 @@ export class AboutIndexComponent implements OnInit {
   }
 
   ngOnInit() {
+console.log(location);
   }
 
   go(url,title) {

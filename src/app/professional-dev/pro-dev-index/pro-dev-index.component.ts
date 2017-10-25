@@ -10,7 +10,12 @@ import { UserModel } from '../../model/user.model';
   styleUrls: ['./pro-dev-index.component.styl']
 })
 export class ProDevIndexComponent implements OnInit {
-  user: UserModel = new UserModel();
+  modal = {
+    title: 'ChinaICAC Member Sign in',
+    isSigninShow: false,
+    closeShow: false,
+  }
+
   hasWebinar: boolean;
   showLists: any;
   page: any = {pageIndex: 1, pageCount: 1};  //获取当前页和总页数
@@ -22,16 +27,18 @@ export class ProDevIndexComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.personService.getUserInfo().subscribe(res =>{
-        res.ok ? this.user = res.data : this.navigateService.pushToRoute('./login');
-      }
-    );
+    this.personService.getUserInfo().subscribe(res => {
+      res.ok ?  this.getList() : this.modal.isSigninShow = true ;
+    })
+  }
 
+  getList() {
+    this.modal.isSigninShow = false;
     //查询第一页数据列表
     this.prodevService.getProDev(1).subscribe(res => {
-     this.showList(res), err => {
-      if (err && err.status === 401) this.navigateService.pushToRoute('/home');
-    }
+      this.showList(res), err => {
+        if (err && err.status === 401) this.navigateService.pushToRoute('/home');
+      }
     });
   }
 

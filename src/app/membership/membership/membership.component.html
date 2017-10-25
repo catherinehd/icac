@@ -7,40 +7,96 @@
   <div class="main">
     <div class="left-box">
       <div class="title" *ngIf="isshow1">
-        Membership system
+        Membership
       </div>
       <div class="detail system" *ngIf="isshow1">
-        <p>
-          China Institute of College Admission Counseling (ChinaICAC) is an organization of professionals from all over the world dedicated to serving Chinese students as they make choices about pursuing postsecondary education overseas.
-        </p>
-        <p>
-          ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.
-        </p>
-        <p>
-          ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.
-        </p>
+        <div class="top-msg">
+          <p>
+            ChinaICAC is an organization consists of professionals serving Chinese secondary students transitioning to higher education.  Membership in ChinaICAC is now only open to school based counselors in China and college/university admission people and educators.
+          </p>
+        </div>
+        <div class="small-tit">Types of Membership</div>
+        <table class="type">
+          <tr>
+            <th>
+              Your member type would be…
+            </th>
+            <th>
+              If you work for…
+            </th>
+            <th>
+              And work as..
+            </th>
+          </tr>
+          <tr>
+            <td>
+              College/University Membership
+            </td>
+            <td>
+              A College or University or government department
+            </td>
+            <td>
+              Admission Officer/educator
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Secondary School Membership
+            </td>
+            <td>
+              A Secondary/High School
+            </td>
+            <td>
+              School based Counselor
+            </td>
+          </tr>
+        </table>
+        <div class="small-tit">
+          What to know before you apply:
+        </div>
+        <div>
+          <span>1</span>
+          	All memberships are free (by Janurary of 2019) but subject to approval.  Once your membership application has been approved you will be notified via email.
+        </div>
+        <div>
+          <span>2</span>
+          	Member benefits will begin once your application is approved.
+        </div>
+        <div>
+          <span>3</span>
+          ChinaICAC's  membership cycle is Jan. 1 through Dec. 31. If joining ChinaICAC from Jan. 1 through Sept. 30 your membership will expire Dec. 31 of the same year.  Those joining after Oct. 1 membership will expire Dec. 31 of the following year.
+        </div>
+        <div>
+          <span>4</span>
+          Prior to membership of ChinaICAC, a secondary school counselor should work in a school with College Board CEEB code, and own membership of International ACAC.
+        </div>
       </div>
       <div class="title" *ngIf="isshow2">
-        Introduction of membership benefits
+        Member Benefits
       </div>
       <div class="detail benefits" *ngIf="isshow2">
-        <p>
-          ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.
-        </p>
-        <p>
-          ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.
-        </p>
-        <p>
-          ChinaICAC is committed to developing the professionalism of all school based counselors in China by providing a wealth of networking and learning opportunities including but not limited to webinars, workshops, and conferences.  ChinaICAC also effectively bring together high school counselors serving Chinese nationals and college admission officers.
-        </p>
+        <div class="small-tit">Why ChinaICAC</div>
+        <p>ChinaICAC is the premiere organization for professionals engaged in college counseling and admissions for Chinese secondary students.  Joining ChinaICAC is the first step to gaining access to many member benefits.  These include:</p>
+        <div class="small-tit">Resources for Professional Development:</div>
+        <ul>
+          <li>Membership Directory</li>
+          <li>High School Profiles</li>
+          <li>Webinars</li>
+          <li>Reports and Publications</li>
+        </ul>
+        <div class="small-tit">Priority for Events’ Enrollment</div>
+        <ul>
+          <li>Regional Workshops</li>
+          <li>National Conference</li>
+        </ul>
       </div>
       <div class="book-download">
         <img src="../../../assets/icon/file.svg" />
         <div class="btn-box">
-          <button (click)="download('./home')">Member address book download<img src="../../../assets/icon/download.svg" /></button>
-          <div class="upload-time">
+          <button (click)="download('./home')">Membership Directory<img src="../../../assets/icon/download.svg" /></button>
+         <!-- <div class="upload-time">
             Upload time: 2017-08-29
-          </div>
+          </div>-->
         </div>
         <div class="note">
           (note: the membership address book will be updated regularly once a month)
@@ -50,13 +106,16 @@
     <div class="right-box">
       <ul class="right-nav">
         <li [class.active]="isshow1" (click)="isshow1 = true;isshow2 = false;">
-          Membership system
+          Membership
         </li>
         <li [class.active]="isshow2" (click)="isshow2 = true;isshow1 = false;">
-          Introduction of membership benefits
+          Membership Benefits
         </li>
       </ul>
     </div>
   </div>
   </div>
 </section>
+
+
+<app-modal [modal]="modal"></app-modal>

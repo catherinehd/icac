@@ -9,6 +9,11 @@ import { UserModel } from '../model/user.model';
   styleUrls: ['./person.component.styl']
 })
 export class PersonComponent implements OnInit {
+  modal = {
+    title: 'ChinaICAC Member Sign in',
+    isSigninShow: false,
+    closeShow: false,
+  };
 
   showperson:boolean;
   showmodifyps:boolean;
@@ -22,10 +27,9 @@ export class PersonComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.personService.getUserInfo().subscribe(res =>{
-        res.ok ? this.user = res.data : this.navigateService.pushToRoute('./login');
-      }
-    );
+    this.personService.getUserInfo().subscribe(res => {
+      res.ok ?  this.isLogin = true : this.modal.isSigninShow = true ;
+    });
   }
 
 }

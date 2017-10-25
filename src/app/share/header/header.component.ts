@@ -18,16 +18,15 @@ export class HeaderComponent implements OnInit {
   modal = {
     title: 'ChinaICAC Member Sign in',
     isSigninShow: false,
+    closeShow: true,
   }
 
   constructor(private navigateService: NavigateService,
               private personService: PersonService,
               private userstoreService: UserStoreService) {
 
-
     this.personService.getUserInfo().subscribe(res => {
       res.ok ?  this.getUser(res.data) : this.isLogin = false;
-      //console.log(res);
     })
   }
 

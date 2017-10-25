@@ -31,11 +31,14 @@ export class PersonalDataComponent implements OnInit {
 
   initUser() {
       this.personService.getUserInfo().subscribe(res =>{
-        res.ok ? this.user = res.data : this.isLogin = false;
+        res.ok ? this.showuserInfo(res.data) : this.isLogin = false;
         }
       );
+  }
 
-
+  showuserInfo(data) {
+    this.user = data;
+    console.log(this.user);
   }
 
 }

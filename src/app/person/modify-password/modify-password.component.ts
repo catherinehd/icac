@@ -97,18 +97,17 @@ export class ModifyPasswordComponent implements OnInit {
       this.msg0 = '';
       this.msg1 = '';
       this.msg2 = '';
-     // this.userService.modifyPwd(this.modifyPwdForm.value.pwd0,this.modifyPwdForm.value.pwd1).subscribe(res => {
-       // this.modifySuccess(), err => {
-        //  this.showTip(err);
-       // }
-      //})
+      this.userService.modifyPwd(this.modifyPwdForm.value.pwd0,this.modifyPwdForm.value.pwd1).subscribe(res => {
+        console.log(res);
+      })
       //this.modifySuccess();
     }
   }
 
   modifySuccess() {
     this.showSuccess = true;
-    //setTimeout(this.navigateService.pushToRoute('./home'),2000)
+    const that = this;
+    setTimeout(function(){ location.reload(); },2000)
   }
 
   testPw0(data) {

@@ -41,9 +41,9 @@ const appRouters: Routes = [
   { path: 'about', component: AboutIndexComponent },
 
       { path: 'aboutChinaIcac/overview', component: AboutIndexComponent },
-      { path: 'aboutChinaIcac/committee', component: CommitteeComponent },
-      { path: 'aboutChinaIcac/advisor', component: AdvisorComponent },
-      { path: 'aboutChinaIcac/contact-us', component: ContactUsComponent },
+      { path: 'aboutChinaIcac/committee', component: AboutIndexComponent },
+      { path: 'aboutChinaIcac/advisor', component: AboutIndexComponent },
+      { path: 'aboutChinaIcac/contact-us', component: AboutIndexComponent },
 
   { path: 'events', component: EventsIndexComponent },
 
@@ -67,6 +67,7 @@ const appRouters: Routes = [
       { path: 'knowledge-center/detail/:id', component: SchooldetailComponent },
       { path: 'knowledge-center/highschool-detail/:id', component: SeniorSchooldetailComponent },
       { path: 'knowledge-center/university/search/:query', component: SchoolComponent },
+      { path: 'knowledge-center/high-schooll/search/:query', component: SeniorSchoolComponent },
 
   { path: 'news', component: NewsIndexComponent },
 

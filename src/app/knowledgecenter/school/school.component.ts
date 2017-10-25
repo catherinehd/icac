@@ -13,6 +13,10 @@ import { UserModel } from '../../model/user.model';
   styleUrls: ['./school.component.styl']
 })
 export class SchoolComponent implements OnInit {
+  modal = {
+    title: 'ChinaICAC Member Sign in',
+    isSigninShow: false,
+  };
 
   user: UserModel = new UserModel();
   searchForm: FormGroup;
@@ -30,20 +34,20 @@ export class SchoolComponent implements OnInit {
 
   ngOnInit() {
     //需要登录才可以查看
-    this.personService.getUserInfo().subscribe(res =>{
-        res.ok ? this.user = res.data : this.navigateService.pushToRoute('./login');
-      }
-    );
-
-    //获取大学学校列表list
-    //默认查询第一页数据
-    this.centerService.getUniversityList(1).subscribe(res => {
-     this.showList(res), err => {
-      if (err && err.status === 401) this.navigateService.pushToRoute('/home');
-    }
+    this.personService.getUserInfo().subscribe(res => {
+      res.ok ?  this.getLists() : this.modal.isSigninShow = true ;
     });
-
     this.buildForm();
+  }
+
+  getLists() {
+    this.modal.isSigninShow = false;
+    //查询第一页数据列表
+    this.centerService.getUniversityList(1).subscribe(res => {
+      this.showList(res), err => {
+        if (err && err.status === 401) this.navigateService.pushToRoute('/home');
+      }
+    });
   }
 
   showList(list) {
@@ -83,7 +87,7 @@ export class SchoolComponent implements OnInit {
 
   }
 
-  searchUni(cont) {
+  searchUni() {
     this.navigateService.pushToRoute('./knowledge-center/university/search', this.searchForm.value.msg);
     //获取搜索学校列表到list,如果为空,isempty=true.若不为空,isempty=false.
     this.centerService.searchUsity('1',this.searchForm.value.msg).subscribe( res => {
@@ -92,11 +96,7 @@ export class SchoolComponent implements OnInit {
   }
 
   getList(){
-    this.centerService.getUniversityList(1).subscribe(res => {
-      this.showList(res), err => {
-        if (err && err.status === 401) this.navigateService.pushToRoute('/home');
-      }
-    });
+    this.navigateService.pushToRoute('./knowledge-center/university');
   }
 
 }
