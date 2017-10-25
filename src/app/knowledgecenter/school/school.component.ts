@@ -26,10 +26,10 @@ export class SchoolComponent implements OnInit {
               private personService: PersonService,
               private centerService: HomeService) {
     this.isempty = false;
-
   }
 
   ngOnInit() {
+    //需要登录才可以查看
     this.personService.getUserInfo().subscribe(res =>{
         res.ok ? this.user = res.data : this.navigateService.pushToRoute('./login');
       }
@@ -44,7 +44,6 @@ export class SchoolComponent implements OnInit {
     });
 
     this.buildForm();
-
   }
 
   showList(list) {
@@ -84,16 +83,20 @@ export class SchoolComponent implements OnInit {
 
   }
 
-  searchUni() {
+  searchUni(cont) {
+    this.navigateService.pushToRoute('./knowledge-center/university/search', this.searchForm.value.msg);
     //获取搜索学校列表到list,如果为空,isempty=true.若不为空,isempty=false.
     this.centerService.searchUsity('1',this.searchForm.value.msg).subscribe( res => {
-    //  this.showList(res),(err) => {
-     //   console.log(err);
-      //}
-      console.log(res);
+      this.showList(res);
     });
+  }
 
-
+  getList(){
+    this.centerService.getUniversityList(1).subscribe(res => {
+      this.showList(res), err => {
+        if (err && err.status === 401) this.navigateService.pushToRoute('/home');
+      }
+    });
   }
 
 }

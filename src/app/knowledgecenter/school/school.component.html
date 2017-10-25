@@ -34,7 +34,7 @@
     <div class="detail empty" *ngIf="isempty">
       <img src="../../../assets/icon/nonews.svg" />
       <p>No search results</p>
-      <a routerLink="/home">
+      <a (click)="getList()">
         <img src="../../../assets/icon/left.svg" alt="left" />
         Returns empty search entries
       </a>

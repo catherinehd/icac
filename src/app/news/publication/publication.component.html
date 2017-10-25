@@ -9,7 +9,7 @@
       Publication
     </div>
     <div class="detail">
-      <div class="news-list">
+      <div class="news-list" *ngIf="hasConference">
 
         <div class="news-info" *ngFor="let list of showLists">
           <div class="small-title">
@@ -20,9 +20,18 @@
             <span class="time">{{list.ncTime}}</span>
           </div>
         </div>
-
         <app-pager [currPage]="page.pageIndex" [pageCount]="page.pageCount" (showPage)="onShowPage($event)"></app-pager>
       </div>
+
+      <div class="news-list noNews" *ngIf="!hasConference">
+        <img src="../../../assets/icon/nonews.svg" />
+        <p>No National Conference</p>
+        <a routerLink="/home">
+          <img src="../../../assets/icon/left.svg" alt="left" />
+          Return home page
+        </a>
+      </div>
+
     </div>
   </div>
   </div>

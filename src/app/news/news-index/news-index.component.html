@@ -8,8 +8,8 @@
     <div class="title">
       Newsroom
     </div>
-    <div class="detail" *ngIf="hasConference">
-      <div class="news-list">
+    <div class="detail">
+      <div class="news-list" *ngIf="hasConference">
         <div class="news-info" *ngFor="let list of showLists">
           <div class="small-title">
             {{list.ncTitle}}
@@ -26,7 +26,7 @@
         <app-pager [currPage]="page.pageIndex" [pageCount]="page.pageCount" (showPage)="onShowPage($event)"></app-pager>
       </div>
 
-      <div *ngIf="!hasConference">
+      <div class="news-list noNews" *ngIf="!hasConference">
         <img src="../../../assets/icon/nonews.svg" />
         <p>No National Conference</p>
         <a routerLink="/home">

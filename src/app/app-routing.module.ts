@@ -66,6 +66,7 @@ const appRouters: Routes = [
       { path: 'knowledge-center/transfer', component: TransferComponent },
       { path: 'knowledge-center/detail/:id', component: SchooldetailComponent },
       { path: 'knowledge-center/highschool-detail/:id', component: SeniorSchooldetailComponent },
+      { path: 'knowledge-center/university/search/:query', component: SchoolComponent },
 
   { path: 'news', component: NewsIndexComponent },
 
