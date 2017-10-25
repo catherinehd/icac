@@ -21,11 +21,54 @@ export class AboutIndexComponent implements OnInit {
   }
 
   ngOnInit() {
-console.log(location);
+    const search = location.pathname.split('/')[2];
+    this.about(search);
   }
 
   go(url,title) {
     this.navigateService.push();
     this.navigateService.pushToRoute(url)
   }
+
+  about(msg) {
+    switch (msg)
+    {
+      case 'overview':
+        this.isshow1 = true;
+        this.isshow2 = false;
+        this.isshow3 = false;
+        this.isshow4 = false;
+        document.body.scrollTop = 0;
+        this.navigateService.pushToRoute('./aboutChinaIcac/overview');
+        break;
+      case 'committee':
+        this.isshow1 = false;
+        this.isshow2 = true;
+        this.isshow3 = false;
+        this.isshow4 = false;
+        document.body.scrollTop = 750;
+        this.navigateService.pushToRoute('./aboutChinaIcac/committee');
+        break;
+      case 'advisor':
+        this.isshow1 = false;
+        this.isshow2 = false;
+        this.isshow3 = true;
+        this.isshow4 = false;
+        document.body.scrollTop = 1880;
+        this.navigateService.pushToRoute('./aboutChinaIcac/advisor');
+        break;
+      case 'contact-us':
+        this.isshow1 = false;
+        this.isshow2 = false;
+        this.isshow3 = false;
+        this.isshow4 = true;
+        document.body.scrollTop = 1880;
+        this.navigateService.pushToRoute('./aboutChinaIcac/contact-us');
+        break;
+      default:
+        break;
+    }
+  }
+
+
 }

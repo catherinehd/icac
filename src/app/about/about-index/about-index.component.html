@@ -221,16 +221,16 @@
     </div>
     <div class="nav-right">
       <ul>
-        <li [class.active]="isshow1" >
+        <li [class.active]="isshow1" (click)="about('overview')">
           Overview
         </li>
-        <li [class.active]="isshow2" >
+        <li [class.active]="isshow2" (click)="about('committee')">
           Executive Committee
         </li>
-        <li [class.active]="isshow3" >
+        <li [class.active]="isshow3" (click)="about('advisor')">
           Advisor Committee
         </li>
-        <li [class.active]="isshow4" >
+        <li [class.active]="isshow4" (click)="about('contact-us')">
           Contact Us
         </li>
       </ul>
