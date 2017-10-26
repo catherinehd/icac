@@ -10,7 +10,7 @@ import { UserModel } from '../../model/user.model';
 @Component({
   selector: 'app-school',
   templateUrl: './school.component.html',
-  styleUrls: ['./school.component.styl']
+  styleUrls: ['./school.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class SchoolComponent implements OnInit {
   modal = {
@@ -88,11 +88,11 @@ export class SchoolComponent implements OnInit {
   }
 
   searchUni() {
-    this.navigateService.pushToRoute('./knowledge-center/university/search', this.searchForm.value.msg);
-    //获取搜索学校列表到list,如果为空,isempty=true.若不为空,isempty=false.
-    this.centerService.searchUsity('1',this.searchForm.value.msg).subscribe( res => {
-      this.showList(res);
-    });
+    if(this.searchForm.value.msg) {
+      this.navigateService.pushToRoute('./knowledge-center/university/search', this.searchForm.value.msg);
+    } else {
+      this.getList();
+    }
   }
 
   getList(){

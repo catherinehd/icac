@@ -11,7 +11,7 @@ import { UserModel } from '../../model/user.model';
 @Component({
   selector: 'app-senior-school',
   templateUrl: './senior-school.component.html',
-  styleUrls: ['./senior-school.component.styl','../school/school.component.styl']
+  styleUrls: ['./senior-school.component.styl','../school/school.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class SeniorSchoolComponent implements OnInit {
   modal = {
@@ -89,11 +89,11 @@ export class SeniorSchoolComponent implements OnInit {
 
 
   searchSchool() {
-    this.navigateService.pushToRoute('./knowledge-center/high-schooll/search/', this.searchForm.value.msg);
-    //获取搜索学校列表到list,如果为空,isempty=true.若不为空,isempty=false.
-    this.centerService.searchMiddle('1',this.searchForm.value.msg).subscribe( res => {
-      this.showList(res);
-    });
+    if(this.searchForm.value.msg) {
+      this.navigateService.pushToRoute('./knowledge-center/high-schooll/search/', this.searchForm.value.msg);
+    } else {
+      this.getList();
+    }
   }
 
   getList(){

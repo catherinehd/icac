@@ -34,6 +34,7 @@ import { ResetPwdComponent } from './person/reset-pwd/reset-pwd.component';
 import { VerifyEmailComponent } from './person/verify-email/verify-email.component';
 import { RegisterNocodeComponent } from './register/register-nocode/register-nocode.component';
 import { LoginComponent } from './login/login.component';
+import { SearchComponent } from './knowledgecenter/search/search.component';
 
 
 const appRouters: Routes = [
@@ -66,8 +67,8 @@ const appRouters: Routes = [
       { path: 'knowledge-center/transfer', component: TransferComponent },
       { path: 'knowledge-center/detail/:id', component: SchooldetailComponent },
       { path: 'knowledge-center/highschool-detail/:id', component: SeniorSchooldetailComponent },
-      { path: 'knowledge-center/university/search/:query', component: SchoolComponent },
-      { path: 'knowledge-center/high-schooll/search/:query', component: SeniorSchoolComponent },
+      { path: 'knowledge-center/university/search/:query', component: SearchComponent },
+      { path: 'knowledge-center/high-schooll/search/:query', component: SearchComponent },
 
   { path: 'news', component: NewsIndexComponent },
 

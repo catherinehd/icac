@@ -3,7 +3,13 @@
 
 <section class="schoolDetail-sec wrap-box">
   <div class="breadcrumb-box">
-    <app-breadcrumb></app-breadcrumb>
+    <section class="breadcrumb">
+      <div class="breadcrumb-box">
+        <img src="../../../assets/icon/address1.svg" />
+        <span>Home > Knowledge Center > University > {{school.usityName}}</span>
+        <span *ngFor="let list of path"> > {{list}}</span>
+      </div>
+    </section>
   </div>
   <div class="main">
     <div class="top-bg-img">

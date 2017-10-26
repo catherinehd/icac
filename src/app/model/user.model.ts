@@ -1,51 +1,52 @@
 export class UserModel {
 
-  userId: number;
-  userName: string;
-  password: string;
   createTime: string;
-  updateTime: string;
-  userRole: string;
   state: number;
-  userInfoCreateTime: string;
-  userInfoUpdateTime: string;
-  userInfouserInfoId: number;
-  userInfoPrefix: string;
-  userInfoUserFn: string;
-  userInfoUserLn: string;
-  userInfoUserPn: string;
-  userInfoUserSchool: string;
-  userInfoUserJob: string;
-  userInfoUserAg: string;
-  userInfoUserRn: string;
-  userInfoUserRi: string;
-  userInfoUserRe: string;
-  userInfoUserCode: string;
+  updateTime: string;
+  userId: number;
+  userInfo: {
+    createTime: string;
+    prefix: string;
+    updateTime: string;
+    userAg: string;
+    userCode: string;
+    userFn: string;
+    userInfoId: number;
+    userJob:string;
+    userLn: string;
+    userPn: string;
+    userRe: string;
+    userRi: string;
+    userRn: string;
+    userSchool: string;
+  };
+  userName: string;
+  userRole: number;
+
 
 
   constructor(options?: any) {
     if (options) {
-      this.userId = options.user_id;
-      this.userName = options.user_name;
-      this.password = options.pass_word;
-      this.createTime = options.create_time;
-      this.updateTime = options.update_time;
-      this.userRole = options.user_role;
+      this.createTime = options.createTime;
       this.state = options.state;
-      this.userInfoCreateTime = options.info_create_time;
-      this.userInfoUpdateTime = options.info_update_time;
-      this.userInfouserInfoId = options.user_info_id;
-      this.userInfoPrefix = options.prefix;
-      this.userInfoUserFn = options.use_fn;
-      this.userInfoUserLn = options.user_ln;
-      this.userInfoUserPn = options.user_pn;
-      this.userInfoUserSchool = options.user_school;
-      this.userInfoUserJob = options.user_job;
-      this.userInfoUserAg = options.user_ag;
-      this.userInfoUserRn = options.user_rn;
-      this.userInfoUserRi = options.user_ri;
-      this.userInfoUserRe = options.user_re;
-      this.userInfoUserCode = options.user_code;
+      this.updateTime = options.updateTime;
+      this.userId = options.userId;
+      this.userInfo.createTime = options.userInfo.createTime;
+      this.userInfo.prefix = options.userInfo.prefix;
+      this.userInfo.updateTime = options.userInfo.updateTime;
+      this.userInfo.userAg = options.userInfo.userAg;
+      this.userInfo.userCode = options.userInfo.userCode;
+      this.userInfo.userFn = options.userInfo.userFn;
+      this.userInfo.userInfoId = options.userInfo.userInfoId;
+      this.userInfo.userJob = options.userInfo.userJob;
+      this.userInfo.userLn = options.userInfo.userLn;
+      this.userInfo.userPn = options.userInfo.userPn;
+      this.userInfo.userRe = options.userInfo.userRe;
+      this.userInfo.userRi = options.userInfo.userRi;
+      this.userInfo.userRn = options.userInfo.userRn;
+      this.userInfo.userSchool = options.userInfo.userSchool;
+      this.userName = options.userNmae;
+      this.userRole = options.userRole;
     }
   }
 }

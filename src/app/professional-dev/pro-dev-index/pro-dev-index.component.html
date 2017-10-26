@@ -3,7 +3,13 @@
 
 <section class="profession-pro-index wrap-box">
   <div>
-  <app-breadcrumb></app-breadcrumb>
+    <section class="breadcrumb">
+      <div class="breadcrumb-box">
+        <img src="../../../assets/icon/address1.svg" />
+        <span>Home > Professional Development > Webinar </span>
+        <span *ngFor="let list of path"> > {{list}}</span>
+      </div>
+    </section>
 
   <div class="main">
     <div class="title">
@@ -35,6 +41,7 @@
       <app-pager [currPage]="page.pageIndex" [pageCount]="page.pageCount" (showPage)="onShowPage($event)"></app-pager>
 
     </div>
+
     <div class="webinar-list noWebinar" *ngIf="!hasWebinar">
       <img src="../../../assets/icon/nonews.svg" />
       <p>No Webinar</p>

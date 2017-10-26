@@ -13,7 +13,7 @@ import { UserModel } from '../../model/user.model';
 })
 export class PersonalDataComponent implements OnInit {
 
-  user: UserModel = new UserModel();
+  user: UserModel = new UserModel;
   isLogin: boolean;
 
   constructor(private navigateService: NavigateService,

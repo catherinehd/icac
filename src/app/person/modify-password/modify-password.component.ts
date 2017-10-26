@@ -98,7 +98,7 @@ export class ModifyPasswordComponent implements OnInit {
       this.msg1 = '';
       this.msg2 = '';
       this.userService.modifyPwd(this.modifyPwdForm.value.pwd0,this.modifyPwdForm.value.pwd1).subscribe(res => {
-        console.log(res);
+        res.ok ? this.modifySuccess() : this.showTip(res.msg);
       })
       //this.modifySuccess();
     }

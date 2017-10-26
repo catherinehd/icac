@@ -45,6 +45,7 @@ a, a:visited, a:active {
 }
 
 img {
+  vertical-align: middle;
   border: none;
 }
 

@@ -202,9 +202,9 @@
 
       <div class="agreement form-field">
         <input type="checkbox" id="agreement" formcontrolname="agreement" checked>
-        <label class="agreement-title" for="agreement">
+        <p class="agreement-title" for="agreement">
           I own membership of InternationalACAC.
-        </label>
+        </p>
       </div>
       <div class="submit">
         <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode" (click)="onSubmit()">
@@ -217,4 +217,18 @@
     </div>
 
   </div>
+</section>
+
+<section class="prompt-box" *ngIf="prompt">
+<div class="prompt">
+  <div class="title">
+    Prompt
+  </div>
+  <div class="detail">
+    <p>Your information has been submitted to the background audit, and it is expected that within 24 hours the audit results will be sent to your mailbox {{this.registerForm.value.email}}, please note that check.</p>
+    <button (click)="go('./home')">
+      OK, return home page
+    </button>
+  </div>
+</div>
 </section>

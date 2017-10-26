@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AppConfigService } from '../../service/app-config.service';
 import { PersonService } from '../../service/person.service';
 
 @Component({
   selector: 'app-membership',
   templateUrl: './membership.component.html',
-  styleUrls: ['./membership.component.styl']
+  styleUrls: ['./membership.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class MembershipComponent implements OnInit {
 
@@ -25,6 +26,32 @@ export class MembershipComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.body.onscroll = function(){
+      const top = document.body.scrollTop;
+      if(top <= 230 ) {
+        document.getElementById('nav').style.top = '0px';
+      } else {
+        document.getElementById('nav').style.top = (top-230).toString() + 'px';
+      }
+    }
+  }
+
+  show(msg) {
+    switch (msg)
+    {
+      case 'membership':
+        this.isshow1 = true;
+        this.isshow2 = false;
+        document.body.scrollTop = 0;
+        break;
+      case 'benefit':
+        this.isshow1 = false;
+        this.isshow2 = true;
+        document.body.scrollTop = 800;
+        break;
+      default:
+        break;
+    }
   }
 
   download(url){

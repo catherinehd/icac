@@ -6,7 +6,7 @@ import { newsModel } from '../../model/news.model';
 @Component({
   selector: 'app-events-index',
   templateUrl: './events-index.component.html',
-  styleUrls: ['./events-index.component.styl']
+  styleUrls: ['./events-index.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class EventsIndexComponent implements OnInit {
 

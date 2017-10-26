@@ -6,7 +6,7 @@ import { newsModel } from '../../model/news.model';
 @Component({
   selector: 'app-events-workshop',
   templateUrl: './events-workshop.component.html',
-  styleUrls: ['./events-workshop.component.styl','../events-index/events-index.component.styl']
+  styleUrls: ['./events-workshop.component.styl','../events-index/events-index.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class EventsWorkshopComponent implements OnInit {
 

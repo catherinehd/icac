@@ -5,7 +5,7 @@ import { NewsService } from '../../service/news.service';
 @Component({
   selector: 'app-news-index',
   templateUrl: './news-index.component.html',
-  styleUrls: ['./news-index.component.styl']
+  styleUrls: ['./news-index.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class NewsIndexComponent implements OnInit {
 

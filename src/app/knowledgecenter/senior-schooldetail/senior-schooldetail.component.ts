@@ -7,14 +7,14 @@ import { middleSchoolModel } from '../../model/middleSchool.model';
 @Component({
   selector: 'app-senior-schooldetail',
   templateUrl: './senior-schooldetail.component.html',
-  styleUrls: ['./senior-schooldetail.component.styl']
+  styleUrls: ['./senior-schooldetail.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class SeniorSchooldetailComponent implements OnInit {
 
   showOverview: boolean;
   showGuideance: boolean;
 
-  school: middleSchoolModel;
+  school: middleSchoolModel = new middleSchoolModel;
 
   constructor(private homeServicde: HomeService,
               private navigateService: NavigateService) {

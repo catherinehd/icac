@@ -5,7 +5,7 @@ import { ProDevService } from '../../service/pro-dev.service';
 @Component({
   selector: 'app-pro-detail',
   templateUrl: './pro-detail.component.html',
-  styleUrls: ['./pro-detail.component.styl']
+  styleUrls: ['./pro-detail.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class ProDetailComponent implements OnInit {
 

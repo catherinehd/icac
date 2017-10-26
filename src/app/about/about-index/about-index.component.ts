@@ -4,7 +4,7 @@ import { NavigateService } from '../../service/navigate.service';
 @Component({
   selector: 'app-about-index',
   templateUrl: './about-index.component.html',
-  styleUrls: ['./about-index.component.styl']
+  styleUrls: ['./about-index.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class AboutIndexComponent implements OnInit {
 
@@ -23,6 +23,14 @@ export class AboutIndexComponent implements OnInit {
   ngOnInit() {
     const search = location.pathname.split('/')[2];
     this.about(search);
+    document.body.onscroll = function(){
+      const top = document.body.scrollTop;
+      if(top <= 230 ) {
+        document.getElementById('nav').style.top = '0px';
+      } else {
+        document.getElementById('nav').style.top = (top-230).toString() + 'px';
+      }
+    }
   }
 
   go(url,title) {
@@ -46,7 +54,7 @@ export class AboutIndexComponent implements OnInit {
         this.isshow2 = true;
         this.isshow3 = false;
         this.isshow4 = false;
-        document.body.scrollTop = 750;
+        document.body.scrollTop = 720;
         this.navigateService.pushToRoute('./aboutChinaIcac/committee');
         break;
       case 'advisor':

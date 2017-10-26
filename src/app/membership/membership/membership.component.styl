@@ -5,16 +5,17 @@
   background $theme-main-gray-color
   padding-bottom 70px
   >div
-    width 1200px
+    width 1000px
     margin 0 auto
   .main
+    position relative
     display flex
-    width 1200px
+    width 1000px
     margin 0 auto
     .left-box
       background $hteme-white-color
       padding 30px 30px 70px 21px
-      width 830px
+      width 730px
       margin-right 20px
       .title
         font-size $font-bigger-size
@@ -34,22 +35,46 @@
           font-size $font-little-big-size
           color $font-deep-gray-color
           margin-bottom 29px
+        .whatapply
+          margin-top 30px
+          margin-bottom 18px
         .type
           width 100%
+          border-collapse collapse
           border 1px solid rgba(186,186,186,0.3)
           th
             background $theme-main-deep-blue-color
             color $font-white-color
-            padding 20px 20px 18px
+            padding 20px 0
+            padding-left 18px
+            text-align left
             line-height 12px
             width 33.3%
+            border 1px solid rgba(201,201,201,0.4)
           td
+            border 1px solid rgba(201,201,201,0.4)
             padding 20px 20px 18px
             line-height 22px
+        .readylist
+          margin-bottom 16px
+          span
+            background $theme-main-deep-blue-color
+            color $font-white-color
+            margin-right 8px
+            display inline-block
+            padding 3px
+            line-height 10px
+            width 16px
+            height 16px
       .system
-        padding-bottom 58px
+        padding-bottom 61px
       .benefits
-        padding-bottom 38px
+        padding-bottom 49px
+        .small-tit2
+          line-height 14px
+          margin-bottom 9px
+        .detail-exp
+          margin-bottom 19px
       .book-download
         border-top $default-light-border
         padding-top 29px
@@ -79,7 +104,9 @@
           font-size $font-small-size
           line-height 1.83
     .right-box
-      width 350px
+      position absolute
+      right 0
+      width 250px
       height 160px
       background $hteme-white-color
       .right-nav

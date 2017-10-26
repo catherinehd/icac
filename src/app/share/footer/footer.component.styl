@@ -2,7 +2,7 @@
 
 footer
   width 100%
-  background #343a4a
+  background $theme-main-deep-blue-color
   height 210px
   padding 20px 0 0
   position relative
@@ -14,7 +14,7 @@ footer
       display flex
       height 120px
       justify-content space-between
-      li
+      /*li
         border-right 1px solid rgba(151,187,211,0.2)
         width 398px
         padding-top 12px
@@ -40,10 +40,39 @@ footer
           margin-bottom 18px
         .detail
           color rgba(255,255,255,0.6)
-          font-size $font-nomal-size
+          font-size $font-nomal-size*/
+
+  .detail
+    li
+      width 50%
+    .logo-container
+      padding-right 56px
+      border-right 1px solid rgba(250,250,250,0.5)
+      .logo
+        width 260px
+        height 92px
+        float right
+        img
+          width 100%
+          padding 14px
+    .email-container
+      padding-left 70px
+      padding-top 22px
+      font-size $font-little-big-size
+      .title
+        width 189px
+        color #fff
+        border-bottom 1px solid #fafafa
+        padding-bottom 2px
+        margin-bottom 18px
+        cursor pointer
+      .detail
+        color #fafafa
+        .email-title
+          font-weight 300
 
   .copyright
-    background #21242b
+    background #112b43
     width 100%
     height 50px
     line-height 50px
@@ -52,3 +81,5 @@ footer
     color rgba(255,255,255,0.6)
     position absolute
     bottom 0
+
+

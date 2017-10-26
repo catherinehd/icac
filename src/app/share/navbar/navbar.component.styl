@@ -11,7 +11,7 @@ nav
     height: 60px;
     position: absolute;
     border-top: 1px solid #f1f2f0;
-    background: #fff;
+    background: $theme-main-deep-blue-color;
   .nav-box
     width 1200px
     margin 0 auto
@@ -23,8 +23,9 @@ nav
         cursor pointer
         padding 20px 20px 22px
         position relative
+        color $font-white-color
         &:hover
-          border-top 2px solid $theme-main-deep-blue-color
+          background $hteme-white-color
           padding-top 18px
           color $font-main-deep-blue-color
         .toggle
@@ -45,6 +46,7 @@ nav
             background $hteme-white-color
             box-shadow 0 0.5px 3px 0 rgba(120, 129, 160, 0.5)
             li
+              color $font-main-deep-blue-color
               padding 18px 0 18px 24px
               &:hover
                 border 0
@@ -52,6 +54,6 @@ nav
                 color $font-white-color
                 background $theme-main-deep-blue-color
       .active
-        border-top 2px solid $theme-main-deep-blue-color
         padding-top 18px
+        background $hteme-white-color
         color $font-main-deep-blue-color

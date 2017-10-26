@@ -9,7 +9,7 @@ import { UserStoreService } from '../../service/user-store.service';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.styl']
+  styleUrls: ['./detail.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class DetailComponent implements OnInit {
   news: newsModel = new newsModel('','', 0,'','',0,'','','','','','','',0);

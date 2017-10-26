@@ -21,6 +21,7 @@ export class RegisterNocodeComponent implements OnInit {
   isOpenEyesShow1 = true;
   isOpenEyesShow2 = true;
   hasceebcode: boolean;
+  prompt: boolean;
 
   errWork: string;
   errEmail: string;
@@ -45,6 +46,7 @@ export class RegisterNocodeComponent implements OnInit {
     this.msg = '';
     this.isCounting = false;
     this.hasceebcode = true;
+    this.prompt = false;
   }
 
   ngOnInit() {
@@ -124,12 +126,7 @@ export class RegisterNocodeComponent implements OnInit {
 
   setUser(data) {
     this.navigateService.clearRouteList();
-    this.navigateService.pushToRoute('./home');
-    location.reload();
-
-    // this.personService.getUserInfo().subscribe(res => {
-    //  this.loginSuccess(res),this.showTip(res.msg);
-    // })
+    this.prompt = true;
   }
 
   loginSuccess(user) {

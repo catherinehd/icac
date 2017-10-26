@@ -7,7 +7,7 @@ import { UserModel } from '../../model/user.model';
 @Component({
   selector: 'app-pro-dev-index',
   templateUrl: './pro-dev-index.component.html',
-  styleUrls: ['./pro-dev-index.component.styl']
+  styleUrls: ['./pro-dev-index.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class ProDevIndexComponent implements OnInit {
   modal = {

@@ -6,7 +6,7 @@ import { UserModel } from '../model/user.model';
 @Component({
   selector: 'app-person',
   templateUrl: './person.component.html',
-  styleUrls: ['./person.component.styl']
+  styleUrls: ['./person.component.styl','../share/breadcrumb/breadcrumb.component.styl']
 })
 export class PersonComponent implements OnInit {
   modal = {

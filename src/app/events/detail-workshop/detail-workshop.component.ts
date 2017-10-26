@@ -5,7 +5,7 @@ import { EventsService } from '../../service/events.service';
 @Component({
   selector: 'app-detail-workshop',
   templateUrl: './detail-workshop.component.html',
-  styleUrls: ['./detail-workshop.component.styl','../detail/detail.component.styl']
+  styleUrls: ['./detail-workshop.component.styl','../detail/detail.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class DetailWorkshopComponent implements OnInit {
   news: newsModel = new newsModel('','', 0,'','',0,'','','','','','','',0);

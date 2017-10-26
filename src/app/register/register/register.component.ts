@@ -13,11 +13,12 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  register: Register =new Register('','','','','','','','','','','','',);
+  register: Register =new Register('','','','','','','','','','','','','',);
   msg: string;
   timer: any;
   isCounting: boolean;
   count: number;
+  prompt: boolean;
   isOpenEyesShow1 = true;
   isOpenEyesShow2 = true;
   hasceebcode: boolean;
@@ -43,6 +44,7 @@ export class RegisterComponent implements OnInit {
     this.msg = '';
     this.isCounting = false;
     this.hasceebcode = true;
+    this.prompt = false;
   }
 
   ngOnInit() {
@@ -101,6 +103,9 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(6),
         Validators.pattern(/^\d{6}$/)
       ]],
+      'agreement':[this.register.agreement, [
+        Validators.required,
+      ]],
     });
   }
 
@@ -110,20 +115,14 @@ export class RegisterComponent implements OnInit {
     //this.testValid();
     if (!this.registerForm.valid) return;
     if(this.registerForm.value.pwd1 !== this.registerForm.value.pwd2 ) return;
-    console.log('ok');
+    //console.log('ok');
     this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,'agreement','','','',this.registerForm.value.ceebcode).subscribe(res => {
       res.ok ? this.setUser(res.data) : location.reload();//注册失败处理?
     })
   }
 
   setUser(data) {
-    this.navigateService.clearRouteList();
-    this.navigateService.pushToRoute('./home');
-    location.reload();
-
-   // this.personService.getUserInfo().subscribe(res => {
-    //  this.loginSuccess(res),this.showTip(res.msg);
-   // })
+    this.prompt = true;
   }
 
   loginSuccess(user) {
@@ -295,5 +294,6 @@ class Register {
               public school: string,
               public jobtitle: string,
               public ceebcode: string,
+              public agreement: string,
               ) {}
 }

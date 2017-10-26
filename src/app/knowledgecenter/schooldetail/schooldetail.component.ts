@@ -7,7 +7,7 @@ import { schoolModel } from '../../model/school.model';
 @Component({
   selector: 'app-schooldetail',
   templateUrl: './schooldetail.component.html',
-  styleUrls: ['./schooldetail.component.styl']
+  styleUrls: ['./schooldetail.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class SchooldetailComponent implements OnInit {
 
@@ -15,7 +15,7 @@ export class SchooldetailComponent implements OnInit {
   showRequirements: boolean;
   showOfficer: boolean;
 
-  school: schoolModel;
+  school: schoolModel = new schoolModel;
 
   constructor(private homeServicde: HomeService,
               private navigateService: NavigateService) {
@@ -33,10 +33,15 @@ export class SchooldetailComponent implements OnInit {
     const id = Number(location.pathname.split('/')[3]);
     //根据id获取页面内容
     this.homeServicde.getUniversityDetailList(id).subscribe(res => {
-      this.school = res.data, err => {
+      this.show(res.data), err => {
         if (err && err.status === 401) this.navigateService.pushToRoute('/home');
       }
     });
+  }
+
+  show(data) {
+    this.school = data;
+    //console.log(this.school)
   }
 
 }

@@ -8,16 +8,17 @@
     width 1000px
     margin 0 auto
   .main
+    position relative
     width 1000px
     margin 0 auto
     display flex
     justify-content space-between
   .detail-left
-    width 750px;
+    width 730px;
     overflow hidden
     margin-right 20px
     background #fff
-    padding 0 40px 65px
+    padding 0 40px 60px
     .overview
       .detail
         padding-top 30px
@@ -50,10 +51,13 @@
           display flex
           padding 30px 0
           border-top 1px solid rgba(52,52,52,0.1)
+          .expression-box
+            width 100%
           .name
             font-size $font-little-big-size
             color $font-light-gray-color
-            margin-bottom 19px
+            margin-bottom 18px
+            line-height 18px
             .englist
               font-size $font-big-size
               color $font-deep-gray-color
@@ -66,9 +70,15 @@
             .school-tit
               font-size $font-little-big-size
               line-height 16px
-              margin-bottom 5px
               color $font-deep-gray-color
+            p
+              margin-bottom 8px
+              line-height 14px
           .exp
+            .exp-tit
+              display block
+              color $font-deep-gray-color
+              margin-bottom 5px
             p
               color $font-gray-color
               font-size $font-nomal-size
@@ -85,8 +95,31 @@
                 height 10px
                 transform rotate(90deg)
                 margin-left 9px
+                vertical-align middle
+            .packup
+              float right
+              font-size $font-nomal-size
+              color rgba(28, 97, 160, 0.7)
+              img
+                width 10px
+                height 10px
+                transform rotate(-90deg) !important
+                margin-left 9px
           .edu
             margin-top 23px
+            .edu-tit
+              display block
+              color $font-deep-gray-color
+              margin-bottom 5px
+            .packup
+              float right
+              font-size $font-nomal-size
+              color rgba(28, 97, 160, 0.7)
+              img
+                width 10px
+                height 10px
+                transform rotate(-90deg) !important
+                margin-left 9px
             p
               font-size $font-nomal-size
               color $font-gray-color
@@ -120,12 +153,18 @@
             line-height 15px
             color $font-gray-color
             margin-bottom 16px
+            p
+              margin-bottom 8px
+              line-height 14px
             .school-tit
               font-size $font-little-big-size
               line-height 16px
-              margin-bottom 5px
               color $font-deep-gray-color
           .exp
+            .exp-tit
+              display block
+              color $font-deep-gray-color
+              margin-bottom 5px
             p
               color $font-gray-color
               font-size $font-nomal-size
@@ -142,6 +181,16 @@
                 height 10px
                 transform rotate(90deg)
                 margin-left 9px
+                vertical-align middle
+            .packup
+              float right
+              font-size $font-nomal-size
+              color rgba(28, 97, 160, 0.7)
+              img
+                width 10px
+                height 10px
+                transform rotate(-90deg) !important
+                margin-left 9px
           .edu
             margin-top 23px
             p
@@ -150,24 +199,35 @@
               span
                 color $font-deep-gray-color
                 font-size $font-little-big-size
-
-
+    .contact-us
+      .contact-method
+        border-top 1px solid rgba(52,52,52,0.1)
+        padding-top 30px
+        color $font-deep-gray-color
+      a
+        color $font-main-deep-blue-color
   .nav-right
     width 250px
     height 280px
     background #fff
     padding 20px 0
+    position absolute
+    right 0
     ul
       li
         padding 22px 0 24px 23px
         cursor pointer
         line-height 14px
       .active
+        cursor pointer
         background $theme-main-deep-blue-color
         color $font-white-color
 
 .title
   font-size $font-bigger-size
   font-weight bold
-  padding 30px 0
+  padding 12px 0 30px
+.overview
+  .title
+    padding 30px 0
 

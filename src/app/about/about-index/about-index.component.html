@@ -3,7 +3,12 @@
 
 <section class="about-index wrap-box" >
   <div>
-  <app-breadcrumb></app-breadcrumb>
+    <section class="breadcrumb">
+      <div class="breadcrumb-box">
+        <img src="../../../assets/icon/address1.svg" />
+        <span>Home > About ChinaICAC </span>
+      </div>
+    </section>
   <div class="main">
     <div class="detail-left">
       <div class="overview" id="overview">
@@ -45,18 +50,18 @@
                 <p>Academic Principal</p>
               </div>
               <div class="exp">
-                <p *ngIf="!showAll1">
-                  <span>Professional Experience</span>
-                  Wang, Shi (Shiny) is Academic Principal of Beijing Kaiwen Academy, who also serves as Assistant to Principal at Tsinghua University High School and Director of College Counseling.
-                  Member of NACAC & International ACA...
+                <div *ngIf="!showAll1">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Wang, Shi (Shiny) is Academic Principal of Beijing Kaiwen Academy, who also serves as Assistant to Principa...
                   <button (click)="showAll1 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
-                </p>
-                <p *ngIf="showAll1">
-                  <span>Professional Experience</span>
-                  Wang, Shi (Shiny) is Academic Principal of Beijing Kaiwen Academy, who also serves as Assistant to Principal at Tsinghua University High School and Director of College Counseling. Member of NACAC & International ACAC, (PD Committee member),
-                  <br>Secretary-General of Beijing Academy for College Counseling. He was one of China's first on-campus counselors to pioneer college admission/ counseling for students. With more than 20 years of teaching as teacher of English and over 10 years of counseling, he is widely recognized as China's expert in college counseling and international education globally. Furthermore, he has written articles on China's international education that were published in many public media including New York Times.
+                  </p>
+                </div>
+                <div *ngIf="showAll1">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Wang, Shi (Shiny) is Academic Principal of Beijing Kaiwen Academy, who also serves as Assistant to Principal at Tsinghua University High School and Director of College Counseling. Member of NACAC & International ACAC, (PD Committee member),Secretary-General of Beijing Academy for College Counseling. He was one of China's first on-campus counselors to pioneer college admission/ counseling for students. With more than 20 years of teaching as teacher of English and over 10 years of counseling, he is widely recognized as China's expert in college counseling and international education globally. Furthermore, he has written articles on China's international education that were published in many public media including New York Times.
                   <button class="packup" (click)="showAll1 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button>
-                </p>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -76,14 +81,14 @@
             </div>
             <div class="exp">
               <div *ngIf="!showAll2">
-                <span>Professional Experience</span>
+                <span class="exp-tit">Professional Experience</span>
                 <p>2010-2016: College Counselor, Director of College Counseling, Beijing National Day School</p>
                 <p>2013 – 2016: Government Relations Co...</p>
                 <p>2016 - Present: Director of College Cou...</p>
                 <button (click)="showAll2 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
               </div>
               <div *ngIf="showAll2">
-                <span>Professional Experience</span>
+                <span class="exp-tit">Professional Experience</span>
                 <p>2010-2016: College Counselor, Director of College Counseling, Beijing National Day School</p>
                 <p>2013 – 2016: Government Relations Committee, OACAC</p>
                 <p>2016 - Present: Director of College Counseling, Keystone Academy</p>
@@ -109,13 +114,13 @@
             </div>
             <div class="exp">
               <div *ngIf="!showAll3">
-                <span>Professional Experience</span>
-                <p>In 2009, Brantley joined the Dwight School international group of schools as Director of Programs - China. In 2014, Qibao High School and Dwight School New York opened IB World School Shanghai Qibao Dwight High School.
-                 Prior to joining Dwight School, Brantley ...</p>
-                <button (click)="showAll3 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
+                <span class="exp-tit">Professional Experience</span>
+                <p>In 2009, Brantley joined the Dwight School international group of schools as Director of Programs - China. In 2014, Qibao High School and Dwight School New York opened IB ...
+                <br> Prior to joining Dwight School, Brantley ...
+                <button (click)="showAll3 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
               </div>
               <p *ngIf="showAll3">
-                <span>Professional Experience：</span>
+                <span class="exp-tit">Professional Experience：</span>
                 In 2009, Brantley joined the Dwight School international group of schools as Director of Programs - China. In 2014, Qibao High School and Dwight School New York opened IB World School Shanghai Qibao Dwight High School.
                 <br>Prior to joining Dwight School, Brantley had many years of experience
                 <br>in market research and international education in China.
@@ -123,7 +128,7 @@
               </p>
             </div>
             <div class="edu" *ngIf="showAll3">
-              <span>Education </span>
+              <span class="edu-tit">Education </span>
               <p>PhD (in-progress), International School of Management, Paris, France. </p>
               <p>Graduate Certificate from Johns Hopkins-Nanjing University Center for Chinese American Studies,Nanjing, China 2000</p>
               <p>B.A Brown University, Rhode Island, U.S., 1998</p>
@@ -152,16 +157,17 @@
             </div>
             <div class="exp">
               <div *ngIf="!showAll4">
-                <span>Professional Experience</span>
-                <p>East Asia Regional Representative, Bard College. 2013 – 2016. Director, Bard Early College at Houde Academy, 2017 - current
-                Chief East Asia Representative, Bard C...
+                <span class="exp-tit">Professional Experience</span>
+                <p>2013 – 2016: East Asia Regional Repre...
                 <button (click)="showAll4 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
               </div>
               <div *ngIf="showAll4">
-                <span>Professional Experience</span>
-                <p>East Asia Regional Representative, Bard College. 2013 – 2016. Director, Bard Early College at Houde Academy, 2017 - current
-                Chief East Asia Representative, Bard College, 2017 – current Professional Violinist
-                <button class="packup" (click)="showAll4 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+                <span class="exp-tit">Professional Experience</span>
+                <p>2013 – 2016: East Asia Regional Representative, Bard College</p>
+                <p>2017 – current: Director, Bard Early College at Houde Academy, </p>
+                <p>2017 – current: Chief East Asia Representative, Bard College,
+                  Professional Violinist
+                  <button class="packup" (click)="showAll4 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
               </div>
             </div>
           </div>
@@ -186,21 +192,23 @@
               <span class="englist">Hamilton Gregg</span>
             </div>
             <div class="school">
-              <p class="school-tit">Education consultant</p>
-              <p>College Advisor Harrow Beijing and Independent Educational Consultant – SangLearning, HGIEC</p>
+              <p class="school-tit">College Advisor</p>
+              <p>Harrow Beijing</p>
+              <p class="school-tit">Independent Educational Consultant</p>
+              <p>SangLearning, HGIEC</p>
             </div>
             <div class="exp">
-              <p *ngIf="!showAll1">
-                <span>Professional Experience：</span>
-                I have been a college counselor in a school setting for over 23 years. In addition, I have been an independent consultant for the last 8 years. I am a member of International ACAC, NACAC, IECA. CIS. I am also a Certifie...
-                <button (click)="showAll1 = true">more<img src="../../../assets/icon/bottom.svg" /></button>
-              </p>
-              <p *ngIf="showAll1">
-                <span>Professional Experience：</span>
-                I have been a college counselor in a school setting for over 23 years. In addition, I have been an independent consultant for the last 8 years. I am a member of International ACAC, NACAC, IECA. CIS. I am also a Certified Educational Planner (CEP). I
+              <div *ngIf="!showAll1">
+                <span class="exp-tit">Professional Experience</span>
+                <p>I have been a college counselor in a school setting for over 23 years. <br> In addition, I have been an independent ...
+                <button (click)="showAll1 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
+              </div>
+              <div *ngIf="showAll1">
+                <span class="exp-tit">Professional Experience</span>
+                <p>I have been a college counselor in a school setting for over 23 years.<br> In addition, I have been an independent consultant for the last 8 years. I am a member of International ACAC, NACAC, IECA. CIS. I am also a Certified Educational Planner (CEP). I
                 am a past president of International ACAC and currently sit on the NACAC International Initiatives Committee.
-                <button class="packup" (click)="showAll1 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button>
-              </p>
+                <button class="packup" (click)="showAll1 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+              </div>
             </div>
           </div>
           </div>
@@ -214,12 +222,12 @@
           Contact us
         </div>
         <div class="contact-method">
-          <p>If you have any questions or suggestions, please contact us via <span>admin@chinaicac.org</span></p>
+          <p>If you have any questions or suggestions, please contact us via <a href="mailto:admin@chinaicac.org">admin@chinaicac.org</a></p>
         </div>
       </div>
 
     </div>
-    <div class="nav-right">
+    <div class="nav-right" id="nav">
       <ul>
         <li [class.active]="isshow1" (click)="about('overview')">
           Overview
