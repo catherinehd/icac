@@ -27,6 +27,7 @@ export class NewsIndexComponent implements OnInit {
   }
 
   showList(list) {
+    console.log(list);
     this.showLists = list.rows;
     this.page.pageCount = list.total;
     if(list.rows.length > 0) {

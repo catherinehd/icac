@@ -10,7 +10,7 @@
       <img class="overview-img" src="../../../assets/img/overview.png" />
       <div class="detail-box">
         <div class="title">
-          overview
+          Overview
         </div>
         <hr>
         <div class="detail">
@@ -30,7 +30,7 @@
       <div class="newsroom">
         <div class="title-box">
           <div class="title">
-            NEWSROOM
+            Newsroom
           </div>
           <div class="more" (click)="go('./news')">
             more
@@ -41,16 +41,16 @@
           <ul>
             <li *ngFor="let list of showLists">
               <div class="small-title">
-                {{list.nvTitle}}
+                {{list.ncTitle}}
               </div>
               <div class="date">
-               {{list.createTime}}
+               {{list.ncTime}}
               </div>
               <div class="expression">
                 {{list.ncContent}}
               </div>
               <button (click)="go('./news/newsroom')">
-                details
+                View details
               </button>
             </li>
           </ul>

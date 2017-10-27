@@ -14,7 +14,7 @@
       Newsroom
     </div>
     <div class="detail">
-      <div class="news-list" *ngIf="hasConference">
+      <div class="news-list" *ngIf="hasNews">
         <div class="news-info" *ngFor="let list of showLists">
           <div class="small-title">
             {{list.ncTitle}}
@@ -24,14 +24,14 @@
           </div>
           <div class="date">
             <img src="../../../assets/icon/time.svg" />
-            <span class="time">{{list.createTime}}</span>
+            <span class="time">{{list.ncTime}}</span>
           </div>
         </div>
 
         <app-pager [currPage]="page.pageIndex" [pageCount]="page.pageCount" (showPage)="onShowPage($event)"></app-pager>
       </div>
 
-      <div class="news-list noNews" *ngIf="!hasConference">
+      <div class="news-list noNews" *ngIf="!hasNews">
         <img src="../../../assets/icon/nonews.svg" />
         <p>No News</p>
         <a routerLink="/home">

@@ -44,6 +44,10 @@ export class ProDevIndexComponent implements OnInit {
 
   showList(data) {
     this.showLists = data.rows;
+    console.log(this.showLists);
+    for(let i = 0; i<this.showLists.length; i++){
+      //this.showLists[i].
+    }
     this.page.pageCount = data.total;
     if(data.rows.length > 0) {
       this.hasWebinar = true;

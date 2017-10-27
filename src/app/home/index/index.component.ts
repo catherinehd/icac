@@ -21,6 +21,7 @@ export class IndexComponent implements OnInit {
 
   showList(data) {
     this.showLists = data.rows.slice(0,3);
+    console.log(this.showLists);
   }
 
   go(url) {

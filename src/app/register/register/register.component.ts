@@ -104,7 +104,6 @@ export class RegisterComponent implements OnInit {
         Validators.pattern(/^\d{6}$/)
       ]],
       'agreement':[this.register.agreement, [
-        Validators.required,
       ]],
     });
   }
