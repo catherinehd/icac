@@ -5,8 +5,7 @@
   <div>
     <section class="breadcrumb">
       <div class="breadcrumb-box">
-        <img src="../../../assets/icon/address1.svg" />
-        <span>Home > Knowledge Center > University</span>
+        <span>Home</span>/<span>Knowledge Center</span>/<span>University</span>
       </div>
     </section>
   <div class="main">
@@ -50,4 +49,4 @@
 
 <app-to-top></app-to-top>
 
-<app-modal [modal]="modal"></app-modal>
+<app-modal [modal]="modal" (onConfirm)="onConfirm()"></app-modal>

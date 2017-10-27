@@ -30,7 +30,7 @@ export class SchooldetailComponent implements OnInit {
 
   getId() {
     //获取id
-    const id = Number(location.pathname.split('/')[3]);
+    const id = Number(location.hash.split('/')[3]);
     //根据id获取页面内容
     this.homeServicde.getUniversityDetailList(id).subscribe(res => {
       this.show(res.data), err => {

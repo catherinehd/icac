@@ -13,7 +13,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 })
 export class ModalComponent implements OnInit {
   @Input() modal: Modal;
-  @Output() onConfirm = new EventEmitter<number>();
+  @Output() onConfirm = new EventEmitter<string>();
   loginForm: FormGroup;
   login: Login =new Login('','');
   msg: string;
@@ -43,6 +43,10 @@ export class ModalComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+  }
+
+  confirm(status) {
+    this.onConfirm.emit(status);
   }
 
   buildForm() {

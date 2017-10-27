@@ -30,7 +30,7 @@ export class DetailComponent implements OnInit {
 
   getId() {
     //获取id
-    const id = Number(location.pathname.split('/')[4]);
+    const id = Number(location.hash.split('/')[3]);
     //根据id获取页面内容
     this.eventService.getDetailEventes(id).subscribe(res => {
       this.news = res.data, err => {

@@ -48,7 +48,7 @@ export class ResetPwdComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    this.username = location.pathname.split('/')[3];
+    this.username = location.hash.split('/')[3];
   }
 
   buildForm() {
@@ -96,7 +96,7 @@ export class ResetPwdComponent implements OnInit {
   }
 
   resetPwdSuccess(msg){
-    this.go('./login');
+    this.go('./');
 }
 
 

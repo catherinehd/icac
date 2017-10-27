@@ -4,10 +4,11 @@
 <section class="knowledge-center-school wrap-box">
   <div>
     <section class="breadcrumb">
-      <div class="breadcrumb-box">
-        <img src="../../../assets/icon/address1.svg" />
-        <span *ngIf="university">Home > Knowledge Center > University > {{querymsg}}</span>
-        <span *ngIf="!university">Home > Knowledge Center > Hign School > {{querymsg}}</span>
+      <div class="breadcrumb-box" *ngIf="university">
+        <span>Home</span>/<span>Knowledge Center</span>/<span>University</span>/<span>{{querymsg}}</span>
+      </div>
+      <div class="breadcrumb-box" *ngIf="!university">
+        <span>Home</span>/<span>Knowledge Center</span>/<span>Hign School</span>/<span>{{querymsg}}</span>
       </div>
     </section>
     <div class="main">

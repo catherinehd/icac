@@ -4,10 +4,11 @@
 <section class="person-sec wrap-box" >
   <div>
     <section class="breadcrumb">
-      <div class="breadcrumb-box">
-        <img src="../../../assets/icon/address1.svg" />
-        <span *ngIf="showperson">Home > Person > Personal Data</span>
-        <span *ngIf="showmodifyps">Home > Person > Modify Password</span>
+      <div class="breadcrumb-box" *ngIf="showperson">
+        <span>Home</span>/<span>Person</span>/<span>Personal Data</span>
+      </div>
+      <div class="breadcrumb-box"  *ngIf="showmodifyps">
+        <span>Home</span>/<span>Person</span>/<span>Modify Password</span>
       </div>
     </section>
   <div class="main">
@@ -39,5 +40,5 @@
   </div>
 </section>
 
-<app-modal [modal]="modal"></app-modal>
+<app-modal [modal]="modal" (onConfirm)="onConfirm()"></app-modal>
 

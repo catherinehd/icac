@@ -41,8 +41,8 @@ export class SearchComponent implements OnInit {
       res.ok ?  this.getLists() : this.modal.isSigninShow = true ;
     });
     this.buildForm();
-    this.querymsg = location.pathname.split('/')[4];
-    if(location.pathname.split('/')[2] === 'university') {
+    this.querymsg = location.hash.split('/')[4];
+    if(location.hash.split('/')[2] === 'university') {
       this.university = true;
     } else {
       this.university = false;

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import {HashLocationStrategy,LocationStrategy} from '@angular/common';
 
 import { HttpClientService } from './service/http-client.service';
 import { UserStoreService } from './service/user-store.service';
@@ -54,7 +55,7 @@ import { SearchComponent } from './knowledgecenter/search/search.component';
   declarations: [
     AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent, EventsWorkshopComponent, JobComponent, SeniorSchoolComponent, TransferComponent, RankingComponent, PublicationComponent, ResearchComponent, ProDetailComponent, DetailWorkshopComponent, SeniorSchooldetailComponent, ResetPwdComponent, VerifyEmailComponent, RegisterNocodeComponent, LoginComponent, SearchComponent,
   ],
-  providers: [ HttpClientService, UserStoreService, PersonService, EventsService,ProDevService, HomeService, NewsService, ],
+  providers: [ HttpClientService, UserStoreService, PersonService, EventsService,ProDevService, HomeService, NewsService, {provide: LocationStrategy,useClass: HashLocationStrategy} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,8 +3,10 @@
 
 <div class="container wrap-box">
 <div class="modal-container" >
+  <span><button (click)="go('./home')">
+      <img src="../../../assets/icon/close.svg"></button></span>
   <div class="title">
-    Reset password
+    RESET PASSWORD
   </div>
   <div class="main">
     <div class="wrongMsg" *ngIf="msg">{{msg}}</div>

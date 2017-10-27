@@ -22,7 +22,7 @@ export class ProDetailComponent implements OnInit {
 
   getId() {
     //获取id
-    const id = Number(location.pathname.split('/')[3]);
+    const id = Number(location.hash.split('/')[3]);
     //根据id获取页面内容
     this.prodevService.getProDevDetail(id).subscribe(res => {
     this.news = res.data, err => {

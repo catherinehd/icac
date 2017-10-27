@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class="modal-container" *ngIf="modal.isSigninShow">
-    <span><button (click)="modal.isSigninShow = false">
+    <span><button (click)="confirm()">
       <img src="../../../assets/icon/close.svg"></button></span>
       <div class="title">
         {{modal.title}}
@@ -28,15 +28,13 @@
             </div>
           </div>
           <div class="button-group">
-            <button (click)="go('./home')">No account fast</button>
-            <button (click)="go('./register');modal.isSigninShow = false">registration</button>
+            <button (click)="go('./register');modal.isSigninShow = false">Join now</button>
             <button (click)="go('./person/verify-email');modal.isSigninShow = false">Forgot password?</button>
           </div>
           <button class="form-bth submit-btn" [disabled]="!loginForm.value.email || !loginForm.value.pwd" type="button" (click)="onSubmit()">
             Sign in
           </button>
         </div>
-        <p class="tel">Customer service telephone numbers 400-123-1234</p>
       </div>
     </div>
 

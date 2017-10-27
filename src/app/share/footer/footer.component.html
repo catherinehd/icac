@@ -49,8 +49,9 @@
       </li>
       <li class="email-container">
         <div class="email">
-          <div class="title" (mouseover)="show()">
+          <div class="title" (mouseover)="showcode = true" (mouseout)="showcode = false">
             WeChat public platform
+            <img class="code" src="../../../assets/img/code.png" *ngIf="showcode" />
           </div>
           <div class="detail">
             <span class="email-title">E-mail:</span>  admin@chinaicac.org

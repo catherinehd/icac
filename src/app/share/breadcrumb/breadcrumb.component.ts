@@ -14,7 +14,7 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.path = location.pathname.split('/').slice(1);
+    this.path = location.hash.split('/').slice(1);
 
   }
 

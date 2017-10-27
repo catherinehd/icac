@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   hideToggle: boolean;
 
   constructor(private navigateService: NavigateService) {
-    const pathArray = location.pathname.split('/');
+    const pathArray = location.hash.split('/');
     //console.log(pathArray[1]);
 
     if(pathArray[1] === 'home') {

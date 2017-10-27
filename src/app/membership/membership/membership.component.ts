@@ -29,9 +29,13 @@ export class MembershipComponent implements OnInit {
     document.body.onscroll = function(){
       const top = document.body.scrollTop;
       if(top <= 230 ) {
-        document.getElementById('nav').style.top = '0px';
+        if(document.getElementById('nav-right')){
+          document.getElementById('nav-right').style.top = '0px';
+        }
       } else {
-        document.getElementById('nav').style.top = (top-230).toString() + 'px';
+        if(document.getElementById('nav-right')){
+          document.getElementById('nav-right').style.top = (top-230).toString() + 'px';
+        }
       }
     }
   }
@@ -47,7 +51,7 @@ export class MembershipComponent implements OnInit {
       case 'benefit':
         this.isshow1 = false;
         this.isshow2 = true;
-        document.body.scrollTop = 800;
+        document.body.scrollTop = 1050;
         break;
       default:
         break;

@@ -10,7 +10,7 @@ import { UserModel } from '../model/user.model';
 })
 export class PersonComponent implements OnInit {
   modal = {
-    title: 'ChinaICAC Member Sign in',
+    title: 'CHINAICAC MEMBER SIGN IN',
     isSigninShow: false,
     closeShow: false,
   };
@@ -30,6 +30,10 @@ export class PersonComponent implements OnInit {
     this.personService.getUserInfo().subscribe(res => {
       res.ok ?  this.isLogin = true : this.modal.isSigninShow = true ;
     });
+  }
+
+  onConfirm() {
+    this.navigateService.pushToRoute('./home');
   }
 
 }

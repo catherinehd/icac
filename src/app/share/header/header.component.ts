@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
 
   modal = {
-    title: 'ChinaICAC Member Sign in',
+    title: 'CHINAICAC MEMBER SIGN IN',
     isSigninShow: false,
     closeShow: true,
   }
@@ -53,6 +53,10 @@ export class HeaderComponent implements OnInit {
   go(url) {
     this.navigateService.push();
     this.navigateService.pushToRoute(url);
+  }
+
+  onConfirm() {
+    this.modal.isSigninShow = false;
   }
 
 }

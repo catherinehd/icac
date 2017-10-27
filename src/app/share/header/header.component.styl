@@ -21,19 +21,29 @@ header
       vertical-align middle
       width 40px
       height @width
-      margin-right 19px
     .btn-group
       display inline-block
       height 14px
       line-height 14px
     button
-      background transparent
-      height 14px
+      background #f0f0f0
+      padding 8px 12px
       font-size $font-nomal-size
+      border-radius 15px
+      color #343434
       &:nth-child(1)
-        border-right 1px solid $font-gray-color
-        padding-right 16px
-        margin-right 18px
+        margin-right 21px
+      &:hover
+        color #fff
+        background $theme-main-deep-blue-color
+  .out-box
+    button
+      &:first-child
+        border 0
+        background 0
+        &:hover
+          color #343434
+
   .login-box
     .btn-group
       margin-top 16px

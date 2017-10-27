@@ -34,7 +34,6 @@ export class NewsIndexComponent implements OnInit {
     } else {
       this.hasNews = false;
     }
-    console.log(this.hasNews);
   }
 
   go(url) {

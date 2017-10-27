@@ -11,7 +11,7 @@ import { UserModel } from '../../model/user.model';
 })
 export class ProDevIndexComponent implements OnInit {
   modal = {
-    title: 'ChinaICAC Member Sign in',
+    title: 'CHINAICAC MEMBER SIGN IN',
     isSigninShow: false,
     closeShow: false,
   }
@@ -65,7 +65,10 @@ export class ProDevIndexComponent implements OnInit {
         if (err && err.status === 401) this.navigateService.pushToRoute('/home');
       }
     });
+  }
 
+  onConfirm() {
+    this.navigateService.pushToRoute('./home');
   }
 
 }

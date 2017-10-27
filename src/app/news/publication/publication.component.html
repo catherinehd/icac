@@ -5,8 +5,7 @@
   <div>
     <section class="breadcrumb">
       <div class="breadcrumb-box">
-        <img src="../../../assets/icon/address1.svg" />
-        <span>Home > News & Publication > Publication </span>
+        <span>Home</span>/<span>News & Publication</span>/<span>Publication </span>
         <span *ngFor="let list of path"> > {{list}}</span>
       </div>
     </section>
@@ -31,10 +30,10 @@
 
       <div class="news-list noNews" *ngIf="!hasConference">
         <img src="../../../assets/icon/nonews.svg" />
-        <p>No National Conference</p>
+        <p>No Publication</p>
         <a routerLink="/home">
           <img src="../../../assets/icon/left.svg" alt="left" />
-          Return home page
+          Return to homepage
         </a>
       </div>
 

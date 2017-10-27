@@ -7,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  showcode: boolean;
 
-  ngOnInit() {
+  constructor() {
+    this.showcode = false;
   }
 
-  show(){
-
+  ngOnInit() {
   }
 
 }

@@ -12,7 +12,7 @@
   .modal-container
     z-index 3
     width 100%
-    padding 29px 0 20px
+    padding 0 0 20px
     span
       position absolute
       top 12px
@@ -22,11 +22,13 @@
         height 20px
     .title
       padding 0 40px
-      height 38px
+      height 68px
       font-size $font-big-size
-      color $font-deep-gray-color
+      color #fff
+      padding-top 30px
       border-bottom $default-light-border
-
+      background $theme-main-deep-blue-color
+      text-align center
 
     .main
       padding 30px 40px 0
@@ -49,22 +51,25 @@
             button
               width 13px
         .button-group
-          margin-top 10px
+          margin-top 22px
+          display flex
           button
             font-size $font-nomal-size
             color $font-deep-gray-color
+            width 50%
             &:hover
               color $font-main-deep-blue-color
             &:nth-child(1)
-              margin-right 20px
+              text-align left
             &:nth-child(2)
-              margin-right 38px
+              text-align right
         &>button
           font-size $font-little-big-size
           background $theme-main-deep-blue-color
           color $font-white-color
           padding 13px 23px
           margin-top 40px
+          width 100%
         .submit-btn
           &[disabled]
             color #666

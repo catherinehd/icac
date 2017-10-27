@@ -21,14 +21,18 @@ export class AboutIndexComponent implements OnInit {
   }
 
   ngOnInit() {
-    const search = location.pathname.split('/')[2];
+    const search = location.hash.split('/')[2];
     this.about(search);
     document.body.onscroll = function(){
       const top = document.body.scrollTop;
       if(top <= 230 ) {
-        document.getElementById('nav').style.top = '0px';
+        if(document.getElementById('nav-right')) {
+          document.getElementById('nav-right').style.top = '0px';
+        }
       } else {
-        document.getElementById('nav').style.top = (top-230).toString() + 'px';
+        if(document.getElementById('nav-right')) {
+          document.getElementById('nav-right').style.top = (top-230).toString() + 'px';
+        }
       }
     }
   }
@@ -54,7 +58,7 @@ export class AboutIndexComponent implements OnInit {
         this.isshow2 = true;
         this.isshow3 = false;
         this.isshow4 = false;
-        document.body.scrollTop = 720;
+        document.body.scrollTop = 675;
         this.navigateService.pushToRoute('./aboutChinaIcac/committee');
         break;
       case 'advisor':
@@ -62,7 +66,7 @@ export class AboutIndexComponent implements OnInit {
         this.isshow2 = false;
         this.isshow3 = true;
         this.isshow4 = false;
-        document.body.scrollTop = 1880;
+        document.body.scrollTop = 1830;
         this.navigateService.pushToRoute('./aboutChinaIcac/advisor');
         break;
       case 'contact-us':
@@ -70,7 +74,7 @@ export class AboutIndexComponent implements OnInit {
         this.isshow2 = false;
         this.isshow3 = false;
         this.isshow4 = true;
-        document.body.scrollTop = 1880;
+        document.body.scrollTop = 2170;
         this.navigateService.pushToRoute('./aboutChinaIcac/contact-us');
         break;
       default:

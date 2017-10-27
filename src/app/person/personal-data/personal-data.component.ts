@@ -13,8 +13,9 @@ import { UserModel } from '../../model/user.model';
 })
 export class PersonalDataComponent implements OnInit {
 
-  user: UserModel = new UserModel;
+  userInfo: UserModel = new UserModel;
   isLogin: boolean;
+  userName: any;
 
   constructor(private navigateService: NavigateService,
               private userService: UserService,
@@ -37,8 +38,8 @@ export class PersonalDataComponent implements OnInit {
   }
 
   showuserInfo(data) {
-    this.user = data;
-    console.log(this.user);
+    this.userName = data.userName;
+    this.userInfo = data.userInfo;
   }
 
 }

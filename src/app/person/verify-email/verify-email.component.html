@@ -3,8 +3,10 @@
 
 <div class="container wrap-box">
 <div class="modal-container">
+  <span><button (click)="go('./home')">
+      <img src="../../../assets/icon/close.svg"></button></span>
   <div class="title">
-    Verify mailbox
+    VERIFY MAILBOX
   </div>
   <div class="main">
     <div class="wrongMsg" *ngIf="msg">{{msg}}</div>
@@ -20,7 +22,6 @@
         Next step
       </button>
     </div>
-    <p class="tel">Customer service telephone numbers 400-123-1234</p>
   </div>
 </div>
 </div>

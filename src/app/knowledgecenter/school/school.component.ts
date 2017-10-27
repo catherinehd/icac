@@ -14,7 +14,7 @@ import { UserModel } from '../../model/user.model';
 })
 export class SchoolComponent implements OnInit {
   modal = {
-    title: 'ChinaICAC Member Sign in',
+    title: 'CHINAICAC MEMBER SIGN IN',
     isSigninShow: false,
   };
 
@@ -97,6 +97,10 @@ export class SchoolComponent implements OnInit {
 
   getList(){
     this.navigateService.pushToRoute('./knowledge-center/university');
+  }
+
+  onConfirm() {
+    this.navigateService.pushToRoute('./home');
   }
 
 }
