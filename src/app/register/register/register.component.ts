@@ -34,6 +34,8 @@ export class RegisterComponent implements OnInit {
   errSchool: string;
   errJob: string;
   errCeeb: string;
+  showceebdes: boolean;//显示ceeb的介绍
+  highschool: boolean;//选择身份,如果是大学生则不需要ceebcode
 
   constructor(private navigateService: NavigateService,
               private userService: UserService,
@@ -99,7 +101,6 @@ export class RegisterComponent implements OnInit {
         Validators.required,
       ]],
       'ceebcode': [this.register.ceebcode, [
-        Validators.required,
         Validators.maxLength(6),
         Validators.pattern(/^\d{6}$/)
       ]],
@@ -110,11 +111,14 @@ export class RegisterComponent implements OnInit {
 
   //有code
   onSubmit() {
-    if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode) return;
+    if (this.highschool) {
+      if (!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode) return;
+    } else {
+    if (!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle) return;
+    }
     //this.testValid();
     if (!this.registerForm.valid) return;
     if(this.registerForm.value.pwd1 !== this.registerForm.value.pwd2 ) return;
-    //console.log('ok');
     this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,'1','','','',this.registerForm.value.ceebcode).subscribe(res => {
       res.ok ? this.setUser(res.data) : location.reload();//注册失败处理?
     })
@@ -163,6 +167,12 @@ export class RegisterComponent implements OnInit {
         this.errWork = 'please choose you work for';
         } else {
           this.errWork = '';
+          if(this.registerForm.value.work === '1' ) {
+            this.highschool = false;
+            this.registerForm.value.ceebcode = '';
+          } else {
+            this.highschool = true;
+          }
         }
         break;
       case 'email':

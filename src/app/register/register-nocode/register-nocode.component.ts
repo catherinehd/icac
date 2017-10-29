@@ -36,6 +36,7 @@ export class RegisterNocodeComponent implements OnInit {
   errname: string;
   errins: string;
   errremail: string;
+  highschool: boolean;
 
   constructor(private navigateService: NavigateService,
               private userService: UserService,
@@ -114,11 +115,13 @@ export class RegisterNocodeComponent implements OnInit {
 
   //有code
   onSubmit() {
-    if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail) return;
-    //this.testValid();
+    if (this.highschool) {
+      if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail) return;
+    } else {
+      if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle ) return;
+    }
     if (!this.registerForm.valid) return;
     if(this.registerForm.value.pwd1 !== this.registerForm.value.pwd2 ) return;
-    console.log('ok');
     this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,'1',this.registerForm.value.rename,this.registerForm.value.reins,this.registerForm.value.remail,'').subscribe(res => {
       res.ok ? this.setUser(res.data) : location.reload();//注册失败处理?
     })
@@ -168,6 +171,14 @@ export class RegisterNocodeComponent implements OnInit {
           this.errWork = 'please choose you work for';
         } else {
           this.errWork = '';
+          if(this.registerForm.value.work === '1' ) {
+            this.highschool = false;
+            this.registerForm.value.rename = '';
+            this.registerForm.value.remail = '';
+            this.registerForm.value.reins = '';
+          } else {
+            this.highschool = true;
+          }
         }
         break;
       case 'email':

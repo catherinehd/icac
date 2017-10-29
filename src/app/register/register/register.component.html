@@ -15,7 +15,7 @@
         </label>
         <span>
           <select formControlName="work" (blur)="showErr('work')">
-            <option selected value="0">
+            <option value="0">
               Secondary／High School
             </option>
             <option value="1">
@@ -181,14 +181,17 @@
           </div>
         </span>
       </div>
-      <div class="form-field">
+      <div class="form-field" *ngIf="highschool">
         <label class="name">
           <span>*</span>CEEB Code
         </label>
         <span>
           <input placeholder="Please enter" formControlName="ceebcode" type="number" maxlength="6" (blur)="showErr('ceeb')">
-          <img class="point" src="../../../assets/icon/point.svg" />
-          <div class="wrong" *ngIf="errCeeb">
+          <img class="point" src="../../../assets/icon/point.svg" (mouseover)="showceebdes = true" (mouseout)="showceebdes = false" />
+          <div class="ceeb-detail" *ngIf="showceebdes">
+            CEEB CODE is ...
+          </div>
+          <div class="wrong wrong-code" *ngIf="errCeeb">
           <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
           <span>{{errCeeb}}</span>
           </div>
@@ -202,12 +205,17 @@
 
       <div class="agreement form-field">
         <input type="checkbox" id="agreement" formcontrolname="agreement" checked>
-        <p class="agreement-title" for="agreement">
+        <label class="agreement-title" for="agreement">
           I own membership of InternationalACAC.
-        </p>
+        </label>
       </div>
-      <div class="submit">
+      <div class="submit" *ngIf="highschool">
         <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode" (click)="onSubmit()">
+          Submit
+        </button>
+      </div>
+      <div class="submit" *ngIf="!highschool">
+        <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle" (click)="onSubmit()">
           Submit
         </button>
       </div>

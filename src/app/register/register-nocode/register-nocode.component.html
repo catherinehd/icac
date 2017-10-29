@@ -180,7 +180,7 @@
           </div>
         </span>
       </div>
-      <div class="form-field">
+      <div class="form-field" *ngIf="highschool">
         <label class="name">
           <span>*</span>Reference Name
         </label>
@@ -192,7 +192,7 @@
           </div>
         </span>
       </div>
-      <div class="form-field">
+      <div class="form-field" *ngIf="highschool">
         <label class="name">
           <span>*</span>Reference Institution
         </label>
@@ -204,7 +204,7 @@
           </div>
         </span>
       </div>
-      <div class="form-field">
+      <div class="form-field" *ngIf="highschool">
         <label class="name">
           <span>*</span>Reference Email
         </label>
@@ -228,8 +228,13 @@
         </p>
       </div>
 
-      <div class="submit">
+      <div class="submit" *ngIf="highschool">
         <button type="button" [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail"   (click)="onSubmit()">
+          Submit
+        </button>
+      </div>
+      <div class="submit" *ngIf="!highschool">
+        <button type="button" [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle"   (click)="onSubmit()">
           Submit
         </button>
       </div>
