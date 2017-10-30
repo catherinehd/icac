@@ -14,7 +14,7 @@
             <input placeholder="Email" type="email" formControlName="email" >
           </div>
           <div class="form-field password">
-            <input placeholder="Password" [type]="!isOpenEyesShow ? 'test' : 'password'" formControlName="pwd" maxlength="15" minlength="6">
+            <input placeholder="Password" [type]="!isOpenEyesShow ? 'test' : 'password'" formControlName="pwd" maxlength="15" minlength="6" (keydown)="btnSubmit(event)">
             <div class="btn-group">
               <!--<button class="close-btn" (click)="clear('pwd')" *ngIf="loginForm.value.pwd">
                 <img class="icon-close" src="../../../assets/icon/close.svg" />
@@ -31,7 +31,7 @@
             <button (click)="go('./register');modal.isSigninShow = false">Join now</button>
             <button (click)="go('./person/verify-email');modal.isSigninShow = false">Forgot password?</button>
           </div>
-          <button class="form-bth submit-btn" [disabled]="!loginForm.value.email || !loginForm.value.pwd" type="button" (click)="onSubmit()">
+          <button class="form-bth submit-btn" [disabled]="!loginForm.value.email || !loginForm.value.pwd" type="submit" (click)="onSubmit()">
             Sign in
           </button>
         </div>

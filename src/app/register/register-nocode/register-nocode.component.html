@@ -32,7 +32,7 @@
           <span>*</span>Email
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="email" type="email" (blur)="showErr('email')">
+          <input placeholder="Please enter" formControlName="email" type="email" (keyup)="showErr('email')">
           <div class="wrong" *ngIf="errEmail">
             <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
             <span>{{errEmail}}</span>
@@ -45,7 +45,7 @@
         </label>
         <span>
           <input placeholder="Please enter" formControlName="code" type="text" (blur)="showErr('code')">
-          <button class="obtain" [disabled]="!registerForm.value.email" (click)="getCode()"><span *ngIf="!isCounting">Obtain</span><span *ngIf="isCounting">{{count}}</span></button>
+          <button class="obtain" [disabled]="!registerForm.value.email || errEmail" (click)="getCode()"><span *ngIf="!isCounting">Obtain</span><span *ngIf="isCounting">{{count}}</span></button>
           <div class="wrong" *ngIf="errCode">
             <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
             <span>{{errCode}}</span>
@@ -222,10 +222,10 @@
         已有CEEB Code？
       </div>
       <div class="agreement">
-        <input type="checkbox" id="agreement" checked>
-        <p class="agreement-title" for="agreement">
+        <input type="checkbox" id="agreement"  checked disabled>
+        <label class="agreement-title" for="agreement">
           I own membership of InternationalACAC.
-        </p>
+        </label>
       </div>
 
       <div class="submit" *ngIf="highschool">

@@ -29,7 +29,7 @@ export class IndexComponent implements OnInit {
 
   format(t) {
     let unixTimestamp = new Date(t);
-    let commonTime = unixTimestamp.toLocaleString();
+    let commonTime = unixTimestamp.toLocaleDateString();
     return commonTime;
   }
 

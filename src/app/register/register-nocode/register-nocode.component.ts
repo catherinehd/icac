@@ -120,6 +120,7 @@ export class RegisterNocodeComponent implements OnInit {
     } else {
       if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle ) return;
     }
+    if (this.errEmail || this.errCode) return;
     if (!this.registerForm.valid) return;
     if(this.registerForm.value.pwd1 !== this.registerForm.value.pwd2 ) return;
     this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,'1',this.registerForm.value.rename,this.registerForm.value.reins,this.registerForm.value.remail,'').subscribe(res => {
@@ -152,6 +153,8 @@ export class RegisterNocodeComponent implements OnInit {
   }
 
   counting() {
+    clearInterval(this.timer);
+
     this.isCounting = true;
     this.count = 60;
     this.timer = setInterval(() => {

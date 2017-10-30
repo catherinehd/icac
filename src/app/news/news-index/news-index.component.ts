@@ -27,14 +27,24 @@ export class NewsIndexComponent implements OnInit {
   }
 
   showList(list) {
-    console.log(list);
+    //console.log(list);
     this.showLists = list.rows;
+    for(let i = 0;i <= this.showLists.length; i++){
+      let t = this.showLists[i].ncTime;
+      this.showLists[i].ncTime = this.format(t);
+    }
     this.page.pageCount = list.total;
     if(list.rows.length > 0) {
       this.hasNews = true;
     } else {
       this.hasNews = false;
     }
+  }
+
+  format(t) {
+    let unixTimestamp = new Date(t);
+    let commonTime = unixTimestamp.toLocaleDateString();
+    return commonTime;
   }
 
   go(url) {

@@ -31,13 +31,22 @@ export class EventsWorkshopComponent implements OnInit {
 
   showList(list) {
     this.showLists = list.rows;
+    for(let i = 0;i <= this.showLists.length; i++){
+      let t = this.showLists[i].newsTime;
+      this.showLists[i].newsTime = this.format(t);
+    }
     this.page.pageCount = list.total;
     if(list.rows.length > 0) {
       this.hasConference = true;
     } else {
       this.hasConference = false;
     }
+  }
 
+  format(t) {
+    let unixTimestamp = new Date(t);
+    let commonTime = unixTimestamp.toLocaleDateString();
+    return commonTime;
   }
 
   go(url) {

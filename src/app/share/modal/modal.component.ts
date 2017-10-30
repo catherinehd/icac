@@ -103,6 +103,10 @@ export class ModalComponent implements OnInit {
     })
   }
 
+  //回车键提交表单
+  btnSubmit(e){
+  }
+
   go(url) {
     this.navigateService.push();
     this.navigateService.pushToRoute(url);

@@ -33,7 +33,7 @@
           <span>*</span>Email
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="email" type="email" (blur)="showErr('email')">
+          <input placeholder="Please enter" formControlName="email" type="email" (keyup)="showErr('email')">
           <div class="wrong" *ngIf="errEmail">
             <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
             <span>{{errEmail}}</span>
@@ -46,7 +46,7 @@
         </label>
         <span>
           <input placeholder="Please enter" formControlName="code" type="text" (blur)="showErr('code')">
-          <button class="obtain" [disabled]="!registerForm.value.email" (click)="getCode()"><span *ngIf="!isCounting">Obtain</span><span *ngIf="isCounting">{{count}}</span></button>
+          <button class="obtain" [disabled]="!registerForm.value.email || errEmail" (click)="getCode()"><span *ngIf="!isCounting">Obtain</span><span *ngIf="isCounting">{{count}}</span></button>
           <div class="wrong" *ngIf="errCode">
             <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
             <span>{{errCode}}</span>
@@ -189,7 +189,7 @@
           <input placeholder="Please enter" formControlName="ceebcode" type="number" maxlength="6" (blur)="showErr('ceeb')">
           <img class="point" src="../../../assets/icon/point.svg" (mouseover)="showceebdes = true" (mouseout)="showceebdes = false" />
           <div class="ceeb-detail" *ngIf="showceebdes">
-            CEEB CODE is ...
+            CEEB Code，全称是（美国）大学入学考试委员会，CEEB会给每个高中和大学分配一个代码，这个代码就是CEEB Code。
           </div>
           <div class="wrong wrong-code" *ngIf="errCeeb">
           <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
@@ -203,9 +203,9 @@
         没有CEEB Code？
       </div>
 
-      <div class="agreement form-field">
-        <input type="checkbox" id="agreement" formcontrolname="agreement" checked>
-        <label class="agreement-title" for="agreement">
+      <div class="agreement form-field" id="agreement">
+        <input type="checkbox" checked disabled id="agreement-input" formcontrolname="agreement">
+        <label class="agreement-title" for="agreement-input">
           I own membership of InternationalACAC.
         </label>
       </div>

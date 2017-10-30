@@ -58,6 +58,10 @@ export class MembershipComponent implements OnInit {
     }
   }
 
+  onConfirm() {
+    this.modal.isSigninShow = false;
+  }
+
   download(url){
     this.personService.getUserInfo().subscribe(res => {
       res.ok ? this.candownload(res.data) : this.modal.isSigninShow = true;
