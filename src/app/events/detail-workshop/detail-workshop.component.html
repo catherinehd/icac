@@ -5,8 +5,7 @@
   <div>
     <section class="breadcrumb">
       <div class="breadcrumb-box">
-        <span>Home</span>/<span>Events</span>/<span>National Conference</span>
-        <span *ngFor="let list of path"> > {{list}}</span>
+        <span>Home</span>/<span>Events</span>/<span>Regional Workshop</span>/<span>{{news.newsTitle}}</span>
       </div>
     </section>
   <div class="main">
@@ -21,7 +20,7 @@
         </div>
         <div class="date">
           <img src="../../../assets/icon/time.svg" />
-          <span>{{news.updateTime}}</span>
+          <span>{{news.newsTime}}</span>
         </div>
       </div>
       <div class="expression detail">

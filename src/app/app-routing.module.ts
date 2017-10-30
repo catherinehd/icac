@@ -35,6 +35,7 @@ import { VerifyEmailComponent } from './person/verify-email/verify-email.compone
 import { RegisterNocodeComponent } from './register/register-nocode/register-nocode.component';
 import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './knowledgecenter/search/search.component';
+import { NewsDetailComponent } from './news/news-detail/news-detail.component';
 
 
 const appRouters: Routes = [
@@ -75,6 +76,7 @@ const appRouters: Routes = [
       { path: 'news/newsroom', component: NewsIndexComponent },
       { path: 'news/publication', component: PublicationComponent },
       { path: 'news/research', component: ResearchComponent },
+      { path: 'news/news-detail', component: NewsDetailComponent },
 
   { path: 'membership', component: MembershipComponent },
   { path: 'register', component: RegisterComponent },

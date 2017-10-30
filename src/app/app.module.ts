@@ -46,6 +46,7 @@ import { VerifyEmailComponent } from './person/verify-email/verify-email.compone
 import { RegisterNocodeComponent } from './register/register-nocode/register-nocode.component';
 import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './knowledgecenter/search/search.component';
+import { NewsDetailComponent } from './news/news-detail/news-detail.component';
 
 
 @NgModule({
@@ -53,7 +54,7 @@ import { SearchComponent } from './knowledgecenter/search/search.component';
     BrowserModule,FormsModule, ReactiveFormsModule, HttpClientModule, HomeModule, AppRoutingModule, ShareModule, AboutModule,
   ],
   declarations: [
-    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent, EventsWorkshopComponent, JobComponent, SeniorSchoolComponent, TransferComponent, RankingComponent, PublicationComponent, ResearchComponent, ProDetailComponent, DetailWorkshopComponent, SeniorSchooldetailComponent, ResetPwdComponent, VerifyEmailComponent, RegisterNocodeComponent, LoginComponent, SearchComponent,
+    AppComponent, AboutIndexComponent, EventsIndexComponent, ProDevIndexComponent, SchoolComponent, NewsIndexComponent, MembershipComponent, RegisterComponent, PersonComponent, PersonalDataComponent, ModifyPasswordComponent, DetailComponent, SchooldetailComponent, EventsWorkshopComponent, JobComponent, SeniorSchoolComponent, TransferComponent, RankingComponent, PublicationComponent, ResearchComponent, ProDetailComponent, DetailWorkshopComponent, SeniorSchooldetailComponent, ResetPwdComponent, VerifyEmailComponent, RegisterNocodeComponent, LoginComponent, SearchComponent, NewsDetailComponent,
   ],
   providers: [ HttpClientService, UserStoreService, PersonService, EventsService,ProDevService, HomeService, NewsService, {provide: LocationStrategy,useClass: HashLocationStrategy} ],
   bootstrap: [AppComponent]

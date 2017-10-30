@@ -24,8 +24,8 @@ export class AboutIndexComponent implements OnInit {
     const search = location.hash.split('/')[2];
     this.about(search);
     document.body.onscroll = function(){
-      const top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
-      console.log(top);
+      let top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
+      //console.log(top);
       if(top <= 230 ) {
         if(document.getElementById('nav-right')) {
           document.getElementById('nav-right').style.top = '0px';

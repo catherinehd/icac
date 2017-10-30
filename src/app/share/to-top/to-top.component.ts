@@ -13,7 +13,9 @@ export class ToTopComponent implements OnInit {
   }
 
   toTop() {
+    //const top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
     document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
 }

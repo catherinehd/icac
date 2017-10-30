@@ -44,7 +44,11 @@ export class ProDevIndexComponent implements OnInit {
 
   showList(data) {
     this.showLists = data.rows;
-    console.log(this.showLists);
+    for(let i = 0;i < this.showLists.length; i++){
+      let t = this.showLists[i].wsTime;
+      this.showLists[i].wsTime = this.format(t);
+    }
+    //console.log(this.showLists);
     for(let i = 0; i<this.showLists.length; i++){
       //this.showLists[i].
     }
@@ -54,6 +58,13 @@ export class ProDevIndexComponent implements OnInit {
     } else {
       this.hasWebinar = false;
     }
+  }
+
+  format(t) {
+    let unixTimestamp = new Date(t);
+    let mon = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let commonTime = mon[unixTimestamp.getMonth()] + ' ' + unixTimestamp.getDate() + ', ' + unixTimestamp.getFullYear();
+    return commonTime;
   }
 
   go(url) {

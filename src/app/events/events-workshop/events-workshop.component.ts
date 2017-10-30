@@ -31,7 +31,7 @@ export class EventsWorkshopComponent implements OnInit {
 
   showList(list) {
     this.showLists = list.rows;
-    for(let i = 0;i <= this.showLists.length; i++){
+    for(let i = 0;i < this.showLists.length; i++){
       let t = this.showLists[i].newsTime;
       this.showLists[i].newsTime = this.format(t);
     }
@@ -45,7 +45,8 @@ export class EventsWorkshopComponent implements OnInit {
 
   format(t) {
     let unixTimestamp = new Date(t);
-    let commonTime = unixTimestamp.toLocaleDateString();
+    let mon = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let commonTime = mon[unixTimestamp.getMonth()] + ' ' + unixTimestamp.getDate() + ', ' + unixTimestamp.getFullYear();
     return commonTime;
   }
 

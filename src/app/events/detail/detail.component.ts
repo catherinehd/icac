@@ -30,14 +30,21 @@ export class DetailComponent implements OnInit {
 
   getId() {
     //获取id
-    const id = Number(location.hash.split('/')[3]);
+    const id = Number(location.hash.split('/')[4]);
     //根据id获取页面内容
     this.eventService.getDetailEventes(id).subscribe(res => {
-      this.news = res.data, err => {
-    if (err && err.status === 401) this.navigateService.pushToRoute('/home');
-    }
+      this.news = res.data;
+      this.news.newsTime = this.format(this.news.newsTime);
     });
   }
+
+  format(t) {
+    let unixTimestamp = new Date(t);
+    let mon = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let commonTime = mon[unixTimestamp.getMonth()] + ' ' + unixTimestamp.getDate() + ', ' + unixTimestamp.getFullYear();
+    return commonTime;
+  }
+
 }
 
 class newsModel {
