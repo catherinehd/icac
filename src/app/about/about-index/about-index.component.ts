@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
+declare var $:any;
 
 @Component({
   selector: 'app-about-index',
@@ -23,9 +24,11 @@ export class AboutIndexComponent implements OnInit {
   ngOnInit() {
     const search = location.hash.split('/')[2];
     this.about(search);
-    document.body.onscroll = function(){
-      let top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
-      //console.log(top);
+    document.body.onscroll = function(e){
+      console.log(e);
+      //let top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
+      const top =  document.documentElement.scrollTop ||window.pageYOffset || document.body.scrollTop || 0;
+      console.log(window);
       if(top <= 230 ) {
         if(document.getElementById('nav-right')) {
           document.getElementById('nav-right').style.top = '0px';
@@ -52,7 +55,7 @@ export class AboutIndexComponent implements OnInit {
         this.isshow3 = false;
         this.isshow4 = false;
         document.body.scrollTop = 0;
-        this.navigateService.pushToRoute('./aboutChinaIcac/overview');
+       // this.navigateService.pushToRoute('./aboutChinaIcac/overview');
         break;
       case 'committee':
         this.isshow1 = false;
@@ -60,7 +63,7 @@ export class AboutIndexComponent implements OnInit {
         this.isshow3 = false;
         this.isshow4 = false;
         document.body.scrollTop = 675;
-        this.navigateService.pushToRoute('./aboutChinaIcac/committee');
+       // this.navigateService.pushToRoute('./aboutChinaIcac/committee');
         break;
       case 'advisor':
         this.isshow1 = false;
@@ -68,7 +71,7 @@ export class AboutIndexComponent implements OnInit {
         this.isshow3 = true;
         this.isshow4 = false;
         document.body.scrollTop = 1830;
-        this.navigateService.pushToRoute('./aboutChinaIcac/advisor');
+      //  this.navigateService.pushToRoute('./aboutChinaIcac/advisor');
         break;
       case 'contact-us':
         this.isshow1 = false;
@@ -76,7 +79,7 @@ export class AboutIndexComponent implements OnInit {
         this.isshow3 = false;
         this.isshow4 = true;
         document.body.scrollTop = 2170;
-        this.navigateService.pushToRoute('./aboutChinaIcac/contact-us');
+      //  this.navigateService.pushToRoute('./aboutChinaIcac/contact-us');
         break;
       default:
         break;

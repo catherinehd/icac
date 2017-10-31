@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewChecked,  } from '@angular/core';
-
+declare var $:any;
 @Component({
   selector: 'app-to-top',
   templateUrl: './to-top.component.html',
@@ -10,6 +10,7 @@ export class ToTopComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
   toTop() {
