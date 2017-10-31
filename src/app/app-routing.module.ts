@@ -76,7 +76,7 @@ const appRouters: Routes = [
       { path: 'news/newsroom', component: NewsIndexComponent },
       { path: 'news/publication', component: PublicationComponent },
       { path: 'news/research', component: ResearchComponent },
-      { path: 'news/news-detail', component: NewsDetailComponent },
+      { path: 'news/news-detail/:id', component: NewsDetailComponent },
 
   { path: 'membership', component: MembershipComponent },
   { path: 'register', component: RegisterComponent },

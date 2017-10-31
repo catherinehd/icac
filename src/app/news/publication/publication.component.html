@@ -17,9 +17,9 @@
       <div class="news-list" *ngIf="hasConference">
 
         <div class="news-info" *ngFor="let list of showLists">
-          <div class="small-title">
+          <a class="small-title" target="_blank" href="{{list.ncUrl}}" >
             {{list.ncTitle}}
-          </div>
+          </a>
           <div class="date">
             <img src="../../../assets/icon/time.svg" />
             <span class="time">{{list.ncTime}}</span>

@@ -29,11 +29,21 @@
             font-size $font-big-size
             color $font-main-deep-blue-color
             font-weight bold
+            display -webkit-box
+            -webkit-box-orient vertical
+            -webkit-line-clamp 2
+            overflow hidden
+            text-overflow ellipsis
           .news-intro
             font-size $font-nomal-size
             line-height 22px
             margin 20px 0 25px
             color $font-gray-color
+            display -webkit-box
+            -webkit-box-orient vertical
+            -webkit-line-clamp 3
+            overflow hidden
+            text-overflow ellipsis
           .date
             img
               width 16px
@@ -42,6 +52,11 @@
               font-size $font-small-size
               color $font-light-gray-color
               line-height 16px
+            .view-details
+              cursor pointer
+              float right
+              font-size $font-nomal-size
+              color $font-main-deep-blue-color
       .noNews
         padding-top 101px
         padding-bottom 17px

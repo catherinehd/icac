@@ -12,4 +12,10 @@ export class NewsService {
     })
   }
 
+  getNewsDetail(id) {
+    return this.httpClientService.getMethod({
+      url: '/web/nc/queryNcById/'+id,
+    })
+  }
+
 }
