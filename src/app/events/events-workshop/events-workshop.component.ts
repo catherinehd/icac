@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { EventsService } from '../../service/events.service';
 import { newsModel } from '../../model/news.model';
-
+declare var $:any;
 @Component({
   selector: 'app-events-workshop',
   templateUrl: './events-workshop.component.html',
@@ -27,6 +27,21 @@ export class EventsWorkshopComponent implements OnInit {
       if (err && err.status === 401) this.navigateService.pushToRoute('/home');
     }
     });
+    this.setFooter();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
   }
 
   showList(list) {

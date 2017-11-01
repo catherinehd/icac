@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 
 import { schoolModel } from '../../model/school.model';
 import { UserModel } from '../../model/user.model';
+declare var $:any;
 
 @Component({
   selector: 'app-senior-school',
@@ -39,6 +40,21 @@ export class SeniorSchoolComponent implements OnInit {
       res.ok ?  this.getLists() : this.modal.isSigninShow = true ;
     });
     this.buildForm();
+    this.setFooter();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
   }
 
   getLists() {
@@ -75,7 +91,7 @@ export class SeniorSchoolComponent implements OnInit {
   gopage(url) {
     //this.navigateService.push();
     //this.navigateService.pushToRoute(url);
-    window.open("http://" + url);
+    window.open( url);
   }
 
   onShowPage(page) {

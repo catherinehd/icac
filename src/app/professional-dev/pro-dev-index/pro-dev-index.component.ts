@@ -3,7 +3,7 @@ import { NavigateService } from '../../service/navigate.service';
 import { ProDevService } from '../../service/pro-dev.service';
 import { PersonService } from '../../service/person.service';
 import { UserModel } from '../../model/user.model';
-
+declare var $:any;
 @Component({
   selector: 'app-pro-dev-index',
   templateUrl: './pro-dev-index.component.html',
@@ -30,6 +30,21 @@ export class ProDevIndexComponent implements OnInit {
     this.personService.getUserInfo().subscribe(res => {
       res.ok ?  this.getList() : this.modal.isSigninShow = true ;
     })
+    this.setFooter();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
   }
 
   getList() {

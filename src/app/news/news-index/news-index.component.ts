@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { NewsService } from '../../service/news.service';
-
+declare var $:any;
 @Component({
   selector: 'app-news-index',
   templateUrl: './news-index.component.html',
@@ -24,6 +24,26 @@ export class NewsIndexComponent implements OnInit {
         if (err && err.status === 401) this.navigateService.pushToRoute('/home');
       }
     })
+    this.setFooter();
+  }
+
+  setFooter() {
+
+    console.log($('body').height());
+    console.log($(window).height());
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
   }
 
   showList(list) {

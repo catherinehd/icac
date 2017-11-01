@@ -7,6 +7,8 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { schoolModel } from '../../model/school.model';
 import { UserModel } from '../../model/user.model';
 
+declare var $:any;
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -46,6 +48,21 @@ export class SearchComponent implements OnInit {
       this.university = true;
     } else {
       this.university = false;
+    }
+    this.setFooter();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
     }
   }
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 declare var $:any;
-
 @Component({
   selector: 'app-about-index',
   templateUrl: './about-index.component.html',
@@ -27,6 +26,21 @@ export class AboutIndexComponent implements OnInit {
     let that = this;
     window.onscroll = function(){
       that.setbar();
+    }
+    this.setbar();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
     }
   }
 

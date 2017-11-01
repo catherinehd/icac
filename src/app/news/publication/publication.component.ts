@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { NewsService } from '../../service/news.service';
-
+declare var $:any;
 @Component({
   selector: 'app-publication',
   templateUrl: './publication.component.html',
@@ -21,7 +21,22 @@ export class PublicationComponent implements OnInit {
       this.showList(res) , err => {
         if (err && err.status === 401) this.navigateService.pushToRoute('/home');
       }
-    })
+    });
+    this.setFooter();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
   }
 
   showList(list) {

@@ -5,7 +5,7 @@ import { PersonService } from '../../service/person.service';
 import { EventsService } from '../../service/events.service';
 import { HttpClientService } from '../../service/http-client.service';
 import { UserStoreService } from '../../service/user-store.service';
-
+declare var $:any;
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -26,6 +26,21 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.getId();
+    this.setFooter();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
   }
 
   getId() {

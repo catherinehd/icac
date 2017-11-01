@@ -2,7 +2,6 @@ import { Component, OnInit, } from '@angular/core';
 import { AppConfigService } from '../../service/app-config.service';
 import { PersonService } from '../../service/person.service';
 declare var $:any;
-
 @Component({
   selector: 'app-membership',
   templateUrl: './membership.component.html',
@@ -25,18 +24,38 @@ export class MembershipComponent implements OnInit {
   }
 
   ngOnInit() {
-    document.body.onscroll = function(){
-      const top = document.body.scrollTop;
-      if(top <= 230 ) {
-        if(document.getElementById('nav-right')){
-          document.getElementById('nav-right').style.top = '0px';
-        }
+    let that =  this;
+    window.onscroll = function(){
+      that.setbar();
+    }
+    this.setFooter();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
       } else {
-        if(document.getElementById('nav-right')){
-          document.getElementById('nav-right').style.top = (top-230).toString() + 'px';
-        }
+        $('footer').css({"position":"relative","bottom":"auto"});
       }
-    };
+    }
+  }
+
+  setbar() {
+    const top =  document.documentElement.scrollTop ||window.pageYOffset || document.body.scrollTop || 0;
+    if(top <= 230 ) {
+      if(document.getElementById('nav-right')){
+        document.getElementById('nav-right').style.top = '0px';
+      }
+    } else {
+      if(document.getElementById('nav-right')){
+        document.getElementById('nav-right').style.top = (top-230).toString() + 'px';
+      }
+    }
   }
 
   show(msg) {
@@ -46,11 +65,15 @@ export class MembershipComponent implements OnInit {
         this.isshow1 = true;
         this.isshow2 = false;
         document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        this.setbar();
         break;
       case 'benefit':
         this.isshow1 = false;
         this.isshow2 = true;
         document.body.scrollTop = 1050;
+        document.documentElement.scrollTop = 1050;
+        this.setbar();
         break;
       default:
         break;

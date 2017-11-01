@@ -4,6 +4,8 @@ import { HomeService } from '../../service/center.service';
 
 import { schoolModel } from '../../model/school.model';
 
+declare var $:any;
+
 @Component({
   selector: 'app-schooldetail',
   templateUrl: './schooldetail.component.html',
@@ -26,6 +28,21 @@ export class SchooldetailComponent implements OnInit {
 
   ngOnInit() {
     this.getId();
+    this.setFooter();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
   }
 
   getId() {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { NewsService } from '../../service/news.service';
 //import { newsPublicationModel } from '../../model/new-publication.model';
-
+declare var $:any;
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -17,7 +17,22 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
     this.newsService.getNewsList(0,1).subscribe( res => {
       this.showList(res)
-    })
+    });
+    this.setFooter();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
   }
 
   showList(data) {

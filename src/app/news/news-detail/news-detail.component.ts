@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { NewsService } from '../../service/news.service';
-
+declare var $:any;
 @Component({
   selector: 'app-news-detail',
   templateUrl: './news-detail.component.html',
@@ -16,6 +16,21 @@ export class NewsDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getId();
+    this.setFooter();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
   }
 
   getId() {
