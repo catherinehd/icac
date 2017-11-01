@@ -22,7 +22,7 @@
     </div>
     <div class="detail" *ngIf="!isempty">
       <ul class="school-list">
-        <li class="school-info" (click)="gopage('./#/knowledge-center/highschool-detail/'+ list.middleId)" *ngFor="let list of showLists">
+        <li class="school-info" (click)="gopage(list.middleUrl)" *ngFor="let list of showLists">
           <img src={{list.middleImage}} />
           <div class="name">
             {{list.middleName}}

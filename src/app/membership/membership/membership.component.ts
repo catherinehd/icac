@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, } from '@angular/core';
 import { AppConfigService } from '../../service/app-config.service';
 import { PersonService } from '../../service/person.service';
+declare var $:any;
 
 @Component({
   selector: 'app-membership',
@@ -9,7 +9,6 @@ import { PersonService } from '../../service/person.service';
   styleUrls: ['./membership.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class MembershipComponent implements OnInit {
-
   modal = {
     title: 'ChinaICAC Member Sign in',
     isSigninShow: false,
@@ -37,7 +36,7 @@ export class MembershipComponent implements OnInit {
           document.getElementById('nav-right').style.top = (top-230).toString() + 'px';
         }
       }
-    }
+    };
   }
 
   show(msg) {

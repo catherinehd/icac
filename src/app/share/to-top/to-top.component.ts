@@ -10,7 +10,6 @@ export class ToTopComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
   }
 
   toTop() {

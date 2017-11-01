@@ -24,19 +24,21 @@ export class AboutIndexComponent implements OnInit {
   ngOnInit() {
     const search = location.hash.split('/')[2];
     this.about(search);
-    document.body.onscroll = function(e){
-      console.log(e);
-      //let top = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
-      const top =  document.documentElement.scrollTop ||window.pageYOffset || document.body.scrollTop || 0;
-      console.log(window);
-      if(top <= 230 ) {
-        if(document.getElementById('nav-right')) {
-          document.getElementById('nav-right').style.top = '0px';
-        }
-      } else {
-        if(document.getElementById('nav-right')) {
-          document.getElementById('nav-right').style.top = (top-230).toString() + 'px';
-        }
+    let that = this;
+    window.onscroll = function(){
+      that.setbar();
+    }
+  }
+
+  setbar() {
+    const top =  document.documentElement.scrollTop ||window.pageYOffset || document.body.scrollTop || 0;
+    if(top <= 230 ) {
+      if(document.getElementById('nav-right')) {
+        document.getElementById('nav-right').style.top = '0px';
+      }
+    } else {
+      if(document.getElementById('nav-right')) {
+        document.getElementById('nav-right').style.top = (top-230).toString() + 'px';
       }
     }
   }
@@ -55,6 +57,8 @@ export class AboutIndexComponent implements OnInit {
         this.isshow3 = false;
         this.isshow4 = false;
         document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        this.setbar();
        // this.navigateService.pushToRoute('./aboutChinaIcac/overview');
         break;
       case 'committee':
@@ -63,6 +67,8 @@ export class AboutIndexComponent implements OnInit {
         this.isshow3 = false;
         this.isshow4 = false;
         document.body.scrollTop = 675;
+        document.documentElement.scrollTop = 675;
+        this.setbar();
        // this.navigateService.pushToRoute('./aboutChinaIcac/committee');
         break;
       case 'advisor':
@@ -71,6 +77,8 @@ export class AboutIndexComponent implements OnInit {
         this.isshow3 = true;
         this.isshow4 = false;
         document.body.scrollTop = 1830;
+        document.documentElement.scrollTop = 1830;
+        this.setbar();
       //  this.navigateService.pushToRoute('./aboutChinaIcac/advisor');
         break;
       case 'contact-us':
@@ -78,7 +86,9 @@ export class AboutIndexComponent implements OnInit {
         this.isshow2 = false;
         this.isshow3 = false;
         this.isshow4 = true;
-        document.body.scrollTop = 2170;
+        document.body.scrollTop = 2720;
+        document.documentElement.scrollTop = 2720;
+        this.setbar();
       //  this.navigateService.pushToRoute('./aboutChinaIcac/contact-us');
         break;
       default:

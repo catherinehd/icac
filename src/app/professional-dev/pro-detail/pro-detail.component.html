@@ -13,20 +13,26 @@
       <div class="title">
         {{news.wsTitle}}
       </div>
+      <div class="date">
+        <img src="../../../assets/icon/time.svg">
+        <span class="time">{{news.wsTime}}</span>
+      </div>
       <div class="expression detail">
-        <div class="brief">
-          <div class="address">
-            <span>Video: </span>
-            <a target="_blank" href={{news.wsUrl}}>{{news.wsUrl}}</a>
-          </div>
-          <div class="date">
-            <span>ppt: </span>
-            <a target="_blank" href={{news.wsDurl}}>{{news.wsDurl}}</a>
-          </div>
-        </div>
         <div class="top">
         </div>
         {{news.wsContent}}
+      </div>
+      <div class="video-ppt">
+        <button (click)="gopage(news.wsUrl)" (mouseover)="video2 = true" (mouseout)="video2 = false">
+          <img *ngIf="!video2" src="../../../assets/icon/video.svg">
+          <img *ngIf="video2" src="../../../assets/icon/video2.svg">
+          Video
+        </button>
+        <button (click)="gopage(news.wsDurl)" (mouseover)="ppt2 = true" (mouseout)="ppt2 = false">
+          <img *ngIf="!ppt2" src="../../../assets/icon/ppt.svg">
+          <img *ngIf="ppt2" src="../../../assets/icon/ppt2.svg">
+          ppt
+        </button>
       </div>
     </div>
   </div>

@@ -25,10 +25,26 @@ export class ProDetailComponent implements OnInit {
     const id = Number(location.hash.split('/')[3]);
     //根据id获取页面内容
     this.prodevService.getProDevDetail(id).subscribe(res => {
-    this.news = res.data, err => {
+    this.show(res.data), err => {
     if (err && err.status === 401) this.navigateService.pushToRoute('/home');
     }
     });
+  }
+
+  show(data) {
+    this.news = data;
+    this.news.wsTime = this.format(this.news.wsTime);
+  }
+
+  format(t) {
+    let unixTimestamp = new Date(t);
+    let mon = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let commonTime = mon[unixTimestamp.getMonth()] + ' ' + unixTimestamp.getDate() + ', ' + unixTimestamp.getFullYear();
+    return commonTime;
+  }
+
+  gopage(url) {
+    window.open(url);
   }
 
 }

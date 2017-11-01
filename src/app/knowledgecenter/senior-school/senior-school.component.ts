@@ -75,7 +75,7 @@ export class SeniorSchoolComponent implements OnInit {
   gopage(url) {
     //this.navigateService.push();
     //this.navigateService.pushToRoute(url);
-    window.open(url);
+    window.open("http://" + url);
   }
 
   onShowPage(page) {

@@ -1,7 +1,7 @@
 <app-header></app-header>
 <app-navbar [currentTitle]="2"></app-navbar>
 
-<section class="about-index wrap-box" >
+<section class="about-index wrap-box" id="test" >
   <div>
     <section class="breadcrumb">
       <div class="breadcrumb-box">
@@ -193,19 +193,75 @@
               <p>SangLearning, HGIEC</p>
             </div>
             <div class="exp">
-              <div *ngIf="!showAll1">
+              <div *ngIf="!showAll5">
                 <span class="exp-tit">Professional Experience</span>
                 <p>Hamilton has been a college counselor in a school setting for over 23 years. In addition, he has been an independent ...
-                <button (click)="showAll1 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
+                <button (click)="showAll5 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
               </div>
-              <div *ngIf="showAll1">
+              <div *ngIf="showAll5">
                 <span class="exp-tit">Professional Experience</span>
                 <p>Hamilton has been a college counselor in a school setting for over 23 years. In addition, he has been an independent consultant for the last 8 years. Hamilton is a member of International ACAC, NACAC, IECA. CIS. He is also a Certified Educational Planner (CEP).
                   Hamilton is a past president of International ACAC and currently sit on the NACAC International Initiatives Committee.
-                <button class="packup" (click)="showAll1 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+                <button class="packup" (click)="showAll5 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
               </div>
             </div>
           </div>
+          </div>
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/7.png" />
+            </div>
+            <div class="expression-box">
+              <div class="name">
+                <span class="englist">Barbara Chen</span>
+                <span>陈小芭</span>
+              </div>
+              <div class="school">
+                <p class="school-tit">China Admissions Representativ</p>
+                <p>The University of Tulsa</p>
+              </div>
+              <div class="exp">
+                <div *ngIf="!showAll6">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Barbara Carletta Chen is the Beijing based China Admissions Representative for The University of Tulsa. She earned her M.S. Ed. in Higher Education from The University of Pennsylvania, a B.A. from Georgetown University, and successfully  ...
+                    <button (click)="showAll6 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+                <div *ngIf="showAll6">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Barbara Carletta Chen is the Beijing based China Admissions Representative for The University of Tulsa. She earned her M.S. Ed. in Higher Education from The University of Pennsylvania, a B.A. from Georgetown University, and successfully completed the University of California, San Diego College Counseling certificate program.</p>
+                  <p>Barbara is a frequent presenter at EducationUSA counseling and admissions workshops and a Distinguished Visiting Faculty Member at The College Board Summer Institute for International Counselors. She is a member of The International Association for College Admission Counselors.
+                    <button class="packup" (click)="showAll6 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/6.png" />
+            </div>
+            <div class="expression-box">
+              <div class="name">
+                <span class="englist">Bruce Hammond</span>
+              </div>
+              <div class="school">
+                <p class="school-tit">Director of College Counseling</p>
+                <p>Tsinghua International School</p>
+              </div>
+              <div class="exp">
+                <div *ngIf="!showAll7">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Bruce has been a teacher, administrator, and college counselor for nearly 30 years.  He served as Director of College Counseling at Tsinghua International School for six years prior to taking the same role at THSI – Chaoyang.  He was previously ...
+                    <button (click)="showAll7 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+                <div *ngIf="showAll7">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>Bruce has been a teacher, administrator, and college counselor for nearly 30 years.  He served as Director of College Counseling at Tsinghua International School for six years prior to taking the same role at THSI – Chaoyang.  He was previously at Lake Ridge Academy (OH), Sandia Preparatory School (NM), and High School Affiliated to Nanjing Normal University.  He first came to China in 2008.  Prior to his career in schools, Bruce served as managing editor of the Fiske Guide to Colleges, and he is co-author of four volumes in the Fiske series.  In 2012, he initiated Tsinghua’s “East Meets West” conference.  Bruce received a B.A. from Yale University and an M.A.T. from Brown University.
+                    <button class="packup" (click)="showAll7 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
