@@ -4,7 +4,7 @@ import { UserService } from '../../service/user.service';
 import { HttpClientService } from '../../service/http-client.service';
 import { UserStoreService } from '../../service/user-store.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-
+declare var $:any;
 
 @Component({
   selector: 'app-reset-pwd',
@@ -49,6 +49,31 @@ export class ResetPwdComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.username = location.hash.split('/')[3];
+    this.setFooter();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
   }
 
   buildForm() {
@@ -91,12 +116,13 @@ export class ResetPwdComponent implements OnInit {
     if(this.pwdForm.value.pwd1 !== this.pwdForm.value.pwd2) return;
     this.msg = '';
     this.userService.updatePwd(this.username,this.pwdForm.value.pwd1).subscribe(res => {
-      res.ok ? this.resetPwdSuccess(res.data) : this.showTip(res.msg);
+      res.ok ? this.resetPwdSuccess() : this.showTip(res.msg);
     })
   }
 
-  resetPwdSuccess(msg){
-    this.go('./');
+  resetPwdSuccess(){
+    this.go('./home');
+    $('footer').css({"position":"relative","bottom":"auto"});
 }
 
 

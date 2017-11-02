@@ -16,12 +16,22 @@ export class NewsDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getId();
-    this.setFooter();
   }
 
   setFooter() {
+
     if($('body').height() < $(window).height()){
       $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
     }
 
     window.onresize = function() {
@@ -47,6 +57,7 @@ export class NewsDetailComponent implements OnInit {
   show(data){
     this.news = data;
     this.news.ncTime = this.format(this.news.ncTime);
+    this.setFooter();
   }
 
   format(t) {

@@ -22,12 +22,21 @@ export class PublicationComponent implements OnInit {
         if (err && err.status === 401) this.navigateService.pushToRoute('/home');
       }
     });
-    this.setFooter();
   }
 
-  setFooter() {
+  setFooter(n) {
     if($('body').height() < $(window).height()){
       $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
     }
 
     window.onresize = function() {
@@ -50,7 +59,8 @@ export class PublicationComponent implements OnInit {
       this.hasNews = true;
     } else {
       this.hasNews = false;
-    }
+    };
+    this.setFooter(this.showLists.length);
   }
 
   format(t) {

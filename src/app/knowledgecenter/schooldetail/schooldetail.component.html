@@ -33,13 +33,13 @@
     <div class="container">
       <div class="nav">
         <ul>
-          <li [class.active]="showOverview" (click)="showOverview = true; showRequirements = false; showOfficer = false;">
+          <li [class.active]="showOverview" (click)="showOverview = true; showRequirements = false; showOfficer = false;this.setFooter();">
             Overview
           </li>
-          <li [class.active]="showRequirements" (click)="showOverview = false; showRequirements = true; showOfficer = false;">
+          <li [class.active]="showRequirements" (click)="showOverview = false; showRequirements = true; showOfficer = false;this.setFooter();">
             Admission requirements
           </li>
-          <li [class.active]="showOfficer" (click)="showOverview = false; showRequirements = false; showOfficer = true;">
+          <li [class.active]="showOfficer" (click)="showOverview = false; showRequirements = false; showOfficer = true;this.setFooter();">
             Entrance guidance
           </li>
         </ul>

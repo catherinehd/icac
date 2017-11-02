@@ -27,12 +27,21 @@ export class EventsWorkshopComponent implements OnInit {
       if (err && err.status === 401) this.navigateService.pushToRoute('/home');
     }
     });
-    this.setFooter();
   }
 
-  setFooter() {
-    if($('body').height() < $(window).height()){
+  setFooter(n) {
+    if(($('body').height() + 234*n ) < $(window).height()){
       $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
     }
 
     window.onresize = function() {
@@ -55,7 +64,8 @@ export class EventsWorkshopComponent implements OnInit {
       this.hasConference = true;
     } else {
       this.hasConference = false;
-    }
+    };
+    this.setFooter(this.showLists.length);
   }
 
   format(t) {

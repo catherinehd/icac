@@ -69,7 +69,7 @@ const appRouters: Routes = [
       { path: 'knowledge-center/detail/:id', component: SchooldetailComponent },
       { path: 'knowledge-center/highschool-detail/:id', component: SeniorSchooldetailComponent },
       { path: 'knowledge-center/university/search/:query', component: SearchComponent },
-      { path: 'knowledge-center/high-schooll/search/:query', component: SearchComponent },
+      { path: 'knowledge-center/high-school/search/:query', component: SearchComponent },
 
   { path: 'news', component: NewsIndexComponent },
 

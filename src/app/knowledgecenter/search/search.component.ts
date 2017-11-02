@@ -49,16 +49,25 @@ export class SearchComponent implements OnInit {
     } else {
       this.university = false;
     }
-    this.setFooter();
   }
 
-  setFooter() {
-    if($('body').height() < $(window).height()){
+  setFooter(n) {
+    if(($('body').height()+ 363*(Math.ceil(n/4))) < $(window).height()){
       $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
     }
 
     window.onresize = function() {
-      if($('body').height() < $(window).height()){
+      if(($('body').height() + 363*(Math.ceil(n/4))) < $(window).height()){
         $('footer').css({"position":"fixed","bottom":"0"});
       } else {
         $('footer').css({"position":"relative","bottom":"auto"});
@@ -70,9 +79,16 @@ export class SearchComponent implements OnInit {
     this.modal.isSigninShow = false;
     //查询第一页数据列表
     //获取搜索学校列表到list,如果为空,isempty=true.若不为空,isempty=false.
-    this.centerService.searchUsity('1',this.querymsg).subscribe( res => {
-      this.showList(res);
-    });
+    if(this.university === true) {
+      this.centerService.searchUsity('1',this.querymsg).subscribe( res => {
+        this.showList(res);
+      });
+    } else {
+      this.centerService.searchMiddle('1',this.querymsg).subscribe( res => {
+        this.showList(res);
+      });
+    }
+
   }
 
   showList(list) {
@@ -84,8 +100,8 @@ export class SearchComponent implements OnInit {
       this.isempty = false;
     } else {
       this.isempty = true;
-    }
-
+    };
+    this.setFooter(this.showLists.length);
   }
 
   buildForm(){
@@ -113,14 +129,25 @@ export class SearchComponent implements OnInit {
   }
 
   searchUni() {
-    if(this.searchForm.value.msg) {
-      this.navigateService.pushToRoute('./knowledge-center/university/search', this.searchForm.value.msg);
+    if(this.university) {
+      if(this.searchForm.value.msg) {
+        this.navigateService.pushToRoute('./knowledge-center/university/search', this.searchForm.value.msg);
+      } else {
+        this.navigateService.pushToRoute('./knowledge-center/university');
+      };
+      this.centerService.searchUsity('1',this.searchForm.value.msg).subscribe( res => {
+        this.showList(res);
+      });
     } else {
-      this.navigateService.pushToRoute('./knowledge-center/university');
+      if(this.searchForm.value.msg) {
+        this.navigateService.pushToRoute('./knowledge-center/high-school/search', this.searchForm.value.msg);
+      } else {
+        this.navigateService.pushToRoute('./knowledge-center/high-school');
+      };
+      this.centerService.searchMiddle('1',this.searchForm.value.msg).subscribe( res => {
+        this.showList(res);
+      });
     }
-    this.centerService.searchUsity('1',this.searchForm.value.msg).subscribe( res => {
-      this.showList(res);
-    });
   }
 
   getList(){

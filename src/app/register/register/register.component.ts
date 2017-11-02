@@ -5,6 +5,7 @@ import { HttpClientService } from '../../service/http-client.service';
 import { UserStoreService } from '../../service/user-store.service';
 import { PersonService } from '../../service/person.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+declare var $:any;
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  register: Register =new Register('','','','','','','','','','','','','',);
+  register: Register =new Register('','','','','','','','','','','','','','','','');
   msg: string;
   timer: any;
   isCounting: boolean;
@@ -34,8 +35,13 @@ export class RegisterComponent implements OnInit {
   errSchool: string;
   errJob: string;
   errCeeb: string;
+  checkAgreement: boolean;
+  hasCode: boolean;
   showceebdes: boolean;//显示ceeb的介绍
   highschool: boolean;//选择身份,如果是大学生则不需要ceebcode
+
+  workforlist: [{name:'Secondary／High School',value:'0'},{name:'Colllege or University',value:'0'}];
+  test: string ='high school';
 
   constructor(private navigateService: NavigateService,
               private userService: UserService,
@@ -47,10 +53,40 @@ export class RegisterComponent implements OnInit {
     this.isCounting = false;
     this.hasceebcode = true;
     this.prompt = false;
+    this.highschool = true;
+    this.hasCode = true;
   }
 
   ngOnInit() {
     this.buildForm();
+    this.setFooter();
+    this.checkAgreement = false;
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
   }
 
   ngOnDestroy() {
@@ -104,23 +140,33 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(6),
         Validators.pattern(/^\d{6}$/)
       ]],
+      'rename': [this.register.rename, [
+
+      ]],
+      'reins': [this.register.reins, [
+
+      ]],
+      'remail': [this.register.remail, [
+
+      ]],
       'agreement':[this.register.agreement, [
       ]],
     });
   }
 
-  //有code
+
   onSubmit() {
-    if (this.highschool) {
+    if (this.highschool && this.hasCode) {
       if (!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode) return;
+    } else if(this.highschool && !this.hasCode) {
+      if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail) return;
     } else {
     if (!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle) return;
     }
-    //this.testValid();
     if (this.errEmail || this.errCode) return;
     if (!this.registerForm.valid) return;
     if (this.registerForm.value.pwd1 !== this.registerForm.value.pwd2 ) return;
-    this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,'1','','','',this.registerForm.value.ceebcode).subscribe(res => {
+    this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,'1',this.registerForm.value.rename,this.registerForm.value.reins,this.registerForm.value.remail,this.registerForm.value.ceebcode).subscribe(res => {
       res.ok ? this.setUser(res.data) : location.reload();//注册失败处理?
     })
   }
@@ -160,6 +206,14 @@ export class RegisterComponent implements OnInit {
         this.isCounting = false;
       }
     }, 1000);
+  }
+
+  ischecked() {
+    if($('#agreement-input').is(':checked') === true) {
+      this.checkAgreement = true;
+    } else {
+      this.checkAgreement = false;
+    }
   }
 
   showErr(str) {
@@ -306,6 +360,9 @@ class Register {
               public school: string,
               public jobtitle: string,
               public ceebcode: string,
+              public rename: string,
+              public reins: string,
+              public remail: string,
               public agreement: string,
               ) {}
 }

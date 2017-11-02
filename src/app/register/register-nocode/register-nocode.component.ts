@@ -5,6 +5,7 @@ import { HttpClientService } from '../../service/http-client.service';
 import { UserStoreService } from '../../service/user-store.service';
 import { PersonService } from '../../service/person.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+declare var $:any;
 
 @Component({
   selector: 'app-register-nocode',
@@ -36,6 +37,7 @@ export class RegisterNocodeComponent implements OnInit {
   errname: string;
   errins: string;
   errremail: string;
+  checkAgreement: boolean;
   highschool: boolean;
 
   constructor(private navigateService: NavigateService,
@@ -48,10 +50,39 @@ export class RegisterNocodeComponent implements OnInit {
     this.isCounting = false;
     this.hasceebcode = true;
     this.prompt = false;
+    this.highschool = true;
+    this.checkAgreement = false;
   }
 
   ngOnInit() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     this.buildForm();
+    this.setFooter();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
+
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
   }
 
   ngOnDestroy() {
@@ -102,13 +133,13 @@ export class RegisterNocodeComponent implements OnInit {
         Validators.required,
       ]],
       'rename': [this.register.rename, [
-        Validators.required,
+
       ]],
       'reins': [this.register.reins, [
-        Validators.required,
+
       ]],
       'remail': [this.register.remail, [
-        Validators.required,
+
       ]],
     });
   }
@@ -166,6 +197,14 @@ export class RegisterNocodeComponent implements OnInit {
     }, 1000);
   }
 
+  ischecked() {
+    if($('#agreement-input').is(':checked') === true) {
+      this.checkAgreement = true;
+    } else {
+      this.checkAgreement = false;
+    }
+  }
+
   showErr(str) {
     switch(str)
     {
@@ -214,7 +253,6 @@ export class RegisterNocodeComponent implements OnInit {
         } else {
           const re = /^[0-9a-zA-Z]{6,15}$/;
           const pwd = re.test(this.registerForm.value.pwd1);
-          console.log(pwd);
           if(pwd) {
             this.errPwd1 = '';
           } else {

@@ -36,20 +36,31 @@ export class SeniorSchoolComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setFooter(0);
+    //验证登录
     this.personService.getUserInfo().subscribe(res => {
       res.ok ?  this.getLists() : this.modal.isSigninShow = true ;
     });
     this.buildForm();
-    this.setFooter();
   }
 
-  setFooter() {
-    if($('body').height() < $(window).height()){
+  setFooter(n) {
+    if(($('body').height() + 363*(Math.ceil(n/4))) < $(window).height()){
       $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
     }
 
     window.onresize = function() {
-      if($('body').height() < $(window).height()){
+      if(($('body').height() + 363*(Math.ceil(n/4))) < $(window).height()){
         $('footer').css({"position":"fixed","bottom":"0"});
       } else {
         $('footer').css({"position":"relative","bottom":"auto"});
@@ -70,14 +81,18 @@ export class SeniorSchoolComponent implements OnInit {
   showList(list) {
     //console.log(typeof(list.total));   //search的时候返回了总条数,设置相应的pagecount.
     this.showLists = list.rows;
+    for(let i = 0;i < this.showLists.length; i++){
+      let t = this.showLists[i].middleCountry;
+      this.showLists[i].middleCountry = t.toUpperCase();
+    }
     this.page.pageCount = list.total;
     //console.log(this.page.pageCount);
     if(list.rows.length > 0) {
       this.isempty = false;
     } else {
       this.isempty = true;
-    }
-
+    };
+    this.setFooter(this.showLists.length);
   }
 
   buildForm(){
@@ -107,7 +122,7 @@ export class SeniorSchoolComponent implements OnInit {
 
   searchSchool() {
     if(this.searchForm.value.msg) {
-      this.navigateService.pushToRoute('./knowledge-center/high-schooll/search/', this.searchForm.value.msg);
+      this.navigateService.pushToRoute('./knowledge-center/high-school/search/', this.searchForm.value.msg);
     } else {
       this.getList();
     }

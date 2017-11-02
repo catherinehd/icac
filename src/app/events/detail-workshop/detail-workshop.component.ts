@@ -15,12 +15,19 @@ export class DetailWorkshopComponent implements OnInit {
 
   ngOnInit() {
     this.getId();
-    this.setFooter();
   }
 
   setFooter() {
     if($('body').height() < $(window).height()){
       $('footer').css({"position":"fixed","bottom":"0"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
     }
 
     window.onresize = function() {
@@ -40,6 +47,7 @@ export class DetailWorkshopComponent implements OnInit {
       this.news = res.data;
       this.news.newsTime = this.format(this.news.newsTime);
     });
+    this.setFooter();
   }
 
   format(t) {

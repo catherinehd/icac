@@ -27,14 +27,25 @@
         </div>
       </div>
       <div class="detail" *ngIf="!isempty">
-        <ul class="school-list">
+        <ul class="school-list" *ngIf="university">
           <li class="school-info" (click)="gopage('./knowledge-center/detail/'+list.usityId)" *ngFor="let list of showLists">
             <img src={{list.usityImage}}/>
             <div class="name">
               {{list.usityName}}
             </div>
             <div class="addr">
-              所在地区：{{list.usityCountry}}-{{list.usityCity}}
+              {{list.usityCity}} , {{list.usityCountry}}
+            </div>
+          </li>
+        </ul>
+        <ul class="school-list" *ngIf="!university">
+          <li class="school-info" (click)="gopage('./knowledge-center/highschool-detail/'+list.usityId)" *ngFor="let list of showLists">
+            <img src={{list.middleImage}}/>
+            <div class="name">
+              {{list.middleName}}
+            </div>
+            <div class="addr">
+              {{list.middleCity}} , {{list.middleCountry}}
             </div>
           </li>
         </ul>

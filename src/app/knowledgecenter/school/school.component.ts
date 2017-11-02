@@ -35,21 +35,31 @@ export class SchoolComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setFooter(0);
     //需要登录才可以查看
     this.personService.getUserInfo().subscribe(res => {
       res.ok ?  this.getLists() : this.modal.isSigninShow = true ;
     });
     this.buildForm();
-    this.setFooter();
   }
 
-  setFooter() {
-    if($('body').height() < $(window).height()){
+  setFooter(n) {
+    if(($('body').height() + 363*(Math.ceil(n/4))) < $(window).height()){
       $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
     }
 
     window.onresize = function() {
-      if($('body').height() < $(window).height()){
+      if(($('body').height() + 363*(Math.ceil(n/4))) < $(window).height()){
         $('footer').css({"position":"fixed","bottom":"0"});
       } else {
         $('footer').css({"position":"relative","bottom":"auto"});
@@ -70,6 +80,10 @@ export class SchoolComponent implements OnInit {
   showList(list) {
     //console.log(typeof(list.total));   //search的时候返回了总条数,设置相应的pagecount.
     this.showLists = list.rows;
+    for(let i = 0;i < this.showLists.length; i++){
+      let t = this.showLists[i].usityCountry;
+      this.showLists[i].usityCountry = t.toUpperCase();
+    }
     this.page.pageCount = list.total;
     //console.log(this.page.pageCount);
     if(list.rows.length > 0) {
@@ -77,7 +91,7 @@ export class SchoolComponent implements OnInit {
     } else {
       this.isempty = true;
     }
-
+    this.setFooter(this.showLists.length);
   }
 
   buildForm(){

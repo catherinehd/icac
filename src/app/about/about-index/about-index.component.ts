@@ -28,14 +28,27 @@ export class AboutIndexComponent implements OnInit {
       that.setbar();
     }
     this.setbar();
+    this.setFooter();
   }
 
   setFooter() {
     if($('body').height() < $(window).height()){
       $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
     }
 
     window.onresize = function() {
+      console.log($('body').height());
+      console.log($(window).height());
       if($('body').height() < $(window).height()){
         $('footer').css({"position":"fixed","bottom":"0"});
       } else {

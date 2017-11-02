@@ -14,7 +14,10 @@
           You work for
         </label>
         <span>
-          <select formControlName="work" (blur)="showErr('work')">
+          <select formControlName="work" (change)="showErr('work')">
+            <option value="" disabled>
+              Please select
+            </option>
             <option value="0">
               Secondary／High School
             </option>
@@ -22,6 +25,7 @@
               Colllege or University
             </option>
           </select>
+
           <div class="wrong" *ngIf="errWork">
             <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
             <span>{{errWork}}</span>
@@ -98,23 +102,23 @@
           <span>*</span>Prefix
         </label>
         <span>
-          <select formControlName="prefix" (blur)="showErr('prefix')">
-            <option selected>
+          <select formControlName="prefix" (change)="showErr('prefix')">
+            <option disabled value="">
               Please select
             </option>
-            <option>
+            <option value="Dr">
               Dr.
             </option>
-            <option>
+            <option value="Mr">
               Mr.
             </option>
-            <option>
+            <option value="Mrs">
               Mrs.
             </option>
-            <option>
+            <option value="Ms">
               Ms.
             </option>
-            <option>
+            <option value="Rev">
               Rev.
             </option>
           </select>
@@ -181,7 +185,7 @@
           </div>
         </span>
       </div>
-      <div class="form-field" *ngIf="highschool">
+      <div class="form-field" *ngIf="highschool && hasCode">
         <label class="name">
           <span>*</span>CEEB Code
         </label>
@@ -189,7 +193,7 @@
           <input placeholder="Please enter" formControlName="ceebcode" type="number" maxlength="6" (blur)="showErr('ceeb')">
           <img class="point" src="../../../assets/icon/point.svg" (mouseover)="showceebdes = true" (mouseout)="showceebdes = false" />
           <div class="ceeb-detail" *ngIf="showceebdes">
-            CEEB Code，全称是（美国）大学入学考试委员会，CEEB会给每个高中和大学分配一个代码，这个代码就是CEEB Code。
+            CEEB，全称是（美国）大学入学考试委员会，CEEB会给每个高中和大学分配一个代码，这个代码就是CEEB Code。
           </div>
           <div class="wrong wrong-code" *ngIf="errCeeb">
           <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
@@ -197,28 +201,73 @@
           </div>
         </span>
       </div>
+      <div class="form-field" *ngIf="highschool && !hasCode">
+        <label class="name">
+          <span>*</span>Reference Name
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="rename" (blur)="showErr('rename')">
+          <div class="wrong" *ngIf="errname">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errname}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field" *ngIf="highschool  && !hasCode">
+        <label class="name">
+          <span>*</span>Reference Institution
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="reins" (blur)="showErr('reins')">
+          <div class="wrong" *ngIf="errins">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errins}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field" *ngIf="highschool  && !hasCode">
+        <label class="name">
+          <span>*</span>Reference Email
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="remail" (blur)="showErr('remail')">
+          <div class="wrong" *ngIf="errremail">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errremail}}</span>
+          </div>
+        </span>
+      </div>
 
 
-      <div class="no-ceeb" (click)="go('./register-nocode')">
+      <div class="no-ceeb" *ngIf="highschool && hasCode" (click)="hasCode = false">
         没有CEEB Code？
       </div>
 
+      <div class="no-ceeb" (click)="hasCode = true" *ngIf="highschool && !hasCode">
+        已有CEEB Code？
+      </div>
+
       <div class="agreement form-field" id="agreement">
-        <input type="checkbox" checked disabled id="agreement-input" formcontrolname="agreement">
+        <input type="checkbox" id="agreement-input" formcontrolname="agreement" (click)="ischecked()">
         <label class="agreement-title" for="agreement-input">
           I own membership of InternationalACAC.
         </label>
       </div>
-      <div class="submit" *ngIf="highschool">
-        <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode" (click)="onSubmit()">
+      <div class="submit" *ngIf="highschool && hasCode">
+        <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode || !checkAgreement" (click)="onSubmit()">
           Submit
         </button>
       </div>
-      <div class="submit" *ngIf="!highschool">
-        <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle" (click)="onSubmit()">
+      <div class="submit" *ngIf="!highschool && hasCode">
+        <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !checkAgreement" (click)="onSubmit()">
           Submit
         </button>
       </div>
+    </div>
+    <div class="submit" *ngIf="highschool && !hasCode">
+      <button type="button" [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail || !checkAgreement"   (click)="onSubmit()">
+        Submit
+      </button>
     </div>
 
   </div>

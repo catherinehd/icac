@@ -28,12 +28,21 @@ export class SchooldetailComponent implements OnInit {
 
   ngOnInit() {
     this.getId();
-    this.setFooter();
   }
 
   setFooter() {
     if($('body').height() < $(window).height()){
       $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
     }
 
     window.onresize = function() {
@@ -58,7 +67,18 @@ export class SchooldetailComponent implements OnInit {
 
   show(data) {
     this.school = data;
-    //console.log(this.school)
+
+
+    let t = this.school.usityCountry;
+    this.school.usityCountry = t.toUpperCase();
+    this.setFooter();
+  }
+
+  format(t) {
+    let unixTimestamp = new Date(t);
+    let mon = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let commonTime = mon[unixTimestamp.getMonth()] + ' ' + unixTimestamp.getDate() + ', ' + unixTimestamp.getFullYear();
+    return commonTime;
   }
 
 }

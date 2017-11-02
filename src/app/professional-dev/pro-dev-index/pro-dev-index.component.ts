@@ -27,15 +27,26 @@ export class ProDevIndexComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setFooter(0);
     this.personService.getUserInfo().subscribe(res => {
       res.ok ?  this.getList() : this.modal.isSigninShow = true ;
-    })
-    this.setFooter();
+    });
   }
 
-  setFooter() {
-    if($('body').height() < $(window).height()){
+  setFooter(n) {
+
+    if(($('body').height()+166*n) < $(window).height()){
       $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
     }
 
     window.onresize = function() {
@@ -72,7 +83,8 @@ export class ProDevIndexComponent implements OnInit {
       this.hasWebinar = true;
     } else {
       this.hasWebinar = false;
-    }
+    };
+    this.setFooter(this.showLists.length);
   }
 
   format(t) {

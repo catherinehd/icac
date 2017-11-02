@@ -4,6 +4,7 @@ import { UserService } from '../../service/user.service';
 import { HttpClientService } from '../../service/http-client.service';
 import { UserStoreService } from '../../service/user-store.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+declare var $:any;
 
 @Component({
   selector: 'app-verify-email',
@@ -44,6 +45,33 @@ export class VerifyEmailComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    this.setFooter();
+  }
+
+  setFooter() {
+    if($('body').height() < $(window).height()){
+      $('footer').css({"position":"fixed","bottom":"0"});
+    } else {
+      $('footer').css({"position":"relative","bottom":"auto"});
+    }
+
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
+
+    window.onresize = function() {
+      console.log($('body').height());
+      console.log($(window).height());
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
   }
 
   ngOnDestroy() {

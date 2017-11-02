@@ -24,21 +24,31 @@ export class NewsIndexComponent implements OnInit {
         if (err && err.status === 401) this.navigateService.pushToRoute('/home');
       }
     })
-    this.setFooter();
   }
 
-  setFooter() {
-
+  setFooter(n) {
     console.log($('body').height());
     console.log($(window).height());
-    if($('body').height() < $(window).height()){
+    if(($('body').height() + 258*n) < $(window).height()){
       $('footer').css({"position":"fixed","bottom":"0"});
     } else {
       $('footer').css({"position":"relative","bottom":"auto"});
     }
 
-    window.onresize = function() {
+    window.onload = function() {
+      console.log($('body').height());
+      console.log($(window).height());
       if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    }
+
+    window.onresize = function() {
+      console.log($('body').height());
+      console.log($(window).height());
+      if(($('body').height() + 258*n) < $(window).height()){
         $('footer').css({"position":"fixed","bottom":"0"});
       } else {
         $('footer').css({"position":"relative","bottom":"auto"});
@@ -47,7 +57,6 @@ export class NewsIndexComponent implements OnInit {
   }
 
   showList(list) {
-    //console.log(list);
     this.showLists = list.rows;
     for(let i = 0;i < this.showLists.length; i++){
       let t = this.showLists[i].ncTime;
@@ -58,7 +67,8 @@ export class NewsIndexComponent implements OnInit {
       this.hasNews = true;
     } else {
       this.hasNews = false;
-    }
+    };
+    this.setFooter(this.showLists.length);
   }
 
   format(t) {
