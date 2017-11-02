@@ -117,7 +117,11 @@ export class SearchComponent implements OnInit {
     this.navigateService.pushToRoute(url);
   }
 
-  onShowPage(page) {
+  gopage2(url) {
+    window.open(url);
+  }
+
+    onShowPage(page) {
     this.page.pageIndex = page;
 
     this.centerService.getUniversityList(page).subscribe(res => {
