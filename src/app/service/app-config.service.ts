@@ -25,7 +25,7 @@ export class AppConfigService {
         this.website = 'www.91pzb.com';
         this.company = '杭州泛友网络科技有限公司';
         this.tel = '4006963127';
-        this.api = 'http://icac.eamaster.com:1002/api';
+        this.api = 'https://www.chinaicac.org/icac';
         this.hasLianlianPay = true;
         this.shareLink = 'https://h5.91pzb.com';
         this.alipayName = '杭州亨韵网络科技有限公司';

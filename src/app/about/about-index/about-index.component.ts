@@ -114,7 +114,7 @@ export class AboutIndexComponent implements OnInit {
         this.isshow3 = false;
         this.isshow4 = true;
         document.body.scrollTop = 2720;
-        document.documentElement.scrollTop = 2720;
+        document.documentElement.scrollTop = 3000;
         this.setbar();
       //  this.navigateService.pushToRoute('./aboutChinaIcac/contact-us');
         break;

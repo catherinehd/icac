@@ -166,7 +166,7 @@ export class RegisterComponent implements OnInit {
     if (this.errEmail || this.errCode) return;
     if (!this.registerForm.valid) return;
     if (this.registerForm.value.pwd1 !== this.registerForm.value.pwd2 ) return;
-    this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredName,this.registerForm.value.school,this.registerForm.value.jobtitle,'1',this.registerForm.value.rename,this.registerForm.value.reins,this.registerForm.value.remail,this.registerForm.value.ceebcode).subscribe(res => {
+    this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredname,this.registerForm.value.school,this.registerForm.value.jobtitle,'1',this.registerForm.value.rename,this.registerForm.value.reins,this.registerForm.value.remail,this.registerForm.value.ceebcode).subscribe(res => {
       res.ok ? this.setUser(res.data) : location.reload();//注册失败处理?
     })
   }

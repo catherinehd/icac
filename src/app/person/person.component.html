@@ -5,10 +5,10 @@
   <div>
     <section class="breadcrumb">
       <div class="breadcrumb-box" *ngIf="showperson">
-        <span>Home</span>/<span>Person</span>/<span>Personal Data</span>
+        <span>Home</span>/<span>Member Center</span>/<span>Personal Information</span>
       </div>
       <div class="breadcrumb-box"  *ngIf="showmodifyps">
-        <span>Home</span>/<span>Person</span>/<span>Modify Password</span>
+        <span>Home</span>/<span>Member Center</span>/<span>Modify Password</span>
       </div>
     </section>
   <div class="main">
@@ -20,7 +20,7 @@
             <img *ngIf="showperson" src="../../assets/icon/person-info2.svg" />
           </div>
           <div>
-            Personal data
+            Personal Information
           </div>
         </li>
         <li [class.active]="showmodifyps" (click)="showperson = false;showmodifyps = true;">
@@ -29,7 +29,7 @@
             <img *ngIf="!showmodifyps" src="../../assets/icon/password.svg" />
           </div>
           <div>
-            Modify password
+            Modify Password
           </div>
         </li>
       </ul>
