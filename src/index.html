@@ -16,24 +16,23 @@
 </head>
 <body>
   <app-root></app-root>
-</body>
-<script type="text/javascript">
-  window.onload = function() {
-    if($('body').height() < $(window).height()){
-      $('footer').css({"position":"fixed","bottom":"0"});
-    } else {
-      $('footer').css({"position":"relative","bottom":"auto"});
-    }
-  }
+  <script type="text/javascript">
+    window.onload = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    };
 
-  window.onresize = function() {
-    console.log($('body').height());
-    console.log($(window).height());
-    if($('body').height() < $(window).height()){
-      $('footer').css({"position":"fixed","bottom":"0"});
-    } else {
-      $('footer').css({"position":"relative","bottom":"auto"});
-    }
-  }
-</script>
+    window.onresize = function() {
+      if($('body').height() < $(window).height()){
+        $('footer').css({"position":"fixed","bottom":"0"});
+      } else {
+        $('footer').css({"position":"relative","bottom":"auto"});
+      }
+    };
+
+  </script>
+</body>
 </html>

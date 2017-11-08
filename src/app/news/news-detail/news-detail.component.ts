@@ -19,18 +19,13 @@ export class NewsDetailComponent implements OnInit {
   }
 
   setFooter() {
-    console.log($('.expression').height());
-    console.log($(window).height());
-
-    if(($('body').height() + 175) < $(window).height()){
+    if(($('body').height()) < $(window).height()){
       $('footer').css({"position":"fixed","bottom":"0"});
     } else {
       $('footer').css({"position":"relative","bottom":"auto"});
     }
 
     window.onload = function() {
-      console.log($('body').height());
-      console.log($(window).height());
       if($('body').height() < $(window).height()){
         $('footer').css({"position":"fixed","bottom":"0"});
       } else {
@@ -39,9 +34,7 @@ export class NewsDetailComponent implements OnInit {
     }
 
     window.onresize = function() {
-      console.log($('body').height());
-      console.log($(window).height());
-      if($('body').height() < $(window).height()){
+      if(($('body').height()) < $(window).height()){
         $('footer').css({"position":"fixed","bottom":"0"});
       } else {
         $('footer').css({"position":"relative","bottom":"auto"});

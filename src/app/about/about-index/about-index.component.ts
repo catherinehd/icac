@@ -47,8 +47,6 @@ export class AboutIndexComponent implements OnInit {
     }
 
     window.onresize = function() {
-      console.log($('body').height());
-      console.log($(window).height());
       if($('body').height() < $(window).height()){
         $('footer').css({"position":"fixed","bottom":"0"});
       } else {

@@ -87,7 +87,11 @@ export class ModalComponent implements OnInit {
   loginSuccess(data) {
       this.navigateService.clearRouteList();
       const d = new Date();
+    if(location.hash.split('/')[1] === 'register') {
+      this.go('./home');
+    } else {
       location.reload();
+    }
       //this.navigateService.pushToRoute('./home');
   }
 
