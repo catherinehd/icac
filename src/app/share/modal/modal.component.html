@@ -15,7 +15,7 @@
           </div>
           <div class="form-field password">
             <input placeholder="Password" [type]="!isOpenEyesShow ? 'test' : 'password'" formControlName="pwd" maxlength="15" minlength="6" (keydown)="btnSubmit(event)">
-            <div class="btn-group">
+            <div class="btn-group" [class.issafari]="isSafari">
               <!--<button class="close-btn" (click)="clear('pwd')" *ngIf="loginForm.value.pwd">
                 <img class="icon-close" src="../../../assets/icon/close.svg" />
               </button>-->

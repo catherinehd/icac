@@ -63,7 +63,7 @@
         </label>
         <span>
           <input placeholder="Please enter" formControlName="pwd1" [type]="!isOpenEyesShow1 ? 'text' : 'password'" (blur)="showErr('pwd1')" maxlength="15">
-          <div class="btn-group">
+          <div class="btn-group" [class.issafari]="isSafari">
             <button class="eye-btn" *ngIf="!isOpenEyesShow1" (click)="isOpenEyesShow1 = true">
               <img class="icon-open-eyes" src="../../../assets/icon/open.svg" />
             </button>
@@ -83,7 +83,7 @@
         </label>
         <span>
           <input placeholder="Please enter" formControlName="pwd2" [type]="!isOpenEyesShow2 ? 'text' : 'password'" (blur)="showErr('pwd2')" maxlength="15">
-          <div class="btn-group">
+          <div class="btn-group" [class.issafari]="isSafari">
             <button class="eye-btn" *ngIf="!isOpenEyesShow2" (click)="isOpenEyesShow2 = true" >
               <img class="icon-open-eyes" src="../../../assets/icon/open.svg" />
             </button>
@@ -207,9 +207,9 @@
         </label>
         <span>
           <input placeholder="Please enter" formControlName="rename" (blur)="showErr('rename')">
-          <div class="wrong" *ngIf="errname">
+          <div class="wrong" *ngIf="errrename">
           <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
-          <span>{{errname}}</span>
+          <span>{{errrename}}</span>
           </div>
         </span>
       </div>
@@ -219,9 +219,9 @@
         </label>
         <span>
           <input placeholder="Please enter" formControlName="reins" (blur)="showErr('reins')">
-          <div class="wrong" *ngIf="errins">
+          <div class="wrong" *ngIf="errreins">
           <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
-          <span>{{errins}}</span>
+          <span>{{errreins}}</span>
           </div>
         </span>
       </div>

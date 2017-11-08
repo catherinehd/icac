@@ -18,16 +18,17 @@ export class ModalComponent implements OnInit {
   login: Login =new Login('','');
   msg: string;
   isOpenEyesShow = true;
+  isSafari: boolean;//是safari的时候改变password的样式
   validatorMsg = {
     email: {
-      required: '请填写email',
-      pattern: '请填写有效的email'
+      required: 'please input your email',
+      pattern: 'please input correct email'
     },
     pwd: {
-      required: '请填写密码',
-      pattern: '密码由6-15英文或数字组成',
-      minlength: '密码格式为6-15位',
-      maxlength: '密码格式为6-15位'
+      required: 'please input your password',
+      pattern: 'The password should be made up of 6-15 letters or numbers',
+      minlength: 'The password should be made up of 6-15 letters or numbers',
+      maxlength: 'The password should be made up of 6-15 letters or numbers'
     }
   }
 
@@ -43,10 +44,19 @@ export class ModalComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    this.browser();
   }
 
   confirm(status) {
     this.onConfirm.emit(status);
+  }
+
+  browser() {
+    if(navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") < 0) {
+      this.isSafari = true;
+    } else {
+      this.isSafari = false;
+    }
   }
 
   buildForm() {

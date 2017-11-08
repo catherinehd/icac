@@ -35,10 +35,15 @@ export class RegisterComponent implements OnInit {
   errSchool: string;
   errJob: string;
   errCeeb: string;
+  errrename: string;
+  errremail: string;
+  errreins: string;
   checkAgreement: boolean;
   hasCode: boolean;
   showceebdes: boolean;//显示ceeb的介绍
   highschool: boolean;//选择身份,如果是大学生则不需要ceebcode
+
+  isSafari: boolean;//是safari的时候改变password的样式
 
   workforlist: [{name:'Secondary／High School',value:'0'},{name:'Colllege or University',value:'0'}];
   test: string ='high school';
@@ -63,6 +68,15 @@ export class RegisterComponent implements OnInit {
     this.checkAgreement = false;
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+    this.browser();
+  }
+
+  browser() {
+    if(navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") < 0) {
+      this.isSafari = true;
+    } else {
+      this.isSafari = false;
+    }
   }
 
   setFooter() {
@@ -265,7 +279,7 @@ export class RegisterComponent implements OnInit {
           if(pwd) {
             this.errPwd1 = '';
           } else {
-            this.errPwd1 = '密码由6-15英文或数字组成';
+            this.errPwd1 = 'The password should be made up of 6-15 letters or numbers';
           }
         }
         break;
@@ -279,10 +293,10 @@ export class RegisterComponent implements OnInit {
             if(this.registerForm.value.pwd2 === this.registerForm.value.pwd1){
               this.errPwd2 = '';
             } else {
-              this.errPwd2 = '两次密码输入不一致';
+              this.errPwd2 = 'Passwords must match';
             }
           } else {
-            this.errPwd2 = '密码由6-15英文或数字组成';
+            this.errPwd2 = 'The password should be made up of 6-15 letters or numbers';
           }
         }
         break;
@@ -330,8 +344,23 @@ export class RegisterComponent implements OnInit {
           if(ceeb) {
             this.errCeeb = '';
           } else {
-            this.errCeeb = '请输入六位CEEB CODE';
+            this.errCeeb = 'please input six CEEB CODE';
           }
+        }
+        break;
+      case 'rename':
+        if(this.registerForm.value.ceebcode === '') {
+          this.errrename = 'please input Reference Name'
+        }
+        break;
+      case 'reins':
+        if(this.registerForm.value.ceebcode === '') {
+          this.errreins = 'please input Reference Institution'
+        }
+        break;
+      case 'remail':
+        if(this.registerForm.value.ceebcode === '') {
+          this.errremail = 'please input Reference Email'
         }
         break;
       default:

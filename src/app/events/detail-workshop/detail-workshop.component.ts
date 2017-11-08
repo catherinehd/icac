@@ -39,6 +39,7 @@ export class DetailWorkshopComponent implements OnInit {
     }
   }
 
+
   getId() {
     //获取id
     const id = Number(location.hash.split('/')[4]);
