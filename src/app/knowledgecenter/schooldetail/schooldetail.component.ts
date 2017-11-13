@@ -39,8 +39,14 @@ export class SchooldetailComponent implements OnInit {
   }
 
   setFooter() {
+    console.log('1:'+$('body').height());
+    console.log($(window).height());
+    console.log($('.article').height());
 
     window.onload = function() {
+      console.log('2:'+$('body').height());
+      console.log($(window).height());
+      console.log($('.article').height());
       if($('body').height() < $(window).height()){
         $('footer').css({"position":"fixed","bottom":"0"});
       } else {
@@ -49,6 +55,8 @@ export class SchooldetailComponent implements OnInit {
     }
 
     window.onresize = function() {
+      console.log('3:'+$('body').height());
+      console.log($(window).height());
       if($('body').height() < $(window).height()){
         $('footer').css({"position":"fixed","bottom":"0"});
       } else {
@@ -81,10 +89,6 @@ export class SchooldetailComponent implements OnInit {
     let mon = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let commonTime = mon[unixTimestamp.getMonth()] + ' ' + unixTimestamp.getDate() + ', ' + unixTimestamp.getFullYear();
     return commonTime;
-  }
-
-  onConfirm() {
-    this.navigateService.pushToRoute('./home');
   }
 
 }
