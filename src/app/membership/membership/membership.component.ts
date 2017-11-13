@@ -16,11 +16,17 @@ export class MembershipComponent implements OnInit {
 
   isshow1: boolean;
   isshow2: boolean;
+  notlogin: boolean;
+
+  download1: string;
 
   constructor(private personService: PersonService,
               private appconfigService: AppConfigService,) {
     this.isshow1 = true;
     this.isshow2 = false;
+    this.notlogin = true;
+    this.download1 = "javascript:void(0);";
+    this.download();
   }
 
   ngOnInit() {
@@ -94,18 +100,25 @@ export class MembershipComponent implements OnInit {
     this.modal.isSigninShow = false;
   }
 
-  download(url){
+  download(){
     this.personService.getUserInfo().subscribe(res => {
-      res.ok ? this.candownload(res.data) : this.modal.isSigninShow = true;
+      res.ok ? this.setdownloadurl(res.data) : this.notlogin = true;
     });
   }
 
-  candownload(data) {
+  ifdownload() {
+    this.modal.isSigninShow = true;
+  }
+
+  setdownloadurl(data) {
+    this.notlogin = false;
     this.modal.isSigninShow = false;
     if(data.userRole = 0) {
-      window.open(this.appconfigService.api +' //user/excel/0',"_blank");
+      this.download1 = this.appconfigService.api + '//user/excel/0';
+      // window.open(this.appconfigService.api +' //user/excel/0',"_blank");
     } else {
-      window.open(this.appconfigService.api + '//user/excel/1',"_blank");
+      // window.open(this.appconfigService.api + '//user/excel/1',"_blank");
+      this.download1 = this.appconfigService.api +'//user/excel/1';
     }
   }
 

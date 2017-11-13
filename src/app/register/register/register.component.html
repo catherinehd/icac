@@ -133,7 +133,7 @@
           <span>*</span>First Name
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="firstname" (blur)="showErr('fname')">
+          <input placeholder="Please enter" formControlName="firstname" (blur)="showErr('fname')" maxlength="60">
           <div class="wrong" *ngIf="fname">
           <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
           <span>{{fname}}</span>
@@ -145,7 +145,7 @@
           <span>*</span>Last Name
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="lastname" (blur)="showErr('lname')">
+          <input placeholder="Please enter" formControlName="lastname" (blur)="showErr('lname')" maxlength="60">
           <div class="wrong" *ngIf="lname">
           <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
           <span>{{lname}}</span>
@@ -157,7 +157,7 @@
           Preferred Name
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="preferredname">
+          <input placeholder="Please enter" formControlName="preferredname" maxlength="60">
           <div class="optional">(Optional)</div>
         </span>
       </div>
@@ -166,7 +166,7 @@
           <span>*</span>School
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="school" (blur)="showErr('school')">
+          <input placeholder="Please enter" formControlName="school" (blur)="showErr('school')" maxlength="60">
           <div class="wrong" *ngIf="errSchool">
           <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
           <span>{{errSchool}}</span>
@@ -178,7 +178,7 @@
           <span>*</span>Job Title
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="jobtitle" (blur)="showErr('job')">
+          <input placeholder="Please enter" formControlName="jobtitle" (blur)="showErr('job')" maxlength="60">
           <div class="wrong" *ngIf="errJob">
           <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
           <span>{{errJob}}</span>
@@ -206,7 +206,7 @@
           <span>*</span>Reference Name
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="rename" (blur)="showErr('rename')">
+          <input placeholder="Please enter" formControlName="rename" (blur)="showErr('rename')" maxlength="60">
           <div class="wrong" *ngIf="errrename">
           <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
           <span>{{errrename}}</span>
@@ -218,7 +218,7 @@
           <span>*</span>Reference Institution
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="reins" (blur)="showErr('reins')">
+          <input placeholder="Please enter" formControlName="reins" (blur)="showErr('reins')" maxlength="60">
           <div class="wrong" *ngIf="errreins">
           <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
           <span>{{errreins}}</span>
@@ -230,7 +230,7 @@
           <span>*</span>Reference Email
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="remail" (blur)="showErr('remail')">
+          <input placeholder="Please enter" formControlName="remail" (blur)="showErr('remail')" >
           <div class="wrong" *ngIf="errremail">
           <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
           <span>{{errremail}}</span>

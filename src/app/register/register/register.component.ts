@@ -138,30 +138,34 @@ export class RegisterComponent implements OnInit {
       ]],
       'firstname': [this.register.firstname, [
         Validators.required,
+        Validators.maxLength(60)
       ]],
       'lastname': [this.register.lastname, [
         Validators.required,
+        Validators.maxLength(60)
       ]],
       'preferredname': [this.register.preferredname, [
       ]],
       'school': [this.register.school, [
         Validators.required,
+        Validators.maxLength(60)
       ]],
       'jobtitle': [this.register.jobtitle, [
         Validators.required,
+        Validators.maxLength(60)
       ]],
       'ceebcode': [this.register.ceebcode, [
         Validators.maxLength(6),
         Validators.pattern(/^\d{6}$/)
       ]],
       'rename': [this.register.rename, [
-
+        Validators.maxLength(60)
       ]],
       'reins': [this.register.reins, [
-
+        Validators.maxLength(60)
       ]],
       'remail': [this.register.remail, [
-
+        Validators.pattern(/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)
       ]],
       'agreement':[this.register.agreement, [
       ]],

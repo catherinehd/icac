@@ -52,12 +52,6 @@ export class SearchComponent implements OnInit {
   }
 
   setFooter(n) {
-    if(($('body').height()+ 363*(Math.ceil(n/4))) < $(window).height()){
-      $('footer').css({"position":"fixed","bottom":"0"});
-    } else {
-      $('footer').css({"position":"relative","bottom":"auto"});
-    }
-
     window.onload = function() {
       if($('body').height() < $(window).height()){
         $('footer').css({"position":"fixed","bottom":"0"});
@@ -155,7 +149,16 @@ export class SearchComponent implements OnInit {
   }
 
   getList(){
-    this.navigateService.pushToRoute('./knowledge-center/university');
+    if(this.university) {
+      this.navigateService.pushToRoute('./knowledge-center/university');
+    } else {
+      this.navigateService.pushToRoute('./knowledge-center/high-school');
+    }
+
+  }
+
+  onConfirm() {
+    this.navigateService.pushToRoute('./home');
   }
 
 }

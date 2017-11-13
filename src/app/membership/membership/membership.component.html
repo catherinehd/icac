@@ -98,14 +98,15 @@
       <div class="book-download">
         <img src="../../../assets/icon/file.svg" />
         <div class="btn-box">
-          <button (click)="download('./home')">Membership Directory<img src="../../../assets/icon/download.svg" /></button>
+          <button *ngIf="notlogin" (click)="ifdownload('')">Membership Directory<img src="../../../assets/icon/download.svg" /></button>
+          <a *ngIf="!notlogin" href={{download1}} target="_blank">Membership Directory<img src="../../../assets/icon/download.svg" /></a>
          <!-- <div class="upload-time">
             Upload time: 2017-08-29
           </div>-->
         </div>
-        <div class="note">
-          (note: the membership address book will be updated regularly once a month)
-        </div>
+        <!--<div class="note">-->
+          <!--(note: the membership address book will be updated regularly once a month)-->
+        <!--</div>-->
       </div>
     </div>
     <div class="right-box" id="nav-right">

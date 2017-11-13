@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { HomeService } from '../../service/center.service';
+import { PersonService } from '../../service/person.service';
 
 import { schoolModel } from '../../model/school.model';
 
@@ -16,10 +17,15 @@ export class SchooldetailComponent implements OnInit {
   showOverview: boolean;
   showRequirements: boolean;
   showOfficer: boolean;
+  modal = {
+    title: 'CHINAICAC MEMBER SIGN IN',
+    isSigninShow: false,
+  };
 
   school: schoolModel = new schoolModel;
 
   constructor(private homeServicde: HomeService,
+              private personService: PersonService,
               private navigateService: NavigateService) {
     this.showOverview = true;
     this.showRequirements = false;
@@ -27,11 +33,12 @@ export class SchooldetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getId();
+    this.personService.getUserInfo().subscribe(res => {
+      res.ok ?  this.getId() : this.modal.isSigninShow = true ;
+    });
   }
 
   setFooter() {
-
 
     window.onload = function() {
       if($('body').height() < $(window).height()){
@@ -51,6 +58,7 @@ export class SchooldetailComponent implements OnInit {
   }
 
   getId() {
+    this.modal.isSigninShow = false;
     //获取id
     const id = Number(location.hash.split('/')[3]);
     //根据id获取页面内容
@@ -73,6 +81,10 @@ export class SchooldetailComponent implements OnInit {
     let mon = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let commonTime = mon[unixTimestamp.getMonth()] + ' ' + unixTimestamp.getDate() + ', ' + unixTimestamp.getFullYear();
     return commonTime;
+  }
+
+  onConfirm() {
+    this.navigateService.pushToRoute('./home');
   }
 
 }
