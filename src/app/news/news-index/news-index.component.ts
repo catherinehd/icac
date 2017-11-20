@@ -27,6 +27,9 @@ export class NewsIndexComponent implements OnInit {
   }
 
   setFooter(n) {
+    console.log('1');
+    console.log($('body').height());
+    console.log($(window).height());
     if(($('body').height() + 258*n) < $(window).height()){
       $('footer').css({"position":"fixed","bottom":"0"});
     } else {
@@ -34,6 +37,9 @@ export class NewsIndexComponent implements OnInit {
     }
 
     window.onload = function() {
+      console.log('1');
+      console.log($('body').height());
+      console.log($(window).height());
       if($('body').height() < $(window).height()){
         $('footer').css({"position":"fixed","bottom":"0"});
       } else {
@@ -42,6 +48,9 @@ export class NewsIndexComponent implements OnInit {
     }
 
     window.onresize = function() {
+      console.log('1');
+      console.log($('body').height());
+      console.log($(window).height());
       if(($('body').height() + 258*n) < $(window).height()){
         $('footer').css({"position":"fixed","bottom":"0"});
       } else {

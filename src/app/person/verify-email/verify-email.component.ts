@@ -82,7 +82,7 @@ export class VerifyEmailComponent implements OnInit {
     this.emailForm = this.formBuilder.group({
       'email': [this.email.email, [
         Validators.required,
-        Validators.pattern(/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)
+        Validators.pattern(/^([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)
       ]],
       'code': [this.email.code, [
         Validators.required,

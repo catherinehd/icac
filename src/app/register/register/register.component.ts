@@ -114,7 +114,7 @@ export class RegisterComponent implements OnInit {
       ]],
       'email': [this.register.email, [
         Validators.required,
-        Validators.pattern(/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)
+        Validators.pattern(/^([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)
       ]],
       'code': [this.register.code, [
         Validators.required,
@@ -165,7 +165,7 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(60)
       ]],
       'remail': [this.register.remail, [
-        Validators.pattern(/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)
+        Validators.pattern(/^([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)
       ]],
       'agreement':[this.register.agreement, [
       ]],
@@ -254,7 +254,7 @@ export class RegisterComponent implements OnInit {
         if(this.registerForm.value.email === ''){
           this.errEmail = 'please input your email';
         } else {
-          const re = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+          const re = /^([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
           const email = re.test(this.registerForm.value.email);
           if(email) {
             this.userService.testEmail(this.registerForm.value.email,1).subscribe(res => {

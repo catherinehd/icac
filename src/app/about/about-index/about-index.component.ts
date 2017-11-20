@@ -102,7 +102,7 @@ export class AboutIndexComponent implements OnInit {
         this.isshow3 = true;
         this.isshow4 = false;
         document.body.scrollTop = 1830;
-        document.documentElement.scrollTop = 1830;
+        document.documentElement.scrollTop = 2091;
         this.setbar();
       //  this.navigateService.pushToRoute('./aboutChinaIcac/advisor');
         break;
@@ -112,7 +112,7 @@ export class AboutIndexComponent implements OnInit {
         this.isshow3 = false;
         this.isshow4 = true;
         document.body.scrollTop = 2720;
-        document.documentElement.scrollTop = 3000;
+        document.documentElement.scrollTop = 3261;
         this.setbar();
       //  this.navigateService.pushToRoute('./aboutChinaIcac/contact-us');
         break;

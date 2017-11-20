@@ -169,6 +169,37 @@
             </div>
           </div>
           </div>
+
+          <div class="expression">
+            <div class="personimg">
+              <img src="../../../assets/img/lfm.png" />
+            </div>
+            <div class="expression-box">
+              <div class="name">
+                <span class="englist">Ariel Lin</span>
+                <span>林凡茗</span>
+              </div>
+              <div class="school">
+                <p class="school-tit">Associate Director of College Counseling</p>
+                <p>Shanghai World Foreign Language Academy</p>
+              </div>
+              <div class="exp">
+                <div *ngIf="!showAll5">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>2013 – Present: College Counselor, Associate Director of College Counseling, Shanghai World Foreign ...</p>
+                  <p>2015 – Present: Technology and Communications  ...
+                    <button (click)="showAll5 = true">more<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+                <div *ngIf="showAll5">
+                  <span class="exp-tit">Professional Experience</span>
+                  <p>2013 – Present: College Counselor, Associate Director of College Counseling, Shanghai World Foreign Language Academy</p>
+                  <p>2015 – Present: Technology and Communications Committee, OACAC
+                    <button class="packup" (click)="showAll5 = false">Pack up<img src="../../../assets/icon/bottom.svg" /></button></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -247,7 +278,7 @@
               </div>
               <div class="school">
                 <p class="school-tit">Director of College Counseling</p>
-                <p>Tsinghua International School</p>
+                <p>Tsinghua University High School International - Chaoyang</p>
               </div>
               <div class="exp">
                 <div *ngIf="!showAll7">

@@ -5,13 +5,13 @@
   <div>
     <section class="breadcrumb">
       <div class="breadcrumb-box">
-        <span>Home</span>/<span>News & Publication</span>/<span>Publication </span>
+        <span>Home</span>/<span>News & Publications</span>/<span>Publications </span>
         <span *ngFor="let list of path"> > {{list}}</span>
       </div>
     </section>
   <div class="main">
     <div class="title">
-      Publication
+      Publications
     </div>
     <div class="detail">
       <div class="news-list" *ngIf="hasNews">
@@ -30,7 +30,7 @@
 
       <div class="news-list noNews" *ngIf="!hasNews">
         <img src="../../../assets/icon/nonews.svg" />
-        <p>No Publication</p>
+        <p>No Publications</p>
         <a routerLink="/home">
           <img src="../../../assets/icon/left.svg" alt="left" />
           Return to homepage
