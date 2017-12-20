@@ -20,7 +20,7 @@ export class UserService {
   }
 
   // 注册
-  register(userName, password, userRole, prefix, userFn, userLn, userPn, userSchool, userJob, userAg, userRn, userRi, userRe, userCode) {
+  register(userName, password, userRole, prefix, userFn, userLn, userPn, userSchool, userJob, userRn, userRi, userRe, userCode, userRnsec, userRisec, userResec) {
     return this.httpclientService.postMethod({
       url: '/web/user/doRegister',
       data: {
@@ -34,11 +34,13 @@ export class UserService {
         "userInfo.userPn": userPn,
         "userInfo.userSchool": userSchool,
         "userInfo.userJob": userJob,
-        "userInfo.userAg": userAg,
         "userInfo.userRn": userRn,
         "userInfo.userRi": userRi,
         "userInfo.userRe": userRe,
         "userInfo.userCode": userCode,
+        "userInfo.userRnsec": userRnsec,
+        "userInfo.userRisec": userRisec,
+        "userInfo.userResec": userResec,
 
       }
     });

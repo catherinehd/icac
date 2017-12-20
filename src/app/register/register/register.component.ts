@@ -14,7 +14,7 @@ declare var $:any;
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  register: Register =new Register('','','','','','','','','','','','','','','','');
+  register: Register =new Register('','','','','','','','','','','','','','','','','','','');
   msg: string;
   timer: any;
   isCounting: boolean;
@@ -38,10 +38,14 @@ export class RegisterComponent implements OnInit {
   errrename: string;
   errremail: string;
   errreins: string;
-  checkAgreement: boolean;
-  hasCode: boolean;
+  errrename2: string;
+  errremail2: string;
+  errreins2: string;
+  errAgree: string;
+  hasReferee: boolean;
   showceebdes: boolean;//显示ceeb的介绍
   highschool: boolean;//选择身份,如果是大学生则不需要ceebcode
+  checkAgreement: boolean;
 
   isSafari: boolean;//是safari的时候改变password的样式
 
@@ -59,13 +63,13 @@ export class RegisterComponent implements OnInit {
     this.hasceebcode = true;
     this.prompt = false;
     this.highschool = true;
-    this.hasCode = true;
+    this.hasReferee = true;
   }
 
   ngOnInit() {
     this.buildForm();
     this.setFooter();
-    this.checkAgreement = false;
+    // this.checkAgreement = false;
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     this.browser();
@@ -167,6 +171,15 @@ export class RegisterComponent implements OnInit {
       'remail': [this.register.remail, [
         Validators.pattern(/^([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)
       ]],
+      'rename2': [this.register.rename2, [
+        Validators.maxLength(60)
+      ]],
+      'reins2': [this.register.reins2, [
+        Validators.maxLength(60)
+      ]],
+      'remail2': [this.register.remail2, [
+        Validators.pattern(/^([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)
+      ]],
       'agreement':[this.register.agreement, [
       ]],
     });
@@ -174,19 +187,31 @@ export class RegisterComponent implements OnInit {
 
 
   onSubmit() {
-    if (this.highschool && this.hasCode) {
-      if (!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode) return;
-    } else if(this.highschool && !this.hasCode) {
-      if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail) return;
-    } else {
-    if (!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle) return;
-    }
     if (this.errEmail || this.errCode) return;
     if (!this.registerForm.valid) return;
-    if (this.registerForm.value.pwd1 !== this.registerForm.value.pwd2 ) return;
-    this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredname,this.registerForm.value.school,this.registerForm.value.jobtitle,'1',this.registerForm.value.rename,this.registerForm.value.reins,this.registerForm.value.remail,this.registerForm.value.ceebcode).subscribe(res => {
-      res.ok ? this.setUser(res.data) : location.reload();//注册失败处理?
-    })
+    if (this.registerForm.value.pwd1 !== this.registerForm.value.pwd2 ) {this.errPwd2 = 'Passwords must match'; return;}
+
+    if (this.highschool && this.hasReferee) {
+      if (!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode || !this.registerForm.value.agreement) return;
+      this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredname,this.registerForm.value.school,this.registerForm.value.jobtitle,'','','',this.registerForm.value.ceebcode,'','','').subscribe(res => {
+        res.ok ? this.setUser(res.data) : location.reload();//注册失败处理?
+      });
+    } else if(this.highschool && !this.hasReferee) {
+      if(!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail || !this.registerForm.value.rename2 || !this.registerForm.value.reins2 || !this.registerForm.value.remail2 || !this.registerForm.value.agreement || !this.registerForm.value.ceebcode ) return;
+      this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredname,this.registerForm.value.school,this.registerForm.value.jobtitle,this.registerForm.value.rename,this.registerForm.value.reins,this.registerForm.value.remail,this.registerForm.value.ceebcode,this.registerForm.value.rename2,this.registerForm.value.reins2,this.registerForm.value.remail2).subscribe(res => {
+        res.ok ? this.setUser(res.data) : location.reload();//注册失败处理?
+      })
+    } else if(!this.highschool && this.hasReferee) {
+    if (!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.agreement) return;
+      this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredname,this.registerForm.value.school,this.registerForm.value.jobtitle,'','','','','','','').subscribe(res => {
+        res.ok ? this.setUser(res.data) : location.reload();//注册失败处理?
+      })
+    } else {
+      if (!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.agreement || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail || !this.registerForm.value.rename2 || !this.registerForm.value.reins2 || !this.registerForm.value.remail2) return;
+      this.userService.register(this.registerForm.value.email,this.registerForm.value.pwd1,this.registerForm.value.work,this.registerForm.value.prefix,this.registerForm.value.firstname,this.registerForm.value.lastname,this.registerForm.value.preferredname,this.registerForm.value.school,this.registerForm.value.jobtitle,this.registerForm.value.rename,this.registerForm.value.reins,this.registerForm.value.remail,'',this.registerForm.value.rename2,this.registerForm.value.reins2,this.registerForm.value.remail2).subscribe(res => {
+        res.ok ? this.setUser(res.data) : location.reload();//注册失败处理?
+      })
+    }
   }
 
   setUser(data) {
@@ -226,13 +251,13 @@ export class RegisterComponent implements OnInit {
     }, 1000);
   }
 
-  ischecked() {
-    if($('#agreement-input').is(':checked') === true) {
-      this.checkAgreement = true;
-    } else {
-      this.checkAgreement = false;
-    }
-  }
+  // ischecked() {
+  //   if($('#agreement-input').is(':checked') === true) {
+  //     this.checkAgreement = true;
+  //   } else {
+  //     this.checkAgreement = false;
+  //   }
+  // }
 
   showErr(str) {
     switch(str)
@@ -352,19 +377,69 @@ export class RegisterComponent implements OnInit {
           }
         }
         break;
+      case 'agreement':
+        if(this.registerForm.value.agreement === '') {
+          this.errAgree = 'please choose'
+        } else {
+          if(this.registerForm.value.agreement === 'yes') {
+            this.hasReferee = true;
+          } else {
+            this.hasReferee = false;
+          }
+        }
+        break;
       case 'rename':
-        if(this.registerForm.value.ceebcode === '') {
-          this.errrename = 'please input Reference Name'
+        if(this.registerForm.value.rename === '') {
+          this.errrename = 'please input First Referee'
+        } else {
+          this.errrename = '';
         }
         break;
       case 'reins':
-        if(this.registerForm.value.ceebcode === '') {
+        if(this.registerForm.value.reins === '') {
           this.errreins = 'please input Reference Institution'
+        }else {
+          this.errreins = '';
         }
         break;
       case 'remail':
-        if(this.registerForm.value.ceebcode === '') {
-          this.errremail = 'please input Reference Email'
+        if(this.registerForm.value.remail === ''){
+          this.errremail = 'please input Reference Email';
+        } else {
+          const re = /^([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+          const email = re.test(this.registerForm.value.remail2);
+          if(email) {
+            this.errremail =''
+          } else {
+            this.errremail = 'please input correct email'
+          }
+        }
+        break;
+      case 'rename2':
+        if(this.registerForm.value.rename2 === '') {
+          this.errrename2 = 'please input Second Referee'
+        }else {
+          this.errrename2 = '';
+        }
+        break;
+      case 'reins2':
+        if(this.registerForm.value.reins2 === '') {
+          this.errreins2 = 'please input Reference Institution'
+        }else {
+          this.errreins2 = '';
+        }
+        break;
+      case 'remail2':
+        if(this.registerForm.value.remail2 === ''){
+          this.errremail2 = 'please input Reference Email';
+        } else {
+          const re = /^([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+          const email = re.test(this.registerForm.value.remail2);
+          if(email) {
+            this.errremail2 =''
+          } else {
+            this.errremail2 = 'please input correct email'
+          }
         }
         break;
       default:
@@ -396,6 +471,9 @@ class Register {
               public rename: string,
               public reins: string,
               public remail: string,
+              public rename2: string,
+              public reins2: string,
+              public remail2: string,
               public agreement: string,
               ) {}
 }

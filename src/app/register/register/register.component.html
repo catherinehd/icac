@@ -185,7 +185,7 @@
           </div>
         </span>
       </div>
-      <div class="form-field" *ngIf="highschool && hasCode">
+      <div class="form-field" *ngIf="highschool">
         <label class="name">
           <span>*</span>CEEB Code
         </label>
@@ -201,9 +201,33 @@
           </div>
         </span>
       </div>
-      <div class="form-field" *ngIf="highschool && !hasCode">
+
+      <div class="agreement form-field">
+        <label class="agreement-title" for="agreement">
+          Do you own membership of InternationalACAC?
+        </label>
+        <span>
+          <select formControlName="agreement" id="agreement" (change)="showErr('agreement')">
+            <option disabled value="">
+              Please select
+            </option>
+            <option value="yes">
+              Yes
+            </option>
+            <option value="no">
+              No
+            </option>
+          </select>
+          <div class="wrong" *ngIf="errPrefix">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errAgree}}</span>
+        </div>
+        </span>
+      </div>
+
+      <div class="form-field" *ngIf="!hasReferee">
         <label class="name">
-          <span>*</span>Reference Name
+          <span>*</span>First Referee
         </label>
         <span>
           <input placeholder="Please enter" formControlName="rename" (blur)="showErr('rename')" maxlength="60">
@@ -213,7 +237,7 @@
           </div>
         </span>
       </div>
-      <div class="form-field" *ngIf="highschool  && !hasCode">
+      <div class="form-field" *ngIf="!hasReferee">
         <label class="name">
           <span>*</span>Reference Institution
         </label>
@@ -225,7 +249,7 @@
           </div>
         </span>
       </div>
-      <div class="form-field" *ngIf="highschool  && !hasCode">
+      <div class="form-field" *ngIf="!hasReferee">
         <label class="name">
           <span>*</span>Reference Email
         </label>
@@ -234,6 +258,42 @@
           <div class="wrong" *ngIf="errremail">
           <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
           <span>{{errremail}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field" *ngIf="!hasReferee">
+        <label class="name">
+          <span>*</span>Second Referee
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="rename2" (blur)="showErr('rename2')" maxlength="60">
+          <div class="wrong" *ngIf="errrename2">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errrename2}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field" *ngIf="!hasReferee">
+        <label class="name">
+          <span>*</span>Reference Institution
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="reins2" (blur)="showErr('reins2')" maxlength="60">
+          <div class="wrong" *ngIf="errreins2">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errreins2}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="form-field" *ngIf="!hasReferee">
+        <label class="name">
+          <span>*</span>Reference Email
+        </label>
+        <span>
+          <input placeholder="Please enter" formControlName="remail2" (blur)="showErr('remail2')" >
+          <div class="wrong" *ngIf="errremail2">
+          <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
+          <span>{{errremail2}}</span>
           </div>
         </span>
       </div>
@@ -247,25 +307,24 @@
         <!--已有CEEB Code？-->
       <!--</div>-->
 
-      <div class="agreement form-field" id="agreement">
-        <input type="checkbox" id="agreement-input" formcontrolname="agreement" (click)="ischecked()">
-        <label class="agreement-title" for="agreement-input">
-          I own membership of InternationalACAC.
-        </label>
-      </div>
-      <div class="submit" *ngIf="highschool && hasCode">
-        <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.ceebcode || !checkAgreement" (click)="onSubmit()">
+      <div class="submit" *ngIf="highschool && hasReferee">
+        <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.agreement || !this.registerForm.value.ceebcode " (click)="onSubmit()">
           Submit
         </button>
       </div>
-      <div class="submit" *ngIf="!highschool && hasCode">
-        <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !checkAgreement" (click)="onSubmit()">
+      <div class="submit" *ngIf="!highschool && hasReferee">
+        <button type="button"  [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.agreement " (click)="onSubmit()">
           Submit
         </button>
       </div>
     </div>
-    <div class="submit" *ngIf="highschool && !hasCode">
-      <button type="button" [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail || !checkAgreement"   (click)="onSubmit()">
+    <div class="submit" *ngIf="highschool && !hasReferee">
+      <button type="button" [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail || !this.registerForm.value.rename2 || !this.registerForm.value.reins2 || !this.registerForm.value.remail2 || !this.registerForm.value.agreement || !this.registerForm.value.ceebcode "   (click)="onSubmit()">
+        Submit
+      </button>
+    </div>
+    <div class="submit" *ngIf="!highschool && !hasReferee">
+      <button type="button" [disabled]="!this.registerForm.value.work || !this.registerForm.value.email || !this.registerForm.value.code || !this.registerForm.value.pwd1 || !this.registerForm.value.pwd2 || !this.registerForm.value.prefix || !this.registerForm.value.firstname || !this.registerForm.value.lastname || !this.registerForm.value.school || !this.registerForm.value.jobtitle || !this.registerForm.value.rename || !this.registerForm.value.reins || !this.registerForm.value.remail || !this.registerForm.value.rename2 || !this.registerForm.value.reins2 || !this.registerForm.value.remail2 || !this.registerForm.value.agreement "   (click)="onSubmit()">
         Submit
       </button>
     </div>
