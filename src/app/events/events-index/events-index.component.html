@@ -16,7 +16,7 @@
 
       <div class="conference-info" *ngFor="let list of showLists">
         <div class="conference-img">
-          <img src={{list.newImage}} />
+          <img src={{list.newsImage}} />
         </div>
         <div class="conference-more-info">
           <div class="conference-title">
@@ -38,7 +38,7 @@
       <app-pager [currPage]="page.pageIndex" [pageCount]="page.pageCount" (showPage)="onShowPage($event)"></app-pager>
 
     </div>
-    <div class="conference-list noConference" >
+    <div class="conference-list noConference" *ngIf="!hasNews">
       <img src="../../../assets/icon/nonews.svg" />
       <p>Information of ChinaICAC National Conference will be released later</p>
       <a routerLink="/home">

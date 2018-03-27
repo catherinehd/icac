@@ -13,6 +13,18 @@ declare var $:any;
 })
 export class DetailComponent implements OnInit {
   news: newsModel = new newsModel('','', 0,'','',0,'','','','','','','',0);
+  hadlogin: boolean;
+  modal1 = {
+    title: 'Please check your registration information',
+    isRegisterShow: false,
+    closeShow: false,
+  };
+  modal2 = {
+    title: 'CHINAICAC MEMBER SIGN IN',
+    isSigninShow: false,
+    closeShow: false,
+  };
+  modal2Show: boolean; //登录框是否显示
 
   constructor(private navigateService: NavigateService,
               private userService: UserService,
@@ -21,7 +33,7 @@ export class DetailComponent implements OnInit {
               private httpClientService: HttpClientService,
               private userStoreService: UserStoreService,
               ) {
-
+  this.hadlogin = false;
   }
 
   ngOnInit() {
@@ -57,6 +69,7 @@ export class DetailComponent implements OnInit {
     //根据id获取页面内容
     this.eventService.getDetailEventes(id).subscribe(res => {
       this.news = res.data;
+      this.news.newsInfo = this.news.newsInfo.replace(/<.*?>/ig, '');
       this.news.newsTime = this.format(this.news.newsTime);
     });
   }
@@ -66,6 +79,29 @@ export class DetailComponent implements OnInit {
     let mon = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let commonTime = mon[unixTimestamp.getMonth()] + ' ' + unixTimestamp.getDate() + ', ' + unixTimestamp.getFullYear();
     return commonTime;
+  }
+
+  //注册会议
+  register() {
+    // 判断是否登录
+    this.personService.getUserInfo().subscribe( res => {
+      if(res.ok) {
+        // 已经登录还需要判断是否已经报名
+        this.modal1.isRegisterShow = true;
+      } else {
+        // 没有登录，显示登录框
+        this.modal2Show = true;
+        this.modal2.isSigninShow = true;
+      }
+    })
+  }
+
+  onConfirm1() {
+    this.modal1.isRegisterShow = false;
+  }
+
+  onConfirm2() {
+    this.modal2.isSigninShow = false;
   }
 
 }

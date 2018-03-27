@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output, } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { UserService } from '../../service/user.service';
 import { PersonService } from '../../service/person.service';
+import { EventsService } from '../../service/events.service';
 import { HttpClientService } from '../../service/http-client.service';
 import { UserStoreService } from '../../service/user-store.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
@@ -16,6 +17,7 @@ export class ModalComponent implements OnInit {
   @Output() onConfirm = new EventEmitter<string>();
   loginForm: FormGroup;
   login: Login =new Login('','');
+  noRegisterNumber: boolean; //会议注册是否有输入电话号码
   msg: string;
   isOpenEyesShow = true;
   isSafari: boolean;//是safari的时候改变password的样式
@@ -35,11 +37,12 @@ export class ModalComponent implements OnInit {
   constructor(private navigateService: NavigateService,
               private userService: UserService,
               private personService: PersonService,
+              private eventsService: EventsService,
               private httpClientService: HttpClientService,
               private userStoreService: UserStoreService,
               private formBuilder: FormBuilder,) {
     this.msg = '';
-
+    this.noRegisterNumber = true;
   }
 
   ngOnInit() {
@@ -126,10 +129,22 @@ export class ModalComponent implements OnInit {
     this.navigateService.pushToRoute(url);
   }
 
+  // 会议注册
+  onRegister() {
+    // 提交注册会议信息
+    // this.eventsService.registerConference(fname, lname, theme, mail, num, school).subscribe( res => {
+    //   console.log(res);
+    // })
+  }
+
 }
 
 class Modal {
-  constructor(public title?: string
+  constructor(public title?: string,
+              public isRegisterShow? : boolean,
+              public isSigninShow? : boolean,
+              public isVerifyMailboxShow? : boolean,
+              public isResetPwShow? : boolean,
   ) { }
 }
 

@@ -1,4 +1,4 @@
-<section class="modal-sec" *ngIf="modal.isSigninShow || modal.isVerifyMailboxShow || modal.isResetPwShow">
+<section class="modal-sec" *ngIf="modal.isSigninShow || modal.isVerifyMailboxShow || modal.isResetPwShow ||modal.isRegisterShow">
   <div class="container">
 
     <div class="modal-container" *ngIf="modal.isSigninShow">
@@ -10,7 +10,7 @@
       <div class="main">
         <div class="wrongMsg" *ngIf="msg">{{msg}}</div>
         <div class="form" [formGroup]="loginForm">
-          <div class="form-field">
+          <div class="form-field email-field">
             <input placeholder="Email" type="email" formControlName="email" >
           </div>
           <div class="form-field password">
@@ -33,6 +33,45 @@
           </div>
           <button class="form-bth submit-btn" [disabled]="!loginForm.value.email || !loginForm.value.pwd" type="submit" (click)="onSubmit()">
             Sign in
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-container register-container" *ngIf="modal.isRegisterShow">
+    <span>
+      <button (click)="confirm()">
+      <img src="../../../assets/icon/close.svg">
+      </button>
+    </span>
+      <div class="title">
+        {{modal.title}}
+      </div>
+      <div class="main">
+        <div class="form">
+          <div class="form-field">
+            <label>FirstName:</label>
+            <span class="school">zhang</span>
+          </div>
+          <div class="form-field">
+            <label>LastName:</label>
+            <span class="school">san</span>
+          </div>
+          <div class="form-field">
+            <label>Email:</label>
+            <span class="school">aaaa@ac.com</span>
+          </div>
+          <div class="form-field">
+            <label>School:</label>
+            <span class="school">aaaa</span>
+          </div>
+          <div class="form-field input-num">
+            <label>Contact Number:</label>
+            <input class="contact-num" #registerNum/>
+          </div>
+
+          <button class="form-bth submit-btn" [disabled]="!registerNum.value" (click)="onRegister()">
+            Submit
           </button>
         </div>
       </div>

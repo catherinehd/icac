@@ -10,13 +10,13 @@ declare var $:any;
 })
 export class EventsIndexComponent implements OnInit {
 
-  hasConference: boolean;
+  hasNews: boolean;
   showLists: any;
   page: any = {pageIndex: 1, pageCount: 1};  //获取当前页和总页数
 
   constructor(private navigateService: NavigateService,
               private eventService: EventsService ) {
-    this.hasConference = true;
+    this.hasNews = true;
   }
 
   ngOnInit() {
@@ -55,6 +55,7 @@ export class EventsIndexComponent implements OnInit {
   }
 
   showList(list) {
+    console.log(list);
     this.showLists = list.rows;
     for(let i = 0;i < this.showLists.length; i++){
       let t = this.showLists[i].newsTime;
@@ -62,9 +63,9 @@ export class EventsIndexComponent implements OnInit {
     }
     this.page.pageCount = list.total;
     if(list.rows.length > 0) {
-      this.hasConference = true;
+      this.hasNews = true;
     } else {
-      this.hasConference = false;
+      this.hasNews = false;
     }
   }
 

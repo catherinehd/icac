@@ -18,5 +18,19 @@ export class EventsService {
     })
   }
 
+  registerConference(fname, lname, theme, mail, num, school) {
+    return this.httpclientService.getMethod({
+      url: '/web/news/saveSign/',
+      data: {
+        signFirstname: fname,
+        signLastname: lname,
+        signTheme: theme,
+        signMail: mail,
+        signNum: num,
+        signSchool: school
+      }
+    })
+  }
+
 
 }

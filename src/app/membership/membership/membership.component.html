@@ -96,17 +96,18 @@
         </ul>
       </div>
       <div class="book-download">
-        <img src="../../../assets/icon/file.svg" />
+        <img class="fileIMG" src="../../../assets/icon/file.svg" />
         <div class="btn-box">
           <button *ngIf="notlogin" (click)="ifdownload('')">Membership Directory<img src="../../../assets/icon/download.svg" /></button>
           <a *ngIf="!notlogin" href={{download1}} target="_blank">Membership Directory<img src="../../../assets/icon/download.svg" /></a>
          <!-- <div class="upload-time">
             Upload time: 2017-08-29
           </div>-->
+          <div class="note1">Please note that the membership directory could only be shared among ChinaICAC members</div>
         </div>
-        <!--<div class="note">-->
-          <!--(note: the membership address book will be updated regularly once a month)-->
-        <!--</div>-->
+        <div class="note">
+          (note: the membership address book will be updated regularly once a month)
+        </div>
       </div>
     </div>
     <div class="right-box" id="nav-right">
