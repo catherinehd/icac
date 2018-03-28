@@ -15,11 +15,14 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 export class ModalComponent implements OnInit {
   @Input() modal: Modal;
   @Output() onConfirm = new EventEmitter<string>();
+  // @Output() onSetStatus = new EventEmitter<number>();
   loginForm: FormGroup;
   login: Login =new Login('','');
   noRegisterNumber: boolean; //会议注册是否有输入电话号码
+  successRegister: boolean; //会议注册成功时候为true
   msg: string;
   isOpenEyesShow = true;
+  phoneNum: number;
   isSafari: boolean;//是safari的时候改变password的样式
   validatorMsg = {
     email: {
@@ -43,6 +46,8 @@ export class ModalComponent implements OnInit {
               private formBuilder: FormBuilder,) {
     this.msg = '';
     this.noRegisterNumber = true;
+    this.phoneNum = null;
+    this.successRegister = false;
   }
 
   ngOnInit() {
@@ -50,9 +55,13 @@ export class ModalComponent implements OnInit {
     this.browser();
   }
 
-  confirm(status) {
-    this.onConfirm.emit(status);
+  confirm() {
+    this.onConfirm.emit();
   }
+
+  // setStatus(num) {
+  //   this.onSetStatus.emit(num);
+  // }
 
   browser() {
     if(navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") < 0) {
@@ -129,12 +138,32 @@ export class ModalComponent implements OnInit {
     this.navigateService.pushToRoute(url);
   }
 
+  // 获取电话号码
+  getPhoneNum(num) {
+    this.phoneNum = num;
+  }
+
   // 会议注册
   onRegister() {
     // 提交注册会议信息
-    // this.eventsService.registerConference(fname, lname, theme, mail, num, school).subscribe( res => {
-    //   console.log(res);
-    // })
+    this.eventsService.registerConference(this.modal.fName, this.modal.lName, this.modal.theme, this.modal.email, this.phoneNum, this.modal.school).subscribe( res => {
+      if(res.ok) {
+        // 报名成功
+        this.afterSuccessRegister();
+      } else {
+        console.log(res.msg);
+      }
+    })
+  }
+
+  afterSuccessRegister() {
+    this.confirm();
+    this.successRegister = true;
+    setTimeout(() => {
+      this.successRegister = false;
+      // this.setStatus(1); //设置register按钮状态，1的时候表示已经注册。
+      location.reload();
+    }, 2000)
   }
 
 }
@@ -145,6 +174,11 @@ class Modal {
               public isSigninShow? : boolean,
               public isVerifyMailboxShow? : boolean,
               public isResetPwShow? : boolean,
+              public fName? : string,
+              public lName? : string,
+              public theme? : string,
+              public email? : string,
+              public school? : string,
   ) { }
 }
 

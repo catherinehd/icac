@@ -4,84 +4,43 @@
 <section class="events-detail wrap-box" >
   <div>
     <section class="breadcrumb">
-      <!--<div class="breadcrumb-box">-->
-        <!--<span>Home</span>/<span>Events</span>/<span>National Conference</span>/<span>{{news.newsTitle}}</span>-->
-        <!--<span *ngFor="let list of path"> > {{list}}</span>-->
-      <!--</div>-->
+      <div class="breadcrumb-box">
+        <span>Home</span>/<span>Events</span>/<span>National Conference</span>/<span>{{news.newsTitle}}</span>
+        <span *ngFor="let list of path"> > {{list}}</span>
+      </div>
     </section>
   <div class="main">
-    <!--<div class="article">-->
-      <!--<div class="title">-->
-          <!--{{news.newsTitle}}-->
-      <!--</div>-->
-      <!--<div class="expression detail">-->
-        <!--<div class="top">-->
-          <!--<div>-->
-            <!--<img class="eventsIMG" src={{news.newsImage}} />-->
-          <!--</div>-->
-          <!--<div class="brief">-->
-            <!--<div class="small-title">-->
-              <!--{{news.newsTheme}}-->
-            <!--</div>-->
-            <!--<div class="date">-->
-              <!--<img src="../../../assets/icon/time.svg" />-->
-              <!--<span>{{news.newsTime}}</span>-->
-            <!--</div>-->
-            <!--<div class="address">-->
-              <!--<img src="../../../assets/icon/address1.svg" />-->
-              <!--<span>{{news.newsPlace}}</span>-->
-            <!--</div>-->
-            <!--&lt;!&ndash;<div class="author">&ndash;&gt;-->
-              <!--&lt;!&ndash;<img src="../../../assets/icon/person-info.svg" />&ndash;&gt;-->
-              <!--&lt;!&ndash;<span>{{news.newsPerson}}</span>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--<div class="register-btn"  *ngIf="hadlogin">-->
-              <!--<button>-->
-                <!--Registered-->
-              <!--</button>-->
-            <!--</div>-->
-            <!--<div class="register-btn"  *ngIf="!hadlogin">-->
-              <!--<button (click)="register()">-->
-                <!--Register-->
-              <!--</button>-->
-              <!--<div>You MUST be an ChinaICAC member to register</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-       <!--{{news.newsInfo}}-->
-      <!--</div>-->
-    <!--</div>-->
     <div class="article">
       <div class="title">
-        测试测试
+          {{news.newsTitle}}
       </div>
       <div class="expression detail">
         <div class="top">
           <div>
-            <!--<img class="eventsIMG" src={{news.newsImage}} />-->
+            <img class="eventsIMG" src={{news.newsImage}} />
           </div>
           <div class="brief">
             <div class="small-title">
-              测试内容测试内容测试内容测试内容测试内容
+              {{news.newsTheme}}
             </div>
             <div class="date">
               <img src="../../../assets/icon/time.svg" />
-              <span>2018-03-27</span>
+              <span>{{news.newsMeetstarttime}} - {{news.newsMeetstoptime}}</span>
             </div>
             <div class="address">
-              <img src="../../../assets/icon/address1.svg" />
-              <span>中国</span>
+              <img src="../../../assets/icon/address3.svg" />
+              <span>{{news.newsPlace}}</span>
             </div>
             <!--<div class="author">-->
               <!--<img src="../../../assets/icon/person-info.svg" />-->
-              <!--<span>JJ</span>-->
+              <!--<span>{{news.newsPerson}}</span>-->
             <!--</div>-->
-            <div class="register-btn"  *ngIf="hadlogin">
+            <div class="register-btn"  *ngIf="!conferenceState">
               <button>
                 Registered
               </button>
             </div>
-            <div class="register-btn"  *ngIf="!hadlogin">
+            <div class="register-btn"  *ngIf="conferenceState">
               <button (click)="register()">
                 Register
               </button>
@@ -89,7 +48,7 @@
             </div>
           </div>
         </div>
-        放假啊砥砺奋进阿杜里斯飞机打了书法家鲁大师解放路卡积分拉伸放家里
+       {{news.newsInfo}}
       </div>
     </div>
   </div>

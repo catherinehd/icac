@@ -55,11 +55,12 @@ export class EventsIndexComponent implements OnInit {
   }
 
   showList(list) {
-    console.log(list);
     this.showLists = list.rows;
     for(let i = 0;i < this.showLists.length; i++){
-      let t = this.showLists[i].newsTime;
-      this.showLists[i].newsTime = this.format(t);
+      let t1 = this.showLists[i].newsMeetstarttime;
+      let t2 = this.showLists[i].newsMeetstoptime;
+      this.showLists[i].newsMeetstarttime = this.format(t1);
+      this.showLists[i].newsMeetstoptime = this.format(t2);
     }
     this.page.pageCount = list.total;
     if(list.rows.length > 0) {

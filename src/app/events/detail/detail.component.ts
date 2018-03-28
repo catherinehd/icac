@@ -12,12 +12,17 @@ declare var $:any;
   styleUrls: ['./detail.component.styl','../../share/breadcrumb/breadcrumb.component.styl']
 })
 export class DetailComponent implements OnInit {
-  news: newsModel = new newsModel('','', 0,'','',0,'','','','','','','',0);
-  hadlogin: boolean;
+  news: newsModel = new newsModel('','', 0,'','','','',0,'','','','','','','',0);
+  conferenceState: boolean;//是否报名会议 true的时候为可以报名
   modal1 = {
     title: 'Please check your registration information',
     isRegisterShow: false,
     closeShow: false,
+    fName: '',
+    lName: '',
+    email: '',
+    school: '',
+    theme: ''
   };
   modal2 = {
     title: 'CHINAICAC MEMBER SIGN IN',
@@ -33,7 +38,6 @@ export class DetailComponent implements OnInit {
               private httpClientService: HttpClientService,
               private userStoreService: UserStoreService,
               ) {
-  this.hadlogin = false;
   }
 
   ngOnInit() {
@@ -68,9 +72,12 @@ export class DetailComponent implements OnInit {
     const id = Number(location.hash.split('/')[4]);
     //根据id获取页面内容
     this.eventService.getDetailEventes(id).subscribe(res => {
-      this.news = res.data;
+      this.news = res.data.news;
+      this.modal1.theme = res.data.news.newsTheme;
+      this.conferenceState = res.data.state;
       this.news.newsInfo = this.news.newsInfo.replace(/<.*?>/ig, '');
-      this.news.newsTime = this.format(this.news.newsTime);
+      this.news.newsMeetstarttime = this.format(this.news.newsMeetstarttime);
+      this.news.newsMeetstoptime = this.format(this.news.newsMeetstoptime);
     });
   }
 
@@ -85,9 +92,13 @@ export class DetailComponent implements OnInit {
   register() {
     // 判断是否登录
     this.personService.getUserInfo().subscribe( res => {
-      if(res.ok) {
-        // 已经登录还需要判断是否已经报名
-        this.modal1.isRegisterShow = true;
+      if(res.ok && this.conferenceState) {
+        // 已经登录并且已经报名
+          this.modal1.isRegisterShow = true;
+          this.modal1.fName = res.data.userInfo.userFn;
+          this.modal1.lName = res.data.userInfo.userLn;
+          this.modal1.email = res.data.userName;
+          this.modal1.school = res.data.userInfo.userSchool;
       } else {
         // 没有登录，显示登录框
         this.modal2Show = true;
@@ -112,6 +123,8 @@ class newsModel {
               public newsId: number,
               public newsTheme: string,
               public newsTime: string,
+              public newsMeetstarttime: string,
+              public newsMeetstoptime: string,
               public state: number,
               public createBy: string,
               public updateBy: string,

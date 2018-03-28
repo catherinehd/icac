@@ -19,7 +19,7 @@ export class EventsService {
   }
 
   registerConference(fname, lname, theme, mail, num, school) {
-    return this.httpclientService.getMethod({
+    return this.httpclientService.postMethod({
       url: '/web/news/saveSign/',
       data: {
         signFirstname: fname,
