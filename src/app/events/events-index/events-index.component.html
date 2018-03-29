@@ -27,11 +27,17 @@
           </div>
           <div class="date">
             <img src="../../../assets/icon/time.svg" />
-            <span class="time">
-              {{list.newsMeetstarttime}} - {{list.newsMeetstoptime}}
-            </span>
+            <span *ngIf="!same" class="time">{{list.newsMeetstarttime}} - {{list.newsMeetstoptime}}</span>
+            <span *ngIf="same" class="time">{{list.newsMeetstarttime}}</span>
+          </div>
+          <div class="address">
+            <img src="../../../assets/icon/address3.svg" />
+            <span class="address">{{list.newsPlace}}</span>
             <span class="view-details" (click)="go('./events/national-Conference/detail/' + list.newsId)">View details >></span>
           </div>
+          <!--<div class="detail">-->
+            <!--<span class="view-details" (click)="go('./events/national-Conference/detail/' + list.newsId)">View details >></span>-->
+          <!--</div>-->
         </div>
       </div>
 

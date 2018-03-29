@@ -25,7 +25,8 @@
             </div>
             <div class="date">
               <img src="../../../assets/icon/time.svg" />
-              <span>{{news.newsMeetstarttime}} - {{news.newsMeetstoptime}}</span>
+              <span *ngIf="!same">{{news.newsMeetstarttime}} - {{news.newsMeetstoptime}}</span>
+              <span *ngIf="same">{{news.newsMeetstarttime}}</span>
             </div>
             <div class="address">
               <img src="../../../assets/icon/address3.svg" />
@@ -36,7 +37,7 @@
               <!--<span>{{news.newsPerson}}</span>-->
             <!--</div>-->
             <div class="register-btn"  *ngIf="!conferenceState">
-              <button>
+              <button disabled>
                 Registered
               </button>
             </div>
@@ -44,11 +45,13 @@
               <button (click)="register()">
                 Register
               </button>
-              <div>You MUST be an ChinaICAC member to register</div>
+              <div>You MUST be a ChinaICAC member to register</div>
             </div>
           </div>
         </div>
-       {{news.newsInfo}}
+        <div class="detail-arc">
+          {{news.newsInfo}}
+        </div>
       </div>
     </div>
   </div>

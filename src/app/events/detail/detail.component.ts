@@ -14,6 +14,7 @@ declare var $:any;
 export class DetailComponent implements OnInit {
   news: newsModel = new newsModel('','', 0,'','','','',0,'','','','','','','',0);
   conferenceState: boolean;//是否报名会议 true的时候为可以报名
+  same: boolean;//如果会议开始和结束是同一天，same为true，否则为false
   modal1 = {
     title: 'Please check your registration information',
     isRegisterShow: false,
@@ -38,6 +39,7 @@ export class DetailComponent implements OnInit {
               private httpClientService: HttpClientService,
               private userStoreService: UserStoreService,
               ) {
+    this.same = false;
   }
 
   ngOnInit() {
@@ -75,9 +77,14 @@ export class DetailComponent implements OnInit {
       this.news = res.data.news;
       this.modal1.theme = res.data.news.newsTheme;
       this.conferenceState = res.data.state;
-      this.news.newsInfo = this.news.newsInfo.replace(/<.*?>/ig, '');
+      document.getElementsByClassName('detail-arc')[0].innerHTML = this.news.newsInfo;
       this.news.newsMeetstarttime = this.format(this.news.newsMeetstarttime);
       this.news.newsMeetstoptime = this.format(this.news.newsMeetstoptime);
+      if(this.news.newsMeetstarttime === this.news.newsMeetstoptime) {
+        this.same = true;
+      } else {
+        this.same = false;
+      }
     });
   }
 

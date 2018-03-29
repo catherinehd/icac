@@ -10,6 +10,7 @@ html, body {
   font-family: "Microsoft YaHei","Myriad Set Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   box-sizing: border-box;
   overflow: scroll;
+  height: 100%;
 }
 
 body {

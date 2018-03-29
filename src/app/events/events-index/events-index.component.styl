@@ -25,7 +25,6 @@
         border-bottom $default-main-top-border
         .conference-title
           font-size $font-big-size
-          line-height 26px
           margin-top -4px
           letter-spacing 0.3px
           line-height 22px
@@ -36,19 +35,38 @@
           padding 21px 0 21px
         .conference-img
           width 270px
-          height 172px
+          // height 170px
           overflow hidden
           img
             width 100%
         .conference-more-info
           width 613px
+          padding-top 12px
           .date
             font-size $font-small-size
             color $font-light-gray-color
             line-height 22px
+            margin-bottom 10px
+            img
+              width 14px
+              height 14px
+              margin-right 10px
+          .address
+            font-size $font-small-size
+            color $font-light-gray-color
+            line-height 22px
+            margin-bottom 10px
             img
               width 13px
+              height 18px
+              margin-left 1px
               margin-right 10px
+            .view-details
+              cursor pointer
+              float right
+              font-size $font-nomal-size
+              color $font-main-deep-blue-color
+          .detail
             .view-details
               cursor pointer
               float right

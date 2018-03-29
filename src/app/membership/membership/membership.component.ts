@@ -31,10 +31,10 @@ export class MembershipComponent implements OnInit {
 
   ngOnInit() {
     let that =  this;
-    window.onscroll = function(){
+    document.getElementsByTagName('body')[0].onscroll = function(){
       that.setbar();
-    }
-    this.setFooter();
+    };
+    // this.setFooter();
   }
 
   setFooter() {
@@ -62,7 +62,7 @@ export class MembershipComponent implements OnInit {
   }
 
   setbar() {
-    const top =  document.documentElement.scrollTop ||window.pageYOffset || document.body.scrollTop || 0;
+    const top =  document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop || 0;
     if(top <= 230 ) {
       if(document.getElementById('nav-right')){
         document.getElementById('nav-right').style.top = '0px';
@@ -87,8 +87,8 @@ export class MembershipComponent implements OnInit {
       case 'benefit':
         this.isshow1 = false;
         this.isshow2 = true;
-        document.body.scrollTop = 1050;
-        document.documentElement.scrollTop = 1050;
+        document.body.scrollTop = document.getElementById('membershipsystem').clientHeight + 230;
+        document.documentElement.scrollTop = document.getElementById('membershipsystem').clientHeight + 230;
         this.setbar();
         break;
       default:

@@ -13,6 +13,7 @@ export class EventsIndexComponent implements OnInit {
   hasNews: boolean;
   showLists: any;
   page: any = {pageIndex: 1, pageCount: 1};  //获取当前页和总页数
+  same: boolean;//如果会议开始和结束是同一天，same为true，否则为false
 
   constructor(private navigateService: NavigateService,
               private eventService: EventsService ) {
@@ -27,7 +28,7 @@ export class EventsIndexComponent implements OnInit {
      }
     });
 
-    this.setFooter();
+    //this.setFooter();
   }
 
   setFooter() {
@@ -61,6 +62,11 @@ export class EventsIndexComponent implements OnInit {
       let t2 = this.showLists[i].newsMeetstoptime;
       this.showLists[i].newsMeetstarttime = this.format(t1);
       this.showLists[i].newsMeetstoptime = this.format(t2);
+      if(this.showLists[i].newsMeetstarttime === this.showLists[i].newsMeetstoptime) {
+        this.same = true;
+      } else {
+        this.same = false;
+      }
     }
     this.page.pageCount = list.total;
     if(list.rows.length > 0) {

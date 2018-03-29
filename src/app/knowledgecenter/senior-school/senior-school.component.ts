@@ -45,29 +45,30 @@ export class SeniorSchoolComponent implements OnInit {
   }
 
   setFooter(n) {
-    if(($('body').height() + 363*(Math.ceil(n/4))) < $(window).height()){
-      $('footer').css({"position":"fixed","bottom":"0"});
-    } else {
-      $('footer').css({"position":"relative","bottom":"auto"});
-    }
-
-    window.onload = function() {
-      if($('body').height() < $(window).height()){
-        $('footer').css({"position":"fixed","bottom":"0"});
-      } else {
-        $('footer').css({"position":"relative","bottom":"auto"});
-      }
-    }
-
-    window.onresize = function() {
-      if(($('body').height() + 363*(Math.ceil(n/4))) < $(window).height()){
-        $('footer').css({"position":"fixed","bottom":"0"});
-      } else {
-        $('footer').css({"position":"relative","bottom":"auto"});
-      }
-    }
+    // if(($('body').height() + 363*(Math.ceil(n/4))) < $(window).height()){
+    //   $('footer').css({"position":"fixed","bottom":"0"});
+    // } else {
+    //   $('footer').css({"position":"relative","bottom":"auto"});
+    // }
+    //
+    // window.onload = function() {
+    //   if($('body').height() < $(window).height()){
+    //     $('footer').css({"position":"fixed","bottom":"0"});
+    //   } else {
+    //     $('footer').css({"position":"relative","bottom":"auto"});
+    //   }
+    // }
+    //
+    // window.onresize = function() {
+    //   if(($('body').height() + 363*(Math.ceil(n/4))) < $(window).height()){
+    //     $('footer').css({"position":"fixed","bottom":"0"});
+    //   } else {
+    //     $('footer').css({"position":"relative","bottom":"auto"});
+    //   }
+    // }
   }
 
+  // 获取学校列表
   getLists() {
     this.modal.isSigninShow = false;
     //查询第一页数据列表

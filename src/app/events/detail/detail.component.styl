@@ -32,10 +32,19 @@
         .brief
           width 410px
           word-wrap break-word
-          img
-            width 14px
-            margin-right 10px
-            vertical-align middle
+          .date
+            img
+              width 14px
+              height 14px
+              margin-right 10px
+              vertical-align middle
+          .address
+            img
+              width 13px
+              height 18px
+              margin-right 10px
+              margin-left 1px
+              vertical-align middle
           div
             margin-bottom 19px
             color $font-light-gray-color
@@ -60,6 +69,11 @@
               height 36px
               margin-bottom 16px
               color $font-main-deep-blue-color
+              &[disabled]
+                color #666
+                background #ddd
+                border none
+                cursor normal
             div
               font-size $font-nomal-size
               color $font-light-gray-color

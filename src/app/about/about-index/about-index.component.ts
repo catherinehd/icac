@@ -24,11 +24,11 @@ export class AboutIndexComponent implements OnInit {
     const search = location.hash.split('/')[2];
     this.about(search);
     let that = this;
-    window.onscroll = function(){
+    document.getElementsByTagName('body')[0].onscroll = function(){
       that.setbar();
-    }
+    };
     this.setbar();
-    this.setFooter();
+    //this.setFooter();
   }
 
   setFooter() {
@@ -91,8 +91,8 @@ export class AboutIndexComponent implements OnInit {
         this.isshow2 = true;
         this.isshow3 = false;
         this.isshow4 = false;
-        document.body.scrollTop = 675;
-        document.documentElement.scrollTop = 675;
+        document.body.scrollTop = document.getElementById('overview').clientHeight + 230;
+        document.documentElement.scrollTop = document.getElementById('overview').clientHeight + 230;
         this.setbar();
        // this.navigateService.pushToRoute('./aboutChinaIcac/committee');
         break;
@@ -101,8 +101,8 @@ export class AboutIndexComponent implements OnInit {
         this.isshow2 = false;
         this.isshow3 = true;
         this.isshow4 = false;
-        document.body.scrollTop = 1830;
-        document.documentElement.scrollTop = 2091;
+        document.body.scrollTop = document.getElementById('committee').clientHeight + document.getElementById('overview').clientHeight + 230;
+        document.documentElement.scrollTop = document.getElementById('committee').clientHeight + document.getElementById('overview').clientHeight + 230;
         this.setbar();
       //  this.navigateService.pushToRoute('./aboutChinaIcac/advisor');
         break;
@@ -111,8 +111,8 @@ export class AboutIndexComponent implements OnInit {
         this.isshow2 = false;
         this.isshow3 = false;
         this.isshow4 = true;
-        document.body.scrollTop = 2720;
-        document.documentElement.scrollTop = 3261;
+        document.body.scrollTop = document.getElementById('advisor').clientHeight + document.getElementById('committee').clientHeight + document.getElementById('overview').clientHeight + 230;
+        document.documentElement.scrollTop = document.getElementById('advisor').clientHeight + document.getElementById('committee').clientHeight + document.getElementById('overview').clientHeight + 230;
         this.setbar();
       //  this.navigateService.pushToRoute('./aboutChinaIcac/contact-us');
         break;
