@@ -58,7 +58,7 @@ export class RegisterNocodeComponent implements OnInit {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     this.buildForm();
-    this.setFooter();
+    // this.setFooter();
   }
 
   setFooter() {

@@ -35,7 +35,10 @@ export class SchoolComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setFooter(0);
+    //this.setFooter(0);
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
     //需要登录才可以查看
     this.personService.getUserInfo().subscribe(res => {
       res.ok ?  this.getLists() : this.modal.isSigninShow = true ;
@@ -91,7 +94,7 @@ export class SchoolComponent implements OnInit {
     } else {
       this.isempty = true;
     }
-    this.setFooter(this.showLists.length);
+    //this.setFooter(this.showLists.length);
   }
 
   buildForm(){

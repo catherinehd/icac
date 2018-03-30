@@ -34,7 +34,10 @@ export class PersonComponent implements OnInit {
 
   success() {
     this.isLogin = true;
-    this.setFooter();
+    //this.setFooter();
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   setFooter() {

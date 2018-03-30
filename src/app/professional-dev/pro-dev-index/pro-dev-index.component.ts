@@ -27,10 +27,13 @@ export class ProDevIndexComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setFooter(0);
+    //this.setFooter(0);
     this.personService.getUserInfo().subscribe(res => {
       res.ok ?  this.getList() : this.modal.isSigninShow = true ;
     });
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   setFooter(n) {
@@ -84,7 +87,7 @@ export class ProDevIndexComponent implements OnInit {
     } else {
       this.hasWebinar = false;
     };
-    this.setFooter(this.showLists.length);
+    //this.setFooter(this.showLists.length);
   }
 
   format(t) {

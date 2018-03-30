@@ -33,6 +33,9 @@ export class SchooldetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
     this.personService.getUserInfo().subscribe(res => {
       res.ok ?  this.getId() : this.modal.isSigninShow = true ;
     });
@@ -81,7 +84,7 @@ export class SchooldetailComponent implements OnInit {
     this.school = data;
     let t = this.school.usityCountry;
     this.school.usityCountry = t.toUpperCase();
-    this.setFooter();
+    //this.setFooter();
   }
 
   format(t) {

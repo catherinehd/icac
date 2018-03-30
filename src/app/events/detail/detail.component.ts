@@ -15,6 +15,8 @@ export class DetailComponent implements OnInit {
   news: newsModel = new newsModel('','', 0,'','','','',0,'','','','','','','',0);
   conferenceState: boolean;//是否报名会议 true的时候为可以报名
   same: boolean;//如果会议开始和结束是同一天，same为true，否则为false
+  newsTimeCStart: any;
+  newsTimeCStop: any;
   modal1 = {
     title: 'Please check your registration information',
     isRegisterShow: false,
@@ -44,7 +46,10 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.getId();
-    this.setFooter();
+    //this.setFooter();
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   setFooter() {
@@ -77,6 +82,8 @@ export class DetailComponent implements OnInit {
       this.news = res.data.news;
       this.modal1.theme = res.data.news.newsTheme;
       this.conferenceState = res.data.state;
+      this.newsTimeCStart = this.format2(this.news.newsMeetstarttime);
+      this.newsTimeCStop = this.format2(this.news.newsMeetstoptime);
       document.getElementsByClassName('detail-arc')[0].innerHTML = this.news.newsInfo;
       this.news.newsMeetstarttime = this.format(this.news.newsMeetstarttime);
       this.news.newsMeetstoptime = this.format(this.news.newsMeetstoptime);
@@ -95,8 +102,16 @@ export class DetailComponent implements OnInit {
     return commonTime;
   }
 
+  // 时间格式为xxxx-xx-xx
+  format2(t) {
+    let unixTimestamp = new Date(t);
+    let month = unixTimestamp.getMonth()+1;
+    let commonTime = unixTimestamp.getFullYear() + '-' + month + '-' + unixTimestamp.getDate();
+    return commonTime;
+  }
+
   //注册会议
-  register() {
+  register(t) {
     // 判断是否登录
     this.personService.getUserInfo().subscribe( res => {
       if(res.ok && this.conferenceState) {

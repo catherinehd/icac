@@ -18,6 +18,9 @@ export class ProDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getId();
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   setFooter() {
@@ -58,7 +61,7 @@ export class ProDetailComponent implements OnInit {
   show(data) {
     this.news = data;
     this.news.wsTime = this.format(this.news.wsTime);
-    this.setFooter();
+    //this.setFooter();
   }
 
   format(t) {

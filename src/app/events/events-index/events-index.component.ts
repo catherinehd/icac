@@ -27,7 +27,9 @@ export class EventsIndexComponent implements OnInit {
       if (err && err.status === 401) this.navigateService.pushToRoute('/home');
      }
     });
-
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
     //this.setFooter();
   }
 

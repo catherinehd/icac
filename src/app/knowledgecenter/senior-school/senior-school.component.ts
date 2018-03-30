@@ -36,12 +36,15 @@ export class SeniorSchoolComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setFooter(0);
+    //this.setFooter(0);
     //验证登录
     this.personService.getUserInfo().subscribe(res => {
       res.ok ?  this.getLists() : this.modal.isSigninShow = true ;
     });
     this.buildForm();
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   setFooter(n) {
@@ -93,7 +96,7 @@ export class SeniorSchoolComponent implements OnInit {
     } else {
       this.isempty = true;
     };
-    this.setFooter(this.showLists.length);
+    //this.setFooter(this.showLists.length);
   }
 
   buildForm(){

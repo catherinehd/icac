@@ -15,6 +15,9 @@ export class DetailWorkshopComponent implements OnInit {
 
   ngOnInit() {
     this.getId();
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   setFooter() {
@@ -48,7 +51,7 @@ export class DetailWorkshopComponent implements OnInit {
       this.news = res.data;
       this.news.newsTime = this.format(this.news.newsTime);
     });
-    this.setFooter();
+    //this.setFooter();
   }
 
   format(t) {

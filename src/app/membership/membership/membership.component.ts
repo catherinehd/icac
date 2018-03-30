@@ -35,6 +35,9 @@ export class MembershipComponent implements OnInit {
       that.setbar();
     };
     // this.setFooter();
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   setFooter() {

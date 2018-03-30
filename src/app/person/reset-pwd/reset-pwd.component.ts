@@ -49,7 +49,10 @@ export class ResetPwdComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.username = location.hash.split('/')[3];
-    this.setFooter();
+    //this.setFooter();
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   setFooter() {

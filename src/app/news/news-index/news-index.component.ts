@@ -24,6 +24,9 @@ export class NewsIndexComponent implements OnInit {
         if (err && err.status === 401) this.navigateService.pushToRoute('/home');
       }
     })
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   setFooter(n) {
@@ -71,7 +74,7 @@ export class NewsIndexComponent implements OnInit {
     } else {
       this.hasNews = false;
     };
-    this.setFooter(this.showLists.length);
+    //this.setFooter(this.showLists.length);
   }
 
   format(t) {

@@ -12,6 +12,7 @@ export class AboutIndexComponent implements OnInit {
   isshow2: boolean;
   isshow3: boolean;
   isshow4: boolean;
+  top: any;
 
   constructor(private navigateService: NavigateService) {
     this.isshow1 = true;
@@ -24,10 +25,18 @@ export class AboutIndexComponent implements OnInit {
     const search = location.hash.split('/')[2];
     this.about(search);
     let that = this;
-    document.getElementsByTagName('body')[0].onscroll = function(){
+    // document.getElementsByTagName('body')[0].onscroll = function(){
+    //   that.setbar();
+    //   //that.top = document.documentElement.scrollTop ||window.pageYOffset || document.body.scrollTop || 0;
+    //  console.log('scroll');
+    // };
+    window.onscroll = function(){
       that.setbar();
-    };
-    this.setbar();
+    }
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
+   // this.setbar();
     //this.setFooter();
   }
 
@@ -56,7 +65,8 @@ export class AboutIndexComponent implements OnInit {
   }
 
   setbar() {
-    const top =  document.documentElement.scrollTop ||window.pageYOffset || document.body.scrollTop || 0;
+     const top =  document.documentElement.scrollTop ||window.pageYOffset || document.body.scrollTop || 0;
+    //console.log(top);
     if(top <= 230 ) {
       if(document.getElementById('nav-right')) {
         document.getElementById('nav-right').style.top = '0px';

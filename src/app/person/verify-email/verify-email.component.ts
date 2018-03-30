@@ -45,7 +45,10 @@ export class VerifyEmailComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    this.setFooter();
+   // this.setFooter();
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   setFooter() {

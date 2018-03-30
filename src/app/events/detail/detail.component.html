@@ -23,14 +23,23 @@
             <div class="small-title">
               {{news.newsTheme}}
             </div>
-            <div class="date">
+            <div class="date date1">
               <img src="../../../assets/icon/time.svg" />
               <span *ngIf="!same">{{news.newsMeetstarttime}} - {{news.newsMeetstoptime}}</span>
               <span *ngIf="same">{{news.newsMeetstarttime}}</span>
             </div>
-            <div class="address">
+            <div class="date">
+              <img src="../../../assets/icon/time.svg" />
+              <span *ngIf="!same">{{newsTimeCStart}} 至 {{newsTimeCStop}}</span>
+              <span *ngIf="same">{{newsTimeCStart}}</span>
+            </div>
+            <div class="address address1">
               <img src="../../../assets/icon/address3.svg" />
               <span>{{news.newsPlace}}</span>
+            </div>
+            <div class="address">
+              <img src="../../../assets/icon/address3.svg" />
+              <span>{{news.newsPlaces}}</span>
             </div>
             <!--<div class="author">-->
               <!--<img src="../../../assets/icon/person-info.svg" />-->
@@ -58,8 +67,11 @@
   </div>
 </section>
 
+<app-footer></app-footer>
+
 <app-modal *ngIf="!modal2Show" [modal]="modal1" (onConfirm)="onConfirm1()"></app-modal>
 <app-modal *ngIf="modal2Show" [modal]="modal2" (onConfirm)="onConfirm2()"></app-modal>
+
 
 <app-to-top></app-to-top>
 

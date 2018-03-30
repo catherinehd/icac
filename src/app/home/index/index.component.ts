@@ -18,7 +18,11 @@ export class IndexComponent implements OnInit {
     this.newsService.getNewsList(0,1).subscribe( res => {
       this.showList(res)
     });
-    this.setFooter();
+
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
+    // this.setFooter();
   }
 
   setFooter() {

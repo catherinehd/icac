@@ -3,6 +3,7 @@ import { NavigateService } from '../../service/navigate.service';
 import { HomeService } from '../../service/center.service';
 
 import { middleSchoolModel } from '../../model/middleSchool.model';
+declare var $:any;
 
 @Component({
   selector: 'app-senior-schooldetail',
@@ -24,6 +25,9 @@ export class SeniorSchooldetailComponent implements OnInit {
 
   ngOnInit() {
     this.getId();
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   getId() {

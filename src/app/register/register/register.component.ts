@@ -68,11 +68,14 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    this.setFooter();
+    //this.setFooter();
     // this.checkAgreement = false;
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     this.browser();
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   browser() {

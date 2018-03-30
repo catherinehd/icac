@@ -27,6 +27,10 @@ export class EventsWorkshopComponent implements OnInit {
       if (err && err.status === 401) this.navigateService.pushToRoute('/home');
     }
     });
+
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   setFooter(n) {
@@ -65,7 +69,7 @@ export class EventsWorkshopComponent implements OnInit {
     } else {
       this.hasConference = false;
     };
-    this.setFooter(this.showLists.length);
+   // this.setFooter(this.showLists.length);
   }
 
   format(t) {

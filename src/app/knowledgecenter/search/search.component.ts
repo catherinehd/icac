@@ -49,6 +49,9 @@ export class SearchComponent implements OnInit {
     } else {
       this.university = false;
     }
+    setTimeout(function(){
+      $('.wrap-box').css("min-height",$(window).height());
+    },0);
   }
 
   setFooter(n) {
@@ -95,7 +98,7 @@ export class SearchComponent implements OnInit {
     } else {
       this.isempty = true;
     };
-    this.setFooter(this.showLists.length);
+   // this.setFooter(this.showLists.length);
   }
 
   buildForm(){
