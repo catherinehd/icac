@@ -1,0 +1,27 @@
+<section class="banner-sec" >
+  <div class="notice" *ngIf="isShowNotice && notice">
+    <div class="icon-box">
+      <svg class="icon-notice">
+        <use xlink:href="assets/icon/symbol-defs.svg#icon-notice"></use>
+      </svg>
+    </div>
+    <div class="content-box">
+      <p class="content" [ngStyle]="{'width': notice.length + 'em', 'animationDuration': spead + 's', 'webkitAnimationDuration': spead + 's'}">{{notice}}</p>
+    </div>
+    <div class="icon-box icon-right-box" appFastClick (onFastClick)="closeNotice()">
+      <svg class="icon-thin-close">
+        <use xlink:href="assets/icon/symbol-defs.svg#icon-thin-close"></use>
+      </svg>
+    </div>
+  </div>
+  <div class="banner">
+    <div class="swiper-container" (click)="touchBanner($event)">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let item of bannerList" [attr.alt]="item.targetUrl">
+          <img src="{{item.imgUrl}}" [attr.data-url]="item.targetUrl">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
