@@ -1,6 +1,7 @@
 <section class="modal-sec" *ngIf="modal.isSigninShow || modal.isVerifyMailboxShow || modal.isResetPwShow ||modal.isRegisterShow">
   <div class="container">
 
+    <!--登录-->
     <div class="modal-container" *ngIf="modal.isSigninShow">
     <span><button (click)="confirm()">
       <img src="../../../assets/icon/close.svg"></button></span>
@@ -38,6 +39,7 @@
       </div>
     </div>
 
+    <!--报名会议-->
     <div class="modal-container register-container" *ngIf="modal.isRegisterShow">
     <span>
       <button (click)="confirm()">

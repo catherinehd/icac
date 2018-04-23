@@ -67,7 +67,9 @@ export class NewsIndexComponent implements OnInit {
     for(let i = 0;i < this.showLists.length; i++){
       let t = this.showLists[i].ncTime;
       this.showLists[i].ncTime = this.format(t);
-    }
+     this.showLists[i].ncContent = this.showLists[i].ncContent.replace(/<.*?>/ig,"");
+      this.showLists[i].ncContent = this.showLists[i].ncContent.replace(/&nbsp;/ig,'');
+    };
     this.page.pageCount = list.total;
     if(list.rows.length > 0) {
       this.hasNews = true;

@@ -20,15 +20,20 @@
       <div class="expression detail">
         <div class="top">
         </div>
-        {{news.wsContent}}
+        <div class="author" *ngFor="let item of authors">
+          {{item}}
+        </div>
+        <div class="detail-info">
+          {{news.wsContent}}
+        </div>
       </div>
       <div class="video-ppt">
-        <button (click)="gopage(news.wsUrl)" (mouseover)="video2 = true" (mouseout)="video2 = false">
+        <button *ngIf="news.wsUrl" (click)="gopage(news.wsUrl)" (mouseover)="video2 = true" (mouseout)="video2 = false">
           <img *ngIf="!video2" src="../../../assets/icon/video.svg">
           <img *ngIf="video2" src="../../../assets/icon/video2.svg">
           Video
         </button>
-        <button (click)="gopage(news.wsDurl)" (mouseover)="ppt2 = true" (mouseout)="ppt2 = false">
+        <button *ngIf="news.wsDurl" (click)="gopage(news.wsDurl)" (mouseover)="ppt2 = true" (mouseout)="ppt2 = false">
           <img *ngIf="!ppt2" src="../../../assets/icon/ppt.svg">
           <img *ngIf="ppt2" src="../../../assets/icon/ppt2.svg">
           ppt

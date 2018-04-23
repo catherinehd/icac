@@ -45,12 +45,12 @@
               <!--<img src="../../../assets/icon/person-info.svg" />-->
               <!--<span>{{news.newsPerson}}</span>-->
             <!--</div>-->
-            <div class="register-btn"  *ngIf="!conferenceState">
+            <div class="register-btn"  *ngIf="!conferenceState && inSignTime">
               <button disabled>
                 Registered
               </button>
             </div>
-            <div class="register-btn"  *ngIf="conferenceState">
+            <div class="register-btn"  *ngIf="conferenceState && inSignTime">
               <button (click)="register()">
                 Register
               </button>
@@ -69,7 +69,9 @@
 
 <app-footer></app-footer>
 
-<app-modal *ngIf="!modal2Show" [modal]="modal1" (onConfirm)="onConfirm1()"></app-modal>
+<!--报名会议-->
+<app-modal *ngIf="!modal2Show" [modal]="modal1" (onConfirm)="onConfirm1()"  (onSetBtn)="setBtn($event)"></app-modal>
+<!--登录框-->
 <app-modal *ngIf="modal2Show" [modal]="modal2" (onConfirm)="onConfirm2()"></app-modal>
 
 

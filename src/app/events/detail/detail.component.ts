@@ -17,7 +17,8 @@ export class DetailComponent implements OnInit {
   same: boolean;//如果会议开始和结束是同一天，same为true，否则为false
   newsTimeCStart: any;
   newsTimeCStop: any;
-  modal1 = {
+  inSignTime: boolean; // 在报名时间内未true;
+  modal1 = {       //报名会议
     title: 'Please check your registration information',
     isRegisterShow: false,
     closeShow: false,
@@ -27,7 +28,7 @@ export class DetailComponent implements OnInit {
     school: '',
     theme: ''
   };
-  modal2 = {
+  modal2 = {           // 登录
     title: 'CHINAICAC MEMBER SIGN IN',
     isSigninShow: false,
     closeShow: false,
@@ -87,6 +88,12 @@ export class DetailComponent implements OnInit {
       document.getElementsByClassName('detail-arc')[0].innerHTML = this.news.newsInfo;
       this.news.newsMeetstarttime = this.format(this.news.newsMeetstarttime);
       this.news.newsMeetstoptime = this.format(this.news.newsMeetstoptime);
+      let now = new Date();
+      if ((now.getTime()) > (res.data.news.newsSignstarttime) && (now.getTime()) < (res.data.news.newsSignstoptime)) {
+      this.inSignTime = true;
+    } else {
+      this.inSignTime = false;
+    }
       if(this.news.newsMeetstarttime === this.news.newsMeetstoptime) {
         this.same = true;
       } else {
@@ -131,6 +138,13 @@ export class DetailComponent implements OnInit {
 
   onConfirm1() {
     this.modal1.isRegisterShow = false;
+  }
+
+  // 报名后按钮改变状态
+  setBtn(msg: number) {
+    if( msg === 1) {
+      this.conferenceState = false;
+    }
   }
 
   onConfirm2() {

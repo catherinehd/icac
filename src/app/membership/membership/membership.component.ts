@@ -31,9 +31,12 @@ export class MembershipComponent implements OnInit {
 
   ngOnInit() {
     let that =  this;
-    document.getElementsByTagName('body')[0].onscroll = function(){
+    // document.getElementsByTagName('body')[0].onscroll = function(){
+    //   that.setbar();
+    // };
+    window.onscroll = function(){
       that.setbar();
-    };
+    }
     // this.setFooter();
     setTimeout(function(){
       $('.wrap-box').css("min-height",$(window).height());

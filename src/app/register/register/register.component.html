@@ -37,7 +37,7 @@
           <span>*</span>Email
         </label>
         <span>
-          <input placeholder="Please enter" formControlName="email" type="email" (keyup)="showErr('email')">
+          <input placeholder="Please enter" formControlName="email" type="email" (blur)="showErr('email')">
           <div class="wrong" *ngIf="errEmail">
             <img class="wromg-img" src="../../../assets/icon/wrong.svg" />
             <span>{{errEmail}}</span>

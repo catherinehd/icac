@@ -68,6 +68,7 @@ export class NewsDetailComponent implements OnInit {
   show(data){
     this.news = data;
     this.news.ncTime = this.format(this.news.ncTime);
+    document.getElementsByClassName('detail-info')[0].innerHTML = this.news.ncContent;
     //this.setFooter();
   }
 

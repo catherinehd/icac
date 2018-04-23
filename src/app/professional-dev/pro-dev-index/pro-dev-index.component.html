@@ -19,8 +19,8 @@
         <div class="small-title">
           <p>{{list.wsTitle}}</p>
         </div>
-        <div class="webinar-intro">
-          {{list.wsContent}}
+        <div class="webinar-intro" *ngFor="let item of list.wsAuthor">
+          {{item}}
         </div>
         <!--<div class="video-ppt">
           <div class="video">

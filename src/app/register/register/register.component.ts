@@ -190,6 +190,7 @@ export class RegisterComponent implements OnInit {
 
 
   onSubmit() {
+
     if (this.errEmail || this.errCode) return;
     if (!this.registerForm.valid) return;
     if (this.registerForm.value.pwd1 !== this.registerForm.value.pwd2 ) {this.errPwd2 = 'Passwords must match'; return;}
@@ -218,6 +219,7 @@ export class RegisterComponent implements OnInit {
   }
 
   setUser(data) {
+    $('.submit').find('button').attr('disabled', 'disabled');
     this.prompt = true;
   }
 

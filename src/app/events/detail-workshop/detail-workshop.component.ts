@@ -50,6 +50,7 @@ export class DetailWorkshopComponent implements OnInit {
     this.eventService.getDetailEventes(id).subscribe(res => {
       this.news = res.data;
       this.news.newsTime = this.format(this.news.newsTime);
+      document.getElementsByClassName('detail-info')[0].innerHTML = this.news.newsInfo;
     });
     //this.setFooter();
   }

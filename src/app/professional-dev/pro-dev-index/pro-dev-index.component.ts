@@ -76,6 +76,9 @@ export class ProDevIndexComponent implements OnInit {
     for(let i = 0;i < this.showLists.length; i++){
       let t = this.showLists[i].wsTime;
       this.showLists[i].wsTime = this.format(t);
+      this.showLists[i].wsContent = this.showLists[i].wsContent.replace(/<.*?>/ig,"");
+      this.showLists[i].wsContent = this.showLists[i].wsContent.replace(/&nbsp;/ig,"");
+      this.showLists[i].wsAuthor = this.showLists[i].wsAuthor.split(';');
     }
     //console.log(this.showLists);
     for(let i = 0; i<this.showLists.length; i++){

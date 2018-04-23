@@ -99,7 +99,7 @@ export class VerifyEmailComponent implements OnInit {
   }
 
   testemail() {
-    const re = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    const re = /^([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
     const email = this.emailForm.value.email;
     return re.test(email);
   }
@@ -113,7 +113,7 @@ export class VerifyEmailComponent implements OnInit {
         res.ok ? this.getCodeSuccess() : this.showTip(res.msg);
       })
     } else {
-      this.showTip('请填写有效的email')
+      this.showTip('please input correct email')
     }
   }
 

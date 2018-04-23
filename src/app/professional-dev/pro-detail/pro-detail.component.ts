@@ -9,12 +9,15 @@ declare var $:any;
 })
 export class ProDetailComponent implements OnInit {
 
-  news: newsModel = new newsModel(0,'', 0,'','','','','','','','');
+  authors: string[];
+  news: newsModel = new newsModel(0,'','', 0,'','','','','','','','');
 
   constructor(
     private navigateService: NavigateService,
     private prodevService: ProDevService
-  ) { }
+  ) {
+    this.authors = [];
+  }
 
   ngOnInit() {
     this.getId();
@@ -61,6 +64,8 @@ export class ProDetailComponent implements OnInit {
   show(data) {
     this.news = data;
     this.news.wsTime = this.format(this.news.wsTime);
+    this.authors = this.news.wsAuthor.split(';');
+    document.getElementsByClassName('detail-info')[0].innerHTML = this.news.wsContent;
     //this.setFooter();
   }
 
@@ -80,6 +85,7 @@ export class ProDetailComponent implements OnInit {
 class newsModel {
   constructor(public wsId: number,
               public wsTime: string,
+              public wsAuthor: string,
               public state: number,
               public createBy: string,
               public createTime: string,

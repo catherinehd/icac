@@ -21,6 +21,7 @@ export class PagerComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.pageCount);
     if(this.pageCount === 0) {
       this.noLists = true;
     }

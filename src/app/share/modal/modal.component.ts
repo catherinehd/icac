@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output, } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { UserService } from '../../service/user.service';
 import { PersonService } from '../../service/person.service';
@@ -12,9 +12,10 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.styl']
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit, OnChanges {
   @Input() modal: Modal;
   @Output() onConfirm = new EventEmitter<string>();
+  @Output() onSetBtn = new EventEmitter<string>();
   // @Output() onSetStatus = new EventEmitter<number>();
   loginForm: FormGroup;
   login: Login =new Login('','');
@@ -57,6 +58,10 @@ export class ModalComponent implements OnInit {
 
   confirm() {
     this.onConfirm.emit();
+  }
+
+  setBtn(num) {
+    this.onSetBtn.emit(num);
   }
 
   // setStatus(num) {
@@ -154,16 +159,21 @@ export class ModalComponent implements OnInit {
         console.log(res.msg);
       }
     })
+    this.afterSuccessRegister();
   }
 
   afterSuccessRegister() {
     this.confirm();
+    this.setBtn(1); //已经报名会议为1;
     this.successRegister = true;
     setTimeout(() => {
       this.successRegister = false;
       // this.setStatus(1); //设置register按钮状态，1的时候表示已经注册。
-      location.reload();
     }, 2000)
+  }
+
+  ngOnChanges(changes) {
+    // console.log(changes);
   }
 
 }
